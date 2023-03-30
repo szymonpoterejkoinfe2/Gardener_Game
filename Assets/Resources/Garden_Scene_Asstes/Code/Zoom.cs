@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zoom : MonoBehaviour
 {
 
-    public float ZoomMin = 20;
+    public float ZoomMin = 19;
     public float ZoomMax = 50;
     public float Speed = 1;
     // Update is called once per frame

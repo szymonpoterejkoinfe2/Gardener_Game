@@ -92,7 +92,7 @@ public class TapOnTileDetector : MonoBehaviour
     {
         PositionMemory = Tile.transform.position;
         Tile.transform.position = new Vector3(-60, PositionMemory.y, 20);
-
+        Tile.tag = "MovedSoil";
         
         StartRotationOfSoil(Tile);
     }
@@ -109,6 +109,7 @@ public class TapOnTileDetector : MonoBehaviour
         Soil.transform.position = new Vector3(PositionMemory.x, PositionMemory.y, PositionMemory.z);
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();
+        Tile.tag = "SoilTile";
     }
 
   

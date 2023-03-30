@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 907295047202248852}
   m_Layer: 0
   m_Name: Soil
-  m_TagString: Untagged
+  m_TagString: SoilTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b531c174676672a47a2a34279787209a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plants:
-  - {fileID: 3972357832352189894, guid: 7530b54f9d2cfa84b9234ff972019089, type: 3}
-  - {fileID: 7142518897036750292, guid: 6fe8e1d312373474180d943bd53f54ca, type: 3}
+  plants: {fileID: 4559615764270650552, guid: 5bae4512f9b441049b8b173116ec5117, type: 3}
   HavePlant: 0
 --- !u!114 &907295047202248852
 MonoBehaviour:
@@ -130,3 +128,4 @@ MonoBehaviour:
   rotation: {x: 0, y: 5, z: 0}
   ResetPos: {x: 0, y: 0, z: 0}
   speed: 2
+  Should_Rotate: 0
