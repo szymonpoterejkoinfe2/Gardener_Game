@@ -10,11 +10,11 @@ public class TapOnTileDetector : MonoBehaviour
     public GameObject CameraTwo;
     private GameObject Tile;
     Vector3 PositionMemory;
-    public int FlowerNumber;
+   
 
 
     int ballance = 1000;
-    int price = 500;
+    int price = 200;
     // Start is called before the first frame update
 
     private void Awake()
@@ -92,7 +92,7 @@ public class TapOnTileDetector : MonoBehaviour
     {
         PositionMemory = Tile.transform.position;
         Tile.transform.position = new Vector3(-60, PositionMemory.y, 20);
-
+        Tile.tag = "MovedSoil";
         
         StartRotationOfSoil(Tile);
     }
@@ -109,6 +109,7 @@ public class TapOnTileDetector : MonoBehaviour
         Soil.transform.position = new Vector3(PositionMemory.x, PositionMemory.y, PositionMemory.z);
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();
+        Tile.tag = "SoilTile";
     }
 
   
