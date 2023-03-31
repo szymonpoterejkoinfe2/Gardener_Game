@@ -1,4 +1,0 @@
-repository "Gardener_Game@unity_NgpsXlcGwdegUw@cloud"
-  path "/"
-    br "/main"
-    co "/main"

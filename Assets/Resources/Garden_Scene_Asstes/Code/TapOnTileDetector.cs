@@ -10,11 +10,10 @@ public class TapOnTileDetector : MonoBehaviour
     public GameObject CameraTwo;
     private GameObject Tile;
     Vector3 PositionMemory;
-   
+    private GameObject Bank,Cover;
+    ulong Ballance, Price;
 
 
-    int ballance = 1000;
-    int price = 200;
     // Start is called before the first frame update
 
     private void Awake()
@@ -22,14 +21,12 @@ public class TapOnTileDetector : MonoBehaviour
         CameraTwo.SetActive(false);
     }
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        Bank = GameObject.FindGameObjectWithTag("Bank");
+        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+
         if (Input.touchCount == 1)
         {
             Touch t = Input.GetTouch(0);
@@ -39,11 +36,16 @@ public class TapOnTileDetector : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.name == "BadRockCover" && ballance >= price)
+                if (hit.transform.name == "BadRockCover")
                 {
-                    Destroy(hit.transform.gameObject);
-                    ballance -= price;
-                    Debug.Log(ballance);
+                    Cover = hit.transform.gameObject;
+                    Price = Cover.GetComponent<ObjectPrice>().MyPrice;
+
+                    if (Ballance >= Price)
+                    {
+                        Destroy(Cover);
+                        Bank.GetComponent<MoneyManager>().DecrementBallance(Price);
+                    }
                 }
                 else if (hit.transform.name == "Soil")
                 {
@@ -83,7 +85,6 @@ public class TapOnTileDetector : MonoBehaviour
         CameraOne.SetActive(true);
         CameraTwo.SetActive(false);
         rotation.speed = 2;
-
         ResetSoilTile(Tile);
     }
 

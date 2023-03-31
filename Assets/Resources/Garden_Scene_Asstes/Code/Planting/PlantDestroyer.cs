@@ -7,15 +7,24 @@ public class PlantDestroyer : MonoBehaviour
     public float holdDuration = 1f;
     float savedHoldDuration;
     private GameObject Plant;
+    public GameObject Buttons;
+    GameObject Tile;
+    private GameObject Bank;
+    ulong Ballance, Refund;
+
     // Start is called before the first frame update
     void Start()
     {
         savedHoldDuration = holdDuration;
+        Buttons.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Bank = GameObject.FindGameObjectWithTag("Bank");
+        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+
         if (Input.touchCount == 1)
         {
             Touch t = Input.GetTouch(0);
@@ -29,15 +38,30 @@ public class PlantDestroyer : MonoBehaviour
                 {
                     float remainingDuration = holdDuration -= Time.deltaTime;
                     Plant = hit.transform.gameObject;
-                    var Tile = Plant.transform.parent.gameObject;
+                    Tile = Plant.transform.parent.gameObject;
                     if (holdDuration <= 0)
                     {
-                       Tile.GetComponent<PlantCreator>().HavePlant = false;
-                       Destroy(hit.transform.gameObject);
-                       holdDuration = savedHoldDuration;
+                        Buttons.SetActive(true);
+                        Refund = Plant.GetComponent<ObjectPrice>().ReturnFromDestruction;
                     }
                 }
             }
         }
+    }
+
+    //Destroy Plant
+    public void DestroyPlant()
+    {
+        Destroy(Plant);
+        Tile.GetComponent<PlantCreator>().HavePlant = false;
+        HideButtons();
+        Bank.GetComponent<MoneyManager>().IncrementBallance(Refund);
+    }
+
+    //Deactivates buttons to destroy plant
+    public void HideButtons()
+    {
+        Buttons.SetActive(false);
+        holdDuration = savedHoldDuration;
     }
 }
