@@ -9,6 +9,7 @@ TagManager:
   - MovedSoil
   - DestroyPlantButton
   - Bank
+  - CameraAndTileManager
   layers:
   - Default
   - TransparentFX

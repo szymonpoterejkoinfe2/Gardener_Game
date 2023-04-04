@@ -6,15 +6,19 @@ public class PlantCreator : MonoBehaviour
 {
     public GameObject[] plants;
     public bool HavePlant = false;
-    public float FixedScale = 1;
+    public float FixedScale = 0;
     public GameObject parent;
-    private GameObject Bank;
+    private GameObject Bank, GrowPlant;
     ulong Ballance, Price;
+
 
     void Update()
     {
        Bank = GameObject.FindGameObjectWithTag("Bank");
        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+
+        GrowPlant = GameObject.FindGameObjectWithTag("MainCamera");
+        
     }
 
     // Function which Generates new plant game object based on plants prefabs.
@@ -28,8 +32,9 @@ public class PlantCreator : MonoBehaviour
             new_plant.name = "Plant";
             new_plant.tag = "Plant";
             new_plant.transform.localPosition = new Vector3(0, 1, 0);
-            new_plant.transform.localScale = new Vector3(FixedScale / parent.transform.localScale.x, FixedScale / parent.transform.localScale.y, FixedScale / parent.transform.localScale.z);
+            new_plant.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
             HavePlant = true;
+            GrowPlant.GetComponent<GrowPlant>().CanGrow = true;
         }
     }
  
