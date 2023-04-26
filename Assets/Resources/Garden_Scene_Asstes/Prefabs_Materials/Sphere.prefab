@@ -111,3 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyPrice: 20
+  ReturnFromDestruction: 5
+  GrownIncome: 10

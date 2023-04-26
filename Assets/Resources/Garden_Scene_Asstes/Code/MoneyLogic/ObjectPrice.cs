@@ -6,4 +6,5 @@ public class ObjectPrice : MonoBehaviour
 {
     public ulong MyPrice = 10;
     public ulong ReturnFromDestruction = 5;
+    public ulong GrownIncome = 7;
 }

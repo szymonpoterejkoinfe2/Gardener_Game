@@ -52,11 +52,11 @@ public class TapOnTileDetector : MonoBehaviour
                     // Reseting Groung Rotation
                     rotation.ResetState();
 
-                    Debug.Log("Function1");
+                    //Debug.Log("Function1");
                     // Changing Soil Tile position to scene of clickig gameplay
                     CameraTileManager.RepositionTile(Tile);
 
-                    Debug.Log("Function2");
+                    //Debug.Log("Function2");
                     // Swithcing to secound camera
                     CameraTileManager.ChangeToCameraTwo();
 
