@@ -18,14 +18,21 @@ public class GrowPlant : MonoBehaviour
         
 
     }
-    
+    void Update()
+    {
+        Soil = GameObject.FindGameObjectWithTag("MovedSoil");
+        
+    }
     // Function Scale Plant GameObject to imitate Growth;
     public void Grow(int TouchCount)
     {
-        Soil = GameObject.FindGameObjectWithTag("MovedSoil");
+        if (Soil.GetComponent<PlantCreator>().HavePlant == true)
+        {
+            Plant = Soil.transform.Find("Plant").gameObject;
+        }
         if (Soil.GetComponent<PlantCreator>().HavePlant == true && CanGrow)
         {
-            Plant = GameObject.FindGameObjectWithTag("Plant");
+            
             Plant.transform.localScale += TouchCount * (ScaleValue * Multiplyer);
             Debug.Log("Growing");
 
