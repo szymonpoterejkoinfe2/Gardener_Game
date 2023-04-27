@@ -25,6 +25,7 @@ public class GrowPlant : MonoBehaviour
         Soil = GameObject.FindGameObjectWithTag("MovedSoil");
         
     }
+
     // Function Scale Plant GameObject to imitate Growth;
     public void Grow(int TouchCount)
     {
@@ -50,4 +51,19 @@ public class GrowPlant : MonoBehaviour
 
        
     }
+
+    // Upgrading Plant to earn more on every sold flower.
+    public void UpgradePlant()
+    {
+        if (Soil.GetComponent<PlantCreator>().HavePlant == true)
+        {
+            Plant = Soil.transform.Find("Plant").gameObject;
+            if (Bank.GetComponent<MoneyManager>().MoneyBallance >= Plant.GetComponent<ObjectPrice>().UpgradeCost)
+            {
+                Bank.GetComponent<MoneyManager>().DecrementBallance(Plant.GetComponent<ObjectPrice>().UpgradeCost);
+                Plant.GetComponent<ObjectPrice>().ChangeGrowIncome();
+            }
+        }
+    }
+
 }
