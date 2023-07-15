@@ -9,6 +9,7 @@ public class ObjectPrice : MonoBehaviour
     public ulong GrownIncome = 7;
     public ulong UpgradeCost = 25;
 
+    //Changing money rewart from fully grown plant
     public void ChangeGrowIncome()
     {
         float IncreaseUpdate, IncreaseIncome;
