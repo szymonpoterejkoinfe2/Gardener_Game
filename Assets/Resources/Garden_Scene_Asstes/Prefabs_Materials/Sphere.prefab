@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7438553245583126152}
   - component: {fileID: 5180315438390335085}
   - component: {fileID: 1540816948233576321}
+  - component: {fileID: 8240610513218149530}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -113,3 +114,19 @@ MonoBehaviour:
   MyPrice: 20
   ReturnFromDestruction: 5
   GrownIncome: 10
+  UpgradeCost: 25
+  MyId: 1
+--- !u!114 &8240610513218149530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795137302791480261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrowTime: 360
+  HaveManager: 0

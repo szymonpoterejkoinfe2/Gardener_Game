@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ObjectPrice : MonoBehaviour
 {
     public ulong MyPrice = 10;
     public ulong ReturnFromDestruction = 5;
     public ulong GrownIncome = 7;
     public ulong UpgradeCost = 25;
+    
+    //public bool NeedTxt = true;
+    public int MyId;
+
+
+ 
+
 
     //Changing money rewart from fully grown plant
     public void ChangeGrowIncome()

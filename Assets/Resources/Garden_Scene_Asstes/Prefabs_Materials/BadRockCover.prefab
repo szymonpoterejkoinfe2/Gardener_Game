@@ -112,3 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyPrice: 15
   ReturnFromDestruction: 5
+  GrownIncome: 7
+  UpgradeCost: 25
+  UpgradePriceTxt: {fileID: 0}
+  BuyPriceTxt: {fileID: 0}
+  NeedTxt: 0

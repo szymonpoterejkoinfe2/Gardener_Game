@@ -7,15 +7,17 @@ public class CameraAndTileManager : MonoBehaviour
 
     public GameObject CameraOne;
     public GameObject CameraTwo;
-    public GameObject Buttons;
+    public GameObject ShopMenu;
+    public GameObject NavigationButtons;
     public Rotation rotation;
     public Vector3 PositionMemory;
-
-
+    
+    //Deactivating object on awake
     private void Awake()
     {
         CameraTwo.SetActive(false);
-        Buttons.SetActive(false);
+        ShopMenu.SetActive(false);
+        NavigationButtons.SetActive(false);
     }
 
 
@@ -24,7 +26,7 @@ public class CameraAndTileManager : MonoBehaviour
     {
         CameraOne.SetActive(false);
         CameraTwo.SetActive(true);
-        Buttons.SetActive(true);
+        NavigationButtons.SetActive(true);
     }
 
     // function to switch to camera one
@@ -32,7 +34,8 @@ public class CameraAndTileManager : MonoBehaviour
     {
         CameraOne.SetActive(true);
         CameraTwo.SetActive(false);
-        Buttons.SetActive(false);
+        ShopMenu.SetActive(false);
+        NavigationButtons.SetActive(false);
         rotation.speed = 2;
         ResetSoilTile(Soil);
     }
@@ -60,5 +63,19 @@ public class CameraAndTileManager : MonoBehaviour
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();
         Soil.tag = "SoilTile";
+    }
+
+    //Function to activate ShoppingMenu
+    public void ActivateShopMenu()
+    {
+        ShopMenu.SetActive(true);
+        NavigationButtons.SetActive(false);
+    }
+
+    //Function to deactivate ShoppingMenu
+    public void DeActivateShopMenu()
+    {
+        ShopMenu.SetActive(false);
+        NavigationButtons.SetActive(true);
     }
 }

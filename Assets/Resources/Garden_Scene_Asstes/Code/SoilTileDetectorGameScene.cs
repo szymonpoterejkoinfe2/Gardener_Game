@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoilTileDetectorGameScene : MonoBehaviour
 {
-    private GameObject SoilTile;
+    private GameObject SoilTile, Plant;
     public CameraAndTileManager CameraTileManager;
     public GrowPlant Grower;
 
@@ -27,6 +27,12 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         }
         
     }
+
+    public void ShopMenuActivate()
+    {
+        CameraTileManager.ActivateShopMenu();
+    }
+
     //Function to generate plant after clicking on button.
     public void PlacePlant(int PlantId)
     {
@@ -38,4 +44,5 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     {
         CameraTileManager.ChangeToCameraOne(SoilTile);
     }
+
 }

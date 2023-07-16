@@ -7,7 +7,7 @@ public class PlantCreator : MonoBehaviour
     public GameObject[] plants;
     public bool HavePlant = false;
     public float FixedScale = 0;
-    public GameObject parent;
+    //public GameObject parent;
     private GameObject Bank, GrowPlant;
     ulong Ballance, Price;
 

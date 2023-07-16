@@ -9,6 +9,7 @@ public class GrowPlant : MonoBehaviour
     Vector3 ScaleValue,TargetScale, BeginnScale;
     float Multiplyer = 1;
 
+
     public  float[]  ValueTarget;
 
     // Start is called before the first frame update
@@ -32,25 +33,35 @@ public class GrowPlant : MonoBehaviour
         if (Soil.GetComponent<PlantCreator>().HavePlant == true)
         {
             Plant = Soil.transform.Find("Plant").gameObject;
-        
-            
-            Plant.transform.localScale += TouchCount * (ScaleValue * Multiplyer);
-            Debug.Log("Growing");
 
-            if (Plant.transform.localScale.magnitude >= TargetScale.magnitude)
+            if (Plant.GetComponent<ManagerLogic>().HaveManager == false)
             {
-                Leafs = Soil.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>();
 
-                Bank.GetComponent<MoneyManager>().IncrementBallance(Plant.GetComponent<ObjectPrice>().GrownIncome);
+                Plant.transform.localScale += TouchCount * (ScaleValue * Multiplyer);
+                Debug.Log("Growing");
 
-                Leafs.Play();
-                
-                Plant.transform.localScale = BeginnScale;
+                if (Plant.transform.localScale.magnitude >= TargetScale.magnitude)
+                {
+                    PlantFullyGrown();
+                }
             }
         }
 
        
     }
+
+    //Function to generate particle and incrrment ballance when plant is fully grown
+    public void PlantFullyGrown()
+    {
+        Leafs = Soil.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>();
+
+        Bank.GetComponent<MoneyManager>().IncrementBallance(Plant.GetComponent<ObjectPrice>().GrownIncome);
+
+        Leafs.Play();
+
+        Plant.transform.localScale = BeginnScale;
+    }
+
 
     // Upgrading Plant to earn more on every sold flower.
     public void UpgradePlant()
