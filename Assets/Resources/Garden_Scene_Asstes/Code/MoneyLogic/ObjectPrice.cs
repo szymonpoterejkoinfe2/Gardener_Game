@@ -9,12 +9,9 @@ public class ObjectPrice : MonoBehaviour
     public ulong ReturnFromDestruction = 5;
     public ulong GrownIncome = 7;
     public ulong UpgradeCost = 25;
-    
-    //public bool NeedTxt = true;
+    public ulong MyManagerCost = 150;
+    public ulong ManagerUpgradeCost = 180;
     public int MyId;
-
-
- 
 
 
     //Changing money rewart from fully grown plant
@@ -32,6 +29,13 @@ public class ObjectPrice : MonoBehaviour
         UpgradeCost += (ulong)IncreaseUpdate;
 
     }
-    
+
+    public void ChangeManagerUpgradePrice()
+    {
+        float IncreaseUpdate;
+        IncreaseUpdate = Mathf.Round(ManagerUpgradeCost * 0.35f);
+        ManagerUpgradeCost += (ulong)IncreaseUpdate;
+    }
+
 }
 

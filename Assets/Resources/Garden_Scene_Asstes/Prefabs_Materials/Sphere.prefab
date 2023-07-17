@@ -115,6 +115,8 @@ MonoBehaviour:
   ReturnFromDestruction: 5
   GrownIncome: 10
   UpgradeCost: 25
+  MyManagerCost: 500
+  ManagerUpgradeCost: 550
   MyId: 1
 --- !u!114 &8240610513218149530
 MonoBehaviour:

@@ -18,6 +18,12 @@ public class ManagerLogic : MonoBehaviour
             StartCoroutine(GrowWithManager());
     }
 
+    public void UpgradeManager()
+    {
+        GrowTime = (GrowTime * 0.95f);
+    }
+
+
     // Scaling plant object with time
     private IEnumerator GrowWithManager()
     {

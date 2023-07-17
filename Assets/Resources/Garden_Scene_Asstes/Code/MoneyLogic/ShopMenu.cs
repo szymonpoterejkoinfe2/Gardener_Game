@@ -5,11 +5,15 @@ using TMPro;
 
 public class ShopMenu : MonoBehaviour
 {
-    private GameObject SoilTile, Plant;
-    public GameObject PlantCategory, MenagerCategory;
+    private GameObject SoilTile, Plant, Bank;
     private GameObject[] AllPlants;
-    public TextMeshProUGUI[] BuyPriceTxt;
-    public TextMeshProUGUI[] UpgradePriceTxt;
+    private ulong Ballance;
+
+    public GameObject PlantCategory, MenagerCategory;
+    public TextMeshProUGUI[] BuyPlantPriceTxt;
+    public TextMeshProUGUI[] UpgradePlantPriceTxt;
+    public TextMeshProUGUI[] BuyManagerPriceTxt, UpgradeManagerPriceTxt;
+
 
     private void Awake()
     {
@@ -36,42 +40,54 @@ public class ShopMenu : MonoBehaviour
     {
         SoilTile = GameObject.FindGameObjectWithTag("MovedSoil");
         AllPlants = SoilTile.GetComponent<PlantCreator>().plants;
-        
+
+        Bank = GameObject.FindGameObjectWithTag("Bank");
+        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+
         // Taking Price from Planted Object
-        if (SoilTile.GetComponent<PlantCreator>().HavePlant)
+        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true)
         {
-           Plant = SoilTile.transform.Find("Plant").gameObject;
-           UpgradePriceTxt[Plant.GetComponent<ObjectPrice>().MyId].text = Plant.GetComponent<ObjectPrice>().UpgradeCost.ToString();
-           
+            Plant = SoilTile.transform.Find("Plant").gameObject;
+
+           UpgradePlantPriceTxt[Plant.GetComponent<ObjectPrice>().MyId].text = Plant.GetComponent<ObjectPrice>().UpgradeCost.ToString();
+           UpgradeManagerPriceTxt[Plant.GetComponent<ObjectPrice>().MyId].text = Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost.ToString();
         }
         else
         {
             // Taking Price From Prefab Objects
             for (int PlantId = 0; PlantId < AllPlants.Length; PlantId++)
             {
-                BuyPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().MyPrice.ToString();
-                UpgradePriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().UpgradeCost.ToString();
+                BuyPlantPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().MyPrice.ToString();
+                UpgradePlantPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().UpgradeCost.ToString();
+                BuyManagerPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().MyManagerCost.ToString();
+                UpgradeManagerPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().ManagerUpgradeCost.ToString();
             }
         }
 
     }
 
-    //Buying Manager for Tile
+    //Buying Plant Growing Manager 
     public void GrowWithPlantManager()
     {
-        GameObject SoilToCheck;
-        GameObject Plant;
 
-        SoilToCheck = GameObject.FindGameObjectWithTag("MovedSoil");
-
-        if (SoilToCheck.GetComponent<PlantCreator>().HavePlant == true)
+        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true && Plant.GetComponent<ObjectPrice>().MyManagerCost <= Ballance && Plant.GetComponent<ManagerLogic>().HaveManager == false)
         {
-
-            Plant = SoilTile.transform.Find("Plant").gameObject;
-            Plant.GetComponent<ManagerLogic>().StartGrowing();
-
+           Bank.GetComponent<MoneyManager>().DecrementBallance(Plant.GetComponent<ObjectPrice>().MyManagerCost);
+           Plant.GetComponent<ManagerLogic>().StartGrowing();
         }
 
+    }
+
+    //Buying Upgrade Plant Growing  Manager
+    public void UpgradeGrowWithPlantManager()
+    {
+        if(SoilTile.GetComponent<PlantCreator>().HavePlant == true && Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost <= Ballance && Plant.GetComponent<ManagerLogic>().HaveManager == true)
+        {
+            Bank.GetComponent<MoneyManager>().DecrementBallance(Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost);
+            Plant.GetComponent<ObjectPrice>().ChangeManagerUpgradePrice();
+            Plant.GetComponent<ManagerLogic>().UpgradeManager();
+        }
+        
     }
 
 

@@ -39,7 +39,7 @@ public class PlantDestroyer : MonoBehaviour
                     float remainingDuration = holdDuration -= Time.deltaTime;
                     Plant = hit.transform.gameObject;
                     Tile = Plant.transform.parent.gameObject;
-                    if (holdDuration <= 0)
+                    if (holdDuration <= 0 && (Ballance >= 15))
                     {
                         Buttons.SetActive(true);
                         Refund = Plant.GetComponent<ObjectPrice>().ReturnFromDestruction;
