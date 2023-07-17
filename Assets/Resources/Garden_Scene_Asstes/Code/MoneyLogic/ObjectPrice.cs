@@ -12,7 +12,7 @@ public class ObjectPrice : MonoBehaviour
     public ulong MyManagerCost = 150;
     public ulong ManagerUpgradeCost = 180;
     public int MyId;
-
+    public float[] ValueTarget;
 
     //Changing money rewart from fully grown plant
     public void ChangeGrowIncome()

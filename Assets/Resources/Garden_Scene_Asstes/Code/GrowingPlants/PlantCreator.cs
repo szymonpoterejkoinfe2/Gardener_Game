@@ -31,7 +31,7 @@ public class PlantCreator : MonoBehaviour
             GameObject new_plant = Instantiate(plants[PlantId], new Vector3(0, 0, 0), Quaternion.identity, transform);
             new_plant.name = "Plant";
             new_plant.tag = "Plant";
-            new_plant.transform.localPosition = new Vector3(0, 1, 0);
+            new_plant.transform.localPosition = new Vector3(0, 0.5f, 0);
             new_plant.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
             HavePlant = true;
             

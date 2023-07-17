@@ -4925,11 +4925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants:
-  - {fileID: 8826110710015567815, guid: 5bae4512f9b441049b8b173116ec5117, type: 3}
-  - {fileID: 2795137302791480261, guid: b5c3e8b5380df8e4fb50879436f5191e, type: 3}
+  - {fileID: 5814696307910362390, guid: eafd37d51e55beb4ca5d822f1e58ec0a, type: 3}
+  - {fileID: 7398389488784057284, guid: 30ac22bbd59715149a8eb3e571550cae, type: 3}
   HavePlant: 0
   FixedScale: 1
-  parent: {fileID: 8392215872484979002}
 --- !u!114 &907295047202248852
 MonoBehaviour:
   m_ObjectHideFlags: 0

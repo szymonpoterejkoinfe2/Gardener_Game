@@ -8,15 +8,13 @@ public class GrowPlant : MonoBehaviour
     ParticleSystem Leafs;
     Vector3 ScaleValue,TargetScale, BeginnScale;
     float Multiplyer = 1;
-
-
-    public  float[]  ValueTarget;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Bank = GameObject.FindGameObjectWithTag("Bank");
-        TargetScale = new Vector3(ValueTarget[0], ValueTarget[1], ValueTarget[2]);
+        
         ScaleValue = new Vector3(0.002f, 0.01f, 0.002f);
         BeginnScale = new Vector3(0.003f, 0.003f, 0.003f);
 
@@ -34,6 +32,9 @@ public class GrowPlant : MonoBehaviour
         {
             Plant = Soil.transform.Find("Plant").gameObject;
 
+           
+
+            TargetScale = new Vector3(Plant.GetComponent<ObjectPrice>().ValueTarget[0], Plant.GetComponent<ObjectPrice>().ValueTarget[1], Plant.GetComponent<ObjectPrice>().ValueTarget[2]);
             if (Plant.GetComponent<ManagerLogic>().HaveManager == false)
             {
 

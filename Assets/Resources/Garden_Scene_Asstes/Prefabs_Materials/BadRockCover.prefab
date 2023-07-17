@@ -114,6 +114,10 @@ MonoBehaviour:
   ReturnFromDestruction: 5
   GrownIncome: 7
   UpgradeCost: 25
-  UpgradePriceTxt: {fileID: 0}
-  BuyPriceTxt: {fileID: 0}
-  NeedTxt: 0
+  MyManagerCost: 150
+  ManagerUpgradeCost: 180
+  MyId: -1
+  ValueTarget:
+  - 0
+  - 0
+  - 0

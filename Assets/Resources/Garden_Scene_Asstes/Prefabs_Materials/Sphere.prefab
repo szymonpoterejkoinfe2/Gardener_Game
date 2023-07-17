@@ -118,6 +118,10 @@ MonoBehaviour:
   MyManagerCost: 500
   ManagerUpgradeCost: 550
   MyId: 1
+  ValueTarget:
+  - 0.2
+  - 1
+  - 0.2
 --- !u!114 &8240610513218149530
 MonoBehaviour:
   m_ObjectHideFlags: 0
