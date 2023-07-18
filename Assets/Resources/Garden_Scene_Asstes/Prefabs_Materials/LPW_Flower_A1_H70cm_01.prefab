@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7398389488782130436}
   - component: {fileID: 9139900664117753969}
   - component: {fileID: 9075248417037071586}
+  - component: {fileID: 1202193180734598739}
   m_Layer: 0
   m_Name: LPW_Flower_A1_H70cm_01
   m_TagString: Untagged
@@ -122,3 +123,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrowTime: 10
   HaveManager: 0
+--- !u!114 &1202193180734598739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398389488784057284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbaedbe14ebe4b4fa6d068d52484e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 5, z: 0}
+  ResetPos: {x: 0, y: 0, z: 0}
+  speed: 2
