@@ -44,7 +44,7 @@ public class TapOnTileDetector : MonoBehaviour
 
                     ConfirmationWindow.SetActive(true);
                     NotAsking = false;
-                    PriceTxt.text = Cover.GetComponent<ObjectPrice>().MyPrice.ToString();
+                    PriceTxt.text = Cover.GetComponent<ObjectPrice>().MyPrice.ToString() + "$";
   
                 }
                 else if (hit.transform.name == "Soil" && NotAsking == true)

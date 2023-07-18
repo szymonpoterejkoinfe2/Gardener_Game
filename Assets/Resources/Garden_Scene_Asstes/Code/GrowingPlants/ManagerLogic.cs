@@ -40,7 +40,7 @@ public class ManagerLogic : MonoBehaviour
                 yield return null;
             }
 
-            Camera.GetComponent<GrowPlant>().PlantFullyGrown();
+            //Camera.GetComponent<GrowPlant>().PlantFullyGrown();
 
             Timer = 0;
 
