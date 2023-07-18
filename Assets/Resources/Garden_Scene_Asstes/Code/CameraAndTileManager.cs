@@ -9,9 +9,10 @@ public class CameraAndTileManager : MonoBehaviour
     public GameObject CameraTwo;
     public GameObject ShopMenu;
     public GameObject NavigationButtons;
+    public GameObject[] Faders;
     public Rotation rotation;
     public Vector3 PositionMemory;
-    public Animator FadeInFadeOutAnimator;
+    public Animator CameraOneAnimator, CameraTwoAnimator;
     
     //Deactivating object on awake
     private void Awake()
@@ -19,29 +20,26 @@ public class CameraAndTileManager : MonoBehaviour
         CameraTwo.SetActive(false);
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(false);
-        FadeInFadeOutAnimator.Play("FadeIn");
     }
 
 
     // function to switch to camera two
     public void ChangeToCameraTwo()
     {
-        FadeInFadeOutAnimator.Play("FadeOut");
-        if (FadeInFadeOutAnimator.GetInteger("Transition") == 1)
-        {
-            CameraOne.SetActive(false);
-            CameraTwo.SetActive(true);
-            NavigationButtons.SetActive(true);
-        }
-        //FadeInFadeOutAnimator.Play("FadeIn");
-        
-        Debug.Log(FadeInFadeOutAnimator.GetInteger("Transition"));
+        Faders[1].SetActive(true);
+        CameraOne.SetActive(false);
+        CameraTwo.SetActive(true);
+        CameraTwoAnimator.Play("CameraTwoFadeIn");
+        NavigationButtons.SetActive(true);    
+
     }
 
     // function to switch to camera one
     public void ChangeToCameraOne(GameObject Soil)
     {
         CameraOne.SetActive(true);
+        Faders[0].SetActive(true);
+        CameraOneAnimator.Play("CameraOneFadeIn");
         CameraTwo.SetActive(false);
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(false);
