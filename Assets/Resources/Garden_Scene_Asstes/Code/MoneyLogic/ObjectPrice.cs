@@ -14,7 +14,7 @@ public class ObjectPrice : MonoBehaviour
     public int MyId;
     public float[] ValueTarget;
 
-    //Changing money rewart from fully grown plant
+    //Changing money reward from fully grown plant
     public void ChangeGrowIncome()
     {
         float IncreaseUpdate, IncreaseIncome;
@@ -30,12 +30,14 @@ public class ObjectPrice : MonoBehaviour
 
     }
 
+    // Changing Price of upgrade for manager
     public void ChangeManagerUpgradePrice()
     {
         float IncreaseUpdate;
         IncreaseUpdate = Mathf.Round(ManagerUpgradeCost * 0.35f);
         ManagerUpgradeCost += (ulong)IncreaseUpdate;
     }
+    
 
 }
 

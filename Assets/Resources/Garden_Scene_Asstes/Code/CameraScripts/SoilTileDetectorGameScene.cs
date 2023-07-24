@@ -28,6 +28,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         
     }
 
+    //Function To Activate Shopping Menu
     public void ShopMenuActivate()
     {
         CameraTileManager.ActivateShopMenu();

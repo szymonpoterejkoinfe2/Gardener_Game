@@ -33,7 +33,7 @@ public class MoneyManager : MonoBehaviour
 
             if (Local >= Target)
             {
-                MoneyBallance += plant.GetComponent<ObjectPrice>().GrownIncome;
+                MoneyBallance += (plant.GetComponent<ObjectPrice>().GrownIncome * plant.GetComponent<Fertilizer>().Multiplicator);
                 plant.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
                 plant.transform.localScale = BeginScale;
             }

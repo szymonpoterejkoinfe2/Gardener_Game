@@ -8,8 +8,9 @@ public class ShopMenu : MonoBehaviour
     private GameObject SoilTile, Plant, Bank;
     private GameObject[] AllPlants;
     private ulong Ballance;
+    private ulong Time, Multi;
 
-    public GameObject PlantCategory, MenagerCategory;
+    public GameObject PlantCategory, MenagerCategory, OtherUpgradesCategory;
     public TextMeshProUGUI[] BuyPlantPriceTxt;
     public TextMeshProUGUI[] UpgradePlantPriceTxt;
     public TextMeshProUGUI[] BuyManagerPriceTxt, UpgradeManagerPriceTxt;
@@ -19,6 +20,7 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(true);
         MenagerCategory.SetActive(false);
+        OtherUpgradesCategory.SetActive(false);
     }
 
     //Activating Menager Shop Menu
@@ -26,6 +28,15 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(false);
         MenagerCategory.SetActive(true);
+        OtherUpgradesCategory.SetActive(false);
+    }
+
+    //Activating OtherUpgrades Shop Menu
+    public void OtherUpgradesCategoryActivate()
+    {
+        OtherUpgradesCategory.SetActive(true);
+        MenagerCategory.SetActive(false);
+        PlantCategory.SetActive(false);
     }
 
     //Activating Plant Shop Menu
@@ -33,6 +44,7 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(true);
         MenagerCategory.SetActive(false);
+        OtherUpgradesCategory.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +77,31 @@ public class ShopMenu : MonoBehaviour
         }
 
     }
+
+    // Function To set time of fertilizer
+    public void SetTime(int time)
+    {
+        Time = (ulong)time;
+    }
+
+    // Function to set multiplication for fertilizer
+    public void SetMultiplicator(int multi)
+    {
+        Multi = (ulong)multi;
+    }
+
+    // Function to buy Fertilizer To increase profit
+    public void BuyFertilizer()
+    {
+        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true)
+        {
+
+            Plant.GetComponent<Fertilizer>().Fertilise(Time,Multi);
+
+        }
+    }
+
+
 
     //Buying Plant Growing Manager 
     public void GrowWithPlantManager()
