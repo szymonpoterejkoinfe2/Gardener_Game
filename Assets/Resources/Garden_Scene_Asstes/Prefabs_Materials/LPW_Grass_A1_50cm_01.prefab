@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowTime: 10
+  GrowTime: 5
   HaveManager: 0
 --- !u!114 &9096989267699652937
 MonoBehaviour:
@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26255f38b038949458d5ae686fcdeb6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyIncomeToSave: 0
+  Multiplicator: 1
