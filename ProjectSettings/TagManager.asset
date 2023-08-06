@@ -10,6 +10,7 @@ TagManager:
   - DestroyPlantButton
   - Bank
   - CameraAndTileManager
+  - Slider
   layers:
   - Default
   - TransparentFX

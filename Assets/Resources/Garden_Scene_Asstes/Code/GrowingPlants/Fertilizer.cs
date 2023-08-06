@@ -5,16 +5,23 @@ using UnityEngine;
 public class Fertilizer : MonoBehaviour
 {
     public ulong Multiplicator = 1;
+    private GameObject timerSlider;
 
+    // Starting work of fertilizer 
     public void Fertilise(ulong SecondsToWait, ulong multiplicator)
     {
+        Debug.Log("Fertilizer");
+        timerSlider = GameObject.FindGameObjectWithTag("Slider");
 
         Multiplicator = multiplicator;
+
+        timerSlider.GetComponent<FertilizerProgressBar>().StartTimer(SecondsToWait);
+
         StartCoroutine(Fertilizing(SecondsToWait));
 
     }
 
-
+    // Fertilization courutine
     IEnumerator Fertilizing(ulong SecondsToWait) 
     {
         yield return new WaitForSeconds(SecondsToWait);
