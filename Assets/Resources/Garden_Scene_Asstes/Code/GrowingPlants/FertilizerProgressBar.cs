@@ -27,9 +27,9 @@ public class FertilizerProgressBar : MonoBehaviour
         
         gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         textToHide.SetActive(true);
-        Debug.Log("Started Timer");
+        
         timeToWait = (float)SecondsToWait;
-        Debug.Log(timeToWait);
+       
         slider.maxValue = timeToWait;
         slider.value = timeToWait;
         timerStart = true;
