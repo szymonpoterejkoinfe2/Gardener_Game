@@ -9,7 +9,9 @@ public class ManagerLogic : MonoBehaviour
     float Timer = 0f;
     public float GrowTime = 10f;
     public bool HaveManager = false;
-    
+
+    private GameObject Bank;
+
     // Beginning of Scailing Coroutine
     public void StartGrowing()
     {
@@ -18,6 +20,7 @@ public class ManagerLogic : MonoBehaviour
         
     }
 
+    // Changing UpgradeTime
     public void UpgradeManager()
     {
         GrowTime = (GrowTime * 0.95f);
@@ -29,7 +32,8 @@ public class ManagerLogic : MonoBehaviour
     {
         Camera = GameObject.Find("Camera");
         Vector3 StartScale = new Vector3(0f, 0f, 0f);
-        Vector3 MaxScale = new Vector3(gameObject.GetComponent<ObjectPrice>().ValueTarget[0], gameObject.GetComponent<ObjectPrice>().ValueTarget[1], gameObject.GetComponent<ObjectPrice>().ValueTarget[2]);
+        Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectPrice>().ValueTarget[0]), (gameObject.GetComponent<ObjectPrice>().ValueTarget[1]), (gameObject.GetComponent<ObjectPrice>().ValueTarget[2]));
+        Bank = GameObject.FindGameObjectWithTag("Bank");
 
         while (HaveManager)
         {
@@ -39,8 +43,7 @@ public class ManagerLogic : MonoBehaviour
                 Timer += Time.deltaTime;
                 yield return null;
             }
-
-            //Camera.GetComponent<GrowPlant>().PlantFullyGrown();
+            Bank.GetComponent<MoneyManager>().IncrementBallance(gameObject.GetComponent<ObjectPrice>().GrownIncome * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
             Timer = 0;
 

@@ -14,30 +14,52 @@ public class MoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BallanceDisplay.text = MoneyBallance.ToString() + "$";
+
+        if(MoneyBallance < 1000)
+        {
+            BallanceDisplay.text = MoneyBallance.ToString() + "$";
+        }
+        else if (MoneyBallance >= 1000 && MoneyBallance < 1000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Thousand $";
+        }
+        else if (MoneyBallance >= 1000000 && MoneyBallance < 1000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Milion $";
+        }
 
         // Reward From Grown Plant
         Plants = GameObject.FindGameObjectsWithTag("Plant");
 
         BeginScale = new Vector3(0.003f, 0.003f, 0.003f);
 
+
         // Checking if any plant is fully grown if so incrementing money ballance
         foreach (GameObject plant in Plants)
         {
-            TargetScale = new Vector3(plant.GetComponent<ObjectPrice>().ValueTarget[0], plant.GetComponent<ObjectPrice>().ValueTarget[1], plant.GetComponent<ObjectPrice>().ValueTarget[2]);
-            float Local = plant.transform.localScale.magnitude;
-            Local = Mathf.Round(Local * 1000.0f) * 0.001f;
 
-            float Target = TargetScale.magnitude;
-            Target = Mathf.Round(Target * 1000.0f) * 0.001f;
+            TargetScale = new Vector3(plant.GetComponent<ObjectPrice>().ValueTarget[0] , plant.GetComponent<ObjectPrice>().ValueTarget[1], plant.GetComponent<ObjectPrice>().ValueTarget[2]);
+            float Local = plant.transform.localScale.x;
+            Local = Mathf.Round(Local * 100.0f) * 0.01f;
 
-            if (Local >= Target)
+            float Target = TargetScale.x;
+            //Target = Mathf.Round(Target * 1000.0f) * 0.001f;
+
+            Debug.Log(Local.ToString() + " " + Target.ToString());
+
+            if (Local >= Target && plant.GetComponent<ManagerLogic>().HaveManager == false)
             {
-                MoneyBallance += (plant.GetComponent<ObjectPrice>().GrownIncome * plant.GetComponent<Fertilizer>().Multiplicator);
-                plant.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
-                plant.transform.localScale = BeginScale;
-            }
+                
+                IncrementBallance(plant.GetComponent<ObjectPrice>().GrownIncome * plant.GetComponent<Fertilizer>().Multiplicator);
 
+                plant.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
+
+                plant.transform.localScale = BeginScale;
+
+            }
+            
         }
 
     }
