@@ -15,7 +15,7 @@ public class MoneyManager : MonoBehaviour
     void Update()
     {
 
-        if(MoneyBallance < 1000)
+        if (MoneyBallance < 1000)
         {
             BallanceDisplay.text = MoneyBallance.ToString() + "$";
         }
@@ -28,6 +28,46 @@ public class MoneyManager : MonoBehaviour
         {
             double moneyDecimal = MoneyBallance / 1000000.00;
             BallanceDisplay.text = moneyDecimal.ToString() + " Milion $";
+        }
+        else if (MoneyBallance >= 1000000000 && MoneyBallance < 1000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Billion $";
+        }
+        else if (MoneyBallance >= 1000000000000 && MoneyBallance < 1000000000000000) 
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Trillion	$";
+        }
+        else if (MoneyBallance >= 1000000000000000 && MoneyBallance < 1000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Quadrillion $";
+        }
+        else if (MoneyBallance >= 1000000000000000000 && MoneyBallance < 1000000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Quintillion $";
+        }
+        else if (MoneyBallance >= 1000000000000000000000 && MoneyBallance < 1000000000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Sextillion $";
+        }
+        else if (MoneyBallance >= 1000000000000000000000000 && MoneyBallance < 1000000000000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Septillion $";
+        }
+        else if (MoneyBallance >= 1000000000000000000000000000 && MoneyBallance < 1000000000000000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Octillion $";
+        }
+        else if (MoneyBallance >= 1000000000000000000000000000000 && MoneyBallance < 1000000000000000000000000000000000)
+        {
+            double moneyDecimal = MoneyBallance / 1000000000000000000000000000000.00;
+            BallanceDisplay.text = moneyDecimal.ToString() + " Nonillion $";
         }
 
         // Reward From Grown Plant
