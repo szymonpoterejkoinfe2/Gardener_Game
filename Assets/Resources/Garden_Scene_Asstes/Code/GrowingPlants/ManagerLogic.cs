@@ -5,17 +5,17 @@ using UnityEngine;
 public class ManagerLogic : MonoBehaviour
 {
 
-    GameObject Camera;
-    float Timer = 0f;
-    public float GrowTime = 10f;
-    public bool HaveManager = false;
+    GameObject cameraObject;
+    float timer = 0f;
+    public float growTime = 10f;
+    public bool haveManager = false;
 
-    private GameObject Bank;
+    private GameObject bank;
 
     // Beginning of Scailing Coroutine
     public void StartGrowing()
     {
-        HaveManager = true;
+        haveManager = true;
         StartCoroutine(GrowWithManager());
         
     }
@@ -23,29 +23,29 @@ public class ManagerLogic : MonoBehaviour
     // Changing UpgradeTime
     public void UpgradeManager()
     {
-        GrowTime = (GrowTime * 0.95f);
+        growTime = (growTime * 0.95f);
     }
 
 
     // Scaling plant object with time
     private IEnumerator GrowWithManager()
     {
-        Camera = GameObject.Find("Camera");
+        cameraObject = GameObject.Find("Camera");
         Vector3 StartScale = new Vector3(0f, 0f, 0f);
-        Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectPrice>().ValueTarget[0]), (gameObject.GetComponent<ObjectPrice>().ValueTarget[1]), (gameObject.GetComponent<ObjectPrice>().ValueTarget[2]));
-        Bank = GameObject.FindGameObjectWithTag("Bank");
+        Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget[0]), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget[1]), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget[2]));
+        bank = GameObject.FindGameObjectWithTag("Bank");
 
-        while (HaveManager)
+        while (haveManager)
         {
-            while (Timer <= GrowTime)
+            while (timer <= growTime)
             {
-                transform.localScale = Vector3.Lerp(StartScale, MaxScale, Timer / GrowTime);
-                Timer += Time.deltaTime;
+                transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
+                timer += Time.deltaTime;
                 yield return null;
             }
-            Bank.GetComponent<MoneyManager>().IncrementBallance(gameObject.GetComponent<ObjectPrice>().GrownIncome * gameObject.GetComponent<Fertilizer>().Multiplicator);
+            bank.GetComponent<MoneyManager>().IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
-            Timer = 0;
+            timer = 0;
 
         }
     }

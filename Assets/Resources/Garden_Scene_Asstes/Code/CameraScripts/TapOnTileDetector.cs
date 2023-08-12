@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Numerics;
 
 public class TapOnTileDetector : MonoBehaviour
 {
     public Rotation rotation;
     public GameObject ConfirmationWindow;
-    private GameObject Tile;
-    private GameObject Bank,Cover;
-    ulong Ballance, Price;
+    private GameObject tile, bank,cover;
+    BigInteger balance, price;
     public CameraAndTileManager CameraTileManager;
     private bool NotAsking;
     public TextMeshProUGUI PriceTxt;
@@ -24,14 +24,15 @@ public class TapOnTileDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Bank = GameObject.FindGameObjectWithTag("Bank");
+        bank = GameObject.FindGameObjectWithTag("Bank");
  
-        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+        balance = bank.GetComponent<MoneyManager>().moneyBalance;
+
 
         if (Input.touchCount == 1 && NotAsking == true)
         {
             Touch t = Input.GetTouch(0);
-            Vector3 touchPos = t.position;
+            UnityEngine.Vector3 touchPos = t.position;
            
             Ray ray = Camera.main.ScreenPointToRay(touchPos);
             RaycastHit hit;
@@ -39,17 +40,17 @@ public class TapOnTileDetector : MonoBehaviour
             {
                 if (hit.transform.name == "BadRockCover")
                 {
-                    Cover = hit.transform.gameObject;
-                    Price = Cover.GetComponent<ObjectPrice>().MyPrice;
+                    cover = hit.transform.gameObject;
+                    price = bank.GetComponent<BadRockCoverPriceing>().ReturnMyPrice(cover.GetComponent<ObjectCharacteristics>().myId);
 
                     ConfirmationWindow.SetActive(true);
                     NotAsking = false;
-                    PriceTxt.text = Cover.GetComponent<ObjectPrice>().MyPrice.ToString() + "$";
-  
+
+                    bank.GetComponent<MoneyManager>().DisplayMoneyValue(price, PriceTxt);
                 }
                 else if (hit.transform.name == "Soil" && NotAsking == true)
                 {
-                    Tile = hit.transform.gameObject;
+                    tile= hit.transform.gameObject;
 
                     rotation.speed = 0;
 
@@ -57,8 +58,8 @@ public class TapOnTileDetector : MonoBehaviour
                     rotation.ResetState();
 
                     //Debug.Log("Function1");
-                    // Changing Soil Tile position to scene of clickig gameplay
-                    CameraTileManager.RepositionTile(Tile);
+                    // Changing Soil tileposition to scene of clickig gameplay
+                    CameraTileManager.RepositionTile(tile);
 
                     //Debug.Log("Function2");
                     // Swithcing to secound camera
@@ -82,10 +83,10 @@ public class TapOnTileDetector : MonoBehaviour
     //Closing QuestionWindow with expansion
     public void WantToExpand()
     {
-        if (Ballance >= Price)
+        if (balance >= price)
         {
-            Destroy(Cover);
-            Bank.GetComponent<MoneyManager>().DecrementBallance(Price);
+            Destroy(cover);
+            bank.GetComponent<MoneyManager>().DecrementBalance(price);
             CloseQuestionWindow();
         }
     }

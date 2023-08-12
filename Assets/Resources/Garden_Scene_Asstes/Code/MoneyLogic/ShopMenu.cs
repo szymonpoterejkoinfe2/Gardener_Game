@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Numerics;
 
 public class ShopMenu : MonoBehaviour
 {
-    private GameObject SoilTile, Plant, Bank;
-    private GameObject[] AllPlants;
-    private ulong Ballance;
-    private ulong Time, Multi;
+    private GameObject soilTile, plant, bank;
+    private GameObject[] allPlants;
+    private BigInteger balance;
+    private ulong time, multi;
 
     public GameObject PlantCategory, MenagerCategory, OtherUpgradesCategory;
     public TextMeshProUGUI[] BuyPlantPriceTxt;
@@ -50,53 +51,57 @@ public class ShopMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SoilTile = GameObject.FindGameObjectWithTag("MovedSoil");
-        AllPlants = SoilTile.GetComponent<PlantCreator>().plants;
+        soilTile = GameObject.FindGameObjectWithTag("MovedSoil");
+        allPlants = soilTile.GetComponent<PlantCreator>().plants;
 
-        Bank = GameObject.FindGameObjectWithTag("Bank");
-        Ballance = Bank.GetComponent<MoneyManager>().MoneyBallance;
+        bank = GameObject.FindGameObjectWithTag("Bank");
+        balance = bank.GetComponent<MoneyManager>().moneyBalance; 
 
-        // Taking Price from Planted Object
-        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true)
+        // Taking Price of Planted Object
+        if (soilTile.GetComponent<PlantCreator>().havePlant == true)
         {
-            Plant = SoilTile.transform.Find("Plant").gameObject;
+            plant = soilTile.transform.Find("Plant").gameObject;
 
-           UpgradePlantPriceTxt[Plant.GetComponent<ObjectPrice>().MyId].text = Plant.GetComponent<ObjectPrice>().UpgradeCost.ToString();
-           UpgradeManagerPriceTxt[Plant.GetComponent<ObjectPrice>().MyId].text = Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost.ToString();
+            bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId], UpgradePlantPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId]);
+            bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId], UpgradeManagerPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId]);
+
+           //UpgradePlantPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId].text = bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId].ToString();
+           //UpgradeManagerPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId].text = bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId].ToString();
         }
         else
         {
-            // Taking Price From Prefab Objects
-            for (int PlantId = 0; PlantId < AllPlants.Length; PlantId++)
+            // Taking Price Of Prefab Objects
+            for (int PlantId = 0; PlantId < allPlants.Length; PlantId++)
             {
-                BuyPlantPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().MyPrice.ToString();
-                UpgradePlantPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().UpgradeCost.ToString();
-                BuyManagerPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().MyManagerCost.ToString();
-                UpgradeManagerPriceTxt[PlantId].text = AllPlants[PlantId].GetComponent<ObjectPrice>().ManagerUpgradeCost.ToString();
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectPrice[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], BuyPlantPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], UpgradePlantPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], BuyManagerPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], UpgradeManagerPriceTxt[PlantId]);
+                
             }
         }
 
     }
 
     // Function To set time of fertilizer
-    public void SetTime(int time)
+    public void SetTime(int fertilizerTime)
     {
-        Time = (ulong)time;
+        time = (ulong)fertilizerTime;
     }
 
     // Function to set multiplication for fertilizer
-    public void SetMultiplicator(int multi)
+    public void SetMultiplicator(int fertilizerMulti)
     {
-        Multi = (ulong)multi;
+        multi = (ulong)fertilizerMulti;
     }
 
     // Function to buy Fertilizer To increase profit
     public void BuyFertilizer()
     {
-        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true)
+        if (soilTile.GetComponent<PlantCreator>().havePlant == true)
         {
 
-            Plant.GetComponent<Fertilizer>().Fertilise(Time,Multi);
+            plant.GetComponent<Fertilizer>().Fertilise(time,multi);
 
         }
     }
@@ -107,10 +112,10 @@ public class ShopMenu : MonoBehaviour
     public void GrowWithPlantManager()
     {
 
-        if (SoilTile.GetComponent<PlantCreator>().HavePlant == true && Plant.GetComponent<ObjectPrice>().MyManagerCost <= Ballance && Plant.GetComponent<ManagerLogic>().HaveManager == false)
+        if (soilTile.GetComponent<PlantCreator>().havePlant == true &&  bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId] <= balance && plant.GetComponent<ManagerLogic>().haveManager == false)
         {
-           Bank.GetComponent<MoneyManager>().DecrementBallance(Plant.GetComponent<ObjectPrice>().MyManagerCost);
-           Plant.GetComponent<ManagerLogic>().StartGrowing();
+           bank.GetComponent<MoneyManager>().DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId]);
+           plant.GetComponent<ManagerLogic>().StartGrowing();
         }
 
     }
@@ -118,11 +123,11 @@ public class ShopMenu : MonoBehaviour
     //Buying Upgrade Plant Growing  Manager
     public void UpgradeGrowWithPlantManager()
     {
-        if(SoilTile.GetComponent<PlantCreator>().HavePlant == true && Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost <= Ballance && Plant.GetComponent<ManagerLogic>().HaveManager == true)
+        if(soilTile.GetComponent<PlantCreator>().havePlant == true && bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId] <= balance && plant.GetComponent<ManagerLogic>().haveManager == true)
         {
-            Bank.GetComponent<MoneyManager>().DecrementBallance(Plant.GetComponent<ObjectPrice>().ManagerUpgradeCost);
-            Plant.GetComponent<ObjectPrice>().ChangeManagerUpgradePrice();
-            Plant.GetComponent<ManagerLogic>().UpgradeManager();
+            bank.GetComponent<MoneyManager>().DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId]);
+            bank.GetComponent<PricingSystemPlants>().UpdateManagerCost(plant.GetComponent<ObjectCharacteristics>().myId);
+            plant.GetComponent<ManagerLogic>().UpgradeManager();
         }
         
     }

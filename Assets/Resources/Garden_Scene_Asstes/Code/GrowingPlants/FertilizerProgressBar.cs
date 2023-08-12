@@ -40,9 +40,8 @@ public class FertilizerProgressBar : MonoBehaviour
     {
         if (timerStart)
         {
-            Debug.Log("Liczê");
+          
             float time = (timeToWait -= Time.deltaTime);
-            Debug.Log(time);
             int minutes = Mathf.FloorToInt(time / 60);
             int secounds = Mathf.FloorToInt(time - minutes * 60f);
 

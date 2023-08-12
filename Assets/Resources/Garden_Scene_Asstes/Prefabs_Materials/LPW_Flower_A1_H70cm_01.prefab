@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9075248417037071586}
   - component: {fileID: 1202193180734598739}
   - component: {fileID: 5767308889128592651}
+  - component: {fileID: -6059012064635133679}
   m_Layer: 0
   m_Name: LPW_Flower_A1_H70cm_01
   m_TagString: Plant
@@ -99,17 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyPrice: 80
-  ReturnFromDestruction: 55
-  GrownIncome: 30
-  UpgradeCost: 60
-  MyManagerCost: 450
-  ManagerUpgradeCost: 400
-  MyId: 1
-  ValueTarget:
-  - 0.7
-  - 3.51
-  - 0.7
+  myId: 1
+  valueTarget:
+  - 0
+  - 0
+  - 0
+  myName: Flower
 --- !u!114 &9075248417037071586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowTime: 10
-  HaveManager: 0
+  growTime: 10
+  haveManager: 0
 --- !u!114 &1202193180734598739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Multiplicator: 1
+--- !u!114 &-6059012064635133679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398389488784057284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340372075f192aa49a0bb1a92987d42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
