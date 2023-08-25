@@ -111,17 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyPrice: 20
-  ReturnFromDestruction: 5
-  GrownIncome: 10
-  UpgradeCost: 25
-  MyManagerCost: 500
-  ManagerUpgradeCost: 550
-  MyId: 1
-  ValueTarget:
-  - 0.2
-  - 1
-  - 0.2
+  myId: 0
+  valueTarget: []
+  myName: 
 --- !u!114 &8240610513218149530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,5 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowTime: 360
-  HaveManager: 0
+  growTime: 10
+  haveManager: 0

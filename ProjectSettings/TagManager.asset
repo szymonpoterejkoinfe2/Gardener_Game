@@ -12,6 +12,11 @@ TagManager:
   - CameraAndTileManager
   - Slider
   - ShopMenu
+  - Garden
+  - ObjectHolder
+  - MovedObjectHolder
+  - PlayerObject
+  - NewObject
   layers:
   - Default
   - TransparentFX

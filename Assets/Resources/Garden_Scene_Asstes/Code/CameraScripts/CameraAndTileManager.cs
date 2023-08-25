@@ -53,7 +53,7 @@ public class CameraAndTileManager : MonoBehaviour
         PositionMemory = Soil.transform.position;
         Soil.transform.position = new Vector3(-60, PositionMemory.y, 20);
         Soil.tag = "MovedSoil";
-
+        Soil.GetComponent<MyObjectHolders>().ChangeTagToMoved();
         StartRotationOfSoil(Soil);
     }
 
@@ -70,6 +70,7 @@ public class CameraAndTileManager : MonoBehaviour
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();
         Soil.tag = "SoilTile";
+        Soil.GetComponent<MyObjectHolders>().UnchangeTag();
     }
 
     //Function to activate ShoppingMenu
@@ -80,8 +81,15 @@ public class CameraAndTileManager : MonoBehaviour
     }
 
     //Function to deactivate ShoppingMenu
-    public void DeActivateShopMenu()
+    public void DeActivateShopMenu(int objectId)
     {
+        GameObject Soil = GameObject.FindGameObjectWithTag("MovedSoil");
+
+        Soil.GetComponent<PlaceObject>().SetHolderId(0);
+        Soil.GetComponent<PlaceObject>().SetObjectId(0);
+
+        Soil.GetComponent<PlaceObject>().CreateObject();
+
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(true);
     }
