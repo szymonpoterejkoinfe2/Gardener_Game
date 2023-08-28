@@ -81,15 +81,9 @@ public class CameraAndTileManager : MonoBehaviour
     }
 
     //Function to deactivate ShoppingMenu
-    public void DeActivateShopMenu(int objectId)
+    public void DeActivateShopMenu()
     {
-        GameObject Soil = GameObject.FindGameObjectWithTag("MovedSoil");
-
-        Soil.GetComponent<PlaceObject>().SetHolderId(0);
-        Soil.GetComponent<PlaceObject>().SetObjectId(0);
-
-        Soil.GetComponent<PlaceObject>().CreateObject();
-
+        
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(true);
     }

@@ -9,19 +9,6 @@ public class PlaceObject : MonoBehaviour
     public List<GameObject> emptyObjectHolders = new List<GameObject>();
     public int ObjectId = 0, HolderId = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-
-    }
-
     // Find empty object holders
     public void FindObjectHolders()
     {
@@ -42,6 +29,18 @@ public class PlaceObject : MonoBehaviour
             }
         }
         
+    }
+
+    // Function to hide Avaliability of object holders
+    public void HideHoldersAvaliability()
+    {
+        foreach (GameObject objHolder in objectHolders)
+        {
+            ObjectHolder objectHolderScript = objHolder.GetComponent<ObjectHolder>();
+
+            objectHolderScript.HideAvaliability();
+        }
+        gameObject.GetComponent<SoilRotation>().Should_Rotate = true;
     }
 
     // Function to set ObjectId
@@ -95,7 +94,7 @@ public class PlaceObject : MonoBehaviour
 
     }
 
-
+    // Function to place objects
     public void CreateObject()
     {
         GameObject new_object;
@@ -109,28 +108,41 @@ public class PlaceObject : MonoBehaviour
             new_object.name = "Object";
             new_object.tag = "NewObject";
 
-            new_object.transform.localPosition = new UnityEngine.Vector3(0, 0.5f, 0);
+            new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
             new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
 
-           // emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().haveObject = true;
 
             emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
 
-            FindObjectHolders();
         }
 
     }
 
-
+    // Destroying old object after moving to new tile
     public void DestroyPreviousObject()
     {
         GameObject old_object;
-        
         old_object = GameObject.FindGameObjectWithTag("NewObject");
         old_object.transform.parent.gameObject.GetComponent<ObjectHolder>().HideMoveButtons();
 
         Destroy(old_object);
 
     }
+
+    // Function to confirm creation of new object
+    public void ConfirmNewObject()
+    {
+        GameObject new_object;
+
+        new_object = GameObject.FindGameObjectWithTag("NewObject");
+        new_object.tag = "PlayerObject";
+
+        HideHoldersAvaliability();
+        emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().HideMoveButtons();
+        emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().haveObject = true;
+
+        gameObject.GetComponent<SoilRotation>().Should_Rotate = true;
+    }
+
 
 }

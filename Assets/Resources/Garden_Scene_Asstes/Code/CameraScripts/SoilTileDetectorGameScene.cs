@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class SoilTileDetectorGameScene : MonoBehaviour
 {
-    private GameObject SoilTile, Plant;
-    public CameraAndTileManager CameraTileManager;
+    private GameObject soilTile;
+    public CameraAndTileManager cameraTileManager;
     public GrowPlant Grower;
-
-    private void Start()
-    {
-        SoilTile = GameObject.FindGameObjectWithTag("MovedSoil");
-    }
 
     // Update is called once per frame
     void Update()
     {
-        SoilTile = GameObject.FindGameObjectWithTag("MovedSoil");
+        soilTile = GameObject.FindGameObjectWithTag("MovedSoil");
 
         //Counting number of touch and growing plant times number of touch 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -31,19 +26,39 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     //Function To Activate Shopping Menu
     public void ShopMenuActivate()
     {
-        CameraTileManager.ActivateShopMenu();
+        cameraTileManager.ActivateShopMenu();
     }
 
     //Function to generate plant after clicking on button.
     public void PlacePlant(int PlantId)
     {
-        SoilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId);
+        soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId);
+    }
+    // Function to set Holder id
+    public void SetHolderId(int id)
+    {
+        soilTile.GetComponent<PlaceObject>().SetHolderId(id);
+    }
+
+    // Function to set Object id
+    public void SetObjectId(int id)
+    {
+        soilTile.GetComponent<PlaceObject>().SetObjectId(id);
+    }
+    
+    //Function to generate object after clicking on button.
+    public void PlaceObject()
+    {
+        cameraTileManager.DeActivateShopMenu();
+        soilTile.GetComponent<SoilRotation>().Should_Rotate = false;
+        soilTile.GetComponent<SoilRotation>().ResetState();
+        soilTile.GetComponent<PlaceObject>().CreateObject();
     }
 
     //Function to return from single tile view to whole garden view
     public void GoBackToGarden()
     {
-        CameraTileManager.ChangeToCameraOne(SoilTile);
+        cameraTileManager.ChangeToCameraOne(soilTile);
     }
 
 }
