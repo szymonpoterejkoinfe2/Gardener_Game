@@ -50,9 +50,13 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     public void PlaceObject()
     {
         cameraTileManager.DeActivateShopMenu();
-        soilTile.GetComponent<SoilRotation>().Should_Rotate = false;
-        soilTile.GetComponent<SoilRotation>().ResetState();
         soilTile.GetComponent<PlaceObject>().CreateObject();
+    }
+
+    // function to start hydration process
+    public void BuyHydration(float hydrationTime)
+    {
+        soilTile.GetComponent<HydrationLogic>().StartHydration((ulong)hydrationTime);
     }
 
     //Function to return from single tile view to whole garden view

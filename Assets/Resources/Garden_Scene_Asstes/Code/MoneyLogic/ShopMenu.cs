@@ -15,7 +15,7 @@ public class ShopMenu : MonoBehaviour
     public TextMeshProUGUI[] BuyPlantPriceTxt;
     public TextMeshProUGUI[] UpgradePlantPriceTxt;
     public TextMeshProUGUI[] BuyManagerPriceTxt, UpgradeManagerPriceTxt;
-
+    public TextMeshProUGUI[] BuyObjectPriceTxt;
 
     private void Awake()
     {
@@ -77,7 +77,7 @@ public class ShopMenu : MonoBehaviour
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], UpgradePlantPriceTxt[PlantId]);
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], BuyManagerPriceTxt[PlantId]);
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], UpgradeManagerPriceTxt[PlantId]);
-                
+               
             }
         }
 

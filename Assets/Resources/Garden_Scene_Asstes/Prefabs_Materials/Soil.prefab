@@ -5001,6 +5001,7 @@ GameObject:
   - component: {fileID: 907295047202248852}
   - component: {fileID: 5094104541053521129}
   - component: {fileID: 5835875689232188335}
+  - component: {fileID: 3424918146326364524}
   m_Layer: 0
   m_Name: Soil
   m_TagString: SoilTile
@@ -5160,6 +5161,21 @@ MonoBehaviour:
   emptyObjectHolders: []
   ObjectId: 0
   HolderId: 0
+--- !u!114 &3424918146326364524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475dd7825a85fd64391c35a6f6573559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hydrated: 0
+  slider: {fileID: 0}
+  hydratedTime: 0
 --- !u!1001 &147936402617600604
 PrefabInstance:
   m_ObjectHideFlags: 0

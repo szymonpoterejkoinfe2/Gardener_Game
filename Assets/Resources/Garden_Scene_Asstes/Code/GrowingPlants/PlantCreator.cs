@@ -28,6 +28,7 @@ public class PlantCreator : MonoBehaviour
         if (havePlant == false && ballance >= price)
         {
             bank.GetComponent<MoneyManager>().DecrementBalance(price);
+            gameObject.GetComponent<HydrationLogic>().StartHydration(120);
             GameObject new_plant = Instantiate(plants[PlantId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform);
             new_plant.name = "Plant";
             new_plant.tag = "Plant";

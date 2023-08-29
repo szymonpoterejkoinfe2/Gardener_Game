@@ -17,6 +17,7 @@ TagManager:
   - MovedObjectHolder
   - PlayerObject
   - NewObject
+  - Hydration
   layers:
   - Default
   - TransparentFX

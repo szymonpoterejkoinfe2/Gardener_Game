@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7438553245583126152}
   - component: {fileID: 5180315438390335085}
   - component: {fileID: 1540816948233576321}
-  - component: {fileID: 8240610513218149530}
+  - component: {fileID: 7667449164767343099}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myId: 0
   valueTarget: []
-  myName: 
---- !u!114 &8240610513218149530
+  myName: Decoration
+--- !u!114 &7667449164767343099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,8 +123,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2795137302791480261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
+  m_Script: {fileID: 11500000, guid: 66970c11335856d469bab568caae47f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growTime: 10
-  haveManager: 0

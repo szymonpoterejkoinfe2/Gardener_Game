@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlaceObject : MonoBehaviour
 {
     public GameObject[] objectsToBuy;
     GameObject[] objectHolders;
     public List<GameObject> emptyObjectHolders = new List<GameObject>();
     public int ObjectId = 0, HolderId = 0;
+    GameObject bank;
 
     // Find empty object holders
     public void FindObjectHolders()
@@ -97,24 +99,34 @@ public class PlaceObject : MonoBehaviour
     // Function to place objects
     public void CreateObject()
     {
+        bank = GameObject.FindGameObjectWithTag("Bank");
+
+
         GameObject new_object;
 
-        FindObjectHolders();
-
-        if (emptyObjectHolders.Count > 0)
+        if (bank.GetComponent<MoneyManager>().moneyBalance >=objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId] )
         {
-            new_object = Instantiate(objectsToBuy[ObjectId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[HolderId].transform);
+            FindObjectHolders();
 
-            new_object.name = "Object";
-            new_object.tag = "NewObject";
+            if (emptyObjectHolders.Count > 0)
+            {
+                gameObject.GetComponent<SoilRotation>().Should_Rotate = false;
+                gameObject.GetComponent<SoilRotation>().ResetState();
 
-            new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
-            new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
+                new_object = Instantiate(objectsToBuy[ObjectId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[HolderId].transform);
+
+                new_object.name = "Object";
+                new_object.tag = "NewObject";
+
+                new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
+                new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
 
 
-            emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
+                emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
 
+            }
         }
+       
 
     }
 
@@ -132,8 +144,9 @@ public class PlaceObject : MonoBehaviour
     // Function to confirm creation of new object
     public void ConfirmNewObject()
     {
-        GameObject new_object;
+        bank.GetComponent<MoneyManager>().DecrementBalance(objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId]);
 
+        GameObject new_object;
         new_object = GameObject.FindGameObjectWithTag("NewObject");
         new_object.tag = "PlayerObject";
 

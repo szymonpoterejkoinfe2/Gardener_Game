@@ -26,7 +26,7 @@ public class GrowPlant : MonoBehaviour
     // Function Scale Plant GameObject to imitate Growth;
     public void Grow(int TouchCount)
     {
-        if (soil.GetComponent<PlantCreator>().havePlant == true)
+        if (soil.GetComponent<PlantCreator>().havePlant == true && soil.GetComponent<HydrationLogic>().hydrated == true)
         {
             plant = soil.transform.Find("Plant").gameObject;
 
