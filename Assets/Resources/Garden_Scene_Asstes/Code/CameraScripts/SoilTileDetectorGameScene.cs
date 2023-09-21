@@ -59,6 +59,12 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         soilTile.GetComponent<HydrationLogic>().StartHydration((ulong)hydrationTime);
     }
 
+    // function to generate flying decoration object
+    public void BuyFlyingDecoration(int decoration)
+    {
+        soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(decoration);
+    }
+
     //Function to return from single tile view to whole garden view
     public void GoBackToGarden()
     {

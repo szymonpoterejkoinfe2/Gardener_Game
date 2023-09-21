@@ -18,6 +18,7 @@ TagManager:
   - PlayerObject
   - NewObject
   - Hydration
+  - PointHolder
   layers:
   - Default
   - TransparentFX
