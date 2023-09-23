@@ -44,9 +44,9 @@ public class GrowPlant : MonoBehaviour
         if (soil.GetComponent<PlantCreator>().havePlant == true)
         {
             plant = soil.transform.Find("Plant").gameObject;
-            if (bank.GetComponent<MoneyManager>().moneyBalance >= bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId])
+            if (bank.GetComponent<MoneyManager>().myBalance.moneyBalance >= bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId])
             {
-                bank.GetComponent<MoneyManager>().DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId]);
+                bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId]);
 
                 bank.GetComponent<PricingSystemPlants>().UpdateIncomeValue(plant.GetComponent<ObjectCharacteristics>().myId);
             }

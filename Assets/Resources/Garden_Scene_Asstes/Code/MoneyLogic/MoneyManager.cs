@@ -7,17 +7,52 @@ using System.Numerics;
 
 public class MoneyManager : MonoBehaviour
 {
-    public BigInteger moneyBalance = 15;
+    public class MoneyBalance
+    {
+        public BigInteger moneyBalance = 15;
+
+        public MoneyBalance(BigInteger value)
+        {
+            moneyBalance = value;
+        }
+
+        //Decrement Money amount after purchase
+        public void DecrementBalance(BigInteger amount)
+        {
+            moneyBalance -= amount;
+            //Debug.Log(moneyToDisplay);
+        }
+        //Increment Money amount after purchase
+        public void IncrementBalance(BigInteger amount)
+        {
+            moneyBalance += amount;
+            //  Debug.Log(moneyToDisplay);
+        }
+    }
+
     public TextMeshProUGUI balanceDisplay;
+    public MoneyBalance  myBalance;
+
+    public MoneyManager()
+    {
+        myBalance = new MoneyBalance(15);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
 
-        DisplayMoneyValue(moneyBalance, balanceDisplay);
+        DisplayMoneyValue(myBalance.moneyBalance, balanceDisplay);
 
     }
 
+    public void LoadData(MoneyBalance dataToLoad)
+    {
+        myBalance = dataToLoad;
+    }
+
+    // Displaying money amonut with proper prefix
     public void DisplayMoneyValue(BigInteger moneyToDisplay, TextMeshProUGUI displayingText)
     {
         if (moneyToDisplay < 1000)
@@ -76,16 +111,5 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    //Decrement Money amount after purchase
-    public void DecrementBalance(BigInteger amount)
-    {
-        moneyBalance -= amount;
-        //Debug.Log(moneyToDisplay);
-    }
-    //Increment Money amount after purchase
-    public void IncrementBalance(BigInteger amount)
-    {
-        moneyBalance += amount;
-      //  Debug.Log(moneyToDisplay);
-    }
+   
 }

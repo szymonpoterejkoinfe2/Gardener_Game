@@ -55,7 +55,7 @@ public class ShopMenu : MonoBehaviour
         allPlants = soilTile.GetComponent<PlantCreator>().plants;
 
         bank = GameObject.FindGameObjectWithTag("Bank");
-        balance = bank.GetComponent<MoneyManager>().moneyBalance; 
+        balance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance; 
 
         // Taking Price of Planted Object
         if (soilTile.GetComponent<PlantCreator>().havePlant == true)
@@ -114,7 +114,7 @@ public class ShopMenu : MonoBehaviour
 
         if (soilTile.GetComponent<PlantCreator>().havePlant == true &&  bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId] <= balance && plant.GetComponent<ManagerLogic>().haveManager == false)
         {
-           bank.GetComponent<MoneyManager>().DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId]);
+           bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId]);
            plant.GetComponent<ManagerLogic>().StartGrowing();
         }
 
@@ -125,7 +125,7 @@ public class ShopMenu : MonoBehaviour
     {
         if(soilTile.GetComponent<PlantCreator>().havePlant == true && bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId] <= balance && plant.GetComponent<ManagerLogic>().haveManager == true)
         {
-            bank.GetComponent<MoneyManager>().DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId]);
+            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId]);
             bank.GetComponent<PricingSystemPlants>().UpdateManagerCost(plant.GetComponent<ObjectCharacteristics>().myId);
             plant.GetComponent<ManagerLogic>().UpgradeManager();
         }

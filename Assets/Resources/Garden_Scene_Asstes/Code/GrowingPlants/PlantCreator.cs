@@ -16,7 +16,7 @@ public class PlantCreator : MonoBehaviour
     void Update()
     {
        bank = GameObject.FindGameObjectWithTag("Bank");
-       ballance = bank.GetComponent<MoneyManager>().moneyBalance;
+       ballance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance;
        growPlant = GameObject.FindGameObjectWithTag("MainCamera");
         
     }
@@ -27,7 +27,7 @@ public class PlantCreator : MonoBehaviour
         price = bank.GetComponent<PricingSystemPlants>().objectPrice[plants[PlantId].GetComponent<ObjectCharacteristics>().myId];
         if (havePlant == false && ballance >= price)
         {
-            bank.GetComponent<MoneyManager>().DecrementBalance(price);
+            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(price);
             gameObject.GetComponent<HydrationLogic>().StartHydration(120);
             GameObject new_plant = Instantiate(plants[PlantId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform);
             new_plant.name = "Plant";

@@ -104,7 +104,7 @@ public class PlaceObject : MonoBehaviour
 
         GameObject new_object;
 
-        if (bank.GetComponent<MoneyManager>().moneyBalance >=objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId] )
+        if (bank.GetComponent<MoneyManager>().myBalance.moneyBalance >=objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId] )
         {
             FindObjectHolders();
 
@@ -144,7 +144,7 @@ public class PlaceObject : MonoBehaviour
     // Function to confirm creation of new object
     public void ConfirmNewObject()
     {
-        bank.GetComponent<MoneyManager>().DecrementBalance(objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId]);
+        bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(objectsToBuy[ObjectId].GetComponent<ObjectPricing>().objectPrice[ObjectId]);
 
         GameObject new_object;
         new_object = GameObject.FindGameObjectWithTag("NewObject");

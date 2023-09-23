@@ -26,9 +26,9 @@ public class PlantGrown : MonoBehaviour
         // Checking if plant is >= than targeted plant size
         if (xObjectScale >= xTargetScale && gameObject.GetComponent<ManagerLogic>().haveManager == false)
         {
-            Debug.Log("KONIEC KWIAT");
+            //Debug.Log("KONIEC KWIAT");
 
-            bank.GetComponent<MoneyManager>().IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
+            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
             gameObject.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
 

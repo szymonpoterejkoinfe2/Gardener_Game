@@ -13,6 +13,8 @@ public class TapOnTileDetector : MonoBehaviour
     public CameraAndTileManager CameraTileManager;
     private bool NotAsking;
     public TextMeshProUGUI PriceTxt;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class TapOnTileDetector : MonoBehaviour
     {
         bank = GameObject.FindGameObjectWithTag("Bank");
  
-        balance = bank.GetComponent<MoneyManager>().moneyBalance;
+        balance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance;
 
 
         if (Input.touchCount == 1 && NotAsking == true)
@@ -41,7 +43,7 @@ public class TapOnTileDetector : MonoBehaviour
                 if (hit.transform.name == "BadRockCover")
                 {
                     cover = hit.transform.gameObject;
-                    price = bank.GetComponent<BadRockCoverPriceing>().ReturnMyPrice(cover.GetComponent<ObjectCharacteristics>().myId);
+                    price = bank.GetComponent<BadRockCoverPriceing>().myCoverPrices.ReturnMyPrice(cover.GetComponent<ObjectCharacteristics>().myId);
 
                     ConfirmationWindow.SetActive(true);
                     NotAsking = false;
@@ -85,8 +87,9 @@ public class TapOnTileDetector : MonoBehaviour
     {
         if (balance >= price)
         {
+            GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().myDestroyedCovers.addToDestroyed(cover.GetComponent<ObjectCharacteristics>().uniqueId);
             Destroy(cover);
-            bank.GetComponent<MoneyManager>().DecrementBalance(price);
+            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(price);
             CloseQuestionWindow();
         }
     }

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3266356591928482455}
   - component: {fileID: 4261129803242485107}
   - component: {fileID: 1016260932958657990}
+  - component: {fileID: 411334868268205280}
   m_Layer: 0
   m_Name: BadRockCover
-  m_TagString: Untagged
+  m_TagString: Cover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,3 +114,16 @@ MonoBehaviour:
   myId: 0
   valueTarget: []
   myName: SoilCover
+  uniqueId: 
+--- !u!114 &411334868268205280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146998901472160004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1725f3c883f0134da0086f1cdef223e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

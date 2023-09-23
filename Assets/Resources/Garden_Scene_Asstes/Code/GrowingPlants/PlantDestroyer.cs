@@ -22,7 +22,7 @@ public class PlantDestroyer : MonoBehaviour
     void Update()
     {
         bank = GameObject.FindGameObjectWithTag("Bank");
-        ballance = bank.GetComponent<MoneyManager>().moneyBalance;
+        ballance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance;
 
         if (Input.touchCount == 1)
         {
@@ -54,7 +54,7 @@ public class PlantDestroyer : MonoBehaviour
         Destroy(plant);
         tile.GetComponent<PlantCreator>().havePlant = false;
         HideButtons();
-        bank.GetComponent<MoneyManager>().IncrementBalance(refund);
+        bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(refund);
     }
 
     //Deactivates buttons to destroy plant

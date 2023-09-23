@@ -5,10 +5,37 @@ using System.Numerics;
 
 public class BadRockCoverPriceing : MonoBehaviour
 {
-    public BigInteger[] objectPrice  = {50,500,1000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-
-    public BigInteger ReturnMyPrice(int objectId)
+    // Class stroring all information to save to file
+    public class CoverPrices
     {
-        return objectPrice[objectId];
+        public BigInteger[] objectPrice;
+
+        //Constructor
+        public CoverPrices(BigInteger[] objPrc)
+        {
+            objectPrice = objPrc;
+        }
+        
+        // Getter
+        public BigInteger ReturnMyPrice(int objectId)
+        {
+            return objectPrice[objectId];
+        }
+       
+    }
+
+    // Creating new CoverPrices Object
+    BigInteger[] priceArr = { 50, 100, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 1450, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public CoverPrices myCoverPrices;
+    // Constructor
+    public BadRockCoverPriceing()
+    {
+        myCoverPrices = new CoverPrices(priceArr);
+    }
+    
+    // Loading previously saved data
+    public void LoadData(CoverPrices pricesToLoad)
+    {
+        myCoverPrices = pricesToLoad;
     }
 }

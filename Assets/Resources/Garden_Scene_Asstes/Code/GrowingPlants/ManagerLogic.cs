@@ -43,7 +43,7 @@ public class ManagerLogic : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
-            bank.GetComponent<MoneyManager>().IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
+            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
             timer = 0;
 
