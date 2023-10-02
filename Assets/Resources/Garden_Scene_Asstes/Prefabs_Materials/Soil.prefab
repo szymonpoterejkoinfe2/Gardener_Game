@@ -5158,6 +5158,7 @@ GameObject:
   - component: {fileID: 5835875689232188335}
   - component: {fileID: 3424918146326364524}
   - component: {fileID: 6601924965261564981}
+  - component: {fileID: 1208913271034071110}
   m_Layer: 0
   m_Name: Soil
   m_TagString: SoilTile
@@ -5346,6 +5347,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingCreatures:
   - {fileID: 2399132936323041408, guid: 163c20f4ce7978742831db055c32ef25, type: 3}
+--- !u!114 &1208913271034071110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myId: 0
+  valueTarget: []
+  myName: Soli
+  uniqueId: 
 --- !u!1 &8976106382474153562
 GameObject:
   m_ObjectHideFlags: 0

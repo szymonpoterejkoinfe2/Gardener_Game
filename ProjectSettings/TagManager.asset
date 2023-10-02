@@ -21,6 +21,7 @@ TagManager:
   - PointHolder
   - Cover
   - CoverDestroyer
+  - SoilTileConstructor
   layers:
   - Default
   - TransparentFX

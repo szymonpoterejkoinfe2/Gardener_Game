@@ -25,6 +25,7 @@ public class CoverDestroyer : MonoBehaviour
     // Creating new DestroyedCovers Object which will be saved
     public DestroyedCovers myDestroyedCovers;
     List<string> destroyed = new List<string>();
+
     public CoverDestroyer()
     {
         myDestroyedCovers = new DestroyedCovers(destroyed);

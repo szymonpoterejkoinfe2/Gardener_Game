@@ -121,6 +121,7 @@ public class PlaceObject : MonoBehaviour
                 new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
                 new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
 
+                emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = new_object.GetComponent<ObjectCharacteristics>().uniqueId;
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
 

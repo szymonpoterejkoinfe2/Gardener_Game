@@ -114,6 +114,7 @@ MonoBehaviour:
   myId: 0
   valueTarget: []
   myName: Decoration
+  uniqueId: cbbc22c8-7977-44d1-a4a3-faff1a7812f1
 --- !u!114 &7667449164767343099
 MonoBehaviour:
   m_ObjectHideFlags: 0

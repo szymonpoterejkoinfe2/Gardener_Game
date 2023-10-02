@@ -8,12 +8,14 @@ public class SaveSystem : MonoBehaviour
     private BadRockCoverPriceing.CoverPrices pricing;
     private CoverDestroyer.DestroyedCovers destroyed;
     private MoneyManager.MoneyBalance moneyBalance;
+    private SoilTileConstructor.OccupiedTiles occupiedTilesList;
     private bool EncryptionEnabled;
+    private SoilTileConstructor soilTileConstructor;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(WaitToLoad());
     }
 
     // Update is called once per frame
@@ -22,8 +24,16 @@ public class SaveSystem : MonoBehaviour
         
     }
 
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
     public void Save()
     {
+        soilTileConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>();
+
         pricing = GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().myCoverPrices;
 
         destroyed = GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().myDestroyedCovers;
@@ -41,10 +51,50 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.Log("Saved");
         }
+
+        SaveTiles();
+
+        if (DataService.SaveData("/myTiles.json", occupiedTilesList, EncryptionEnabled))
+        {
+            Debug.Log("Saved");
+        }
+    }
+
+    void SaveTiles()
+    {
+
+        GameObject[] occTiles;
+        SoilTileConstructor.Tile tile;
+      
+        occupiedTilesList = soilTileConstructor.myOccupiedTiles;
+
+        if (GameObject.FindGameObjectWithTag("MovedSoil") == null)
+        {
+            occTiles = GameObject.FindGameObjectsWithTag("SoilTile");
+        }
+        else {
+            List<GameObject> tempTile = new List<GameObject>();
+            tempTile.AddRange( GameObject.FindGameObjectsWithTag("SoilTile"));
+            tempTile.Add(GameObject.FindGameObjectWithTag("MovedSoil"));
+            occTiles = tempTile.ToArray();
+        }
+
+        foreach (GameObject occtile in occTiles)
+        {
+            
+            PlantCreator creator = occtile.GetComponent<PlantCreator>();
+            if (creator.havePlant == true)
+            {
+               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId);
+                soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
+            }
+
+        }
     }
 
     public void Load()
     {
+
         try
         {
             BadRockCoverPriceing.CoverPrices data = DataService.LoadData<BadRockCoverPriceing.CoverPrices>("/bcover.json", EncryptionEnabled);
@@ -53,8 +103,13 @@ public class SaveSystem : MonoBehaviour
             CoverDestroyer.DestroyedCovers covers = DataService.LoadData<CoverDestroyer.DestroyedCovers>("/destroyedCovers.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().LoadData(covers);
 
+            SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/myTiles.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
+
             MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json",EncryptionEnabled);
             GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
+
+            Debug.Log("Data Loaded");
         }
         catch (System.Exception e)
         {
@@ -62,4 +117,12 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
+    IEnumerator WaitToLoad()
+    {
+      
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1);
+
+        Load();
+    }
 }

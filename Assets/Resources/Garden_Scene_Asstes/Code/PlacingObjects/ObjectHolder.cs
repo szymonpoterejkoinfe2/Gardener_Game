@@ -6,6 +6,7 @@ public class ObjectHolder : MonoBehaviour
 {
     public bool haveObject;
     public int tileId;
+    public string myObjectId;
     public Material[] materials;
     public GameObject moveButton;
     
@@ -17,12 +18,7 @@ public class ObjectHolder : MonoBehaviour
         moveButton.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Function to show avaliability of chosen tile
     public void ShowAvaliability()
     {
         if (haveObject)
@@ -33,30 +29,37 @@ public class ObjectHolder : MonoBehaviour
             gameObject.GetComponent<Renderer>().material = materials[2];
         }
     }
+
+    // Function to hide avaliability of chosen tile
     public void HideAvaliability()
     {
         gameObject.GetComponent<Renderer>().material = materials[0];
     }
 
+    // Activating move buttons
     public void ShowMoveButtons()
     {
         moveButton.SetActive(true);
     }
 
+    // Hiding move buttons
     public void HideMoveButtons()
     {
         moveButton.SetActive(false);
     }
 
+    // Moving decoration object to next tile
     public void MoveToNext(int holderId)
     {
-        Debug.Log("Next");
+        //Debug.Log("Next");
+
         GameObject Soil = GameObject.FindGameObjectWithTag("MovedSoil");
     }
 
+    // Moving decoration object to previous tile
     public void MoveToPrevious(int holderId)
     {
-        Debug.Log("Previous");
+        //Debug.Log("Previous");
         GameObject Soil = GameObject.FindGameObjectWithTag("MovedSoil");
     }
 }

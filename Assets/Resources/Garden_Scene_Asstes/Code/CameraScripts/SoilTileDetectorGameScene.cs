@@ -32,7 +32,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     //Function to generate plant after clicking on button.
     public void PlacePlant(int PlantId)
     {
-        soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId);
+        soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId,false);
     }
     // Function to set Holder id
     public void SetHolderId(int id)
