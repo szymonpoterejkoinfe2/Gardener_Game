@@ -6,7 +6,7 @@ public class ObjectHolder : MonoBehaviour
 {
     public bool haveObject;
     public int tileId;
-    public string myObjectId;
+    public int myObjectId;
     public Material[] materials;
     public GameObject moveButton;
     

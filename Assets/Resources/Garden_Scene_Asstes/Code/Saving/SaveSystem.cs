@@ -11,6 +11,8 @@ public class SaveSystem : MonoBehaviour
     private SoilTileConstructor.OccupiedTiles occupiedTilesList;
     private bool EncryptionEnabled;
     private SoilTileConstructor soilTileConstructor;
+    private ObjectHolderConstructor.OccupiedObjectHolders objectHolderConstructorList;
+    private ObjectHolderConstructor objectHolderConstructor;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class SaveSystem : MonoBehaviour
     public void Save()
     {
         soilTileConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>();
+        //objectHolderConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>();
 
         pricing = GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().myCoverPrices;
 
@@ -91,6 +94,17 @@ public class SaveSystem : MonoBehaviour
 
         }
     }
+
+    void SaveObjectHolders()
+    {
+        GameObject[] occHolders;
+        ObjectHolderConstructor.ObjectHolder holder;
+
+        objectHolderConstructorList = objectHolderConstructor.myoccupiedObjectHolders;
+
+        occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
+    }
+
 
     public void Load()
     {
