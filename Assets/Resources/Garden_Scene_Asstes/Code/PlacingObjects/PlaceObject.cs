@@ -131,6 +131,22 @@ public class PlaceObject : MonoBehaviour
 
     }
 
+    //Generating Object From Save File
+    public void CreateFromSave(int objId)
+    {
+        GameObject new_object;
+
+        new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[objId].transform);
+
+        new_object.name = "Object";
+        new_object.tag = "NewObject";
+
+        new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
+        new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
+    }
+
+
+
     // Destroying old object after moving to new tile
     public void DestroyPreviousObject()
     {

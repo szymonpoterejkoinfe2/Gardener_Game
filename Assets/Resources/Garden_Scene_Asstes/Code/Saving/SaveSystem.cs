@@ -61,6 +61,14 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.Log("Saved");
         }
+
+        GameObject[] soilTiles;
+        soilTiles = GameObject.FindGameObjectsWithTag("SoilTile"); ;
+        foreach (GameObject tile in soilTiles)
+        {
+            tile.GetComponent<ObjectHolderConstructor>().SaveObjectHolder();
+        }
+
     }
 
     void SaveTiles()
@@ -95,15 +103,15 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    void SaveObjectHolders()
-    {
-        GameObject[] occHolders;
-        ObjectHolderConstructor.ObjectHolder holder;
+    //void SaveObjectHolders()
+    //{
+    //    GameObject[] occHolders;
+    //    ObjectHolderConstructor.ObjectHolder holder;
 
-        objectHolderConstructorList = objectHolderConstructor.myoccupiedObjectHolders;
+    //    objectHolderConstructorList = objectHolderConstructor.myoccupiedObjectHolders;
 
-        occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
-    }
+    //    occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
+    //}
 
 
     public void Load()
@@ -122,6 +130,15 @@ public class SaveSystem : MonoBehaviour
 
             MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json",EncryptionEnabled);
             GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
+
+            GameObject[] soilTiles;
+            soilTiles = GameObject.FindGameObjectsWithTag("SoilTile"); ;
+            foreach (GameObject tile in soilTiles)
+            {
+                tile.GetComponent<ObjectHolderConstructor>().LoadData();
+            }
+
+
 
             Debug.Log("Data Loaded");
         }
