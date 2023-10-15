@@ -6,7 +6,7 @@ public class ObjectHolderConstructor : MonoBehaviour
 {
     private IDataService DataService = new JasonDataService();
     private bool EncryptionEnabled;
-    string fileName = "/";
+    
 
     public class OccupiedObjectHolders
     {
@@ -25,86 +25,83 @@ public class ObjectHolderConstructor : MonoBehaviour
 
     public class ObjectHolderObj
     {
-        public bool haveObject;
-        public int myId;
-        public int myObjectId;
-        //public string mySoilTileId;
+        public string uniqID;
+        public int objectID;
+       
 
-        public ObjectHolderObj(bool hvObj, int id, int objId)
+        public ObjectHolderObj( string id, int myObject)
         {
-            haveObject = hvObj;
-            myId = id;
-            myObjectId = objId;
-            //mySoilTileId = soilId;
+            uniqID = id;
+            objectID = myObject;
         }
     }
 
-    public OccupiedObjectHolders myoccupiedObjectHolders;
+    public OccupiedObjectHolders myOccupiedObjectHolders;
     List<ObjectHolderObj> occupied = new List<ObjectHolderObj>();
 
     public ObjectHolderConstructor()
     {
-        myoccupiedObjectHolders = new OccupiedObjectHolders(occupied);
+        myOccupiedObjectHolders = new OccupiedObjectHolders(occupied);
 
     }
 
 
-    public void SaveObjectHolder()
+    //public void SaveObjectHolder()
+    //{
+    //    string fileName = "/";
+
+    //    GameObject[] occHolders;
+    //    ObjectHolderObj objectHolder;
+
+    //    occHolders = gameObject.GetComponent<MyObjectHolders>().myObjectHolders;
+
+    //    foreach (GameObject occHolder in occHolders)
+    //    {
+    //        ObjectHolder currentHolder = occHolder.GetComponent<ObjectHolder>();
+
+    //        if (currentHolder.haveObject)
+    //        {
+    //            objectHolder = new ObjectHolderObj(currentHolder.haveObject, currentHolder.tileId, currentHolder.myObjectId);
+    //            occupied.Add(objectHolder);
+    //            Debug.Log("Holder saved");
+    //            Debug.Log(occupied.Count);
+    //            //myoccupiedObjectHolders.AddToOccupied(objectHolder);
+
+    //        }
+
+    //    }
+
+    //    string soilId = gameObject.GetComponent<ObjectCharacteristics>().uniqueId;
+    //    fileName += soilId.Substring(0,8);
+    //    fileName += ".json";
+    //    if (DataService.SaveData(fileName, myoccupiedObjectHolders, EncryptionEnabled))
+    //    {
+    //        Debug.Log("Saved holders");
+    //       // occupied.Clear();
+    //    }
+
+
+    //}
+
+    public void LoadData(OccupiedObjectHolders occupiedToLoad)
     {
-        GameObject[] occHolders;
-        ObjectHolderObj objectHolder;
+        GameObject[] occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
 
-        occHolders = gameObject.GetComponent<MyObjectHolders>().myObjectHolders;
+        Debug.Log("Saved Holders: " + occupiedToLoad.occupiedHolders.Count);
 
-
-        foreach (GameObject occHolder in occHolders)
+        foreach (ObjectHolderObj objHolder in occupiedToLoad.occupiedHolders)
         {
-            ObjectHolder currentHolder = occHolder.GetComponent<ObjectHolder>();
-
-            if (currentHolder.haveObject)
-            {
-                objectHolder = new ObjectHolderObj(currentHolder.haveObject, currentHolder.tileId, currentHolder.myObjectId);
-                occupied.Add(objectHolder);
-                //myoccupiedObjectHolders.AddToOccupied(objectHolder);
-
-            }
-
-        }
-        
-        string soilId = gameObject.GetComponent<ObjectCharacteristics>().uniqueId;
-        fileName += soilId[0..8];
-        fileName += ".json";
-        if (DataService.SaveData(fileName, myoccupiedObjectHolders, EncryptionEnabled))
-        {
-            Debug.Log("Saved");
-        }
-        
-
-    }
-
-    public void LoadData()
-    {
-        string soilId = gameObject.GetComponent<ObjectCharacteristics>().uniqueId;
-        fileName += soilId[0..8];
-        fileName += ".json";
-
-        myoccupiedObjectHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>(fileName, EncryptionEnabled);
-        GameObject[] occHolders;
-        occHolders = gameObject.GetComponent<MyObjectHolders>().myObjectHolders;
-
-
-        foreach (ObjectHolderObj objHolder in myoccupiedObjectHolders.occupiedHolders)
-        {
-            
+           
             foreach (GameObject occHolder in occHolders)
             {
+
                 ObjectHolder holder = occHolder.GetComponent<ObjectHolder>();
-                PlaceObject generator = occHolder.GetComponent<PlaceObject>();
-                if (holder.tileId == objHolder.myId)
+                PlaceObject generator = occHolder.transform.GetComponentInParent<PlaceObject>();
+                if (holder.uniqueId == objHolder.uniqID)
                 {
 
-                    generator.CreateFromSave(objHolder.myObjectId);
-                    holder.haveObject = objHolder.haveObject;
+                  generator.CreateFromSave(objHolder.objectID);
+                  holder.haveObject = true;
 
                 }
 

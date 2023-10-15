@@ -9,7 +9,8 @@ public class ObjectHolder : MonoBehaviour
     public int myObjectId;
     public Material[] materials;
     public GameObject moveButton;
-    
+    public string uniqueId;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,4 +63,12 @@ public class ObjectHolder : MonoBehaviour
         //Debug.Log("Previous");
         GameObject Soil = GameObject.FindGameObjectWithTag("MovedSoil");
     }
+
+    //Function to generate uniqueId
+    [ContextMenu("Generate Id")]
+    private void GenerateId()
+    {
+        uniqueId = System.Guid.NewGuid().ToString();
+    }
+
 }

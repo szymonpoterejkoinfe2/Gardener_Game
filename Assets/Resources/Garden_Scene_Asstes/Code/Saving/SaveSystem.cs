@@ -35,7 +35,7 @@ public class SaveSystem : MonoBehaviour
     public void Save()
     {
         soilTileConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>();
-        //objectHolderConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>();
+        objectHolderConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>();
 
         pricing = GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().myCoverPrices;
 
@@ -62,12 +62,15 @@ public class SaveSystem : MonoBehaviour
             Debug.Log("Saved");
         }
 
-        GameObject[] soilTiles;
-        soilTiles = GameObject.FindGameObjectsWithTag("SoilTile"); ;
-        foreach (GameObject tile in soilTiles)
+        SaveObjectHolders();
+
+        if (DataService.SaveData("/myHolders.json", objectHolderConstructorList, EncryptionEnabled))
         {
-            tile.GetComponent<ObjectHolderConstructor>().SaveObjectHolder();
+            Debug.Log("Holder Tiles Saved");
         }
+
+
+
 
     }
 
@@ -103,15 +106,42 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //void SaveObjectHolders()
-    //{
-    //    GameObject[] occHolders;
-    //    ObjectHolderConstructor.ObjectHolder holder;
+    void SaveObjectHolders()
+    {
+        GameObject[] allHolderTiles;
+        ObjectHolderConstructor.ObjectHolderObj holderTile;
+        objectHolderConstructorList = objectHolderConstructor.myOccupiedObjectHolders;
 
-    //    objectHolderConstructorList = objectHolderConstructor.myoccupiedObjectHolders;
 
-    //    occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
-    //}
+
+        if (GameObject.FindGameObjectsWithTag("MovedObjectHolder") == null)
+        {
+            allHolderTiles = GameObject.FindGameObjectsWithTag("ObjectHolder");
+        }
+        else
+        {
+            List<GameObject> tempTile = new List<GameObject>();
+            tempTile.AddRange(GameObject.FindGameObjectsWithTag("ObjectHolder"));
+            tempTile.AddRange(GameObject.FindGameObjectsWithTag("MovedObjectHolder"));
+            allHolderTiles = tempTile.ToArray();
+        }
+
+
+        foreach (GameObject occtile in allHolderTiles)
+        {
+
+            ObjectHolder holder = occtile.GetComponent<ObjectHolder>();
+            if (holder.haveObject == true)
+            {
+                holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId);
+                objectHolderConstructorList.AddToOccupied(holderTile);
+            }
+
+        }
+
+
+
+    }
 
 
     public void Load()
@@ -128,17 +158,11 @@ public class SaveSystem : MonoBehaviour
             SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/myTiles.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
 
-            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json",EncryptionEnabled);
+            ObjectHolderConstructor.OccupiedObjectHolders occupiedHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>("/myHolders.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>().LoadData(occupiedHolders);
+
+            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
-
-            GameObject[] soilTiles;
-            soilTiles = GameObject.FindGameObjectsWithTag("SoilTile"); ;
-            foreach (GameObject tile in soilTiles)
-            {
-                tile.GetComponent<ObjectHolderConstructor>().LoadData();
-            }
-
-
 
             Debug.Log("Data Loaded");
         }

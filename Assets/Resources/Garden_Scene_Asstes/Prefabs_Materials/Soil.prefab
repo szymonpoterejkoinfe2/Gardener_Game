@@ -5159,7 +5159,6 @@ GameObject:
   - component: {fileID: 3424918146326364524}
   - component: {fileID: 6601924965261564981}
   - component: {fileID: 1208913271034071110}
-  - component: {fileID: 5212017162415891105}
   m_Layer: 0
   m_Name: Soil
   m_TagString: SoilTile
@@ -5365,18 +5364,6 @@ MonoBehaviour:
   valueTarget: []
   myName: Soli
   uniqueId: 
---- !u!114 &5212017162415891105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8392215872484979002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e6daf6955fe69747b82575ecf8a50f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8976106382474153562
 GameObject:
   m_ObjectHideFlags: 0
