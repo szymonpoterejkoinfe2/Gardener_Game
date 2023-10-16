@@ -132,11 +132,11 @@ public class PlaceObject : MonoBehaviour
     }
 
     //Generating Object From Save File
-    public void CreateFromSave(int objId)
+    public void CreateFromSave(int objId, GameObject tID)
     {
         GameObject new_object;
 
-        new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[objId].transform);
+        new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, tID.transform);
 
         new_object.name = "Object";
         new_object.tag = "NewObject";

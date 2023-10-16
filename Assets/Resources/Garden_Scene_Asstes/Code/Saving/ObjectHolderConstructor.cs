@@ -27,9 +27,8 @@ public class ObjectHolderConstructor : MonoBehaviour
     {
         public string uniqID;
         public int objectID;
-       
 
-        public ObjectHolderObj( string id, int myObject)
+        public ObjectHolderObj(string id, int myObject)
         {
             uniqID = id;
             objectID = myObject;
@@ -99,8 +98,7 @@ public class ObjectHolderConstructor : MonoBehaviour
                 PlaceObject generator = occHolder.transform.GetComponentInParent<PlaceObject>();
                 if (holder.uniqueId == objHolder.uniqID)
                 {
-
-                  generator.CreateFromSave(objHolder.objectID);
+                  generator.CreateFromSave(objHolder.objectID, holder.gameObject);
                   holder.haveObject = true;
 
                 }
