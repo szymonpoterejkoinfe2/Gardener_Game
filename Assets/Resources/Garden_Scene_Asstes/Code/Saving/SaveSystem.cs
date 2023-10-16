@@ -99,7 +99,7 @@ public class SaveSystem : MonoBehaviour
             PlantCreator creator = occtile.GetComponent<PlantCreator>();
             if (creator.havePlant == true)
             {
-               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId);
+               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager);
                 soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
             }
 
@@ -111,8 +111,6 @@ public class SaveSystem : MonoBehaviour
         GameObject[] allHolderTiles;
         ObjectHolderConstructor.ObjectHolderObj holderTile;
         objectHolderConstructorList = objectHolderConstructor.myOccupiedObjectHolders;
-
-
 
         if (GameObject.FindGameObjectsWithTag("MovedObjectHolder") == null)
         {

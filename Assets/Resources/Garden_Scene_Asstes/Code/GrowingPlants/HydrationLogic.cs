@@ -10,6 +10,7 @@ public class HydrationLogic : MonoBehaviour
     private Slider slider;
     [SerializeField] private float hydratedTime;
     private bool timerStart;
+    public ulong timeLeft = 0;
 
     //Function to start Timer of fertilization
     public void StartHydration(ulong SecondsToWait)
@@ -29,7 +30,7 @@ public class HydrationLogic : MonoBehaviour
         {
 
             float time = (hydratedTime -= Time.deltaTime);
-
+            timeLeft =(ulong)time;
 
             if (time < 0)
             {
@@ -37,6 +38,8 @@ public class HydrationLogic : MonoBehaviour
                 slider.value = time;
                 timerStart = false;
                 hydrated = false;
+                timeLeft = 0;
+
             }
 
             if (timerStart == true && gameObject.tag == "MovedSoil")
