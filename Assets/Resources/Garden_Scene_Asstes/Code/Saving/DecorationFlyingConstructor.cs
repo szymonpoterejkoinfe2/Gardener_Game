@@ -22,8 +22,8 @@ public class DecorationFlyingConstructor : MonoBehaviour
 
     public class TileDecoration
     {
-        string tileID;
-        int[] decorationQuantity;
+        public string tileID;
+        public int[] decorationQuantity;
 
         public TileDecoration(string tID, int[] decQuan)
         {

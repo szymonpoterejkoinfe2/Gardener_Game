@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7984,6 +7984,7 @@ GameObject:
   - component: {fileID: 384015586}
   - component: {fileID: 384015588}
   - component: {fileID: 384015589}
+  - component: {fileID: 384015590}
   m_Layer: 0
   m_Name: SoilTileMap
   m_TagString: SoilTileConstructor
@@ -8151,6 +8152,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e6daf6955fe69747b82575ecf8a50f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &384015590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384015584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2ce7e7013bb65468d3217e0c3d3a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &392354855

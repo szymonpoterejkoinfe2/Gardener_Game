@@ -13,6 +13,8 @@ public class SaveSystem : MonoBehaviour
     private SoilTileConstructor soilTileConstructor;
     private ObjectHolderConstructor.OccupiedObjectHolders objectHolderConstructorList;
     private ObjectHolderConstructor objectHolderConstructor;
+    private DecorationFlyingConstructor decorationFlyingConstructor;
+    private DecorationFlyingConstructor.TileDecorationList tileDecorationList;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +36,11 @@ public class SaveSystem : MonoBehaviour
 
     public void Save()
     {
-        soilTileConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>();
-        objectHolderConstructor = GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>();
+        GameObject soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
+
+        soilTileConstructor = soilTIleObject.GetComponent<SoilTileConstructor>();
+        objectHolderConstructor = soilTIleObject.GetComponent<ObjectHolderConstructor>();
+        decorationFlyingConstructor = soilTIleObject.GetComponent<DecorationFlyingConstructor>();
 
         pricing = GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().myCoverPrices;
 
@@ -79,8 +84,11 @@ public class SaveSystem : MonoBehaviour
 
         GameObject[] occTiles;
         SoilTileConstructor.Tile tile;
-      
+        decorationFlyingConstructor.TileDecoration tileDecoration;
+
         occupiedTilesList = soilTileConstructor.myOccupiedTiles;
+        tileDecorationList = decorationFlyingConstructor.myCreatures;
+
 
         if (GameObject.FindGameObjectWithTag("MovedSoil") == null)
         {
@@ -102,6 +110,7 @@ public class SaveSystem : MonoBehaviour
                tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager);
                 soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
             }
+            tileDecoration = new decorationFlyingConstructor.TileDecoration(occtile.GetComponent<ObjectCharacteristics>().uniqueId, occtile.GetComponent<CreateFlyDecoration>().creaturesQuantity);
 
         }
     }
