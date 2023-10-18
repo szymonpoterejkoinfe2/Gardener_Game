@@ -7,8 +7,10 @@ using System.Numerics;
 
 public class MoneyManager : MonoBehaviour
 {
+
     public class MoneyBalance
     {
+
         public BigInteger moneyBalance = 15;
 
         public MoneyBalance(BigInteger value)
@@ -25,6 +27,7 @@ public class MoneyManager : MonoBehaviour
         //Increment Money amount after purchase
         public void IncrementBalance(BigInteger amount)
         {
+           
             moneyBalance += amount;
             //  Debug.Log(moneyToDisplay);
         }
@@ -47,6 +50,7 @@ public class MoneyManager : MonoBehaviour
 
     }
 
+    //Loading previously saved MoneyBalance
     public void LoadData(MoneyBalance dataToLoad)
     {
         myBalance = dataToLoad;

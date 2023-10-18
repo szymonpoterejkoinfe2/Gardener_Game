@@ -7,6 +7,13 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     private GameObject soilTile;
     public CameraAndTileManager cameraTileManager;
     public GrowPlant Grower;
+    SaveSystem saveManager;
+
+
+    private void Awake()
+    {
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,9 +23,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         //Counting number of touch and growing plant times number of touch 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-
           Grower.Grow(Input.touchCount); 
-
         }
         
     }
@@ -33,6 +38,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     public void PlacePlant(int PlantId)
     {
         soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId,false);
+
     }
     // Function to set Holder id
     public void SetHolderId(int id)
@@ -51,18 +57,23 @@ public class SoilTileDetectorGameScene : MonoBehaviour
     {
         cameraTileManager.DeActivateShopMenu();
         soilTile.GetComponent<PlaceObject>().CreateObject();
+       
     }
 
     // function to start hydration process
     public void BuyHydration(float hydrationTime)
     {
         soilTile.GetComponent<HydrationLogic>().StartHydration((ulong)hydrationTime);
+        saveManager.SaveSoil();
+        saveManager.SaveMoneyBalance();
     }
 
     // function to generate flying decoration object
     public void BuyFlyingDecoration(int decoration)
     {
         soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(decoration);
+        saveManager.SaveFlyingDecoration();
+        saveManager.SaveMoneyBalance();
     }
 
     //Function to return from single tile view to whole garden view

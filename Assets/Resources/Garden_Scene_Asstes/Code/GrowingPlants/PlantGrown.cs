@@ -7,13 +7,13 @@ public class PlantGrown : MonoBehaviour
     float xObjectScale, xTargetScale;
     GameObject bank;
     Vector3 beginScale;
-
+    private SaveSystem saveManager;
     // Start is called before the first frame update
     void Start()
     {
         beginScale = new Vector3(0.003f, 0.003f, 0.003f);
         xTargetScale = gameObject.GetComponent<ObjectCharacteristics>().valueTarget[0];
-
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
         bank = GameObject.FindGameObjectWithTag("Bank");
     }
 
@@ -33,6 +33,8 @@ public class PlantGrown : MonoBehaviour
             gameObject.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
 
             gameObject.transform.localScale = beginScale;
+
+            saveManager.SaveMoneyBalance();
         }
     }
 }

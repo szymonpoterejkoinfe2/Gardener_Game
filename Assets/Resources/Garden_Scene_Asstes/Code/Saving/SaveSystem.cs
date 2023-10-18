@@ -15,51 +15,42 @@ public class SaveSystem : MonoBehaviour
     private ObjectHolderConstructor objectHolderConstructor;
     private DecorationFlyingConstructor decorationFlyingConstructor;
     private DecorationFlyingConstructor.TileDecorationList tileDecorationList;
+    GameObject soilTIleObject;
 
     // Start is called before the first frame update
     void Start()
     {
+        soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
+
         StartCoroutine(WaitToLoad());
+
     }
 
-    // Update is called once per frame
-    void Update()
+    //Function to save MoneyBalance
+    public void SaveMoneyBalance()
     {
-        
-    }
-
-
-    private void OnApplicationQuit()
-    {
-        Save();
-    }
-
-    public void Save()
-    {
-        GameObject soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
-
-        soilTileConstructor = soilTIleObject.GetComponent<SoilTileConstructor>();
-        objectHolderConstructor = soilTIleObject.GetComponent<ObjectHolderConstructor>();
-        decorationFlyingConstructor = soilTIleObject.GetComponent<DecorationFlyingConstructor>();
-
-        pricing = GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().myCoverPrices;
-
-        destroyed = GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().myDestroyedCovers;
-
         moneyBalance = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().myBalance;
 
-        if (DataService.SaveData("/bcover.json", pricing, EncryptionEnabled)) {
-            Debug.Log("Saved");
+        if (DataService.SaveData("/myBalance.json", moneyBalance, EncryptionEnabled))
+        {
+            Debug.Log("Saved MoneyBallance");
         }
+    }
+
+    //Function to save all destroyed BadRockCovers
+    public void SaveBadRockCovers()
+    {
+        destroyed = GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().myDestroyedCovers;
+
         if (DataService.SaveData("/destroyedCovers.json", destroyed, EncryptionEnabled))
         {
             Debug.Log("Saved");
         }
-        if (DataService.SaveData("/myBalance.json", moneyBalance, EncryptionEnabled))
-        {
-            Debug.Log("Saved");
-        }
+    }
 
+    //Finction to save all SoilTiles
+    public void SaveSoil()
+    {
         SaveTiles();
 
         if (DataService.SaveData("/myTiles.json", occupiedTilesList, EncryptionEnabled))
@@ -67,33 +58,71 @@ public class SaveSystem : MonoBehaviour
             Debug.Log("Saved");
         }
 
+        soilTileConstructor.myOccupiedTiles.occupiedTiles.Clear();
+
+    }
+
+    //Function to save all ObjectHolders
+    public void SaveObjectHolderTiles()
+    {
         SaveObjectHolders();
 
         if (DataService.SaveData("/myHolders.json", objectHolderConstructorList, EncryptionEnabled))
         {
             Debug.Log("Holder Tiles Saved");
         }
+        objectHolderConstructor.myOccupiedObjectHolders.occupiedHolders.Clear();
+    }
 
+    //Function to save all FlyingDecorations
+    public void SaveFlyingDecoration()
+    {
+        SaveDocoration();
         if (DataService.SaveData("/decoration.json", tileDecorationList, EncryptionEnabled))
         {
             Debug.Log("Decorations Saved");
         }
-
-
-
+        decorationFlyingConstructor.myCreatures.decorationList.Clear();
     }
 
+    //Function to find all FlyingDecorations to save
+    void SaveDocoration()
+    {
+        decorationFlyingConstructor = soilTIleObject.GetComponent<DecorationFlyingConstructor>();
+
+        GameObject[] tiles;
+        DecorationFlyingConstructor.TileDecoration tileDecoration;
+
+        tileDecorationList = decorationFlyingConstructor.myCreatures;
+
+        if (GameObject.FindGameObjectWithTag("MovedSoil") == null)
+        {
+            tiles = GameObject.FindGameObjectsWithTag("SoilTile");
+        }
+        else
+        {
+            List<GameObject> tempTile = new List<GameObject>();
+            tempTile.AddRange(GameObject.FindGameObjectsWithTag("SoilTile"));
+            tempTile.Add(GameObject.FindGameObjectWithTag("MovedSoil"));
+            tiles = tempTile.ToArray();
+        }
+
+        foreach (GameObject tile in tiles)
+        {
+            tileDecoration = new DecorationFlyingConstructor.TileDecoration(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<CreateFlyDecoration>().creaturesQuantity);
+            decorationFlyingConstructor.myCreatures.AddToList(tileDecoration);
+        }
+    }
+
+    //Function to find all SoilTiles to save
     void SaveTiles()
     {
+        soilTileConstructor = soilTIleObject.GetComponent<SoilTileConstructor>();
 
         GameObject[] occTiles;
         SoilTileConstructor.Tile tile;
-        DecorationFlyingConstructor.TileDecoration tileDecoration;
-
         occupiedTilesList = soilTileConstructor.myOccupiedTiles;
-        tileDecorationList = decorationFlyingConstructor.myCreatures;
-
-
+       
         if (GameObject.FindGameObjectWithTag("MovedSoil") == null)
         {
             occTiles = GameObject.FindGameObjectsWithTag("SoilTile");
@@ -114,13 +143,14 @@ public class SaveSystem : MonoBehaviour
                tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager);
                 soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
             }
-            tileDecoration = new DecorationFlyingConstructor.TileDecoration(occtile.GetComponent<ObjectCharacteristics>().uniqueId, occtile.GetComponent<CreateFlyDecoration>().creaturesQuantity);
-            decorationFlyingConstructor.myCreatures.AddToList(tileDecoration);
+         
         }
     }
 
+    //Function to find all ObjectHolders to save
     void SaveObjectHolders()
     {
+        objectHolderConstructor = soilTIleObject.GetComponent<ObjectHolderConstructor>();
         GameObject[] allHolderTiles;
         ObjectHolderConstructor.ObjectHolderObj holderTile;
         objectHolderConstructorList = objectHolderConstructor.myOccupiedObjectHolders;
@@ -154,7 +184,7 @@ public class SaveSystem : MonoBehaviour
 
     }
 
-
+    //Function to load all saved data
     public void Load()
     {
 
@@ -162,36 +192,71 @@ public class SaveSystem : MonoBehaviour
         {
             BadRockCoverPriceing.CoverPrices data = DataService.LoadData<BadRockCoverPriceing.CoverPrices>("/bcover.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().LoadData(data);
-
-            CoverDestroyer.DestroyedCovers covers = DataService.LoadData<CoverDestroyer.DestroyedCovers>("/destroyedCovers.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().LoadData(covers);
-
-            SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/myTiles.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
-
-            ObjectHolderConstructor.OccupiedObjectHolders occupiedHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>("/myHolders.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>().LoadData(occupiedHolders);
-
-            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
-
-            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
-
-            Debug.Log("Data Loaded");
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
+
+        try {
+            CoverDestroyer.DestroyedCovers covers = DataService.LoadData<CoverDestroyer.DestroyedCovers>("/destroyedCovers.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("CoverDestroyer").GetComponent<CoverDestroyer>().LoadData(covers);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
+        try {
+            SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/myTiles.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
+        try {
+            ObjectHolderConstructor.OccupiedObjectHolders occupiedHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>("/myHolders.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<ObjectHolderConstructor>().LoadData(occupiedHolders);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+        try {
+            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+        try {
+            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+        Debug.Log("Data Loaded");
+        
     }
 
+    //Waiting to load SavedData
     IEnumerator WaitToLoad()
     {
       
-        //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(1);
 
         Load();
+    }
+
+    IEnumerator WaitToSave()
+    {
+
+        yield return new WaitForSeconds(2);
+        SaveMoneyBalance();
     }
 }

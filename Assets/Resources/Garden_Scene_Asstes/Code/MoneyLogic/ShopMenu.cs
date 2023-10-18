@@ -10,6 +10,7 @@ public class ShopMenu : MonoBehaviour
     private GameObject[] allPlants;
     private BigInteger balance;
     private ulong time, multi;
+    private SaveSystem saveManager;
 
     public GameObject PlantCategory, MenagerCategory, OtherUpgradesCategory;
     public TextMeshProUGUI[] BuyPlantPriceTxt;
@@ -22,6 +23,7 @@ public class ShopMenu : MonoBehaviour
         PlantCategory.SetActive(true);
         MenagerCategory.SetActive(false);
         OtherUpgradesCategory.SetActive(false);
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
 
     //Activating Menager Shop Menu
@@ -116,6 +118,8 @@ public class ShopMenu : MonoBehaviour
         {
            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectMenagerCost[plant.GetComponent<ObjectCharacteristics>().myId]);
            plant.GetComponent<ManagerLogic>().StartGrowing();
+
+            saveManager.SaveSoil();
         }
 
     }

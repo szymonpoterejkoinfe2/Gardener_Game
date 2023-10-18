@@ -10,12 +10,14 @@ public class PlantDestroyer : MonoBehaviour
     private GameObject plant, bank, tile;
     public GameObject buttons;
     BigInteger ballance, refund;
+    private SaveSystem saveManager;
 
     // Start is called before the first frame update
     void Start()
     {
         savedHoldDuration = holdDuration;
         buttons.SetActive(false);
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
 
     // Update is called once per frame
@@ -55,6 +57,9 @@ public class PlantDestroyer : MonoBehaviour
         tile.GetComponent<PlantCreator>().havePlant = false;
         HideButtons();
         bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(refund);
+        saveManager.SaveSoil();
+        saveManager.SaveMoneyBalance();
+
     }
 
     //Deactivates buttons to destroy plant

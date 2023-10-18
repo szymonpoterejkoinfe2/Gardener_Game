@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour
 {
     public void Start()
     {
-        BannerAd.Instace.LoadBanner();
+       
     }
 
     public void StartRewardedAdFertilizerOne()

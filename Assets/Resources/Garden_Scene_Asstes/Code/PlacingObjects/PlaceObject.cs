@@ -10,6 +10,12 @@ public class PlaceObject : MonoBehaviour
     public List<GameObject> emptyObjectHolders = new List<GameObject>();
     public int ObjectId = 0, HolderId = 0;
     GameObject bank;
+    SaveSystem saveManager;
+
+    private void Awake()
+    {
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+    }
 
     // Find empty object holders
     public void FindObjectHolders()
@@ -119,12 +125,13 @@ public class PlaceObject : MonoBehaviour
                 new_object.tag = "NewObject";
 
                 new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
-                new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
+                new_object.transform.localScale = new UnityEngine.Vector3(0.6f, 20, 0.6f);
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = new_object.GetComponent<ObjectCharacteristics>().myId;
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
 
+                
             }
         }
        
@@ -139,10 +146,10 @@ public class PlaceObject : MonoBehaviour
         new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, tID.transform);
 
         new_object.name = "Object";
-        new_object.tag = "NewObject";
+        new_object.tag = "PlayerObject";
 
         new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
-        new_object.transform.localScale = new UnityEngine.Vector3(0.2f, 20, 0.2f);
+        new_object.transform.localScale = new UnityEngine.Vector3(2.4f, 25, 2.4f);
     }
 
 
@@ -170,7 +177,8 @@ public class PlaceObject : MonoBehaviour
         HideHoldersAvaliability();
         emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().HideMoveButtons();
         emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().haveObject = true;
-
+        saveManager.SaveObjectHolderTiles();
+        saveManager.SaveMoneyBalance();
         gameObject.GetComponent<SoilRotation>().Should_Rotate = true;
     }
 

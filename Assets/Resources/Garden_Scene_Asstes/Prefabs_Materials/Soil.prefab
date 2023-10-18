@@ -5245,8 +5245,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0344688, y: 1.7866879, z: 1.0399214}
+  m_Center: {x: -0.00059895514, y: 0.39334393, z: -0.0044034244}
 --- !u!114 &6286988900524184300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5316,7 +5316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToBuy:
-  - {fileID: 2795137302791480261, guid: b5c3e8b5380df8e4fb50879436f5191e, type: 3}
+  - {fileID: 8761666322764757572, guid: e387a412e5fb333438f6182c1476fb78, type: 3}
   emptyObjectHolders: []
   ObjectId: 0
   HolderId: 0
@@ -5334,6 +5334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hydrated: 0
   hydratedTime: 0
+  timeLeft: 0
 --- !u!114 &6601924965261564981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5348,6 +5349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingCreatures:
   - {fileID: 2399132936323041408, guid: 163c20f4ce7978742831db055c32ef25, type: 3}
+  creaturesQuantity: 0000000000000000
 --- !u!114 &1208913271034071110
 MonoBehaviour:
   m_ObjectHideFlags: 0

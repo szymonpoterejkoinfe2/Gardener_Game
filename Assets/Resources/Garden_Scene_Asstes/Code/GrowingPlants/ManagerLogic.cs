@@ -9,7 +9,7 @@ public class ManagerLogic : MonoBehaviour
     float timer = 0f;
     public float growTime = 10f;
     public bool haveManager = false;
-
+    SaveSystem saveManager;
     private GameObject bank;
 
     // Beginning of Scailing Coroutine
@@ -26,6 +26,10 @@ public class ManagerLogic : MonoBehaviour
         growTime = (growTime * 0.95f);
     }
 
+    private void Awake()
+    {
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+    }
 
     // Scaling plant object with time
     private IEnumerator GrowWithManager()
@@ -44,7 +48,7 @@ public class ManagerLogic : MonoBehaviour
                 yield return null;
             }
             bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
-
+            saveManager.SaveMoneyBalance();
             timer = 0;
 
         }

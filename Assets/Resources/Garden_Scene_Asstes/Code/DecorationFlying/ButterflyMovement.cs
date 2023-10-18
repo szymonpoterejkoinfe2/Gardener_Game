@@ -53,7 +53,7 @@ public class ButterflyMovement : MonoBehaviour
      Transform GeneratePoint()
     {
         Vector3 position = new Vector3(Random.Range(limitPoints.GetComponentInChildren<LimitPoints>().xAxis[1].localPosition.x, limitPoints.GetComponentInChildren<LimitPoints>().xAxis[0].localPosition.x), Random.Range(limitPoints.GetComponentInChildren<LimitPoints>().yAxis[1].localPosition.y, limitPoints.GetComponentInChildren<LimitPoints>().yAxis[0].localPosition.y), Random.Range(limitPoints.GetComponentInChildren<LimitPoints>().zAxis[1].localPosition.z, limitPoints.GetComponentInChildren<LimitPoints>().zAxis[0].localPosition.z));
-        Debug.Log(position);
+       // Debug.Log(position);
 
         //Creating Point Game Object 
         GameObject newPoint = Instantiate(point, new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform.parent);

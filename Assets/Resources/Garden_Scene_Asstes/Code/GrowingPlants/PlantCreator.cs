@@ -12,7 +12,14 @@ public class PlantCreator : MonoBehaviour
     private GameObject bank, growPlant;
     BigInteger ballance, price;
     public int plantId;
+    SaveSystem saveManager;
 
+
+    private void Start()
+    {
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+
+    }
     void Update()
     {
        bank = GameObject.FindGameObjectWithTag("Bank");
@@ -40,6 +47,9 @@ public class PlantCreator : MonoBehaviour
             havePlant = true;
             Debug.Log(PlantId);
             plantId = PlantId;
+
+            saveManager.SaveSoil();
+            saveManager.SaveMoneyBalance();
         }
     }
  

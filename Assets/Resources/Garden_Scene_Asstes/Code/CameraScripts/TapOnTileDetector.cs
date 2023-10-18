@@ -13,13 +13,14 @@ public class TapOnTileDetector : MonoBehaviour
     public CameraAndTileManager CameraTileManager;
     private bool NotAsking;
     public TextMeshProUGUI PriceTxt;
-
+    SaveSystem saveManager;
 
     // Start is called before the first frame update
     private void Awake()
     {
         ConfirmationWindow.SetActive(false);
         NotAsking = true;
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
 
 
@@ -52,7 +53,7 @@ public class TapOnTileDetector : MonoBehaviour
                 }
                 else if (hit.transform.name == "Soil" && NotAsking == true)
                 {
-                    tile= hit.transform.gameObject;
+                    tile = hit.transform.gameObject;
 
                     rotation.speed = 0;
 
@@ -91,6 +92,7 @@ public class TapOnTileDetector : MonoBehaviour
             Destroy(cover);
             bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(price);
             CloseQuestionWindow();
+            saveManager.SaveBadRockCovers();
         }
     }
 
