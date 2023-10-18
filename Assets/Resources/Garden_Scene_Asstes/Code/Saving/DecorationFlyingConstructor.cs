@@ -40,6 +40,39 @@ public class DecorationFlyingConstructor : MonoBehaviour
         myCreatures = new TileDecorationList(created);
     }
 
+    public void LoadData(TileDecorationList data)
+    {
+        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
 
+        foreach (TileDecoration tile in data.decorationList)
+        {
+
+            foreach (GameObject soilTile in soilTiles)
+            {
+                if (tile.tileID == soilTile.GetComponent<ObjectCharacteristics>().uniqueId)
+                {
+                    InstantiateDecoration(tile, soilTile);
+                }
+
+            }
+
+        }
+
+    }
+    void InstantiateDecoration(TileDecoration tile, GameObject soilTile)
+    {
+        int[] amount = tile.decorationQuantity;
+
+        for(int creatureID = 0; creatureID < amount.Length; creatureID++)
+        {
+            for (int cycles = 0; cycles < amount[creatureID]; cycles++)
+            {
+                soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(creatureID);
+            }
+
+        }
+
+
+    }
 
 }
