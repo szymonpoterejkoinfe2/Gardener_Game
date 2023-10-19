@@ -8,10 +8,13 @@ public class Zoom : MonoBehaviour
     public float ZoomMin = 19;
     public float ZoomMax = 50;
     public float Speed = 1;
+    public bool canMoveCamera;
+    public Vector3 rangeMin;
+    public Vector3 rangeMax;
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount == 2)
+        if (Input.touchCount == 2 && canMoveCamera)
         {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -26,13 +29,13 @@ public class Zoom : MonoBehaviour
 
             zoom(difference * 0.1f);
         }
-        if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Moved && canMoveCamera)
         {
             Vector2 Touch_pos = Input.GetTouch(0).deltaPosition;
 
             transform.Translate(-Touch_pos.x * Speed, -Touch_pos.y * Speed, 0);
 
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -15f, 20f), Mathf.Clamp(transform.position.y, 20f, 80f), Mathf.Clamp(transform.position.z, -70f, -70f));
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, rangeMin.x, rangeMax.x), Mathf.Clamp(transform.position.y, rangeMin.y, rangeMax.y), Mathf.Clamp(transform.position.z, rangeMin.z, rangeMax.z));
 
         }
 
@@ -42,5 +45,18 @@ public class Zoom : MonoBehaviour
     void zoom(float increment)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, ZoomMin,ZoomMax);
+    }
+
+    public void cameraMovement()
+    {
+
+        if (canMoveCamera == true)
+        {
+            canMoveCamera = false;
+        }
+        else {
+            canMoveCamera = true;
+        }
+       
     }
 }

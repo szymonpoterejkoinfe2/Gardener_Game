@@ -121,11 +121,12 @@ public class PlaceObject : MonoBehaviour
 
                 new_object = Instantiate(objectsToBuy[ObjectId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[HolderId].transform);
 
-                new_object.name = "Object";
+                new_object.name = new_object.GetComponent<ObjectCharacteristics>().myName;
                 new_object.tag = "NewObject";
 
-                new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
+                new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
                 new_object.transform.localScale = new UnityEngine.Vector3(0.6f, 20, 0.6f);
+                
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = new_object.GetComponent<ObjectCharacteristics>().myId;
 
@@ -145,11 +146,11 @@ public class PlaceObject : MonoBehaviour
 
         new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, tID.transform);
 
-        new_object.name = "Object";
+        new_object.name = new_object.GetComponent<ObjectCharacteristics>().myName;
         new_object.tag = "PlayerObject";
 
-        new_object.transform.localPosition = new UnityEngine.Vector3(0, 10, 0);
-        new_object.transform.localScale = new UnityEngine.Vector3(2.4f, 25, 2.4f);
+        new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
+        new_object.transform.localScale = new UnityEngine.Vector3(1f, 20, 1f);
     }
 
 
