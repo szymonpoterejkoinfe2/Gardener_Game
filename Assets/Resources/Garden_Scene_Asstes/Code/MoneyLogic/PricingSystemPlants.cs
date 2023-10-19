@@ -16,7 +16,7 @@ public class PricingSystemPlants : MonoBehaviour
     // Declaring ObjectPricing
     private void Start()
     {
-        moneyManager = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>();
+       
 
         // #1 Plant
         objectPrice[0] = 15;
@@ -39,16 +39,24 @@ public class PricingSystemPlants : MonoBehaviour
     //Changing money reward from fully grown plant
     public void UpdateIncomeValue(int objectId)
     {
-        //Updating Profit from growing Plant
-        BigInteger IncreaseUpdate, IncreaseIncome;
-        IncreaseIncome = (objectPrice[objectId] / 8);
-        objectGrownIncome[objectId] += IncreaseIncome;
+        moneyManager = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>();
+        if (moneyManager.myBalance.moneyBalance >= objectUpgradeCost[objectId])
+        {
 
-        moneyManager.myBalance.DecrementBalance(objectUpgradeCost[objectId]);
+            //Updating Profit from growing Plant
+            BigInteger IncreaseUpdate, IncreaseIncome;
+            IncreaseIncome = (objectPrice[objectId] / 8);
+            objectGrownIncome[objectId] += IncreaseIncome;
 
-        //Updating Cost of Upgrade
-        IncreaseUpdate = ((objectUpgradeCost[objectId] / 3));
-        objectUpgradeCost[objectId] += IncreaseUpdate;
+            moneyManager.myBalance.DecrementBalance(objectUpgradeCost[objectId]);
+
+            //Updating Cost of Upgrade
+            IncreaseUpdate = ((objectUpgradeCost[objectId] / 3));
+            objectUpgradeCost[objectId] += IncreaseUpdate;
+
+        }
+
+        
     }
 
     // Changing Price of upgrade for manager

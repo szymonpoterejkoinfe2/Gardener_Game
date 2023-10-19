@@ -13,7 +13,7 @@ public class CreateFlyDecoration : MonoBehaviour
     {
         creaturesQuantity[creature] += 1;
         GameObject newCreature = Instantiate(flyingCreatures[creature], new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform);
-        newCreature.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        newCreature.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
         newCreature.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

@@ -57,21 +57,13 @@ public class ShopMenu : MonoBehaviour
         allPlants = soilTile.GetComponent<PlantCreator>().plants;
 
         bank = GameObject.FindGameObjectWithTag("Bank");
-        balance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance; 
+        balance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance;
 
-        //// Taking Price of Planted Object
-        //if (soilTile.GetComponent<PlantCreator>().havePlant == true)
-        //{
-        //    plant = soilTile.transform.Find("Plant").gameObject;
-
-        //    bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId], UpgradePlantPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId]);
-        //    bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId], UpgradeManagerPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId]);
-
-        //   //UpgradePlantPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId].text = bank.GetComponent<PricingSystemPlants>().objectUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId].ToString();
-        //   //UpgradeManagerPriceTxt[plant.GetComponent<ObjectCharacteristics>().myId].text = bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[plant.GetComponent<ObjectCharacteristics>().myId].ToString();
-        //}
-        //else
+        if (soilTile.GetComponent<PlantCreator>().havePlant == true)
         {
+            plant = soilTile.transform.Find("Plant").gameObject;
+        }
+
             // Taking Price Of Prefab Objects
             for (int PlantId = 0; PlantId < allPlants.Length; PlantId++)
             {
@@ -81,7 +73,6 @@ public class ShopMenu : MonoBehaviour
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().objectMenagerUpgradeCost[allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId], UpgradeManagerPriceTxt[PlantId]);
                
             }
-        }
 
     }
 

@@ -9,9 +9,9 @@ public class GrowPlant : MonoBehaviour
     ParticleSystem leafs;
     UnityEngine.Vector3 scaleValue, targetScale;
     public float multiplyer = 1;
-    BigInteger moneyBalance;
     MoneyManager moneyManager;
     private SaveSystem saveManager;
+    PricingSystemPlants pricingSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class GrowPlant : MonoBehaviour
     void Update()
     {
         soil = GameObject.FindGameObjectWithTag("MovedSoil");
-        moneyBalance = moneyManager.myBalance.moneyBalance;
+        pricingSystem = bank.GetComponent<PricingSystemPlants>();
     }
 
     // Function Scale Plant GameObject to imitate Growth;
@@ -46,19 +46,15 @@ public class GrowPlant : MonoBehaviour
     public void UpgradePlant()
     {
   
-        PricingSystemPlants pricingSystem = bank.GetComponent<PricingSystemPlants>();
+  
 
         if (soil.GetComponent<PlantCreator>().havePlant == true)
         {
             plant = soil.transform.Find("Plant").gameObject;
             ObjectCharacteristics objectCharacteristics = plant.GetComponent<ObjectCharacteristics>();
-
-            if (moneyManager.myBalance.moneyBalance >= pricingSystem.objectPrice[objectCharacteristics.myId])
-            {
-                pricingSystem.UpdateIncomeValue(objectCharacteristics.myId);
-
-                saveManager.SaveMoneyBalance();
-            }
+            pricingSystem.UpdateIncomeValue(objectCharacteristics.myId);
+            saveManager.SaveMoneyBalance();
+            
         }
     }
 
