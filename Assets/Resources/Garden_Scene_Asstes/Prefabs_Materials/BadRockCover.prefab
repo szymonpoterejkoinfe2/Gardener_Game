@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 0
-  valueTarget: []
+  valueTarget: {x: 0, y: 0, z: 0}
   myName: SoilCover
   uniqueId: 
 --- !u!114 &411334868268205280

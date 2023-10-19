@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectCharacteristics : MonoBehaviour
 {
         public int myId;
-        public float[] valueTarget;
+        public Vector3 valueTarget;
         public string myName;
         public string uniqueId;
 

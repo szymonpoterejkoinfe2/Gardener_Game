@@ -174,7 +174,7 @@ public class SaveSystem : MonoBehaviour
             ObjectHolder holder = occtile.GetComponent<ObjectHolder>();
             if (holder.haveObject == true)
             {
-                holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId);
+                holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId,occtile.transform.GetChild(1).transform.rotation);
                 objectHolderConstructorList.AddToOccupied(holderTile);
             }
 
@@ -187,11 +187,10 @@ public class SaveSystem : MonoBehaviour
     //Function to load all saved data
     public void Load()
     {
-
         try
         {
-            BadRockCoverPriceing.CoverPrices data = DataService.LoadData<BadRockCoverPriceing.CoverPrices>("/bcover.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("Bank").GetComponent<BadRockCoverPriceing>().LoadData(data);
+            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
         }
         catch (System.Exception e)
         {
@@ -224,14 +223,7 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
-        try {
-            MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Could not read file! Error: {e.Message}");
-        }
+       
         try {
             DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);

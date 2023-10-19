@@ -11,10 +11,13 @@ public class PricingSystemPlants : MonoBehaviour
     public BigInteger[] objectUpgradeCost = { 0, 0, 0, 0, 0 };
     public BigInteger[] objectMenagerCost = { 0, 0, 0, 0, 0 };
     public BigInteger[] objectMenagerUpgradeCost = { 0, 0, 0, 0, 0 };
+    public MoneyManager moneyManager;
 
     // Declaring ObjectPricing
-    private void Awake()
+    private void Start()
     {
+        moneyManager = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>();
+
         // #1 Plant
         objectPrice[0] = 15;
         objectDestructionReturn[0] = 5;
@@ -38,12 +41,14 @@ public class PricingSystemPlants : MonoBehaviour
     {
         //Updating Profit from growing Plant
         BigInteger IncreaseUpdate, IncreaseIncome;
-        IncreaseIncome = (objectPrice[objectId] / 10);
-        objectPrice[objectId] += (BigInteger)(objectPrice[objectId] * IncreaseIncome);
+        IncreaseIncome = (objectPrice[objectId] / 8);
+        objectGrownIncome[objectId] += IncreaseIncome;
+
+        moneyManager.myBalance.DecrementBalance(objectUpgradeCost[objectId]);
 
         //Updating Cost of Upgrade
-        IncreaseUpdate = ((objectUpgradeCost[objectId] / 10) * 2);
-        objectUpgradeCost[objectId] += (BigInteger)(objectUpgradeCost[objectId] * IncreaseUpdate);
+        IncreaseUpdate = ((objectUpgradeCost[objectId] / 3));
+        objectUpgradeCost[objectId] += IncreaseUpdate;
     }
 
     // Changing Price of upgrade for manager

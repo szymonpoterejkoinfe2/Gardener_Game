@@ -36,7 +36,7 @@ public class ManagerLogic : MonoBehaviour
     {
         cameraObject = GameObject.Find("Camera");
         Vector3 StartScale = new Vector3(0f, 0f, 0f);
-        Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget[0]), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget[1]), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget[2]));
+        Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.y), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.z));
         bank = GameObject.FindGameObjectWithTag("Bank");
 
         while (haveManager)

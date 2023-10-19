@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 public class GrowPlant : MonoBehaviour
 {
     GameObject plant, soil, bank;
     ParticleSystem leafs;
-    Vector3 scaleValue, targetScale;
+    UnityEngine.Vector3 scaleValue, targetScale;
     public float multiplyer = 1;
-    
+    BigInteger moneyBalance;
+    MoneyManager moneyManager;
+    private SaveSystem saveManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        scaleValue = new Vector3(0.002f, 0.01f, 0.002f);
-
+        scaleValue = new UnityEngine.Vector3(0.002f, 0.01f, 0.002f);
+        bank = GameObject.FindGameObjectWithTag("Bank"); 
+        moneyManager = bank.GetComponent<MoneyManager>();
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
     void Update()
     {
         soil = GameObject.FindGameObjectWithTag("MovedSoil");
-        bank = GameObject.FindGameObjectWithTag("Bank");
+        moneyBalance = moneyManager.myBalance.moneyBalance;
     }
 
     // Function Scale Plant GameObject to imitate Growth;
@@ -30,7 +34,7 @@ public class GrowPlant : MonoBehaviour
         {
             plant = soil.transform.Find("Plant").gameObject;
 
-            targetScale = new Vector3(plant.GetComponent<ObjectCharacteristics>().valueTarget[0], plant.GetComponent<ObjectCharacteristics>().valueTarget[1], plant.GetComponent<ObjectCharacteristics>().valueTarget[2]);
+            targetScale = new UnityEngine.Vector3(plant.GetComponent<ObjectCharacteristics>().valueTarget[0], plant.GetComponent<ObjectCharacteristics>().valueTarget[1], plant.GetComponent<ObjectCharacteristics>().valueTarget[2]);
             if (plant.GetComponent<ManagerLogic>().haveManager == false)
             {
                 plant.transform.localScale += TouchCount * (scaleValue * multiplyer);
@@ -41,14 +45,19 @@ public class GrowPlant : MonoBehaviour
     // Upgrading Plant to earn more on every sold flower.
     public void UpgradePlant()
     {
+  
+        PricingSystemPlants pricingSystem = bank.GetComponent<PricingSystemPlants>();
+
         if (soil.GetComponent<PlantCreator>().havePlant == true)
         {
             plant = soil.transform.Find("Plant").gameObject;
-            if (bank.GetComponent<MoneyManager>().myBalance.moneyBalance >= bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId])
-            {
-                bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().objectPrice[plant.GetComponent<ObjectCharacteristics>().myId]);
+            ObjectCharacteristics objectCharacteristics = plant.GetComponent<ObjectCharacteristics>();
 
-                bank.GetComponent<PricingSystemPlants>().UpdateIncomeValue(plant.GetComponent<ObjectCharacteristics>().myId);
+            if (moneyManager.myBalance.moneyBalance >= pricingSystem.objectPrice[objectCharacteristics.myId])
+            {
+                pricingSystem.UpdateIncomeValue(objectCharacteristics.myId);
+
+                saveManager.SaveMoneyBalance();
             }
         }
     }

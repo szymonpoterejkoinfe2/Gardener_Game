@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 0
-  valueTarget: []
+  valueTarget: {x: 1, y: 20, z: 1}
   myName: DecorationMushroom
   uniqueId: cbbc22c8-7977-44d1-a4a3-faff1a7812f1
 --- !u!114 &2288197556039859281
@@ -1248,32 +1248,32 @@ PrefabInstance:
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.100237496
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2826691
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.12788834
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35933337
+      value: -0.364
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24599999
+      value: 0.211
       objectReference: {fileID: 0}
     - target: {fileID: 8672003455025937042, guid: aa0ba387f794005419a74fdfff3da4df,
         type: 3}

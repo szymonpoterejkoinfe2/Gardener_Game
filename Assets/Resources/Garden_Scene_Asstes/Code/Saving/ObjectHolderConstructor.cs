@@ -27,11 +27,13 @@ public class ObjectHolderConstructor : MonoBehaviour
     {
         public string uniqID;
         public int objectID;
+        public Quaternion objectRotation;
 
-        public ObjectHolderObj(string id, int myObject)
+        public ObjectHolderObj(string id, int myObject, Quaternion myRotation)
         {
             uniqID = id;
             objectID = myObject;
+            objectRotation = myRotation;
         }
     }
 
@@ -98,7 +100,7 @@ public class ObjectHolderConstructor : MonoBehaviour
                 PlaceObject generator = occHolder.transform.GetComponentInParent<PlaceObject>();
                 if (holder.uniqueId == objHolder.uniqID)
                 {
-                  generator.CreateFromSave(objHolder.objectID, holder.gameObject);
+                  generator.CreateFromSave(objHolder.objectID, holder.gameObject, objHolder.objectRotation);
                   holder.haveObject = true;
 
                 }

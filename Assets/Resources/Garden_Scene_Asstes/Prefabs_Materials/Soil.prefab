@@ -5348,7 +5348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingCreatures:
-  - {fileID: 2399132936323041408, guid: 163c20f4ce7978742831db055c32ef25, type: 3}
+  - {fileID: 7571413959726296038, guid: 779a54291b8224748a658a908aab2087, type: 3}
+  - {fileID: 7571413959726296038, guid: 3c726ebd3542190488f94ea67ced6201, type: 3}
   creaturesQuantity: 0000000000000000
 --- !u!114 &1208913271034071110
 MonoBehaviour:
@@ -5363,7 +5364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 0
-  valueTarget: []
+  valueTarget: {x: 0, y: 0, z: 0}
   myName: Soli
   uniqueId: 
 --- !u!1 &8976106382474153562
@@ -5507,6 +5508,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
@@ -5954,6 +5970,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -6399,6 +6430,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
@@ -6846,6 +6892,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -7291,6 +7352,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
@@ -7738,6 +7814,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -8184,6 +8275,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -8629,6 +8735,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5835875689232188335}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077309967670970256, guid: fdc2cadd25e2cec49a761e60bb50accb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3742083093593928304, guid: fdc2cadd25e2cec49a761e60bb50accb,
         type: 3}

@@ -102,10 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 1
-  valueTarget:
-  - 0.4
-  - 2
-  - 0.4
+  valueTarget: {x: 0.1, y: 0.2, z: 0.1}
   myName: Flower
   uniqueId: dcfde232-59ba-472b-ae6e-d53becfd151e
 --- !u!114 &9075248417037071586

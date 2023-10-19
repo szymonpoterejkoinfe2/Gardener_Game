@@ -12,7 +12,7 @@ public class PlantGrown : MonoBehaviour
     void Start()
     {
         beginScale = new Vector3(0.00001f, 0.00001f, 0.00001f);
-        xTargetScale = gameObject.GetComponent<ObjectCharacteristics>().valueTarget[0];
+        xTargetScale = gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x;
         saveManager = GameObject.FindObjectOfType<SaveSystem>();
         bank = GameObject.FindGameObjectWithTag("Bank");
     }

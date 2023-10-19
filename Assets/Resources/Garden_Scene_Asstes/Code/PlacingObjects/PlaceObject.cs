@@ -125,8 +125,9 @@ public class PlaceObject : MonoBehaviour
                 new_object.tag = "NewObject";
 
                 new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
-                new_object.transform.localScale = new UnityEngine.Vector3(0.6f, 20, 0.6f);
-                
+                new_object.transform.localScale = new_object.GetComponent<ObjectCharacteristics>().valueTarget;
+
+
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = new_object.GetComponent<ObjectCharacteristics>().myId;
 
@@ -140,7 +141,7 @@ public class PlaceObject : MonoBehaviour
     }
 
     //Generating Object From Save File
-    public void CreateFromSave(int objId, GameObject tID)
+    public void CreateFromSave(int objId, GameObject tID, Quaternion rotation)
     {
         GameObject new_object;
 
@@ -150,7 +151,25 @@ public class PlaceObject : MonoBehaviour
         new_object.tag = "PlayerObject";
 
         new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
-        new_object.transform.localScale = new UnityEngine.Vector3(1f, 20, 1f);
+        new_object.transform.localScale = new_object.transform.localScale = new_object.GetComponent<ObjectCharacteristics>().valueTarget;
+
+        new_object.transform.rotation = rotation;
+    }
+
+    //Rotation of created object
+    public void RotateObject()
+    {
+        GameObject old_object;
+        old_object = GameObject.FindGameObjectWithTag("NewObject");
+
+        // Get the current rotation of the object
+        Quaternion currentRotation = old_object.transform.rotation;
+
+        // Increment the rotation by 90 degrees around the Y axis
+        Quaternion newRotation = Quaternion.Euler(0, 90, 0) * currentRotation;
+
+        // Set the new rotation for the object
+        old_object.transform.rotation = newRotation;
     }
 
 
