@@ -33,6 +33,15 @@ public class PricingSystemPlants : MonoBehaviour
         objectUpgradeCost[1] = 60;
         objectMenagerCost[1] = 450;
         objectMenagerUpgradeCost[1] = 400;
+
+        // #3 Plant
+        objectPrice[2] = 250;
+        objectDestructionReturn[2] = 55;
+        objectGrownIncome[2] = 70;
+        objectUpgradeCost[2] = 160;
+        objectMenagerCost[2] = 1050;
+        objectMenagerUpgradeCost[2] = 700;
+
     }
 
 

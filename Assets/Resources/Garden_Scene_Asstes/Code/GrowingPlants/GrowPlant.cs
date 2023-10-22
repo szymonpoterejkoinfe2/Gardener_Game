@@ -16,7 +16,7 @@ public class GrowPlant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scaleValue = new UnityEngine.Vector3(0.002f, 0.01f, 0.002f);
+        scaleValue = new UnityEngine.Vector3(0.0002f, 0.001f, 0.0002f);
         bank = GameObject.FindGameObjectWithTag("Bank"); 
         moneyManager = bank.GetComponent<MoneyManager>();
         saveManager = GameObject.FindObjectOfType<SaveSystem>();

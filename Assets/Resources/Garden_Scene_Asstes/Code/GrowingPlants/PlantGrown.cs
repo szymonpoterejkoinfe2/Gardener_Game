@@ -11,7 +11,7 @@ public class PlantGrown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beginScale = new Vector3(0.00001f, 0.00001f, 0.00001f);
+        beginScale = new Vector3(0.0000001f, 0.0000001f, 0.0000001f);
         xTargetScale = gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x;
         saveManager = GameObject.FindObjectOfType<SaveSystem>();
         bank = GameObject.FindGameObjectWithTag("Bank");

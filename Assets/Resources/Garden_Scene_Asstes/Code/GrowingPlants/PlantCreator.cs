@@ -43,7 +43,7 @@ public class PlantCreator : MonoBehaviour
             new_plant.name = "Plant";
             new_plant.tag = "Plant";
             new_plant.transform.localPosition = new UnityEngine.Vector3(0, 0.5f, 0);
-            new_plant.transform.localScale = new UnityEngine.Vector3(0.00001f, 0.00001f, 0.00001f);
+            new_plant.transform.localScale = new UnityEngine.Vector3(0.0000001f, 0.0000001f, 0.0000001f);
             havePlant = true;
             Debug.Log(PlantId);
             plantId = PlantId;
