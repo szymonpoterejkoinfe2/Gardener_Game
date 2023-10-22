@@ -31,7 +31,7 @@ public class CameraAndTileManager : MonoBehaviour
         CameraTwo.SetActive(true);
         CameraTwoAnimator.Play("CameraTwoFadeIn");
         NavigationButtons.SetActive(true);
-        GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().ShowSlider();
+       // GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().ShowSlider();
     }
 
     // function to switch to camera one
@@ -45,7 +45,7 @@ public class CameraAndTileManager : MonoBehaviour
         NavigationButtons.SetActive(false);
         rotation.speed = 2;
         ResetSoilTile(Soil);
-        GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().HideSlider();
+        //GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().HideSlider();
     }
 
     // fuinction to Change Soil Tile position to scene of clickig gameplay

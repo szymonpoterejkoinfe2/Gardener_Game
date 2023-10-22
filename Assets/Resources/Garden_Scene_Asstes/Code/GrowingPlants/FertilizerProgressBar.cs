@@ -7,8 +7,8 @@ using TMPro;
 public class FertilizerProgressBar : MonoBehaviour
 {
     public TextMeshProUGUI timeLeft;
-    public Slider slider;
-    public GameObject textToHide;
+    //public Slider slider;
+    //public GameObject textToHide;
 
     [SerializeField] private float timeToWait;
     private bool timerStart;
@@ -17,21 +17,21 @@ public class FertilizerProgressBar : MonoBehaviour
     // Hiding Slider & text
     private void Awake()
     {
-        textToHide.SetActive(false);
-        gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
+        //textToHide.SetActive(false);
+        //gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
     }
 
     //Function to start Timer of fertilization
     public void StartTimer(ulong SecondsToWait)
     {
         
-        gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-        textToHide.SetActive(true);
+        //gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        //textToHide.SetActive(true);
         
         timeToWait = (float)SecondsToWait;
        
-        slider.maxValue = timeToWait;
-        slider.value = timeToWait;
+        //slider.maxValue = timeToWait;
+        //slider.value = timeToWait;
         timerStart = true;
     }
 
@@ -50,14 +50,14 @@ public class FertilizerProgressBar : MonoBehaviour
             if (time < 0)
             {
                 timerStart = false;
-                gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
-                textToHide.SetActive(false);
+                //gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
+                //textToHide.SetActive(false);
             }
 
             if (timerStart == true)
             {
                 timeLeft.text = textTime;
-                slider.value = time;
+                //slider.value = time;
             }
         }
     }

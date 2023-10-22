@@ -33,7 +33,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public TextMeshProUGUI balanceDisplay;
+    public TextMeshProUGUI balanceDisplay, prefixDisplay;
     public MoneyBalance  myBalance;
 
     public MoneyManager()
@@ -61,57 +61,68 @@ public class MoneyManager : MonoBehaviour
     {
         if (moneyToDisplay < 1000)
         {
-            displayingText.text = moneyToDisplay.ToString() + "$";
+            displayingText.text = moneyToDisplay.ToString();
+            prefixDisplay.text = " ";
         }
         else if (moneyToDisplay >= 1000 && moneyToDisplay < 1000000)
         {
             double moneyDecimal = (double)(moneyToDisplay / 100) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Thousand $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Thousand";
         }
         else if (moneyToDisplay >= 1000000 && moneyToDisplay < 1000000000)
         {
             double moneyDecimal = (double)(moneyToDisplay / 100000) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Milion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Milion";
         }
         else if (moneyToDisplay >= 1000000000 && moneyToDisplay < 1000000000000)
         {
             double moneyDecimal = (double)(moneyToDisplay / 10000000) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Billion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = " Billion $";
         }
         else if (moneyToDisplay >= 1000000000000 && moneyToDisplay < 1000000000000000)
         {
             double moneyDecimal = (double)(moneyToDisplay / 100000000000) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Trillion	$";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Trillion";
         }
         else if (moneyToDisplay >= 1000000000000000 && moneyToDisplay < 1000000000000000000)
         {
             double moneyDecimal = (double)(moneyToDisplay / 100000000000000) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Quadrillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Quadrillion";
         }
         else if (moneyToDisplay >= 1000000000000000000 && moneyToDisplay < BigInteger.Parse("1000000000000000000000")) 
         {
             double moneyDecimal = (double)(moneyToDisplay / 100000000000000000) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Quintillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Quintillion";
         }
         else if (moneyToDisplay >= BigInteger.Parse("1000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000"))
         {
             double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000"))/10.0;
-            displayingText.text = moneyDecimal.ToString() + " Sextillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Sextillion";
         }
         else if (moneyToDisplay >= BigInteger.Parse(" 1000000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000000"))
         {
             double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000"))/10.0;
-            displayingText.text = moneyDecimal.ToString() + " Septillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Septillion";
         }
         else if (moneyToDisplay >= BigInteger.Parse("1000000000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000000000"))
         {
             double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000000")) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Octillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Octillion";
         }
         else if (moneyToDisplay >= BigInteger.Parse("1000000000000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000000000000"))
         {
             double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000000000")) / 10.0;
-            displayingText.text = moneyDecimal.ToString() + " Nonillion $";
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Nonillion";
         }
     }
 

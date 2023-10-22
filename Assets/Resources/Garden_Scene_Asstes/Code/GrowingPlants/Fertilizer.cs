@@ -10,8 +10,7 @@ public class Fertilizer : MonoBehaviour
     // Starting work of fertilizer 
     public void Fertilise(ulong SecondsToWait, ulong multiplicator)
     {
-        Debug.Log("Fertilizer");
-        timerSlider = GameObject.FindGameObjectWithTag("Slider");
+        timerSlider = GameObject.FindGameObjectWithTag("Fertilizer");
 
         Multiplicator = multiplicator;
 
