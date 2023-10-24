@@ -23,6 +23,8 @@ TagManager:
   - CoverDestroyer
   - SoilTileConstructor
   - Fertilizer
+  - HydrationText
+  - PlantSlider
   layers:
   - Default
   - TransparentFX

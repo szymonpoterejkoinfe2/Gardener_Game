@@ -10976,7 +10976,7 @@ GameObject:
   - component: {fileID: 412220705}
   m_Layer: 5
   m_Name: PlantSlider
-  m_TagString: Untagged
+  m_TagString: PlantSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12163,6 +12163,7 @@ GameObject:
   - component: {fileID: 493905919}
   - component: {fileID: 493905921}
   - component: {fileID: 493905920}
+  - component: {fileID: 493905922}
   m_Layer: 5
   m_Name: PlantProgressBar
   m_TagString: Untagged
@@ -12229,6 +12230,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493905918}
   m_CullTransparentMesh: 1
+--- !u!114 &493905922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493905918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f3ece6f1f40bf4ea50a036648f1641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressSlider: {fileID: 412220705}
 --- !u!1001 &498980678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28014,7 +28028,7 @@ GameObject:
   - component: {fileID: 1209462652}
   m_Layer: 5
   m_Name: WaterText
-  m_TagString: Untagged
+  m_TagString: HydrationText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
