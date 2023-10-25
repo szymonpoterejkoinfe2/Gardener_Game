@@ -8,18 +8,27 @@ public class CameraAndTileManager : MonoBehaviour
     public GameObject CameraOne;
     public GameObject CameraTwo;
     public GameObject ShopMenu;
-    public GameObject NavigationButtons;
+    public GameObject NavigationButtons, shopButton, moveButton, leaderButton, exitButton, moneyBalance, hydrationTimer, fertilizerTimer, plantSlider;
     public GameObject[] Faders;
     public Rotation rotation;
     public Vector3 PositionMemory;
     public Animator CameraOneAnimator, CameraTwoAnimator;
-    
+
     //Deactivating object on awake
     private void Awake()
     {
         CameraTwo.SetActive(false);
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(false);
+        shopButton.SetActive(false);
+        moveButton.SetActive(false);
+        leaderButton.SetActive(true);
+        exitButton.SetActive(true);
+        hydrationTimer.SetActive(false);
+        fertilizerTimer.SetActive(false);
+        plantSlider.SetActive(false);
+        moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
     }
 
 
@@ -31,7 +40,16 @@ public class CameraAndTileManager : MonoBehaviour
         CameraTwo.SetActive(true);
         CameraTwoAnimator.Play("CameraTwoFadeIn");
         NavigationButtons.SetActive(true);
-       // GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().ShowSlider();
+        shopButton.SetActive(true);
+        moveButton.SetActive(true);
+        hydrationTimer.SetActive(true);
+        fertilizerTimer.SetActive(true);
+        plantSlider.SetActive(true);
+        leaderButton.SetActive(false);
+        exitButton.SetActive(false);
+        moneyBalance.transform.localScale = new Vector3(1f, 1f, 1f);
+        moneyBalance.transform.localPosition = new Vector3(0, -45, 0);
+        // GameObject.FindGameObjectWithTag("Hydration").GetComponnt<HydrationSliderStatus>().ShowSlider();
     }
 
     // function to switch to camera one
@@ -43,6 +61,15 @@ public class CameraAndTileManager : MonoBehaviour
         CameraTwo.SetActive(false);
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(false);
+        shopButton.SetActive(false);
+        moveButton.SetActive(false);
+        hydrationTimer.SetActive(false);
+        fertilizerTimer.SetActive(false);
+        plantSlider.SetActive(false);
+        leaderButton.SetActive(true);
+        exitButton.SetActive(true);
+        moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
         rotation.speed = 2;
         ResetSoilTile(Soil);
         //GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().HideSlider();
@@ -84,8 +111,13 @@ public class CameraAndTileManager : MonoBehaviour
     //Function to deactivate ShoppingMenu
     public void DeActivateShopMenu()
     {
-        
+
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
