@@ -18496,7 +18496,7 @@ Camera:
   far clip plane: 1100
   field of view: 60
   orthographic: 1
-  orthographic size: 70
+  orthographic size: 95
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18541,11 +18541,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomMin: 20
-  ZoomMax: 75
+  ZoomMax: 95
   Speed: 0.07
   canMoveCamera: 1
-  rangeMin: {x: -15, y: 20, z: -70}
-  rangeMax: {x: 20, y: 80, z: -70}
+  rangeMin: {x: -15, y: 30, z: -100}
+  rangeMax: {x: 20, y: 80, z: -100}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35410,7 +35410,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.5
+  orthographic size: 9
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -37030,8 +37030,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288878160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8, y: -39.4, z: 70.2}
-  m_LocalScale: {x: 3, y: 5, z: 1}
+  m_LocalPosition: {x: -1.8, y: -23, z: 70.2}
+  m_LocalScale: {x: 4, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
