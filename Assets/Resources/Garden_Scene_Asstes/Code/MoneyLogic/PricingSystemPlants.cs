@@ -5,76 +5,98 @@ using System.Numerics;
 
 public class PricingSystemPlants : MonoBehaviour
 {
-    public BigInteger[] objectPrice = {0,0,0,0,0};
-    public BigInteger[] objectDestructionReturn = { 0, 0, 0, 0, 0 };
-    public BigInteger[] objectGrownIncome = { 0, 0, 0, 0, 0 };
-    public BigInteger[] objectUpgradeCost = { 0, 0, 0, 0, 0 };
-    public BigInteger[] objectMenagerCost = { 0, 0, 0, 0, 0 };
-    public BigInteger[] objectMenagerUpgradeCost = { 0, 0, 0, 0, 0 };
-    public MoneyManager moneyManager;
-
-    // Declaring ObjectPricing
-    private void Start()
+   
+    public class PlantPrices
     {
-       
+        public BigInteger[] objectPrice = { 15, 80, 250, 0, 0 };
+        public BigInteger[] objectDestructionReturn = { 5, 50, 120, 0, 0 };
+        public BigInteger[] objectGrownIncome = { 2, 15, 30, 0, 0 };
+        public BigInteger[] objectUpgradeCost = { 25, 60, 100, 0, 0 };
+        public BigInteger[] objectMenagerCost = { 150, 450, 1050, 0, 0 };
+        public BigInteger[] objectMenagerUpgradeCost = { 180, 300, 700, 0, 0 };
+        MoneyManager moneyManager;
 
-        // #1 Plant
-        objectPrice[0] = 15;
-        objectDestructionReturn[0] = 5;
-        objectGrownIncome[0] = 7;
-        objectUpgradeCost[0] = 25;
-        objectMenagerCost[0] = 150;
-        objectMenagerUpgradeCost[0] = 180;
-
-        // #2 Plant
-        objectPrice[1] = 80;
-        objectDestructionReturn[1] = 55;
-        objectGrownIncome[1] = 30;
-        objectUpgradeCost[1] = 60;
-        objectMenagerCost[1] = 450;
-        objectMenagerUpgradeCost[1] = 400;
-
-        // #3 Plant
-        objectPrice[2] = 250;
-        objectDestructionReturn[2] = 55;
-        objectGrownIncome[2] = 70;
-        objectUpgradeCost[2] = 160;
-        objectMenagerCost[2] = 1050;
-        objectMenagerUpgradeCost[2] = 700;
-
-    }
-
-
-    //Changing money reward from fully grown plant
-    public void UpdateIncomeValue(int objectId)
-    {
-        moneyManager = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>();
-        if (moneyManager.myBalance.moneyBalance >= objectUpgradeCost[objectId])
+        public PlantPrices() { }
+        public PlantPrices(BigInteger[] objPrice, BigInteger[] objDestRet, BigInteger[] objInc, BigInteger[] objUpg, BigInteger[] mngCos, BigInteger[] mngUpg)
         {
-
-            //Updating Profit from growing Plant
-            BigInteger IncreaseUpdate, IncreaseIncome;
-            IncreaseIncome = (objectPrice[objectId] / 8);
-            objectGrownIncome[objectId] += IncreaseIncome;
-
-            moneyManager.myBalance.DecrementBalance(objectUpgradeCost[objectId]);
-
-            //Updating Cost of Upgrade
-            IncreaseUpdate = ((objectUpgradeCost[objectId] / 3));
-            objectUpgradeCost[objectId] += IncreaseUpdate;
-
+            objectPrice = objPrice;
+            objectDestructionReturn = objDestRet;
+            objectGrownIncome = objInc;
+            objectUpgradeCost = objUpg;
+            objectMenagerCost = mngCos;
+            objectMenagerUpgradeCost = mngUpg;
         }
 
-        
+        // Object price geter
+        public BigInteger GetObjPrice(int id)
+        {
+            return objectPrice[id];
+        }
+        // Object destruction return geter
+        public BigInteger GetObjDstructionReturn(int id)
+        {
+            return objectDestructionReturn[id];
+        }
+        // Object grown income geter
+        public BigInteger GetObjGrownIncome(int id)
+        {
+            return objectGrownIncome[id];
+        }
+        // Object upgrade cost geter
+        public BigInteger GetObjUpgradeCost(int id)
+        {
+            return objectUpgradeCost[id];
+        }
+        // Object menager income geter
+        public BigInteger GetObjMenagerCost(int id)
+        {
+            return objectMenagerCost[id];
+        }
+        // Object menager upgrade cost
+        public BigInteger GetObjMenagerUpgradeCost(int id)
+        {
+            return objectMenagerUpgradeCost[id];
+        }
+
+        //Changing money reward from fully grown plant
+        public void UpdateIncomeValue(int objectId)
+        {
+            moneyManager = GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>();
+            if (moneyManager.myBalance.moneyBalance >= objectUpgradeCost[objectId])
+            {
+
+                //Updating Profit from growing Plant
+                BigInteger IncreaseUpdate, IncreaseIncome;
+                IncreaseIncome = (objectPrice[objectId] / 8);
+                objectGrownIncome[objectId] += IncreaseIncome;
+
+                moneyManager.myBalance.DecrementBalance(objectUpgradeCost[objectId]);
+
+                //Updating Cost of Upgrade
+                IncreaseUpdate = ((objectUpgradeCost[objectId] / 3));
+                objectUpgradeCost[objectId] += IncreaseUpdate;
+            }
+        }
+        // Changing Price of upgrade for manager
+        public void UpdateManagerCost(int objectId)
+        {
+            //updating price of manager after upgrade 
+            BigInteger IncreaseUpdate;
+            IncreaseUpdate = (objectMenagerUpgradeCost[objectId] / 3);
+            objectMenagerUpgradeCost[objectId] += IncreaseUpdate;
+        }
     }
 
-    // Changing Price of upgrade for manager
-    public void UpdateManagerCost(int objectId)
+    public PlantPrices plantPrices;
+
+    public PricingSystemPlants()
     {
-        //updating price of manager after upgrade 
-        BigInteger IncreaseUpdate;
-        IncreaseUpdate = ((objectMenagerUpgradeCost[objectId] / 10) * 3);
-        objectMenagerUpgradeCost[objectId] += (BigInteger)(objectMenagerUpgradeCost[objectId] * IncreaseUpdate);
+        plantPrices = new PlantPrices();
     }
 
+    //Function to load saved prices
+    public void LoadData(PlantPrices savedPrices)
+    {
+        plantPrices = savedPrices;
+    }
 }

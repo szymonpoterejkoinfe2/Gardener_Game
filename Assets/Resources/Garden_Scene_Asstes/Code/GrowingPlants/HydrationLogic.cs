@@ -11,7 +11,7 @@ public class HydrationLogic : MonoBehaviour
     [SerializeField] private float hydratedTime;
     private bool timerStart;
     public ulong timeLeft = 0;
-    
+
 
     //Function to start Timer of fertilization
     public void StartHydration(ulong SecondsToWait)
@@ -23,20 +23,11 @@ public class HydrationLogic : MonoBehaviour
         timerStart = true;
         hydrated = true;
     }
-    void Start()
-    {
-        TextMeshProUGUI timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
-        string textTime = string.Format("{0:0}:{1:00}", 0, 0);
-        timeLeftText.text = textTime;
-    }
-
- 
 
     // Couting down time
     void Update()
     {
-        TextMeshProUGUI timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
-
+        TextMeshProUGUI timeLeftText;
 
         if (timerStart)
         {
@@ -46,6 +37,7 @@ public class HydrationLogic : MonoBehaviour
 
             if (gameObject.tag == "MovedSoil")
             {
+                timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
                 int minutes = Mathf.FloorToInt(time / 60);
                 int secounds = Mathf.FloorToInt(time - minutes * 60f);
 
@@ -63,15 +55,18 @@ public class HydrationLogic : MonoBehaviour
 
             }
 
-            if (timerStart == true && gameObject.tag == "MovedSoil")
-            {
-                //slider = GameObject.FindGameObjectWithTag("Hydration").GetComponent<Slider>();
-                //slider.value = time;
-            }
 
 
         }
+        else {
 
+            if (gameObject.tag == "MovedSoil")
+            {
+                timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
+                string textTime = string.Format("{0:0}:{1:00}", 0, 0);
+                timeLeftText.text = textTime;
+            }
+        }
     
         
     }

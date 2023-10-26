@@ -28,7 +28,7 @@ public class PlantGrown : MonoBehaviour
         {
             //Debug.Log("KONIEC KWIAT");
 
-            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
+            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
             gameObject.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
 

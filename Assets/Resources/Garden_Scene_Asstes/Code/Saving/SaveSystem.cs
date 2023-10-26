@@ -15,6 +15,8 @@ public class SaveSystem : MonoBehaviour
     private ObjectHolderConstructor objectHolderConstructor;
     private DecorationFlyingConstructor decorationFlyingConstructor;
     private DecorationFlyingConstructor.TileDecorationList tileDecorationList;
+    private PricingSystemPlants.PlantPrices plantPrices;
+    
     GameObject soilTIleObject;
 
     // Start is called before the first frame update
@@ -48,7 +50,7 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //Finction to save all SoilTiles
+    //Function to save all SoilTiles
     public void SaveSoil()
     {
         SaveTiles();
@@ -60,6 +62,17 @@ public class SaveSystem : MonoBehaviour
 
         soilTileConstructor.myOccupiedTiles.occupiedTiles.Clear();
 
+    }
+
+    //Function to save plant/upgrade/manager prices
+    public void SavePlantPricing()
+    {
+        plantPrices = GameObject.FindGameObjectWithTag("Bank").GetComponent<PricingSystemPlants>().plantPrices;
+
+        if (DataService.SaveData("/plantPrice.json", plantPrices, EncryptionEnabled))
+        {
+            Debug.Log("Saved");
+        }
     }
 
     //Function to save all ObjectHolders
@@ -191,6 +204,16 @@ public class SaveSystem : MonoBehaviour
         {
             MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("Bank").GetComponent<MoneyManager>().LoadData(savedBalance);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
+        try
+        {
+            PricingSystemPlants.PlantPrices savedPrices = DataService.LoadData<PricingSystemPlants.PlantPrices>("/plantPrice.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("Bank").GetComponent<PricingSystemPlants>().LoadData(savedPrices);
         }
         catch (System.Exception e)
         {

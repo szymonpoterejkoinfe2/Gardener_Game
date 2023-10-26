@@ -31,7 +31,7 @@ public class PlantCreator : MonoBehaviour
     // Function which Generates new plant game object based on plants prefabs.
     public void Generate_Plant(int PlantId, bool save)
     {
-        price = bank.GetComponent<PricingSystemPlants>().objectPrice[plants[PlantId].GetComponent<ObjectCharacteristics>().myId];
+        price = bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(plants[PlantId].GetComponent<ObjectCharacteristics>().myId);
         if (!havePlant && ballance >= price || save && !havePlant)
         {
             if (!save)

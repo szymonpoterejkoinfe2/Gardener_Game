@@ -17,13 +17,13 @@ public class ManagerLogic : MonoBehaviour
     {
         haveManager = true;
         StartCoroutine(GrowWithManager());
-        
     }
 
     // Changing UpgradeTime
     public void UpgradeManager()
     {
         growTime = (growTime * 0.95f);
+        saveManager.SavePlantPricing();
     }
 
     private void Awake()
@@ -47,7 +47,7 @@ public class ManagerLogic : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
-            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().objectGrownIncome[gameObject.GetComponent<ObjectCharacteristics>().myId] * gameObject.GetComponent<Fertilizer>().Multiplicator);
+            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
             saveManager.SaveMoneyBalance();
             timer = 0;
 

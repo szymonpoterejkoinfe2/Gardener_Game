@@ -43,7 +43,7 @@ public class PlantDestroyer : MonoBehaviour
                     if (holdDuration <= 0 && (ballance >= 15))
                     {
                         buttons.SetActive(true);
-                        refund = bank.GetComponent<PricingSystemPlants>().objectDestructionReturn[plant.GetComponent<ObjectCharacteristics>().myId];
+                        refund = bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjDstructionReturn(plant.GetComponent<ObjectCharacteristics>().myId);
                     }
                 }
             }

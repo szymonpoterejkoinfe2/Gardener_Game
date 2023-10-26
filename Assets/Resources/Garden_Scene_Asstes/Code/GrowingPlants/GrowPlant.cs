@@ -52,9 +52,9 @@ public class GrowPlant : MonoBehaviour
         {
             plant = soil.transform.Find("Plant").gameObject;
             ObjectCharacteristics objectCharacteristics = plant.GetComponent<ObjectCharacteristics>();
-            pricingSystem.UpdateIncomeValue(objectCharacteristics.myId);
+            pricingSystem.plantPrices.UpdateIncomeValue(objectCharacteristics.myId);
             saveManager.SaveMoneyBalance();
-            
+            saveManager.SavePlantPricing();
         }
     }
 
