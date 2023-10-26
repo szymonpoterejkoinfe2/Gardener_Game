@@ -12,3 +12,7 @@ Game still in progress...
 ![ezgif-3-94a7c7cb1c](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/69c2c3de-8a69-4f49-b34c-3db012ecbfce) ![ezgif-3-66176b7073](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/1d30e8d0-d78a-4369-a66a-dbe3eff7ba20)
 
 ![ezgif-3-a62077288b](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/8ad6bc81-162f-487f-afa7-e1a063e6da48)
+
+![Przechwytywanie](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/9440efc1-389a-4a2e-8f90-14ce873975ca)
+![Przechwytywanie1](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/e14e6a7e-798d-4914-90dc-70c5e43a87dd)
+
