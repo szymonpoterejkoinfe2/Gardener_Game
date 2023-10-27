@@ -8,7 +8,7 @@ public class PlantCreator : MonoBehaviour
     public GameObject[] plants;
     public bool havePlant = false;
     public float fixedScale = 0;
-    //public GameObject parent;
+    public GameObject plantSlider;
     private GameObject bank, growPlant;
     BigInteger ballance, price;
     public int plantId;
@@ -18,7 +18,7 @@ public class PlantCreator : MonoBehaviour
     private void Start()
     {
         saveManager = GameObject.FindObjectOfType<SaveSystem>();
-
+        
     }
     void Update()
     {
@@ -31,12 +31,15 @@ public class PlantCreator : MonoBehaviour
     // Function which Generates new plant game object based on plants prefabs.
     public void Generate_Plant(int PlantId, bool save)
     {
+
         price = bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(plants[PlantId].GetComponent<ObjectCharacteristics>().myId);
         if (!havePlant && ballance >= price || save && !havePlant)
         {
+            
             if (!save)
             {
                 bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(price);
+                plantSlider.SetActive(true);
             }
             gameObject.GetComponent<HydrationLogic>().StartHydration(120);
             GameObject new_plant = Instantiate(plants[PlantId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform);

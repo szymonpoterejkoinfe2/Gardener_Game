@@ -44,11 +44,16 @@ public class CameraAndTileManager : MonoBehaviour
         moveButton.SetActive(true);
         hydrationTimer.SetActive(true);
         fertilizerTimer.SetActive(true);
-        plantSlider.SetActive(true);
         leaderButton.SetActive(false);
         exitButton.SetActive(false);
         moneyBalance.transform.localScale = new Vector3(1f, 1f, 1f);
         moneyBalance.transform.localPosition = new Vector3(0, -45, 0);
+
+        if (GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<PlantCreator>().havePlant)
+        {
+            plantSlider.SetActive(true);
+        }
+
         // GameObject.FindGameObjectWithTag("Hydration").GetComponnt<HydrationSliderStatus>().ShowSlider();
     }
 
@@ -111,7 +116,6 @@ public class CameraAndTileManager : MonoBehaviour
     //Function to deactivate ShoppingMenu
     public void DeActivateShopMenu()
     {
-
         ShopMenu.SetActive(false);
         NavigationButtons.SetActive(true);
     }

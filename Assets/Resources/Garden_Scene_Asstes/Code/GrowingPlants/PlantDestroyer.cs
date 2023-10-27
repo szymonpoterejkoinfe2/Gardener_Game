@@ -30,13 +30,14 @@ public class PlantDestroyer : MonoBehaviour
         {
             Touch t = Input.GetTouch(0);
             UnityEngine.Vector3 touchPos = t.position;
-
+            
             Ray ray = Camera.main.ScreenPointToRay(touchPos);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.name == "Plant" && t.phase == TouchPhase.Stationary)
                 {
+                    Debug.Log("Touch duration");
                     float remainingDuration = holdDuration -= Time.deltaTime;
                     plant = hit.transform.gameObject;
                     tile = plant.transform.parent.gameObject;
