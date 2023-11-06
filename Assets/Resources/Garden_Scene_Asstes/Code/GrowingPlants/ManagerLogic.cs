@@ -13,9 +13,10 @@ public class ManagerLogic : MonoBehaviour
     private GameObject bank;
 
     // Beginning of Scailing Coroutine
-    public void StartGrowing()
+    public void StartGrowing(float timeFertilization)
     {
         haveManager = true;
+        growTime = timeFertilization;
         StartCoroutine(GrowWithManager());
     }
 
@@ -34,12 +35,12 @@ public class ManagerLogic : MonoBehaviour
     // Scaling plant object with time
     private IEnumerator GrowWithManager()
     {
-        cameraObject = GameObject.Find("Camera");
+
         Vector3 StartScale = new Vector3(0f, 0f, 0f);
         Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.y), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.z));
         bank = GameObject.FindGameObjectWithTag("Bank");
 
-        while (haveManager)
+        while (haveManager && gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
         {
             while (timer <= growTime)
             {
@@ -49,6 +50,10 @@ public class ManagerLogic : MonoBehaviour
             }
             bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
             saveManager.SaveMoneyBalance();
+            if (growTime > 0.5f)
+            {
+                gameObject.GetComponent<PlantGrown>().PlayParticle();
+            }
             timer = 0;
 
         }

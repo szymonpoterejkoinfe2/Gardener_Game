@@ -102,13 +102,13 @@ public class ShopMenu : MonoBehaviour
 
 
     //Buying Plant Growing Manager 
-    public void GrowWithPlantManager()
+    public void GrowWithPlantManager(float time)
     {
 
         if (soilTile.GetComponent<PlantCreator>().havePlant == true &&  bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(plant.GetComponent<ObjectCharacteristics>().myId) <= balance && plant.GetComponent<ManagerLogic>().haveManager == false)
         {
            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(plant.GetComponent<ObjectCharacteristics>().myId));
-           plant.GetComponent<ManagerLogic>().StartGrowing();
+           plant.GetComponent<ManagerLogic>().StartGrowing(time);
 
             saveManager.SaveSoil();
             saveManager.SavePlantPricing();

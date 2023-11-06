@@ -30,11 +30,17 @@ public class PlantGrown : MonoBehaviour
 
             bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
 
-            gameObject.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
+            PlayParticle();
 
             gameObject.transform.localScale = beginScale;
 
             saveManager.SaveMoneyBalance();
         }
     }
+
+    public void PlayParticle()
+    {
+        gameObject.transform.parent.transform.Find("Leafs").gameObject.GetComponent<ParticleSystem>().Play();
+    }
+
 }

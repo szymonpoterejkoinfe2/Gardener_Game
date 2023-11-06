@@ -153,7 +153,7 @@ public class SaveSystem : MonoBehaviour
             PlantCreator creator = occtile.GetComponent<PlantCreator>();
             if (creator.havePlant == true)
             {
-               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager);
+               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager, occtile.GetComponentInChildren<ManagerLogic>().growTime);
                 soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
             }
          

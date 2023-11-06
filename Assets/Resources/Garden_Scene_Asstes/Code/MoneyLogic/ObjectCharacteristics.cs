@@ -9,6 +9,7 @@ public class ObjectCharacteristics : MonoBehaviour
         public Vector3 valueTarget;
         public string myName;
         public string uniqueId;
+        public float growMultiplyer;
 
         //Function to generate uniqueId
         [ContextMenu("Generate Id")]

@@ -8,7 +8,7 @@ public class GrowPlant : MonoBehaviour
     GameObject plant, soil, bank;
     ParticleSystem leafs;
     UnityEngine.Vector3 scaleValue, targetScale;
-    public float multiplyer = 1;
+    private float multiplyer = 1;
     MoneyManager moneyManager;
     private SaveSystem saveManager;
     PricingSystemPlants pricingSystem;
@@ -34,7 +34,9 @@ public class GrowPlant : MonoBehaviour
         {
             plant = soil.transform.Find("Plant").gameObject;
 
-            targetScale = new UnityEngine.Vector3(plant.GetComponent<ObjectCharacteristics>().valueTarget[0], plant.GetComponent<ObjectCharacteristics>().valueTarget[1], plant.GetComponent<ObjectCharacteristics>().valueTarget[2]);
+            multiplyer = plant.GetComponent<ObjectCharacteristics>().growMultiplyer;
+
+            targetScale = new UnityEngine.Vector3(plant.GetComponent<ObjectCharacteristics>().valueTarget.x, plant.GetComponent<ObjectCharacteristics>().valueTarget.y, plant.GetComponent<ObjectCharacteristics>().valueTarget.z);
             if (plant.GetComponent<ManagerLogic>().haveManager == false)
             {
                 plant.transform.localScale += TouchCount * (scaleValue * multiplyer);

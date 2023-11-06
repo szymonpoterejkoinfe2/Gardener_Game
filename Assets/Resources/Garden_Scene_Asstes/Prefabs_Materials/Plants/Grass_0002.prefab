@@ -165,3 +165,4 @@ MonoBehaviour:
   valueTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: e579eded-2853-4a5e-9c59-c70d7d5f1d54
+  growMultiplyer: 2

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15760,6 +15760,7 @@ GameObject:
   - component: {fileID: 494367605}
   - component: {fileID: 494367604}
   - component: {fileID: 494367603}
+  - component: {fileID: 494367607}
   m_Layer: 5
   m_Name: BackGround2
   m_TagString: Untagged
@@ -15849,6 +15850,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &494367607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494367602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfaef70be879f48448413be14893a3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &498980678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30378,7 +30391,7 @@ PrefabInstance:
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}
@@ -30399,6 +30412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ShopMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}
@@ -36390,7 +36408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624ab383009a4084c9f3399274346bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplyer: 30
 --- !u!114 &1222774713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40412,7 +40429,7 @@ PrefabInstance:
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}
@@ -40438,6 +40455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1299304738880661061, guid: 82d554d163865ef40b4e2e2e1eacb549,
         type: 3}

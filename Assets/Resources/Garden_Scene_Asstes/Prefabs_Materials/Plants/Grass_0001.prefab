@@ -166,6 +166,7 @@ MonoBehaviour:
   valueTarget: {x: 0.05, y: 0.25, z: 0.05}
   myName: Grass_0001
   uniqueId: aba4b4f5-f20d-464a-94be-f1632a348468
+  growMultiplyer: 1
 --- !u!114 &-5860028810277677669
 MonoBehaviour:
   m_ObjectHideFlags: 0
