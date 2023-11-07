@@ -255,6 +255,15 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
+        try
+        {
+            TimeSave.ExitTime exitTime = DataService.LoadData<TimeSave.ExitTime>("/ExitTime.json", true);
+            gameObject.GetComponent<TimeSave>().LoadTime(exitTime);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
         Debug.Log("Data Loaded");
         
     }
