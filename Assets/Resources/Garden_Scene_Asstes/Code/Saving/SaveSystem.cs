@@ -102,6 +102,16 @@ public class SaveSystem : MonoBehaviour
         decorationFlyingConstructor.myCreatures.decorationList.Clear();
     }
 
+    public void SaveManager()
+    {
+        SaveManagers();
+        if (DataService.SaveData("/managers.json", managerCont, EncryptionEnabled))
+        {
+            Debug.Log("Managers Saved");
+        }
+        managerCont.allManagers.Clear();
+    }
+
     //Function to find all FlyingDecorations to save
     void SaveDocoration()
     {
