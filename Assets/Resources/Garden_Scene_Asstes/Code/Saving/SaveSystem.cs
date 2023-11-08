@@ -16,14 +16,18 @@ public class SaveSystem : MonoBehaviour
     private DecorationFlyingConstructor decorationFlyingConstructor;
     private DecorationFlyingConstructor.TileDecorationList tileDecorationList;
     private PricingSystemPlants.PlantPrices plantPrices;
-    
+    private ManagerSave managerSave;
+    private ManagerSave.ManagerContainer managerCont;
+
+
     GameObject soilTIleObject;
 
     // Start is called before the first frame update
     void Start()
     {
         soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
-
+        managerSave = gameObject.GetComponent<ManagerSave>();
+        managerCont = managerSave.managerContainer;
         StartCoroutine(WaitToLoad());
 
     }
@@ -195,6 +199,21 @@ public class SaveSystem : MonoBehaviour
 
 
 
+    }
+
+    void SaveManagers() 
+    {
+        GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+        foreach (GameObject plant in plants)
+        {
+            ManagerLogic managerLogic = plant.GetComponent<ManagerLogic>();
+
+            if (managerLogic.haveManager)
+            {
+                managerCont.AddToList(new ManagerSave.Manager(plant.transform.parent.gameObject.GetComponent<ObjectCharacteristics>().uniqueId, managerLogic.growTime));
+            }
+
+        }
     }
 
     //Function to load all saved data

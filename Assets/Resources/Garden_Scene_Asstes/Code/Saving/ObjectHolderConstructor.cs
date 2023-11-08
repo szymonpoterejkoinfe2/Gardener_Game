@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ObjectHolderConstructor : MonoBehaviour
 {
-    private IDataService DataService = new JasonDataService();
-    private bool EncryptionEnabled;
-    
 
     public class OccupiedObjectHolders
     {
@@ -46,43 +43,6 @@ public class ObjectHolderConstructor : MonoBehaviour
 
     }
 
-
-    //public void SaveObjectHolder()
-    //{
-    //    string fileName = "/";
-
-    //    GameObject[] occHolders;
-    //    ObjectHolderObj objectHolder;
-
-    //    occHolders = gameObject.GetComponent<MyObjectHolders>().myObjectHolders;
-
-    //    foreach (GameObject occHolder in occHolders)
-    //    {
-    //        ObjectHolder currentHolder = occHolder.GetComponent<ObjectHolder>();
-
-    //        if (currentHolder.haveObject)
-    //        {
-    //            objectHolder = new ObjectHolderObj(currentHolder.haveObject, currentHolder.tileId, currentHolder.myObjectId);
-    //            occupied.Add(objectHolder);
-    //            Debug.Log("Holder saved");
-    //            Debug.Log(occupied.Count);
-    //            //myoccupiedObjectHolders.AddToOccupied(objectHolder);
-
-    //        }
-
-    //    }
-
-    //    string soilId = gameObject.GetComponent<ObjectCharacteristics>().uniqueId;
-    //    fileName += soilId.Substring(0,8);
-    //    fileName += ".json";
-    //    if (DataService.SaveData(fileName, myoccupiedObjectHolders, EncryptionEnabled))
-    //    {
-    //        Debug.Log("Saved holders");
-    //       // occupied.Clear();
-    //    }
-
-
-    //}
 
     public void LoadData(OccupiedObjectHolders occupiedToLoad)
     {
