@@ -27,19 +27,13 @@ public class SoilTileConstructor : MonoBehaviour
         public string myId; // Unique id of SoilTile
         public bool havePlant; 
         public int plantId;
-        public ulong hydrationTime;
-        public bool haveManager;
-        public float growTime;
 
         // Constructor
-        public Tile(string mID, bool plant, int pID, ulong hydTim, bool manager, float time)
+        public Tile(string mID, bool plant, int pID)
         {
             myId = mID;
             havePlant = plant;
             plantId = pID;
-            hydrationTime = hydTim;
-            haveManager = manager;
-            growTime = time;
         }
 
     }
@@ -71,13 +65,6 @@ public class SoilTileConstructor : MonoBehaviour
                 if (occTile.myId == soil.GetComponent<ObjectCharacteristics>().uniqueId && occTile.havePlant)
                 {
                     soil.GetComponent<PlantCreator>().Generate_Plant(occTile.plantId,true);
-                    soil.GetComponent<HydrationLogic>().StartHydration(occTile.hydrationTime);
-
-                    if (occTile.haveManager)
-                    {
-                        soil.GetComponentInChildren<ManagerLogic>().StartGrowing(occTile.growTime);
-                    }
-                    
                 }
 
             }

@@ -18,7 +18,8 @@ public class SaveSystem : MonoBehaviour
     private PricingSystemPlants.PlantPrices plantPrices;
     private ManagerSave managerSave;
     private ManagerSave.ManagerContainer managerCont;
-
+    private HydrationSave hydrationSave;
+    private HydrationSave.HydrationContainer hydrationContainer;
 
     GameObject soilTIleObject;
 
@@ -27,7 +28,7 @@ public class SaveSystem : MonoBehaviour
     {
         soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
         StartCoroutine(WaitToLoad());
-
+        StartCoroutine(SaveHydrationTimer());
     }
 
     //Function to save MoneyBalance
@@ -57,7 +58,7 @@ public class SaveSystem : MonoBehaviour
     {
         SaveTiles();
 
-        if (DataService.SaveData("/myTiles.json", occupiedTilesList, EncryptionEnabled))
+        if (DataService.SaveData("/plants.json", occupiedTilesList, EncryptionEnabled))
         {
             Debug.Log("Saved");
         }
@@ -99,7 +100,7 @@ public class SaveSystem : MonoBehaviour
         }
         decorationFlyingConstructor.myCreatures.decorationList.Clear();
     }
-
+    //Function to save all plant Managers
     public void SavePlantManagers()
     {
         SaveManagers();
@@ -109,6 +110,17 @@ public class SaveSystem : MonoBehaviour
         }
         managerSave.managerContainer.allManagers.Clear();
     }
+    //Function to save all hydration levels
+    public void SaveHydrationLevel()
+    {
+        SaveHydration();
+        if (DataService.SaveData("/hydration.json", hydrationContainer, EncryptionEnabled))
+        {
+            Debug.Log("Hydration Saved");
+        }
+        hydrationContainer.allHydrationTimes.Clear();
+    }
+
 
     //Function to find all FlyingDecorations to save
     void SaveDocoration()
@@ -165,7 +177,7 @@ public class SaveSystem : MonoBehaviour
             PlantCreator creator = occtile.GetComponent<PlantCreator>();
             if (creator.havePlant == true)
             {
-               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId, occtile.GetComponent<HydrationLogic>().timeLeft, occtile.GetComponentInChildren<ManagerLogic>().haveManager, occtile.GetComponentInChildren<ManagerLogic>().growTime);
+               tile = new SoilTileConstructor.Tile(occtile.GetComponent<ObjectCharacteristics>().uniqueId, creator.havePlant, creator.plantId);
                 soilTileConstructor.myOccupiedTiles.addToOccupied(tile); 
             }
          
@@ -205,10 +217,40 @@ public class SaveSystem : MonoBehaviour
 
         }
 
-
-
     }
 
+    // Function to collect all data about hydration status required to save
+    void SaveHydration()
+    {
+        hydrationSave = gameObject.GetComponent<HydrationSave>();
+        hydrationContainer = hydrationSave.myHydrationContainer;
+
+        GameObject[] tiles;
+        if (GameObject.FindGameObjectWithTag("MovedSoil") == null)
+        {
+            tiles = GameObject.FindGameObjectsWithTag("SoilTile");
+        }
+        else
+        {
+            List<GameObject> tempTile = new List<GameObject>();
+            tempTile.AddRange(GameObject.FindGameObjectsWithTag("SoilTile"));
+            tempTile.Add(GameObject.FindGameObjectWithTag("MovedSoil"));
+            tiles = tempTile.ToArray();
+        }
+
+        foreach (GameObject tile in tiles)
+        {
+           
+            if (tile.GetComponent<PlantCreator>().havePlant)
+            {
+                HydrationSave.HydrationTime hydration = new HydrationSave.HydrationTime(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<HydrationLogic>().timeLeft);
+                hydrationSave.myHydrationContainer.AddToList(hydration);
+                
+            }
+        }
+    }
+
+    // Function to collect all data about managers required to save
     void SaveManagers() 
     {
         managerSave = gameObject.GetComponent<ManagerSave>();
@@ -223,8 +265,8 @@ public class SaveSystem : MonoBehaviour
             if (managerLogic.haveManager)
             {
                 ManagerSave.Manager currentManager;
-                currentManager = new ManagerSave.Manager(plant.GetComponentInParent<ObjectCharacteristics>().uniqueId, managerLogic.growTime);
-                managerSave.managerContainer.AddToList(currentManager);
+                currentManager = new ManagerSave.Manager(plant.transform.parent.gameObject.GetComponent<ObjectCharacteristics>().uniqueId, managerLogic.growTime);
+                managerCont.AddToList(currentManager);
             }
 
         }
@@ -263,13 +305,15 @@ public class SaveSystem : MonoBehaviour
         }
 
         try {
-            SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/myTiles.json", EncryptionEnabled);
+            SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/plants.json", EncryptionEnabled);
             GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
+
+
 
         try {
             ObjectHolderConstructor.OccupiedObjectHolders occupiedHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>("/myHolders.json", EncryptionEnabled);
@@ -279,19 +323,20 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
-       
-        try {
-            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
+
+        try
+        {
+            HydrationSave.HydrationContainer savedHydration = DataService.LoadData<HydrationSave.HydrationContainer>("/hydration.json", true);
+            gameObject.GetComponent<HydrationSave>().LoadData(savedHydration);
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
-        try
-        {
-            TimeSave.ExitTime exitTime = DataService.LoadData<TimeSave.ExitTime>("/ExitTime.json", true);
-            gameObject.GetComponent<TimeSave>().LoadTime(exitTime);
+
+        try {
+            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
         }
         catch (System.Exception e)
         {
@@ -308,6 +353,16 @@ public class SaveSystem : MonoBehaviour
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
 
+
+        try
+        {
+            TimeSave.ExitTime exitTime = DataService.LoadData<TimeSave.ExitTime>("/ExitTime.json", true);
+            gameObject.GetComponent<TimeSave>().LoadTime(exitTime);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
         Debug.Log("Data Loaded");
         
     }
@@ -321,10 +376,15 @@ public class SaveSystem : MonoBehaviour
         Load();
     }
 
-    IEnumerator WaitToSave()
+    // saving hydration level every 10 seconds
+    IEnumerator SaveHydrationTimer()
     {
+        while (true)
+        {
+            yield return new WaitForSeconds(10);
+            SaveHydrationLevel();
 
-        yield return new WaitForSeconds(2);
-        SaveMoneyBalance();
+        }
+
     }
 }

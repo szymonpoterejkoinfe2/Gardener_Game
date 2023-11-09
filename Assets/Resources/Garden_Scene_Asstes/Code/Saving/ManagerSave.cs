@@ -51,17 +51,15 @@ public class ManagerSave : MonoBehaviour
             {
                 if (manager.parentId == tile.GetComponent<ObjectCharacteristics>().uniqueId)
                 {
-                    tile.GetComponent<ManagerLogic>().growTime = manager.growTime;
-                    tile.GetComponent<ManagerLogic>().haveManager = true;
-                    //break;
+                    tile.GetComponentInChildren<ManagerLogic>().growTime = manager.growTime;
+                    tile.GetComponentInChildren<ManagerLogic>().haveManager = true;
+
+                    tile.GetComponentInChildren<ManagerLogic>().StartGrowing(manager.growTime);
+                    break;
                 }
-            
             }
 
         }
-
-
-
     }
 
 }

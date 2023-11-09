@@ -42,13 +42,17 @@ public class ManagerLogic : MonoBehaviour
 
         while (haveManager )
         {
-            if (gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
+           // 
             {
 
                 while (timer <= growTime)
                 {
-                    transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
-                    timer += Time.deltaTime;
+                    if (gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
+                    {
+                        transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
+                        timer += Time.deltaTime;
+                    }
+                    
                     yield return null;
                 }
                 bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);

@@ -113,6 +113,7 @@ public class ShopMenu : MonoBehaviour
             saveManager.SaveSoil();
             saveManager.SavePlantManagers();
             saveManager.SavePlantPricing();
+            saveManager.SaveMoneyBalance();
         }
 
     }
