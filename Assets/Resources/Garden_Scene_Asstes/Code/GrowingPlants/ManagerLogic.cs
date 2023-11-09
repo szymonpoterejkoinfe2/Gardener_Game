@@ -40,21 +40,27 @@ public class ManagerLogic : MonoBehaviour
         Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.y), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.z));
         bank = GameObject.FindGameObjectWithTag("Bank");
 
-        while (haveManager && gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
+        while (haveManager )
         {
-            while (timer <= growTime)
+            if (gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
             {
-                transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
-                timer += Time.deltaTime;
-                yield return null;
+
+                while (timer <= growTime)
+                {
+                    transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
+                bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
+                saveManager.SaveMoneyBalance();
+                if (growTime > 0.5f)
+                {
+                    gameObject.GetComponent<PlantGrown>().PlayParticle();
+                }
+                timer = 0;
+
             }
-            bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
-            saveManager.SaveMoneyBalance();
-            if (growTime > 0.5f)
-            {
-                gameObject.GetComponent<PlantGrown>().PlayParticle();
-            }
-            timer = 0;
+            
 
         }
     }

@@ -26,8 +26,6 @@ public class SaveSystem : MonoBehaviour
     void Start()
     {
         soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
-        managerSave = gameObject.GetComponent<ManagerSave>();
-        managerCont = managerSave.managerContainer;
         StartCoroutine(WaitToLoad());
 
     }
@@ -102,14 +100,14 @@ public class SaveSystem : MonoBehaviour
         decorationFlyingConstructor.myCreatures.decorationList.Clear();
     }
 
-    public void SaveManager()
+    public void SavePlantManagers()
     {
         SaveManagers();
         if (DataService.SaveData("/managers.json", managerCont, EncryptionEnabled))
         {
             Debug.Log("Managers Saved");
         }
-        managerCont.allManagers.Clear();
+        managerSave.managerContainer.allManagers.Clear();
     }
 
     //Function to find all FlyingDecorations to save
@@ -213,14 +211,20 @@ public class SaveSystem : MonoBehaviour
 
     void SaveManagers() 
     {
+        managerSave = gameObject.GetComponent<ManagerSave>();
+        managerCont = managerSave.managerContainer;
+
         GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+
         foreach (GameObject plant in plants)
         {
             ManagerLogic managerLogic = plant.GetComponent<ManagerLogic>();
 
             if (managerLogic.haveManager)
             {
-                managerCont.AddToList(new ManagerSave.Manager(plant.transform.parent.gameObject.GetComponent<ObjectCharacteristics>().uniqueId, managerLogic.growTime));
+                ManagerSave.Manager currentManager;
+                currentManager = new ManagerSave.Manager(plant.GetComponentInParent<ObjectCharacteristics>().uniqueId, managerLogic.growTime);
+                managerSave.managerContainer.AddToList(currentManager);
             }
 
         }
@@ -293,6 +297,17 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
+
+        try
+        {
+            ManagerSave.ManagerContainer savedManagers = DataService.LoadData<ManagerSave.ManagerContainer>("/managers.json", true);
+            gameObject.GetComponent<ManagerSave>().LoadData(savedManagers);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
         Debug.Log("Data Loaded");
         
     }

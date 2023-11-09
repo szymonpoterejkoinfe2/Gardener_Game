@@ -111,6 +111,7 @@ public class ShopMenu : MonoBehaviour
            plant.GetComponent<ManagerLogic>().StartGrowing(time);
 
             saveManager.SaveSoil();
+            saveManager.SavePlantManagers();
             saveManager.SavePlantPricing();
         }
 
@@ -125,6 +126,7 @@ public class ShopMenu : MonoBehaviour
             bank.GetComponent<PricingSystemPlants>().plantPrices.UpdateManagerCost(plant.GetComponent<ObjectCharacteristics>().myId);
             plant.GetComponent<ManagerLogic>().UpgradeManager();
             saveManager.SavePlantPricing();
+            saveManager.SavePlantManagers();
         }
         
     }

@@ -32,10 +32,36 @@ public class ManagerSave : MonoBehaviour
     }
 
     public ManagerContainer managerContainer;
-    public List<Manager> managerList;
+    public List<Manager> managerList = new List<Manager>();
 
     ManagerSave()
     {
         managerContainer = new ManagerContainer(managerList);
     }
+
+
+    public void LoadData(ManagerContainer data)
+    {
+        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
+
+        foreach (Manager manager in data.allManagers)
+        {
+
+            foreach (GameObject tile in soilTiles)
+            {
+                if (manager.parentId == tile.GetComponent<ObjectCharacteristics>().uniqueId)
+                {
+                    tile.GetComponent<ManagerLogic>().growTime = manager.growTime;
+                    tile.GetComponent<ManagerLogic>().haveManager = true;
+                    //break;
+                }
+            
+            }
+
+        }
+
+
+
+    }
+
 }
