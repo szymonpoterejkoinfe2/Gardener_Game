@@ -3,7 +3,7 @@
 
 # Short Description
 **What is The Gardener?**
-**The Gardener** is a small clicker/tycoon game in which the user takes on the role of a gardener. Their task is to transform barren land into a beautiful garden while amassing as much wealth as possible through the sale of plants.
+The Gardener is a small clicker/tycoon game in which the user takes on the role of a gardener. Their task is to transform barren land into a beautiful garden while amassing as much wealth as possible through the sale of plants.
 
 # Detailed Description
 Welcome to a world of boundless opportunities where you bring life back from barren lands. In this unique clicker/tycoon game, your objective is to rejuvenate abandoned soil and create a charming garden teeming with life. Start from scratch, cultivating grasses and small shrubs, all the way up to majestic trees, step by step reviving what was lost.
