@@ -9,7 +9,7 @@ public class ButterflyMovement : MonoBehaviour
     Transform targetPosition;
     float distance;
 
-   public GameObject point;
+    public GameObject point;
 
     // Start is called before the first frame update
     void Start()

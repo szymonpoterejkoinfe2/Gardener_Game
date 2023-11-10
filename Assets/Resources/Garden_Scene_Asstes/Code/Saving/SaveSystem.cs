@@ -334,14 +334,6 @@ public class SaveSystem : MonoBehaviour
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
 
-        try {
-            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Could not read file! Error: {e.Message}");
-        }
 
         try
         {
@@ -352,6 +344,16 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
+
+        try {
+            DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
 
 
         try

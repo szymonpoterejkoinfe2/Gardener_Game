@@ -47,7 +47,6 @@ public class MoneyManager : MonoBehaviour
     {
 
         DisplayMoneyValue(myBalance.moneyBalance, balanceDisplay);
-
     }
 
     //Loading previously saved MoneyBalance

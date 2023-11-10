@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SoilTileDetectorGameScene : MonoBehaviour
 {
     private GameObject soilTile;
@@ -25,7 +26,24 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         {
           Grower.Grow(Input.touchCount); 
         }
-        
+
+        if (Input.touchCount > 0)
+        {
+            Touch t = Input.GetTouch(0);
+            UnityEngine.Vector3 touchPos = t.position;
+
+            Ray ray = Camera.main.ScreenPointToRay(touchPos);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "BadBird")
+                {
+                    hit.transform.gameObject.GetComponent<BadBirdFly>().Kill(); ;
+                }
+            }
+        }
+
+
     }
 
     //Function To Activate Shopping Menu

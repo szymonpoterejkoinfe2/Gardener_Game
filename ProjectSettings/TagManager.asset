@@ -25,6 +25,7 @@ TagManager:
   - Fertilizer
   - HydrationText
   - PlantSlider
+  - BadBird
   layers:
   - Default
   - TransparentFX
