@@ -318,8 +318,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myId: 0
   valueTarget: {x: 1, y: 20, z: 1}
+  positionTarget: {x: 0, y: -10, z: 0}
   myName: DecorationMushroom
   uniqueId: cbbc22c8-7977-44d1-a4a3-faff1a7812f1
+  growMultiplyer: 0
 --- !u!114 &2288197556039859281
 MonoBehaviour:
   m_ObjectHideFlags: 0

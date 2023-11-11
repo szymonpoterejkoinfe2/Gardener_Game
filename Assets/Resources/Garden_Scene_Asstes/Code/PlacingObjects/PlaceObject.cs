@@ -121,15 +121,17 @@ public class PlaceObject : MonoBehaviour
 
                 new_object = Instantiate(objectsToBuy[ObjectId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, emptyObjectHolders[HolderId].transform);
 
-                new_object.name = new_object.GetComponent<ObjectCharacteristics>().myName;
+                ObjectCharacteristics objectCharacteristics = new_object.GetComponent<ObjectCharacteristics>();
+
+                new_object.name = objectCharacteristics.myName;
                 new_object.tag = "NewObject";
 
-                new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
-                new_object.transform.localScale = new_object.GetComponent<ObjectCharacteristics>().valueTarget;
+                new_object.transform.localPosition = objectCharacteristics.positionTarget;
+                new_object.transform.localScale = objectCharacteristics.valueTarget;
 
 
 
-                emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = new_object.GetComponent<ObjectCharacteristics>().myId;
+                emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().myObjectId = objectCharacteristics.myId;
 
                 emptyObjectHolders[HolderId].GetComponent<ObjectHolder>().ShowMoveButtons();
 
@@ -144,16 +146,25 @@ public class PlaceObject : MonoBehaviour
     public void CreateFromSave(int objId, GameObject tID, Quaternion rotation)
     {
         GameObject new_object;
+        Rotation rotationScript = GameObject.FindGameObjectWithTag("Garden").GetComponent<Rotation>();
+        rotationScript.speed = 0f;
+        rotationScript.ResetState();
 
         new_object = Instantiate(objectsToBuy[objId], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, tID.transform);
 
-        new_object.name = new_object.GetComponent<ObjectCharacteristics>().myName;
-        new_object.tag = "PlayerObject";
-
-        new_object.transform.localPosition = new UnityEngine.Vector3(0, -10, 0);
-        new_object.transform.localScale = new_object.transform.localScale = new_object.GetComponent<ObjectCharacteristics>().valueTarget;
+        ObjectCharacteristics objectCharacteristics = new_object.GetComponent<ObjectCharacteristics>();
 
         new_object.transform.rotation = rotation;
+
+        new_object.name = objectCharacteristics.myName;
+        new_object.tag = "PlayerObject";
+
+        new_object.transform.localPosition = objectCharacteristics.positionTarget;
+        new_object.transform.localScale = new_object.transform.localScale = objectCharacteristics.valueTarget;
+
+        
+
+        rotationScript.speed = 2f;
     }
 
     //Rotation of created object

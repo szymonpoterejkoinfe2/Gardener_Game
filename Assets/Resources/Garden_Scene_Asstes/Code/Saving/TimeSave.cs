@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeSave : MonoBehaviour
 {
     private IDataService DataService = new JasonDataService();
+    public SaveSystem saveSystem;
 
     public class ExitTime
     {
@@ -75,6 +76,8 @@ public class TimeSave : MonoBehaviour
             }
 
         }
+
+        saveSystem.SaveMoneyBalance();
 
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Simulator
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 71
+  controlID: 78
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 64
+  controlID: 71
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 65
+  controlID: 72
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,22 +318,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Garden_Scene_Asstes/Prefabs_Materials
+    - Assets/Resources/Garden_Scene_Asstes/Code/GrowingPlants
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Garden_Scene_Asstes/Prefabs_Materials
+  - Assets/Resources/Garden_Scene_Asstes/Code/GrowingPlants
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Unity\Gardener\Gardener\Gardener_Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 325}
-    m_SelectedIDs: d0550000
-    m_LastClickedID: 21968
-    m_ExpandedIDs: 0000000010530000185300002053000032530000345300003c530000ba550000d055000000ca9a3b
+    scrollPos: {x: 0, y: 335}
+    m_SelectedIDs: 6cd90000
+    m_LastClickedID: 55660
+    m_ExpandedIDs: 000000007c6200007e6200008062000082620000846200008662000088620000a662000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -361,7 +361,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000010530000
+    m_ExpandedIDs: 000000007c6200007e6200008062000082620000846200008662000088620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -449,9 +449,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 56060000
       m_LastClickedID: 0
-      m_ExpandedIDs: fc6bfaff0870faff5c8dfafffa13fbffcebffcffdac9feff2ccafeff7ecafeff86cafeff8ccafeffeae3feff32ebfeffb60bffffec66ffff78f2ffff32f9ffff2afbffff20520000325200003a5200006a52000046c00200f83c03009a3d0300d63d0300
+      m_ExpandedIDs: b6ceffffced5ffff48d9ffffc8e0ffff1ae1ffff6ce1ffffbee1ffffc6e1ffffcce1ffff2afbffffde520000285300008a530000025400002c5400008254000034560000a856000006570000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -723,9 +723,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -60.063923, y: 5.9627347, z: 16.512129}
+    m_Target: {x: -59.464756, y: 9.533293, z: 17.650772}
     speed: 2
-    m_Value: {x: -60.063923, y: 5.9627347, z: 16.512129}
+    m_Value: {x: -59.464756, y: 9.533293, z: 17.650772}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -754,9 +754,9 @@ MonoBehaviour:
       m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -772,13 +772,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.33369407, y: -0.054540474, z: 0.019355144, w: -0.94091845}
+    m_Target: {x: -0.14733535, y: -0.46910995, z: 0.07971673, w: -0.86712384}
     speed: 2
-    m_Value: {x: -0.3351571, y: -0.05168915, z: 0.018431276, w: -0.9405628}
+    m_Value: {x: -0.14733312, y: -0.46910286, z: 0.07971552, w: -0.8671107}
   m_Size:
-    m_Target: 169.13991
+    m_Target: 37.89883
     speed: 2
-    m_Value: 161.85637
+    m_Value: 37.89883
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 280
+    m_CachedPref: 278
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1

@@ -5313,6 +5313,7 @@ MonoBehaviour:
   - {fileID: 2878318207646110228}
   - {fileID: 4083916462783344159}
   myPosition: {x: 0, y: 0, z: 0}
+  haveScarecrow: 0
 --- !u!114 &5835875689232188335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5327,6 +5328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToBuy:
   - {fileID: 8761666322764757572, guid: e387a412e5fb333438f6182c1476fb78, type: 3}
+  - {fileID: 6613957834385592416, guid: b4fbc48a7dd15554694f4a98e348e767, type: 3}
   emptyObjectHolders: []
   ObjectId: 0
   HolderId: 0

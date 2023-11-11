@@ -22,6 +22,7 @@ public class BadBirdFly : MonoBehaviour
             distance = Vector3.Distance(transform.position, targetPosition.transform.position);
             if (distance < 1f)
             {
+                //GameObject.FindGameObjectWithTag("MovedSoil");
                 Destroy(gameObject);
 
             }
@@ -55,7 +56,7 @@ public class BadBirdFly : MonoBehaviour
     {
        
         Destroy(gameObject);
-        GameObject feathers = Instantiate(particle,transform.position, transform.rotation);
+        GameObject feathers = Instantiate(particle,transform.position, Quaternion.Euler(0,0,0));
         feathers.GetComponent<ParticleSystem>().Play();
         Destroy(feathers, 1f);
     }

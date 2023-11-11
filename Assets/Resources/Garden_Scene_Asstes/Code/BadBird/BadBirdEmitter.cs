@@ -7,6 +7,7 @@ public class BadBirdEmitter : MonoBehaviour
     public GameObject badBirdPrefab;
     public Transform[] pointsA, pointsB;
     public AudioSource birdSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class BadBirdEmitter : MonoBehaviour
         {
             yield return new WaitForSeconds(30);
 
-            if (GameObject.FindGameObjectWithTag("MovedSoil") != null)
+            if (GameObject.FindGameObjectWithTag("MovedSoil") != null && !GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<MyObjectHolders>().haveScarecrow)
             {
 
                 GameObject badBird;
