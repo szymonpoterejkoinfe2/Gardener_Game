@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoilTileConstructor : MonoBehaviour
 {
-
+    //Class with all  soilTile objects
     public class OccupiedTiles
     {
         public List<Tile> occupiedTiles; // List of non-empty tiles
@@ -21,7 +21,7 @@ public class SoilTileConstructor : MonoBehaviour
             occupiedTiles.Add(tile);
         }
     }
-
+    // Class with information about single soilTile object
     public class Tile
     {
         public string myId; // Unique id of SoilTile
@@ -65,6 +65,7 @@ public class SoilTileConstructor : MonoBehaviour
                 if (occTile.myId == soil.GetComponent<ObjectCharacteristics>().uniqueId && occTile.havePlant)
                 {
                     soil.GetComponent<PlantCreator>().Generate_Plant(occTile.plantId,true);
+                    break;
                 }
 
             }

@@ -27,6 +27,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
           Grower.Grow(Input.touchCount); 
         }
 
+        // Determining whether hit transform is of Bad Bird type, if so destroing it
         if (Input.touchCount > 0)
         {
             Touch t = Input.GetTouch(0);

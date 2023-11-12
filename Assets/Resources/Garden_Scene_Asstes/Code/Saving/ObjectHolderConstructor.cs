@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class ObjectHolderConstructor : MonoBehaviour
 {
-
+    //Class with all occupied object holder tiles
     public class OccupiedObjectHolders
     {
         public List<ObjectHolderObj> occupiedHolders;
 
+        // Constructor
         public OccupiedObjectHolders(List<ObjectHolderObj> occHolders)
         {
             occupiedHolders = occHolders;
         }
 
+        // Adding object holder to list of all occupied object holders
         public void AddToOccupied(ObjectHolderObj objectHolder)
         {
             occupiedHolders.Add(objectHolder);
         }
     }
 
+    // Class with information about single object holder tile
     public class ObjectHolderObj
     {
         public string uniqID;
         public int objectID;
         public Quaternion objectRotation;
 
+        // Constructor
         public ObjectHolderObj(string id, int myObject, Quaternion myRotation)
         {
             uniqID = id;
@@ -43,7 +47,7 @@ public class ObjectHolderConstructor : MonoBehaviour
 
     }
 
-
+    // Loading back data about saved object holders to recreate them in garden
     public void LoadData(OccupiedObjectHolders occupiedToLoad)
     {
         GameObject[] occHolders = GameObject.FindGameObjectsWithTag("ObjectHolder");
@@ -62,7 +66,7 @@ public class ObjectHolderConstructor : MonoBehaviour
                 {
                   generator.CreateFromSave(objHolder.objectID, holder.gameObject, objHolder.objectRotation);
                   holder.haveObject = true;
-
+                    break;
                 }
 
             }

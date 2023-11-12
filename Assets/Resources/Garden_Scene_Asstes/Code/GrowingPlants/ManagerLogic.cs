@@ -5,12 +5,16 @@ using UnityEngine;
 public class ManagerLogic : MonoBehaviour
 {
 
-    GameObject cameraObject;
     float timer = 0f;
     public float growTime = 10f;
     public bool haveManager = false;
     SaveSystem saveManager;
     private GameObject bank;
+
+    private void Awake()
+    {
+        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+    }
 
     // Beginning of Scailing Coroutine
     public void StartGrowing(float timeFertilization)
@@ -26,12 +30,7 @@ public class ManagerLogic : MonoBehaviour
         growTime = (growTime * 0.95f);
         saveManager.SavePlantPricing();
     }
-
-    private void Awake()
-    {
-        saveManager = GameObject.FindObjectOfType<SaveSystem>();
-    }
-
+    
     // Scaling plant object with time
     private IEnumerator GrowWithManager()
     {
@@ -40,6 +39,7 @@ public class ManagerLogic : MonoBehaviour
         Vector3 MaxScale = new Vector3((gameObject.GetComponent<ObjectCharacteristics>().valueTarget.x), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.y), (gameObject.GetComponent<ObjectCharacteristics>().valueTarget.z));
         bank = GameObject.FindGameObjectWithTag("Bank");
 
+        // Looping when active manager
         while (haveManager )
         {
            // 
@@ -47,6 +47,7 @@ public class ManagerLogic : MonoBehaviour
 
                 while (timer <= growTime)
                 {
+                    // Scaling plant only when hydrated
                     if (gameObject.transform.parent.GetComponent<HydrationLogic>().hydrated == true)
                     {
                         transform.localScale = Vector3.Lerp(StartScale, MaxScale, timer / growTime);
@@ -55,8 +56,12 @@ public class ManagerLogic : MonoBehaviour
                     
                     yield return null;
                 }
+
+                //Incrementing money balance for fully grown plant
                 bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjGrownIncome(gameObject.GetComponent<ObjectCharacteristics>().myId) * gameObject.GetComponent<Fertilizer>().Multiplicator);
                 saveManager.SaveMoneyBalance();
+                
+                // Leafs particle effect
                 if (growTime > 0.5f)
                 {
                     gameObject.GetComponent<PlantGrown>().PlayParticle();

@@ -7,12 +7,16 @@ public class TimeSave : MonoBehaviour
     private IDataService DataService = new JasonDataService();
     public SaveSystem saveSystem;
 
+    // Class with invormation abaut application quit time
     public class ExitTime
     {
         public System.DateTime extTime;
 
+        //Constructors
         public ExitTime() {}
         public ExitTime(System.DateTime time) { extTime = time; }
+
+        //Setting current device time
         public void SetTime()
         {
             extTime = System.DateTime.UtcNow;
@@ -27,6 +31,7 @@ public class TimeSave : MonoBehaviour
         eTime.SetTime();
     }
 
+    // Function to save exit time to json file
     private IEnumerator SetTime()
     {
         while (true) {
@@ -50,7 +55,7 @@ public class TimeSave : MonoBehaviour
         StartCoroutine(SetTime());
     }
 
-
+    // Function to load back data with quit time and to calculate proper reward from all active managers
     public void LoadTime(ExitTime time)
     {
 
@@ -67,6 +72,8 @@ public class TimeSave : MonoBehaviour
         foreach (GameObject plant in plants)
         {
             managerLogic = plant.GetComponent<ManagerLogic>();
+
+            // calculating proper reward 
             if (managerLogic.haveManager)
             {
                 int finishedCycles = System.Convert.ToInt32(System.Math.Round(logOutTime / managerLogic.growTime));
@@ -77,6 +84,7 @@ public class TimeSave : MonoBehaviour
 
         }
 
+        // Saving just added reward
         saveSystem.SaveMoneyBalance();
 
     }

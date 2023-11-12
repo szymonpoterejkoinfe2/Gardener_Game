@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class DecorationFlyingConstructor : MonoBehaviour
 {
+    // Class with all active flying decorations
     public class TileDecorationList
     {
         public List<TileDecoration> decorationList;
 
+        // Constructor
         public TileDecorationList(List<TileDecoration> list)
         {
             decorationList = list;
         }
-
+        // Adding flying decoration object  to list of all  flying decoration objects
         public void AddToList(TileDecoration decoartion)
         {
             decorationList.Add(decoartion);
         }
 
     }
-
+    // Class with information about single flying decoration object
     public class TileDecoration
     {
         public string tileID;
         public int[] decorationQuantity;
-
+        // Constructor
         public TileDecoration(string tID, int[] decQuan)
         {
             tileID = tID;
@@ -40,6 +42,8 @@ public class DecorationFlyingConstructor : MonoBehaviour
         myCreatures = new TileDecorationList(created);
     }
 
+
+    // Loading back data about saved object holders to recreate them in garden
     public void LoadData(TileDecorationList data)
     {
         GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
@@ -52,6 +56,7 @@ public class DecorationFlyingConstructor : MonoBehaviour
                 if (tile.tileID == soilTile.GetComponent<ObjectCharacteristics>().uniqueId)
                 {
                     InstantiateDecoration(tile, soilTile);
+                    break;
                 }
 
             }
@@ -59,6 +64,8 @@ public class DecorationFlyingConstructor : MonoBehaviour
         }
 
     }
+
+    // Instantiating Flying Decorations 
     void InstantiateDecoration(TileDecoration tile, GameObject soilTile)
     {
         int[] amount = tile.decorationQuantity;

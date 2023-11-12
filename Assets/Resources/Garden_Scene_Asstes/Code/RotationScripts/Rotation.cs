@@ -13,12 +13,12 @@ public class Rotation : MonoBehaviour
         transform.Rotate(rotation * speed * Time.deltaTime);
     }
 
+    //Reseting Garden rotation
     public void ResetState()
     {
         ResetPos = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(ResetPos);
-      
-   
+
     }
 }
 

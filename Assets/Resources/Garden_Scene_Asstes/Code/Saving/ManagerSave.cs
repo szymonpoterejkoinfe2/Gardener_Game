@@ -7,10 +7,12 @@ public class ManagerSave : MonoBehaviour
     // class containing list of all active managers which will be saved to save file
     public class ManagerContainer
     {
-     
       public List<Manager> allManagers;
+
+        // Constructors
       public ManagerContainer() { }
       public ManagerContainer(List<Manager> myManagers) { allManagers = myManagers; }
+
       public void AddToList(Manager manager)
        {
             allManagers.Add(manager);
@@ -22,7 +24,10 @@ public class ManagerSave : MonoBehaviour
     {
      public string parentId;
      public float growTime;
-     public Manager() { }
+
+        // Constructor
+        public Manager() { }
+
      public Manager(string id, float time)
         {
             parentId = id;
@@ -39,7 +44,7 @@ public class ManagerSave : MonoBehaviour
         managerContainer = new ManagerContainer(managerList);
     }
 
-
+    // Loading back data about saved managers to recreate them in garden
     public void LoadData(ManagerContainer data)
     {
         GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");

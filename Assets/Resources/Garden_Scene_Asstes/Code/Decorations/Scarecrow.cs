@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scarecrow : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Sending information that soil tile has Scarecrow decoration object
     void Start()
     {
         gameObject.GetComponentInParent<MyObjectHolders>().haveScarecrow = true;

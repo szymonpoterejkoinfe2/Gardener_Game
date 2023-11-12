@@ -19,17 +19,18 @@ public class BadBirdEmitter : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(25);
 
             if (GameObject.FindGameObjectWithTag("MovedSoil") != null && !GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<MyObjectHolders>().haveScarecrow)
             {
 
                 GameObject badBird;
 
-                int beginSide = Random.Range(1, 3);
+                int beginSide = Random.Range(1, 3); //Selection of random number - determining emission side 
 
-                int shouldEmitt = Random.Range(1, 6);
+                int shouldEmitt = Random.Range(1, 6); //Selection of random number - determinig if should emitt (probability of emitting: 20%)
 
+                // Logic for instantiotion of bad bird object
                 switch (beginSide)
                 {
                     case 1:

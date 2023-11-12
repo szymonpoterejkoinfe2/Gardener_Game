@@ -158,9 +158,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myId: 0
   valueTarget: {x: 0.1, y: 0.5, z: 0.1}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: Grass
   uniqueId: 5b3a9345-75ba-4d2a-ba33-1dbb3a593440
-  growMultiplyer: 1
+  growMultiplyer: 10
 --- !u!114 &-7949350569244485602
 MonoBehaviour:
   m_ObjectHideFlags: 0
