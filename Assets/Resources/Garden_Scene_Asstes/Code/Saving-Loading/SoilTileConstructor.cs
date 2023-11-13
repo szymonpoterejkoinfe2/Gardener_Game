@@ -49,13 +49,10 @@ public class SoilTileConstructor : MonoBehaviour
     }
 
     // Function to load saved data. Planting previously possesed plants
-    public void LoadData(OccupiedTiles occupiedToLoad)
+    public void LoadData(OccupiedTiles occupiedToLoad, GameObject[] soilTiles)
     {
         //clearing previously stored data
         myOccupiedTiles.occupiedTiles.Clear();
-
-        // Finding all SoilTile Objects
-        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
 
         // Replanting all saved plants
         foreach (Tile occTile in occupiedToLoad.occupiedTiles)

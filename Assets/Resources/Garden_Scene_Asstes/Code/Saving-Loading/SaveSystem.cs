@@ -204,7 +204,6 @@ public class SaveSystem : MonoBehaviour
             allHolderTiles = tempTile.ToArray();
         }
 
-
         foreach (GameObject occtile in allHolderTiles)
         {
 
@@ -275,6 +274,8 @@ public class SaveSystem : MonoBehaviour
     //Function to load all saved data
     public void Load()
     {
+        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
+
         try
         {
             MoneyManager.MoneyBalance savedBalance = DataService.LoadData<MoneyManager.MoneyBalance>("/myBalance.json", EncryptionEnabled);
@@ -306,14 +307,12 @@ public class SaveSystem : MonoBehaviour
 
         try {
             SoilTileConstructor.OccupiedTiles occupied = DataService.LoadData<SoilTileConstructor.OccupiedTiles>("/plants.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<SoilTileConstructor>().LoadData(occupied, soilTiles);
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
-
-
 
         try {
             ObjectHolderConstructor.OccupiedObjectHolders occupiedHolders = DataService.LoadData<ObjectHolderConstructor.OccupiedObjectHolders>("/myHolders.json", EncryptionEnabled);
@@ -327,18 +326,17 @@ public class SaveSystem : MonoBehaviour
         try
         {
             HydrationSave.HydrationContainer savedHydration = DataService.LoadData<HydrationSave.HydrationContainer>("/hydration.json", true);
-            gameObject.GetComponent<HydrationSave>().LoadData(savedHydration);
+            gameObject.GetComponent<HydrationSave>().LoadData(savedHydration, soilTiles);
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
 
-
         try
         {
             ManagerSave.ManagerContainer savedManagers = DataService.LoadData<ManagerSave.ManagerContainer>("/managers.json", true);
-            gameObject.GetComponent<ManagerSave>().LoadData(savedManagers);
+            gameObject.GetComponent<ManagerSave>().LoadData(savedManagers, soilTiles);
         }
         catch (System.Exception e)
         {
@@ -347,14 +345,12 @@ public class SaveSystem : MonoBehaviour
 
         try {
             DecorationFlyingConstructor.TileDecorationList savedDecoration = DataService.LoadData<DecorationFlyingConstructor.TileDecorationList>("/decoration.json", EncryptionEnabled);
-            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration);
+            GameObject.FindGameObjectWithTag("SoilTileConstructor").GetComponent<DecorationFlyingConstructor>().LoadData(savedDecoration, soilTiles);
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
-
-
 
         try
         {

@@ -44,9 +44,9 @@ public class DecorationFlyingConstructor : MonoBehaviour
 
 
     // Loading back data about saved object holders to recreate them in garden
-    public void LoadData(TileDecorationList data)
+    public void LoadData(TileDecorationList data, GameObject[] soilTiles)
     {
-        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
+
 
         foreach (TileDecoration tile in data.decorationList)
         {

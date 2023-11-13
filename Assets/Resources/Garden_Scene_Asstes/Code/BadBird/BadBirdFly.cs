@@ -11,11 +11,12 @@ public class BadBirdFly : MonoBehaviour
     bool canMove = false;
     public GameObject particle;
     private SaveSystem saveSystem;
-
+    private CameraAndTileManager cameraTileManager;
 
     private void Start()
     {
         saveSystem = GameObject.FindObjectOfType<SaveSystem>();
+        cameraTileManager = GameObject.FindObjectOfType<CameraAndTileManager>();
     }
 
     // Update is called once per frame
@@ -36,6 +37,8 @@ public class BadBirdFly : MonoBehaviour
                     GameObject movedSoil = GameObject.FindGameObjectWithTag("MovedSoil");
                     GameObject plantToDestroy = movedSoil.transform.Find("Plant").gameObject;
                     movedSoil.GetComponent<PlantCreator>().havePlant = false;
+                    cameraTileManager.plantSlider.SetActive(false);
+
                     Destroy(plantToDestroy);
                     saveSystem.SaveSoil();
                     saveSystem.SavePlantManagers();

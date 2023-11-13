@@ -45,9 +45,8 @@ public class ManagerSave : MonoBehaviour
     }
 
     // Loading back data about saved managers to recreate them in garden
-    public void LoadData(ManagerContainer data)
+    public void LoadData(ManagerContainer data, GameObject[] soilTiles)
     {
-        GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
 
         foreach (Manager manager in data.allManagers)
         {

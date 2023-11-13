@@ -46,10 +46,10 @@ public class HydrationSave : MonoBehaviour
         myHydrationContainer = new HydrationContainer(times);
     }
         
-
-    public void LoadData(HydrationContainer data)
+    // function to load and restore all saved data
+    public void LoadData(HydrationContainer data, GameObject[] tiles)
     {
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("SoilTile");
+
         foreach (HydrationTime time in data.allHydrationTimes)
         {
             foreach (GameObject tile in tiles)
