@@ -14,7 +14,7 @@ public class BadBirdEmitter : MonoBehaviour
         StartCoroutine(Emitt());
     }
 
-    // Coroutine which tryes to emitt bad bird if moved soil is found 
+    // Coroutine which tries to emitt bad bird if moved soil is found 
     IEnumerator Emitt()
     {
         while (true)
