@@ -161,7 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myId: 0
+  myId: 3
   valueTarget: {x: 0, y: 0, z: 0}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: ebb81361-a07a-486e-809c-c3483ff15df9
+  growMultiplyer: 0

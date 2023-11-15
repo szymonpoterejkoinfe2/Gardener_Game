@@ -5271,6 +5271,37 @@ MonoBehaviour:
   - {fileID: 5814696307910362390, guid: eafd37d51e55beb4ca5d822f1e58ec0a, type: 3}
   - {fileID: 7398389488784057284, guid: 30ac22bbd59715149a8eb3e571550cae, type: 3}
   - {fileID: 1830319465243612, guid: b36985c0ac26e6d43a7660ddc72f3574, type: 3}
+  - {fileID: 1459141857591278, guid: b4cf9e237bee5ff47a4339c70dbbde07, type: 3}
+  - {fileID: 1323086023813434, guid: 4d2e17c753dea1d4f81d19d6c49b0d44, type: 3}
+  - {fileID: 1864106858175348, guid: 3c8e8418c7f9c4f47be56bda822a61d8, type: 3}
+  - {fileID: 1367424853843588, guid: 8298d1cfc1d870841a055c16224edf3b, type: 3}
+  - {fileID: 1033492179934308, guid: 35cbf4845c2cc71408951fec1c6a3466, type: 3}
+  - {fileID: 1790664632603676, guid: ee4e8998ac04d6b479d46f099f425abe, type: 3}
+  - {fileID: 1336317565840620, guid: eaabbf31b3a6aa944a979d4a035c074d, type: 3}
+  - {fileID: 1097937957918722, guid: 8e2df2b00a6a78a4aa6cf7127577f20f, type: 3}
+  - {fileID: 1520557343468966, guid: db7e270e84714bb44bcb93f376492b14, type: 3}
+  - {fileID: 1073234032877142, guid: fa68217db2644294789177e4d7362004, type: 3}
+  - {fileID: 1905238117284224, guid: ed47fdd054c51474eae67bd628317710, type: 3}
+  - {fileID: 1036808603828732, guid: 8baf1eca99bf9314e915bd170ccc2245, type: 3}
+  - {fileID: 1580296162661654, guid: cbd7726dbca9fc743a06cd478f5cf530, type: 3}
+  - {fileID: 1747315629311860, guid: c0446c789bbdc7f46ab771e9b76c15f9, type: 3}
+  - {fileID: 1601527734484308, guid: 7111e3c5049b6d145b8381e7c878a142, type: 3}
+  - {fileID: 1262933537257692, guid: 5f2b9549f2b12274a8710eb2b356b860, type: 3}
+  - {fileID: 1459487072626396, guid: 36636b38cd4d057419e73a8f597fcabe, type: 3}
+  - {fileID: 1255627075872460, guid: 9c9b9f4f98882b34f8a08fd92eba4cbe, type: 3}
+  - {fileID: 1450862495693152, guid: d77ea591b892b9b4aadb8272f6a39ad8, type: 3}
+  - {fileID: 1378529160660996, guid: 45d5ba07ea4074f46acb94f2defb1220, type: 3}
+  - {fileID: 1754620491680184, guid: 948e12bf785ae5041a524eab3a8f979b, type: 3}
+  - {fileID: 1809129951669404, guid: bbdca77e4918fe4458605b250046e536, type: 3}
+  - {fileID: 1357904972373422, guid: ce5c297161ac63046a0cedde0626f9c5, type: 3}
+  - {fileID: 1839106151495100, guid: c59d96e2b347a1d46b41e2242607e0f7, type: 3}
+  - {fileID: 1057200072630376, guid: 8c36cc0efb7f180468c6af0e8e7a9461, type: 3}
+  - {fileID: 1751678457733528, guid: 6b67558d05aa4754c9c8cddcc600368d, type: 3}
+  - {fileID: 1424625931532886, guid: 3d2c7f58f4aff404ea3bdbe07c06a968, type: 3}
+  - {fileID: 1730855513831710, guid: 92afc10f2ef90cc43b59366337fb665b, type: 3}
+  - {fileID: 1696340402751794, guid: 5687a27107a8afd4882d1da4c37dbff0, type: 3}
+  - {fileID: 1338082143570848, guid: aeaae935db89c69478c9193e451653b7, type: 3}
+  - {fileID: 1706907295229794, guid: 99f5b83dd79ad3f449e6392d2d802286, type: 3}
   havePlant: 0
   fixedScale: 0
   plantSlider: {fileID: 0}
@@ -5377,6 +5408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myId: 0
   valueTarget: {x: 0, y: 0, z: 0}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: Soli
   uniqueId: 
   growMultiplyer: 0

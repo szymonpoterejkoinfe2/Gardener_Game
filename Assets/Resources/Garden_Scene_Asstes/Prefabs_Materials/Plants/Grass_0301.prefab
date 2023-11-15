@@ -48,10 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myId: 11
+  myId: 12
   valueTarget: {x: 1, y: 1, z: 1}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: 229ac9cf-57d8-4382-aa1d-5bf7ad73d50f
+  growMultiplyer: 0
 --- !u!114 &4529468776117507475
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -173,10 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myId: 21
+  myId: 22
   valueTarget: {x: 1, y: 1, z: 1}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: c81838de-8326-48ba-9f99-ef8d93ef38b6
+  growMultiplyer: 0
 --- !u!1 &1652309857447314
 GameObject:
   m_ObjectHideFlags: 0
