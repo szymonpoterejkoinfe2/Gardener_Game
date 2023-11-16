@@ -127,11 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 6
-  valueTarget: {x: 1, y: 1, z: 1}
+  valueTarget: {x: 0.2, y: 1, z: 1}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: 7ddba44f-9487-4815-babb-2edefefaa17a
-  growMultiplyer: 0
+  growMultiplyer: 5
 --- !u!114 &3274475099625789887
 MonoBehaviour:
   m_ObjectHideFlags: 0

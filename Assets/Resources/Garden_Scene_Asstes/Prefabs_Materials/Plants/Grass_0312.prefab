@@ -174,11 +174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 22
-  valueTarget: {x: 1, y: 1, z: 1}
+  valueTarget: {x: 0.2, y: 1, z: 1}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: c81838de-8326-48ba-9f99-ef8d93ef38b6
-  growMultiplyer: 0
+  growMultiplyer: 5
 --- !u!1 &1652309857447314
 GameObject:
   m_ObjectHideFlags: 0

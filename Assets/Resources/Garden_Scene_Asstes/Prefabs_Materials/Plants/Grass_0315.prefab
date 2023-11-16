@@ -76,11 +76,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 25
-  valueTarget: {x: 1, y: 1, z: 1}
+  valueTarget: {x: 0.2, y: 1, z: 1}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: 4eb193bc-930e-4057-8046-26eb20fe95dc
-  growMultiplyer: 0
+  growMultiplyer: 5
 --- !u!1 &1403962994029958
 GameObject:
   m_ObjectHideFlags: 0

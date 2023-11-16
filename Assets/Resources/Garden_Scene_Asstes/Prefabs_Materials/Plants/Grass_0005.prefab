@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 3
-  valueTarget: {x: 0, y: 0, z: 0}
+  valueTarget: {x: 0.2, y: 1, z: 1}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: ebb81361-a07a-486e-809c-c3483ff15df9
-  growMultiplyer: 0
+  growMultiplyer: 5

@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 30
-  valueTarget: {x: 1, y: 1, z: 1}
+  valueTarget: {x: 0.4, y: 1, z: 1}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: 5cd5e30e-ea32-459b-b1ff-ed1433ac6b64
-  growMultiplyer: 0
+  growMultiplyer: 5
