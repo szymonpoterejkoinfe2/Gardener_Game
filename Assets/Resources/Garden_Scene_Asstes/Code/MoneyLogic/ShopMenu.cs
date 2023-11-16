@@ -69,8 +69,8 @@ public class ShopMenu : MonoBehaviour
             {
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyPlantPriceTxt[PlantId]);
                 bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradePlantPriceTxt[PlantId]);
-               // bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[PlantId]);
-                //bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[PlantId]);
                
             }
 

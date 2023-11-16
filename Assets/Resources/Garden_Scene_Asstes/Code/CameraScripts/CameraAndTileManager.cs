@@ -8,7 +8,7 @@ public class CameraAndTileManager : MonoBehaviour
     public GameObject CameraOne;
     public GameObject CameraTwo;
     public GameObject ShopMenu;
-    public GameObject NavigationButtons, shopButton, moveButton, leaderButton, exitButton, moneyBalance, hydrationTimer, fertilizerTimer, plantSlider;
+    public GameObject NavigationButtons, shopButton, moveButton, leaderButton, exitButton, moneyBalance, hydrationTimer, fertilizerTimer, plantSlider, managerPanel;
     public GameObject[] Faders;
     public Rotation rotation;
     public Vector3 PositionMemory;
@@ -27,6 +27,7 @@ public class CameraAndTileManager : MonoBehaviour
         hydrationTimer.SetActive(false);
         fertilizerTimer.SetActive(false);
         plantSlider.SetActive(false);
+        managerPanel.SetActive(false);
         moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
     }
@@ -49,9 +50,15 @@ public class CameraAndTileManager : MonoBehaviour
         moneyBalance.transform.localScale = new Vector3(1f, 1f, 1f);
         moneyBalance.transform.localPosition = new Vector3(0, -45, 0);
 
-        if (GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<PlantCreator>().havePlant)
+        GameObject movedSoil = GameObject.FindGameObjectWithTag("MovedSoil");
+
+        if (movedSoil.GetComponent<PlantCreator>().havePlant)
         {
             plantSlider.SetActive(true);
+            if (movedSoil.transform.Find("Plant").GetComponent<ManagerLogic>().haveManager)
+            {
+                managerPanel.SetActive(true);
+            }
         }
 
         // GameObject.FindGameObjectWithTag("Hydration").GetComponnt<HydrationSliderStatus>().ShowSlider();
@@ -73,6 +80,7 @@ public class CameraAndTileManager : MonoBehaviour
         plantSlider.SetActive(false);
         leaderButton.SetActive(true);
         exitButton.SetActive(true);
+        managerPanel.SetActive(false);
         moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
         rotation.speed = 2;

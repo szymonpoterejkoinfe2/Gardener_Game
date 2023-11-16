@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +6,7 @@ using TMPro;
 
 public class HydrationLogic : MonoBehaviour
 {
-    public bool hydrated;
+    public bool hydrated, haveWell = false;
     //private Slider slider;
     [SerializeField] private float hydratedTime;
     private bool timerStart;
@@ -29,7 +29,7 @@ public class HydrationLogic : MonoBehaviour
     {
         TextMeshProUGUI timeLeftText;
 
-        if (timerStart)
+        if (timerStart && !haveWell)
         {
 
             float time = (hydratedTime -= Time.deltaTime);
@@ -57,6 +57,13 @@ public class HydrationLogic : MonoBehaviour
 
 
 
+        }
+        else if (haveWell)
+        {
+            timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
+            string textTime = "\u221E";
+            timeLeftText.text = textTime;
+            
         }
         else {
 

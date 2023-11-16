@@ -242,7 +242,7 @@ public class SaveSystem : MonoBehaviour
            
             if (tile.GetComponent<PlantCreator>().havePlant)
             {
-                HydrationSave.HydrationTime hydration = new HydrationSave.HydrationTime(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<HydrationLogic>().timeLeft);
+                HydrationSave.HydrationTime hydration = new HydrationSave.HydrationTime(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<HydrationLogic>().timeLeft, tile.GetComponent<HydrationLogic>().haveWell);
                 hydrationSave.myHydrationContainer.AddToList(hydration);
                 
             }

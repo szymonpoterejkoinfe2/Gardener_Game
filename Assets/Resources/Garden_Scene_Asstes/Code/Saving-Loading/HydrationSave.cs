@@ -30,12 +30,14 @@ public class HydrationSave : MonoBehaviour
     {
         public string tileId;
         public ulong hydrationTimeLeft;
+        public bool haveWell;
 
         public HydrationTime() { }
-        public HydrationTime(string id, ulong timeLeft)
+        public HydrationTime(string id, ulong timeLeft, bool well)
         {
             tileId = id;
             hydrationTimeLeft = timeLeft;
+            haveWell = well;
         }
     }
 
@@ -57,7 +59,7 @@ public class HydrationSave : MonoBehaviour
                 if (time.tileId == tile.GetComponent<ObjectCharacteristics>().uniqueId)
                 {
                     HydrationLogic logic = tile.GetComponent<HydrationLogic>();
-                    //logic.timeLeft = time.hydrationTimeLeft;
+                    logic.haveWell = time.haveWell;
                     logic.StartHydration(time.hydrationTimeLeft);
 
                     break;
