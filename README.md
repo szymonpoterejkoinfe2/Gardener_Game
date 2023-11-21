@@ -9,7 +9,10 @@ The Gardener is a small clicker/tycoon game in which the user takes on the role 
 # Detailed Description
 Welcome to a world of boundless opportunities where you bring life back from barren lands. In this unique clicker/tycoon game, your objective is to rejuvenate abandoned soil and create a charming garden teeming with life. Start from scratch, cultivating grasses and small shrubs, all the way up to majestic trees, step by step reviving what was lost with a variety of plants.
 
-![All Plants](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/94dd0ed4-4747-4ecb-9745-91cf4b43679b)
+<p align="center">
+  <img src="https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/94dd0ed4-4747-4ecb-9745-91cf4b43679b" alt="All Plants" style="margin: 0 auto;">
+</p>
+
 
 Your creativity knows no bounds—besides plants, you'll be able to purchase and unlock various animals and unique decorations, making your garden a special place full of life. Moreover, you have the ability to upgrade your plants, making them even more beautiful and efficient.
 
