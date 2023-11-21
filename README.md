@@ -28,7 +28,8 @@ Game still in progress...
 ## Looks 
 
 <p align="center">
-  <img src="assets/115418017/36bc4461-0406-49d3-8746-039454dd8fd4" alt="Untitled design (9)" style="margin: 0 auto;">
+  ![Untitled design (9)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/8748ef11-8152-44f4-8be6-573805490da9)
+
 </p>
 
 
