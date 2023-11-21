@@ -24,14 +24,16 @@ public class ManagerSave : MonoBehaviour
     {
      public string parentId;
      public float growTime;
+     public int level;
 
         // Constructor
         public Manager() { }
 
-     public Manager(string id, float time)
+     public Manager(string id, float time, int lvl)
         {
             parentId = id;
             growTime = time;
+            level = lvl;
         }
 
     }
@@ -56,6 +58,7 @@ public class ManagerSave : MonoBehaviour
                 if (manager.parentId == tile.GetComponent<ObjectCharacteristics>().uniqueId)
                 {
                     ManagerLogic plant = tile.transform.Find("Plant").GetComponent<ManagerLogic>();
+                    plant.managerLevel = manager.level;
                     plant.growTime = manager.growTime;
                     plant.haveManager = true;
                     plant.StartGrowing(manager.growTime);

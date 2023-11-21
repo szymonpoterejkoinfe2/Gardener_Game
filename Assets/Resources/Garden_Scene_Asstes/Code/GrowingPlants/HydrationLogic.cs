@@ -60,10 +60,12 @@ public class HydrationLogic : MonoBehaviour
         }
         else if (haveWell)
         {
-            timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
-            string textTime = "\u221E";
-            timeLeftText.text = textTime;
-            
+            if (gameObject.tag == "MovedSoil")
+            {
+                timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
+                string textTime = "\u221E";
+                timeLeftText.text = textTime;
+            }
         }
         else {
 

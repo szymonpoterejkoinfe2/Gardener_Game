@@ -264,7 +264,7 @@ public class SaveSystem : MonoBehaviour
             if (managerLogic.haveManager)
             {
                 ManagerSave.Manager currentManager;
-                currentManager = new ManagerSave.Manager(plant.transform.parent.gameObject.GetComponent<ObjectCharacteristics>().uniqueId, managerLogic.growTime);
+                currentManager = new ManagerSave.Manager(plant.transform.parent.gameObject.GetComponent<ObjectCharacteristics>().uniqueId, managerLogic.growTime, managerLogic.managerLevel);
                 managerCont.AddToList(currentManager);
             }
 

@@ -8,6 +8,7 @@ public class ManagerLogic : MonoBehaviour
     float timer = 0f;
     public float growTime = 10f;
     public bool haveManager = false;
+    public int managerLevel = 1;
     SaveSystem saveManager;
     private GameObject bank;
 
@@ -28,6 +29,7 @@ public class ManagerLogic : MonoBehaviour
     public void UpgradeManager()
     {
         growTime = (growTime * 0.95f);
+        managerLevel++;
         saveManager.SavePlantPricing();
     }
     
@@ -40,7 +42,7 @@ public class ManagerLogic : MonoBehaviour
         bank = GameObject.FindGameObjectWithTag("Bank");
 
         // Looping when active manager
-        while (haveManager )
+        while (haveManager)
         {
            // 
             {
