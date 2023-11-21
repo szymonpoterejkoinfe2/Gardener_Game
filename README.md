@@ -28,3 +28,5 @@ Game still in progress...
 ![Przechwytywanie](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/9440efc1-389a-4a2e-8f90-14ce873975ca)
 ![Przechwytywanie1](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/e14e6a7e-798d-4914-90dc-70c5e43a87dd)
 
+![All Plants](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/94dd0ed4-4747-4ecb-9745-91cf4b43679b)
+
