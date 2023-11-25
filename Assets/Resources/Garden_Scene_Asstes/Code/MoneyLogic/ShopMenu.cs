@@ -17,6 +17,10 @@ public class ShopMenu : MonoBehaviour
     public TextMeshProUGUI[] UpgradePlantPriceTxt;
     public TextMeshProUGUI[] BuyManagerPriceTxt, UpgradeManagerPriceTxt;
     public TextMeshProUGUI[] BuyObjectPriceTxt;
+    public TextMeshProUGUI[] buyPlantPricePrefix;
+    public TextMeshProUGUI[] upgradePlantPricePrefix;
+    public TextMeshProUGUI[] buyManagerPricePrefix;
+    public TextMeshProUGUI[] upgradeManagerPricePrefix;
 
     private void Awake()
     {
@@ -67,10 +71,10 @@ public class ShopMenu : MonoBehaviour
             // Taking Price Of Prefab Objects
             for (int PlantId = 0; PlantId < allPlants.Length; PlantId++)
             {
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyPlantPriceTxt[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradePlantPriceTxt[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyPlantPriceTxt[PlantId], buyPlantPricePrefix[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradePlantPriceTxt[PlantId], upgradePlantPricePrefix[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[PlantId], buyManagerPricePrefix[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[PlantId], upgradeManagerPricePrefix[PlantId]);
                
             }
 

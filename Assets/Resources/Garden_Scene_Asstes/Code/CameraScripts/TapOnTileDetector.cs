@@ -12,7 +12,7 @@ public class TapOnTileDetector : MonoBehaviour
     BigInteger balance, price;
     public CameraAndTileManager CameraTileManager;
     private bool NotAsking;
-    public TextMeshProUGUI PriceTxt;
+    public TextMeshProUGUI PriceTxt, prefix;
     SaveSystem saveManager;
 
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class TapOnTileDetector : MonoBehaviour
                     ConfirmationWindow.SetActive(true);
                     NotAsking = false;
 
-                    bank.GetComponent<MoneyManager>().DisplayMoneyValue(price, PriceTxt);
+                    bank.GetComponent<MoneyManager>().DisplayMoneyValue(price, PriceTxt,prefix);
                 }
                 else if (hit.transform.name == "Soil" && NotAsking == true)
                 {

@@ -46,7 +46,7 @@ public class MoneyManager : MonoBehaviour
     void Update()
     {
 
-        DisplayMoneyValue(myBalance.moneyBalance, balanceDisplay);
+        DisplayMoneyValue(myBalance.moneyBalance, balanceDisplay, prefixDisplay);
     }
 
     //Loading previously saved MoneyBalance
@@ -56,7 +56,7 @@ public class MoneyManager : MonoBehaviour
     }
 
     // Displaying money amonut with proper prefix
-    public void DisplayMoneyValue(BigInteger moneyToDisplay, TextMeshProUGUI displayingText)
+    public void DisplayMoneyValue(BigInteger moneyToDisplay, TextMeshProUGUI displayingText, TextMeshProUGUI prefixDisplay)
     {
         if (moneyToDisplay < 1000)
         {
