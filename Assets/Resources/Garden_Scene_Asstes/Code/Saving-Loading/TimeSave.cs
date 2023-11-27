@@ -78,7 +78,7 @@ public class TimeSave : MonoBehaviour
             {
                 int finishedCycles = System.Convert.ToInt32(System.Math.Round(logOutTime / managerLogic.growTime));
 
-                moneyManager.myBalance.IncrementBalance(pricingSystem.plantPrices.GetObjGrownIncome((plant.GetComponent<ObjectCharacteristics>().myId) * finishedCycles)/2);
+                moneyManager.myBalance.IncrementBalance(pricingSystem.plantPrices.GetObjGrownIncome(((plant.GetComponent<ObjectCharacteristics>().myId) * finishedCycles)/2));
                 Debug.Log("Finished cycles: " + finishedCycles);
             }
 
