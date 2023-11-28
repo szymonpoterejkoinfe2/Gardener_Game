@@ -12,7 +12,7 @@ public class ShopMenu : MonoBehaviour
     private ulong time, multi;
     private SaveSystem saveManager;
 
-    public GameObject PlantCategory, MenagerCategory, OtherUpgradesCategory, managerUI;
+    public GameObject PlantCategory, MenagerCategory, AnimalsCategory,GardenDecorationCategory,ToolCategory, managerUI;
     public TextMeshProUGUI[] BuyPlantPriceTxt;
     public TextMeshProUGUI[] UpgradePlantPriceTxt;
     public TextMeshProUGUI[] BuyManagerPriceTxt, UpgradeManagerPriceTxt;
@@ -26,7 +26,9 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(true);
         MenagerCategory.SetActive(false);
-        OtherUpgradesCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
+        AnimalsCategory.SetActive(false);
+        ToolCategory.SetActive(false);
         saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
 
@@ -35,15 +37,20 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(false);
         MenagerCategory.SetActive(true);
-        OtherUpgradesCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
+        AnimalsCategory.SetActive(false);
+        ToolCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
     }
 
-    //Activating OtherUpgrades Shop Menu
-    public void OtherUpgradesCategoryActivate()
+    //Activating GardenDecoration Shop Menu
+    public void GardenDecorationCategoryActivate()
     {
-        OtherUpgradesCategory.SetActive(true);
-        MenagerCategory.SetActive(false);
         PlantCategory.SetActive(false);
+        MenagerCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(true);
+        AnimalsCategory.SetActive(false);
+        ToolCategory.SetActive(false);
     }
 
     //Activating Plant Shop Menu
@@ -51,8 +58,31 @@ public class ShopMenu : MonoBehaviour
     {
         PlantCategory.SetActive(true);
         MenagerCategory.SetActive(false);
-        OtherUpgradesCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
+        AnimalsCategory.SetActive(false);
+        ToolCategory.SetActive(false);
     }
+
+    //Activating Animals Shop Menu
+    public void AnimalsCategoryActivate()
+    {
+        PlantCategory.SetActive(false);
+        MenagerCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
+        AnimalsCategory.SetActive(true);
+        ToolCategory.SetActive(false);
+    }
+
+    //Activating Tool Shop Menu
+    public void ToolCategoryActivate()
+    {
+        PlantCategory.SetActive(false);
+        MenagerCategory.SetActive(false);
+        GardenDecorationCategory.SetActive(false);
+        AnimalsCategory.SetActive(false);
+        ToolCategory.SetActive(true);
+    }
+
 
     // Update is called once per frame
     void Update()
