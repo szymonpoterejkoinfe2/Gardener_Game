@@ -26,7 +26,8 @@ Game still in progress...
 [Latest Commit](https://github.com/szymonpoterejkoinfe2/Gardener_Game/commit/main)
 
 ## Looks  
-  ![Untitled design (9)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/8748ef11-8152-44f4-8be6-573805490da9)
+
+![Untitled design (10)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/c6458811-091b-4091-87a6-757c1c8d6b3a)
 
 
 
