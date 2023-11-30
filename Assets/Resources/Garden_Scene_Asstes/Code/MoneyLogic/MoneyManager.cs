@@ -33,7 +33,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public TextMeshProUGUI balanceDisplay, prefixDisplay;
+    public TextMeshProUGUI balanceDisplay, prefixDisplay, balanceShop, prefixShop;
     public MoneyBalance  myBalance;
 
     public MoneyManager()
@@ -47,6 +47,7 @@ public class MoneyManager : MonoBehaviour
     {
 
         DisplayMoneyValue(myBalance.moneyBalance, balanceDisplay, prefixDisplay);
+        DisplayMoneyValue(myBalance.moneyBalance, balanceShop, prefixShop);
     }
 
     //Loading previously saved MoneyBalance
@@ -79,7 +80,7 @@ public class MoneyManager : MonoBehaviour
         {
             double moneyDecimal = (double)(moneyToDisplay / 10000000) / 10.0;
             displayingText.text = moneyDecimal.ToString();
-            prefixDisplay.text = " Billion $";
+            prefixDisplay.text = " Billion";
         }
         else if (moneyToDisplay >= 1000000000000 && moneyToDisplay < 1000000000000000)
         {

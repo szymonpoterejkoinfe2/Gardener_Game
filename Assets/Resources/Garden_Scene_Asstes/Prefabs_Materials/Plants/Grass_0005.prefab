@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 695781107392512610}
   - component: {fileID: 3557978265057520975}
   - component: {fileID: 8072629952008586554}
+  - component: {fileID: -9155087639607917617}
   m_Layer: 0
   m_Name: Grass_0005
   m_TagString: Untagged
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTime: 10
   haveManager: 0
+  managerLevel: 1
 --- !u!114 &8072629952008586554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +164,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myId: 3
-  valueTarget: {x: 0.2, y: 1, z: 1}
+  valueTarget: {x: 0.06, y: 0.3, z: 0.06}
   positionTarget: {x: 0, y: 0, z: 0}
   myName: 
   uniqueId: ebb81361-a07a-486e-809c-c3483ff15df9
   growMultiplyer: 5
+--- !u!114 &-9155087639607917617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459141857591278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340372075f192aa49a0bb1a92987d42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

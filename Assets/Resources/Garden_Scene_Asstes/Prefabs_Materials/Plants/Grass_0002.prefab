@@ -12,10 +12,6 @@ GameObject:
   - component: {fileID: 33126072219630274}
   - component: {fileID: 23263551472590354}
   - component: {fileID: 64404668393630020}
-  - component: {fileID: 2869755228908188174}
-  - component: {fileID: 8233810587609325670}
-  - component: {fileID: 2791069694631343590}
-  - component: {fileID: 7101793663782707556}
   m_Layer: 0
   m_Name: Grass_0002
   m_TagString: Untagged
@@ -102,67 +98,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 69dd10fc7bb0470408e91f4eaa562d9b, type: 3}
---- !u!95 &2869755228908188174
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225838257337530}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a31a635ef5f9a9a4383077930e0422b8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8233810587609325670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225838257337530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797abea5772fc5744b1369a239ee1d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  growTime: 10
-  haveManager: 0
---- !u!114 &2791069694631343590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225838257337530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26255f38b038949458d5ae686fcdeb6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Multiplicator: 1
---- !u!114 &7101793663782707556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225838257337530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b922ef19880b303489a9738c3f884d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myId: 0
-  valueTarget: {x: 0, y: 0, z: 0}
-  myName: 
-  uniqueId: e579eded-2853-4a5e-9c59-c70d7d5f1d54
-  growMultiplyer: 2
