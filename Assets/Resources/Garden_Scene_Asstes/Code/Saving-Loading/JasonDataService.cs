@@ -6,6 +6,31 @@ using Newtonsoft.Json;
 
 public class JasonDataService : IDataService
 {
+    //Deleting Data
+    public bool DeleteData(string RelativePath)
+    {
+        string path = Application.persistentDataPath + RelativePath;
+        if (File.Exists(path))
+        {
+            try
+            {
+                File.Delete(path);
+                Debug.Log("Data deleted");
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Unable to delete data due to: {e.Message} {e.StackTrace}");
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+        
+    }
+
+    // Saving data to file
     public bool SaveData<T>(string RelativePath, T Data, bool Encrypted)
     {
         string path = Application.persistentDataPath + RelativePath;
@@ -47,6 +72,7 @@ public class JasonDataService : IDataService
         }
     }
 
+    // Loading data from file
     public T LoadData<T>(string RelativePath, bool Encrypted)
     {
         string path = Application.persistentDataPath + RelativePath;

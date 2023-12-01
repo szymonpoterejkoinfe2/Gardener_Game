@@ -1,5 +1,5 @@
 
-![🌱_The_Gardener 🌱](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/42d71995-9170-4f1e-9bad-4846e0983504)
+![🌱_The_Gardener 🌱](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/42d71995-9170-4f1e-9bad-4846e0983504)
 
 # Short Description
 **What is The Gardener?**
@@ -16,6 +16,10 @@ Welcome to a world of boundless opportunities where you bring life back from bar
 
 Your creativity knows no bounds—besides plants, you'll be able to purchase and unlock various animals and unique decorations, making your garden a special place full of life. Moreover, you have the ability to upgrade your plants, making them even more beautiful and efficient.
 
+<p align="center">
+  <img src="https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/7786a353-ec0a-474c-8ab1-0620711ad3a2" alt="All Plants" style="margin: 0 auto;">
+</p>
+
 For every plant nurtured with care, you'll receive a monetary reward, enabling further investments and the development of your garden.
 
 But that's not all! Get ready for an exhilarating competition with players worldwide. Contests for the most beautiful garden are ongoing, and the online leaderboard eagerly awaits your achievements. Will your garden be among the most beautiful in the game? Explore, upgrade, and compete for the top spot and the title of the most beautiful garden!
@@ -26,7 +30,7 @@ Game still in progress...
 [Latest Commit](https://github.com/szymonpoterejkoinfe2/Gardener_Game/commit/main)
 
 ## Looks  
-  ![Untitled design (9)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/8748ef11-8152-44f4-8be6-573805490da9)
 
+![Untitled design (10)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/c6458811-091b-4091-87a6-757c1c8d6b3a)
 
 

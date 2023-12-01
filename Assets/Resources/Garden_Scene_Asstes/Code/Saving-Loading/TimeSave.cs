@@ -77,8 +77,8 @@ public class TimeSave : MonoBehaviour
             if (managerLogic.haveManager)
             {
                 int finishedCycles = System.Convert.ToInt32(System.Math.Round(logOutTime / managerLogic.growTime));
-
-                moneyManager.myBalance.IncrementBalance(pricingSystem.plantPrices.GetObjGrownIncome(((plant.GetComponent<ObjectCharacteristics>().myId) * finishedCycles)/2));
+                System.Numerics.BigInteger amount = (pricingSystem.plantPrices.GetObjGrownIncome(plant.GetComponent<ObjectCharacteristics>().myId) * finishedCycles) / 2;
+                moneyManager.myBalance.IncrementBalance(amount);
                 Debug.Log("Finished cycles: " + finishedCycles);
             }
 

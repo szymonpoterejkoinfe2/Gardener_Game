@@ -20,6 +20,7 @@ public class SaveSystem : MonoBehaviour
     private ManagerSave.ManagerContainer managerCont;
     private HydrationSave hydrationSave;
     private HydrationSave.HydrationContainer hydrationContainer;
+    private bool haveSave = true;
 
     GameObject soilTIleObject;
 
@@ -29,6 +30,12 @@ public class SaveSystem : MonoBehaviour
         soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
         StartCoroutine(WaitToLoad());
         StartCoroutine(SaveHydrationTimer());
+
+        if (DataService.SaveData("/haveSave.json", haveSave, true))
+        {
+            Debug.Log("Saved");
+        }
+
     }
 
     //Function to save MoneyBalance
