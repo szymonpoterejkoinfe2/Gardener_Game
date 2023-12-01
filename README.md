@@ -1,5 +1,5 @@
 
-![🌱_The_Gardener 🌱](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/42d71995-9170-4f1e-9bad-4846e0983504)
+![🌱_The_Gardener 🌱](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/42d71995-9170-4f1e-9bad-4846e0983504)
 
 # Short Description
 **What is The Gardener?**
@@ -32,5 +32,6 @@ Game still in progress...
 ## Looks  
 
 ![Untitled design (10)](https://github.com/szymonpoterejkoinfe2/Gardener_Game/assets/115418017/c6458811-091b-4091-87a6-757c1c8d6b3a)
+
 
 
