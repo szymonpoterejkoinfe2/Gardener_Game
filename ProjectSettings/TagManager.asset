@@ -27,11 +27,13 @@ TagManager:
   - PlantSlider
   - BadBird
   - ManagerText
+  - SpawnPoint
+  - Avaliability
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Walkable
   - Water
   - UI
   - 

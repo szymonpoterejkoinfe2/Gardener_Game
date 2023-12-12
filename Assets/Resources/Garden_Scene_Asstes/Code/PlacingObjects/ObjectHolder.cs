@@ -10,6 +10,7 @@ public class ObjectHolder : MonoBehaviour
     public Material[] materials;
     public GameObject moveButton;
     public string uniqueId;
+    public SpawnPointHolder[] spawnPointHolders;
 
 
     // Start is called before the first frame update
@@ -17,7 +18,14 @@ public class ObjectHolder : MonoBehaviour
     {
         gameObject.GetComponent<Renderer>().material = materials[0];
         moveButton.SetActive(false);
+        
     }
+
+    private void Update()
+    {
+        spawnPointHolders = GetComponentsInChildren<SpawnPointHolder>();
+    }
+
 
     // Function to show avaliability of chosen tile
     public void ShowAvaliability()
