@@ -182,7 +182,7 @@ public class AnimalSpawner : MonoBehaviour
 
     private void PlaceAnimal()
     {
-        newAnimal = Instantiate(animals[animalID], avaliablePoints[pointIndex].transform.position, Quaternion.identity, avaliablePoints[pointIndex].pointObject.GetComponentInParent<ObjectCharacteristics>().transform);
+        newAnimal = Instantiate(animals[animalID], avaliablePoints[pointIndex].transform.position, Quaternion.identity, avaliablePoints[pointIndex].pointObject.transform);
 
         oldAnimal = newAnimal.gameObject;
     }

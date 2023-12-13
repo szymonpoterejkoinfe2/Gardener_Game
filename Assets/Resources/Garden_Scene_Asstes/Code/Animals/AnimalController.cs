@@ -100,7 +100,7 @@ public class AnimalController : MonoBehaviour
         //Creating Point Game Object 
         GameObject newPoint = Instantiate(point, new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform.parent);
         //Debug.Log(transform.parent.name);
-        newPoint.transform.localPosition = position;
+        newPoint.transform.position = position;
         newPoint.transform.localScale = new Vector3(1, 1f, 1);
 
 
