@@ -58,7 +58,7 @@ public class AnimalController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         agent = gameObject.GetComponent<NavMeshAgent>();
 
-        //targetPosition = GeneratePoint();
+        targetPosition = GeneratePoint();
 
         //transform.LookAt(targetPosition);
 
@@ -95,13 +95,14 @@ public class AnimalController : MonoBehaviour
     // Generating random target point
     private Transform GeneratePoint()
     {
-        Vector3 position = new Vector3(0,0,0);
+        Vector3 position;
 
-        while (Vector3.Distance(transform.position, position) < minimalDistanceToPoint)
+
+        do
         {
             position = new Vector3(Random.Range(limitPoints[0].transform.position.x, limitPoints[1].transform.position.x), gameObject.transform.position.y, Random.Range(limitPoints[2].transform.position.z, limitPoints[3].transform.position.z));
-        }
-        
+        } while (Vector3.Distance(transform.position, position) < minimalDistanceToPoint);
+
 
         //Creating Point Game Object
         GameObject newPoint = Instantiate(point, new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform.parent);

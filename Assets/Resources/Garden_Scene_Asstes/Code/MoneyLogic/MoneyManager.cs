@@ -94,7 +94,7 @@ public class MoneyManager : MonoBehaviour
             displayingText.text = moneyDecimal.ToString();
             prefixDisplay.text = "Quadrillion";
         }
-        else if (moneyToDisplay >= 1000000000000000000 && moneyToDisplay < BigInteger.Parse("1000000000000000000000")) 
+        else if (moneyToDisplay >= 1000000000000000000 && moneyToDisplay < BigInteger.Parse("1000000000000000000000"))
         {
             double moneyDecimal = (double)(moneyToDisplay / 100000000000000000) / 10.0;
             displayingText.text = moneyDecimal.ToString();
@@ -102,13 +102,13 @@ public class MoneyManager : MonoBehaviour
         }
         else if (moneyToDisplay >= BigInteger.Parse("1000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000"))
         {
-            double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000"))/10.0;
+            double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000")) / 10.0;
             displayingText.text = moneyDecimal.ToString();
             prefixDisplay.text = "Sextillion";
         }
         else if (moneyToDisplay >= BigInteger.Parse(" 1000000000000000000000000") && moneyToDisplay < BigInteger.Parse("1000000000000000000000000000"))
         {
-            double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000"))/10.0;
+            double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000")) / 10.0;
             displayingText.text = moneyDecimal.ToString();
             prefixDisplay.text = "Septillion";
         }
@@ -123,6 +123,12 @@ public class MoneyManager : MonoBehaviour
             double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000000000")) / 10.0;
             displayingText.text = moneyDecimal.ToString();
             prefixDisplay.text = "Nonillion";
+        }
+        else
+        {
+            double moneyDecimal = (double)(moneyToDisplay / BigInteger.Parse("100000000000000000000000000000000")) / 10.0;
+            displayingText.text = moneyDecimal.ToString();
+            prefixDisplay.text = "Decillion";
         }
     }
 
