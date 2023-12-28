@@ -6111,7 +6111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 5, z: 0}
   ResetPos: {x: 0, y: 0, z: 0}
-  speed: 2
+  speed: 1.6
   Should_Rotate: 0
 --- !u!114 &5094104541053521129
 MonoBehaviour:

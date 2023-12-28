@@ -1385,7 +1385,7 @@ Transform:
   m_GameObject: {fileID: 1316396310532922446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.666, y: -0.017, z: 0.02}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1316396310533013600}
@@ -1554,7 +1554,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.1
+  m_Speed: 0.68
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 30.03
@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 7703434036107991421, guid: b62a58b1d18a82f4baeb9c4a4d41f742, type: 3}
   type: 0
+  minimalDistanceToPoint: 1.3
 --- !u!1 &1316396310532922448
 GameObject:
   m_ObjectHideFlags: 0

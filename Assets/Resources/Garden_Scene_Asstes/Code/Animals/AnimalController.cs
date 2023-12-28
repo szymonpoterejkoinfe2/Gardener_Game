@@ -9,16 +9,15 @@ public class AnimalController : MonoBehaviour
 
     private Animator animator;
     private NavMeshAgent agent;
-    string[] animalStates = { "State1", "State2", "State3" };
     bool animationActive;
     bool isWalking = false;
 
     private GameObject[] limitPoints;
-    Transform targetPosition;
+    Transform targetPosition, currentPosition;
     float distance;
     public GameObject point;
-
     public int type;
+    public float minimalDistanceToPoint;
 
 
     void Update()
@@ -27,6 +26,7 @@ public class AnimalController : MonoBehaviour
         // limitPoints = GameObject.FindGameObjectWithTag("PointHolder");
         if (isWalking == true)
         {
+            agent.enabled = true;
             transform.LookAt(targetPosition);
             distance = Vector3.Distance(transform.position, targetPosition.transform.position);
             if (distance < 0.1f)
@@ -41,7 +41,7 @@ public class AnimalController : MonoBehaviour
             }
         }
         else {
-            agent.destination = gameObject.transform.position;
+            agent.enabled = false;
         }
     }
 
@@ -51,14 +51,16 @@ public class AnimalController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentPosition = gameObject.transform;
+
         limitPoints = GetComponentInParent<BoundaryPoints>().boundaryPoints;
 
         animator = gameObject.GetComponent<Animator>();
         agent = gameObject.GetComponent<NavMeshAgent>();
 
-        targetPosition = GeneratePoint();
+        //targetPosition = GeneratePoint();
 
-        transform.LookAt(targetPosition);
+        //transform.LookAt(targetPosition);
 
         StartCoroutine(WaitToChangeState());
 
@@ -88,21 +90,23 @@ public class AnimalController : MonoBehaviour
     void Move()
     {
         agent.destination = targetPosition.position;
-         
     }
 
     // Generating random target point
     private Transform GeneratePoint()
     {
-        Vector3 position = new Vector3(Random.Range(limitPoints[0].transform.position.x, limitPoints[1].transform.position.x), gameObject.transform.localPosition.y, Random.Range(limitPoints[2].transform.position.z, limitPoints[3].transform.position.z));
-        // Debug.Log(position);
+        Vector3 position = new Vector3(0,0,0);
 
-        //Creating Point Game Object 
+        while (Vector3.Distance(transform.position, position) < minimalDistanceToPoint)
+        {
+            position = new Vector3(Random.Range(limitPoints[0].transform.position.x, limitPoints[1].transform.position.x), gameObject.transform.position.y, Random.Range(limitPoints[2].transform.position.z, limitPoints[3].transform.position.z));
+        }
+        
+
+        //Creating Point Game Object
         GameObject newPoint = Instantiate(point, new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, transform.parent);
-        //Debug.Log(transform.parent.name);
         newPoint.transform.position = position;
         newPoint.transform.localScale = new Vector3(1, 1f, 1);
-
 
         return newPoint.transform;
 
@@ -112,10 +116,7 @@ public class AnimalController : MonoBehaviour
     void SetAnimalState()
     {
         isWalking = false;
-
         int state = Random.Range(0, 3);
-
-        Debug.Log($"State selected {state}");
 
         switch (state)
         {
@@ -132,6 +133,7 @@ public class AnimalController : MonoBehaviour
 
             default:
                 isWalking = false;
+
                 Idle();
 
                 break;
@@ -152,9 +154,9 @@ public class AnimalController : MonoBehaviour
 
             yield return new WaitForSeconds(waitTime);
             isWalking = false;
+            currentPosition = gameObject.transform;
             Idle();
             SetAnimalState();
-
 
         }
 
