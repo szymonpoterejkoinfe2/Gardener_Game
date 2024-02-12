@@ -1,239 +1,695 @@
 fileFormatVersion: 2
 guid: 0768d65371f7c10498801ea9b756d45c
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Ankle_L
-    100002: Ankle_R
-    100004: Anteater
-    100006: //RootNode
-    100008: Chest_M
-    100010: DeformationSystem
-    100012: Ear1_L
-    100014: Ear1_R
-    100016: Ear2_L
-    100018: Ear2_R
-    100020: Ear3_L
-    100022: Ear3_R
-    100024: Elbow_L
-    100026: Elbow_R
-    100028: Eye_L
-    100030: Eye_R
-    100032: EyeEnd_L
-    100034: EyeEnd_R
-    100036: Fingers1_L
-    100038: Fingers1_R
-    100040: Fingers2_L
-    100042: Fingers2_R
-    100044: Geometry
-    100046: Head_M
-    100048: HeadEnd_M
-    100050: Hip_L
-    100052: Hip_R
-    100054: IndexToe1_L
-    100056: IndexToe1_R
-    100058: IndexToe2_L
-    100060: IndexToe2_R
-    100062: IndexToe3_L
-    100064: IndexToe3_R
-    100066: Jaw_M
-    100068: JawEnd_M
-    100070: Knee_L
-    100072: Knee_R
-    100074: Main
-    100076: MiddleFinger1_L
-    100078: MiddleFinger1_R
-    100080: MiddleFinger2_L
-    100082: MiddleFinger2_R
-    100084: MiddleFinger3_L
-    100086: MiddleFinger3_R
-    100088: MiddleFinger4_L
-    100090: MiddleFinger4_R
-    100092: MiddleToe1_L
-    100094: MiddleToe1_R
-    100096: MiddleToe2_L
-    100098: MiddleToe2_R
-    100100: MiddleToe3_L
-    100102: MiddleToe3_R
-    100104: Neck1_M
-    100106: Neck_M
-    100108: PinkyFinger1_L
-    100110: PinkyFinger1_R
-    100112: PinkyFinger2_L
-    100114: PinkyFinger2_R
-    100116: PinkyFinger3_L
-    100118: PinkyFinger3_R
-    100120: PinkyFinger4_L
-    100122: PinkyFinger4_R
-    100124: PinkyToe1_L
-    100126: PinkyToe1_R
-    100128: PinkyToe2_L
-    100130: PinkyToe2_R
-    100132: PinkyToe3_L
-    100134: PinkyToe3_R
-    100136: RingFinger1_L
-    100138: RingFinger1_R
-    100140: RingFinger2_L
-    100142: RingFinger2_R
-    100144: RingFinger3_L
-    100146: RingFinger3_R
-    100148: RingFinger4_L
-    100150: RingFinger4_R
-    100152: RingToe1_L
-    100154: RingToe1_R
-    100156: RingToe2_L
-    100158: RingToe2_R
-    100160: RingToe3_L
-    100162: RingToe3_R
-    100164: Root_M
-    100166: Scapula_L
-    100168: Scapula_R
-    100170: Shoulder_L
-    100172: Shoulder_R
-    100174: Spine_M
-    100176: Tail0_M
-    100178: Tail1_M
-    100180: Tail2_M
-    100182: Tail3_M
-    100184: Tail4_M
-    100186: Tail5_M
-    100188: Toes1_L
-    100190: Toes1_R
-    100192: Toes2_L
-    100194: Toes2_R
-    100196: Tounge1_M
-    100198: Tounge2_M
-    100200: Tounge3_M
-    100202: Tounge4_M
-    100204: Tounge5_M
-    100206: Tounge6_M
-    100208: Tounge7_M
-    100210: Wrist_L
-    100212: Wrist_R
-    400000: Ankle_L
-    400002: Ankle_R
-    400004: Anteater
-    400006: //RootNode
-    400008: Chest_M
-    400010: DeformationSystem
-    400012: Ear1_L
-    400014: Ear1_R
-    400016: Ear2_L
-    400018: Ear2_R
-    400020: Ear3_L
-    400022: Ear3_R
-    400024: Elbow_L
-    400026: Elbow_R
-    400028: Eye_L
-    400030: Eye_R
-    400032: EyeEnd_L
-    400034: EyeEnd_R
-    400036: Fingers1_L
-    400038: Fingers1_R
-    400040: Fingers2_L
-    400042: Fingers2_R
-    400044: Geometry
-    400046: Head_M
-    400048: HeadEnd_M
-    400050: Hip_L
-    400052: Hip_R
-    400054: IndexToe1_L
-    400056: IndexToe1_R
-    400058: IndexToe2_L
-    400060: IndexToe2_R
-    400062: IndexToe3_L
-    400064: IndexToe3_R
-    400066: Jaw_M
-    400068: JawEnd_M
-    400070: Knee_L
-    400072: Knee_R
-    400074: Main
-    400076: MiddleFinger1_L
-    400078: MiddleFinger1_R
-    400080: MiddleFinger2_L
-    400082: MiddleFinger2_R
-    400084: MiddleFinger3_L
-    400086: MiddleFinger3_R
-    400088: MiddleFinger4_L
-    400090: MiddleFinger4_R
-    400092: MiddleToe1_L
-    400094: MiddleToe1_R
-    400096: MiddleToe2_L
-    400098: MiddleToe2_R
-    400100: MiddleToe3_L
-    400102: MiddleToe3_R
-    400104: Neck1_M
-    400106: Neck_M
-    400108: PinkyFinger1_L
-    400110: PinkyFinger1_R
-    400112: PinkyFinger2_L
-    400114: PinkyFinger2_R
-    400116: PinkyFinger3_L
-    400118: PinkyFinger3_R
-    400120: PinkyFinger4_L
-    400122: PinkyFinger4_R
-    400124: PinkyToe1_L
-    400126: PinkyToe1_R
-    400128: PinkyToe2_L
-    400130: PinkyToe2_R
-    400132: PinkyToe3_L
-    400134: PinkyToe3_R
-    400136: RingFinger1_L
-    400138: RingFinger1_R
-    400140: RingFinger2_L
-    400142: RingFinger2_R
-    400144: RingFinger3_L
-    400146: RingFinger3_R
-    400148: RingFinger4_L
-    400150: RingFinger4_R
-    400152: RingToe1_L
-    400154: RingToe1_R
-    400156: RingToe2_L
-    400158: RingToe2_R
-    400160: RingToe3_L
-    400162: RingToe3_R
-    400164: Root_M
-    400166: Scapula_L
-    400168: Scapula_R
-    400170: Shoulder_L
-    400172: Shoulder_R
-    400174: Spine_M
-    400176: Tail0_M
-    400178: Tail1_M
-    400180: Tail2_M
-    400182: Tail3_M
-    400184: Tail4_M
-    400186: Tail5_M
-    400188: Toes1_L
-    400190: Toes1_R
-    400192: Toes2_L
-    400194: Toes2_R
-    400196: Tounge1_M
-    400198: Tounge2_M
-    400200: Tounge3_M
-    400202: Tounge4_M
-    400204: Tounge5_M
-    400206: Tounge6_M
-    400208: Tounge7_M
-    400210: Wrist_L
-    400212: Wrist_R
-    2100000: Anteater
-    4300000: Anteater
-    7400000: Anteater_Idle
-    7400002: Anteater_Idle2
-    7400004: Anteater_Idle to Walk
-    7400006: Anteater_Walk
-    7400008: Anteater_Walk to Idle
-    7400010: Anteater_Idle to Run
-    7400012: Anteater_Run
-    7400014: Anteater_Run to Idle
-    7400016: Anteater_Attack
-    7400018: Anteater_Death
-    9500000: //RootNode
-    13700000: Anteater
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Ankle_L
+  - first:
+      1: 100002
+    second: Ankle_R
+  - first:
+      1: 100004
+    second: Anteater
+  - first:
+      1: 100006
+    second: //RootNode
+  - first:
+      1: 100008
+    second: Chest_M
+  - first:
+      1: 100010
+    second: DeformationSystem
+  - first:
+      1: 100012
+    second: Ear1_L
+  - first:
+      1: 100014
+    second: Ear1_R
+  - first:
+      1: 100016
+    second: Ear2_L
+  - first:
+      1: 100018
+    second: Ear2_R
+  - first:
+      1: 100020
+    second: Ear3_L
+  - first:
+      1: 100022
+    second: Ear3_R
+  - first:
+      1: 100024
+    second: Elbow_L
+  - first:
+      1: 100026
+    second: Elbow_R
+  - first:
+      1: 100028
+    second: Eye_L
+  - first:
+      1: 100030
+    second: Eye_R
+  - first:
+      1: 100032
+    second: EyeEnd_L
+  - first:
+      1: 100034
+    second: EyeEnd_R
+  - first:
+      1: 100036
+    second: Fingers1_L
+  - first:
+      1: 100038
+    second: Fingers1_R
+  - first:
+      1: 100040
+    second: Fingers2_L
+  - first:
+      1: 100042
+    second: Fingers2_R
+  - first:
+      1: 100044
+    second: Geometry
+  - first:
+      1: 100046
+    second: Head_M
+  - first:
+      1: 100048
+    second: HeadEnd_M
+  - first:
+      1: 100050
+    second: Hip_L
+  - first:
+      1: 100052
+    second: Hip_R
+  - first:
+      1: 100054
+    second: IndexToe1_L
+  - first:
+      1: 100056
+    second: IndexToe1_R
+  - first:
+      1: 100058
+    second: IndexToe2_L
+  - first:
+      1: 100060
+    second: IndexToe2_R
+  - first:
+      1: 100062
+    second: IndexToe3_L
+  - first:
+      1: 100064
+    second: IndexToe3_R
+  - first:
+      1: 100066
+    second: Jaw_M
+  - first:
+      1: 100068
+    second: JawEnd_M
+  - first:
+      1: 100070
+    second: Knee_L
+  - first:
+      1: 100072
+    second: Knee_R
+  - first:
+      1: 100074
+    second: Main
+  - first:
+      1: 100076
+    second: MiddleFinger1_L
+  - first:
+      1: 100078
+    second: MiddleFinger1_R
+  - first:
+      1: 100080
+    second: MiddleFinger2_L
+  - first:
+      1: 100082
+    second: MiddleFinger2_R
+  - first:
+      1: 100084
+    second: MiddleFinger3_L
+  - first:
+      1: 100086
+    second: MiddleFinger3_R
+  - first:
+      1: 100088
+    second: MiddleFinger4_L
+  - first:
+      1: 100090
+    second: MiddleFinger4_R
+  - first:
+      1: 100092
+    second: MiddleToe1_L
+  - first:
+      1: 100094
+    second: MiddleToe1_R
+  - first:
+      1: 100096
+    second: MiddleToe2_L
+  - first:
+      1: 100098
+    second: MiddleToe2_R
+  - first:
+      1: 100100
+    second: MiddleToe3_L
+  - first:
+      1: 100102
+    second: MiddleToe3_R
+  - first:
+      1: 100104
+    second: Neck1_M
+  - first:
+      1: 100106
+    second: Neck_M
+  - first:
+      1: 100108
+    second: PinkyFinger1_L
+  - first:
+      1: 100110
+    second: PinkyFinger1_R
+  - first:
+      1: 100112
+    second: PinkyFinger2_L
+  - first:
+      1: 100114
+    second: PinkyFinger2_R
+  - first:
+      1: 100116
+    second: PinkyFinger3_L
+  - first:
+      1: 100118
+    second: PinkyFinger3_R
+  - first:
+      1: 100120
+    second: PinkyFinger4_L
+  - first:
+      1: 100122
+    second: PinkyFinger4_R
+  - first:
+      1: 100124
+    second: PinkyToe1_L
+  - first:
+      1: 100126
+    second: PinkyToe1_R
+  - first:
+      1: 100128
+    second: PinkyToe2_L
+  - first:
+      1: 100130
+    second: PinkyToe2_R
+  - first:
+      1: 100132
+    second: PinkyToe3_L
+  - first:
+      1: 100134
+    second: PinkyToe3_R
+  - first:
+      1: 100136
+    second: RingFinger1_L
+  - first:
+      1: 100138
+    second: RingFinger1_R
+  - first:
+      1: 100140
+    second: RingFinger2_L
+  - first:
+      1: 100142
+    second: RingFinger2_R
+  - first:
+      1: 100144
+    second: RingFinger3_L
+  - first:
+      1: 100146
+    second: RingFinger3_R
+  - first:
+      1: 100148
+    second: RingFinger4_L
+  - first:
+      1: 100150
+    second: RingFinger4_R
+  - first:
+      1: 100152
+    second: RingToe1_L
+  - first:
+      1: 100154
+    second: RingToe1_R
+  - first:
+      1: 100156
+    second: RingToe2_L
+  - first:
+      1: 100158
+    second: RingToe2_R
+  - first:
+      1: 100160
+    second: RingToe3_L
+  - first:
+      1: 100162
+    second: RingToe3_R
+  - first:
+      1: 100164
+    second: Root_M
+  - first:
+      1: 100166
+    second: Scapula_L
+  - first:
+      1: 100168
+    second: Scapula_R
+  - first:
+      1: 100170
+    second: Shoulder_L
+  - first:
+      1: 100172
+    second: Shoulder_R
+  - first:
+      1: 100174
+    second: Spine_M
+  - first:
+      1: 100176
+    second: Tail0_M
+  - first:
+      1: 100178
+    second: Tail1_M
+  - first:
+      1: 100180
+    second: Tail2_M
+  - first:
+      1: 100182
+    second: Tail3_M
+  - first:
+      1: 100184
+    second: Tail4_M
+  - first:
+      1: 100186
+    second: Tail5_M
+  - first:
+      1: 100188
+    second: Toes1_L
+  - first:
+      1: 100190
+    second: Toes1_R
+  - first:
+      1: 100192
+    second: Toes2_L
+  - first:
+      1: 100194
+    second: Toes2_R
+  - first:
+      1: 100196
+    second: Tounge1_M
+  - first:
+      1: 100198
+    second: Tounge2_M
+  - first:
+      1: 100200
+    second: Tounge3_M
+  - first:
+      1: 100202
+    second: Tounge4_M
+  - first:
+      1: 100204
+    second: Tounge5_M
+  - first:
+      1: 100206
+    second: Tounge6_M
+  - first:
+      1: 100208
+    second: Tounge7_M
+  - first:
+      1: 100210
+    second: Wrist_L
+  - first:
+      1: 100212
+    second: Wrist_R
+  - first:
+      4: 400000
+    second: Ankle_L
+  - first:
+      4: 400002
+    second: Ankle_R
+  - first:
+      4: 400004
+    second: Anteater
+  - first:
+      4: 400006
+    second: //RootNode
+  - first:
+      4: 400008
+    second: Chest_M
+  - first:
+      4: 400010
+    second: DeformationSystem
+  - first:
+      4: 400012
+    second: Ear1_L
+  - first:
+      4: 400014
+    second: Ear1_R
+  - first:
+      4: 400016
+    second: Ear2_L
+  - first:
+      4: 400018
+    second: Ear2_R
+  - first:
+      4: 400020
+    second: Ear3_L
+  - first:
+      4: 400022
+    second: Ear3_R
+  - first:
+      4: 400024
+    second: Elbow_L
+  - first:
+      4: 400026
+    second: Elbow_R
+  - first:
+      4: 400028
+    second: Eye_L
+  - first:
+      4: 400030
+    second: Eye_R
+  - first:
+      4: 400032
+    second: EyeEnd_L
+  - first:
+      4: 400034
+    second: EyeEnd_R
+  - first:
+      4: 400036
+    second: Fingers1_L
+  - first:
+      4: 400038
+    second: Fingers1_R
+  - first:
+      4: 400040
+    second: Fingers2_L
+  - first:
+      4: 400042
+    second: Fingers2_R
+  - first:
+      4: 400044
+    second: Geometry
+  - first:
+      4: 400046
+    second: Head_M
+  - first:
+      4: 400048
+    second: HeadEnd_M
+  - first:
+      4: 400050
+    second: Hip_L
+  - first:
+      4: 400052
+    second: Hip_R
+  - first:
+      4: 400054
+    second: IndexToe1_L
+  - first:
+      4: 400056
+    second: IndexToe1_R
+  - first:
+      4: 400058
+    second: IndexToe2_L
+  - first:
+      4: 400060
+    second: IndexToe2_R
+  - first:
+      4: 400062
+    second: IndexToe3_L
+  - first:
+      4: 400064
+    second: IndexToe3_R
+  - first:
+      4: 400066
+    second: Jaw_M
+  - first:
+      4: 400068
+    second: JawEnd_M
+  - first:
+      4: 400070
+    second: Knee_L
+  - first:
+      4: 400072
+    second: Knee_R
+  - first:
+      4: 400074
+    second: Main
+  - first:
+      4: 400076
+    second: MiddleFinger1_L
+  - first:
+      4: 400078
+    second: MiddleFinger1_R
+  - first:
+      4: 400080
+    second: MiddleFinger2_L
+  - first:
+      4: 400082
+    second: MiddleFinger2_R
+  - first:
+      4: 400084
+    second: MiddleFinger3_L
+  - first:
+      4: 400086
+    second: MiddleFinger3_R
+  - first:
+      4: 400088
+    second: MiddleFinger4_L
+  - first:
+      4: 400090
+    second: MiddleFinger4_R
+  - first:
+      4: 400092
+    second: MiddleToe1_L
+  - first:
+      4: 400094
+    second: MiddleToe1_R
+  - first:
+      4: 400096
+    second: MiddleToe2_L
+  - first:
+      4: 400098
+    second: MiddleToe2_R
+  - first:
+      4: 400100
+    second: MiddleToe3_L
+  - first:
+      4: 400102
+    second: MiddleToe3_R
+  - first:
+      4: 400104
+    second: Neck1_M
+  - first:
+      4: 400106
+    second: Neck_M
+  - first:
+      4: 400108
+    second: PinkyFinger1_L
+  - first:
+      4: 400110
+    second: PinkyFinger1_R
+  - first:
+      4: 400112
+    second: PinkyFinger2_L
+  - first:
+      4: 400114
+    second: PinkyFinger2_R
+  - first:
+      4: 400116
+    second: PinkyFinger3_L
+  - first:
+      4: 400118
+    second: PinkyFinger3_R
+  - first:
+      4: 400120
+    second: PinkyFinger4_L
+  - first:
+      4: 400122
+    second: PinkyFinger4_R
+  - first:
+      4: 400124
+    second: PinkyToe1_L
+  - first:
+      4: 400126
+    second: PinkyToe1_R
+  - first:
+      4: 400128
+    second: PinkyToe2_L
+  - first:
+      4: 400130
+    second: PinkyToe2_R
+  - first:
+      4: 400132
+    second: PinkyToe3_L
+  - first:
+      4: 400134
+    second: PinkyToe3_R
+  - first:
+      4: 400136
+    second: RingFinger1_L
+  - first:
+      4: 400138
+    second: RingFinger1_R
+  - first:
+      4: 400140
+    second: RingFinger2_L
+  - first:
+      4: 400142
+    second: RingFinger2_R
+  - first:
+      4: 400144
+    second: RingFinger3_L
+  - first:
+      4: 400146
+    second: RingFinger3_R
+  - first:
+      4: 400148
+    second: RingFinger4_L
+  - first:
+      4: 400150
+    second: RingFinger4_R
+  - first:
+      4: 400152
+    second: RingToe1_L
+  - first:
+      4: 400154
+    second: RingToe1_R
+  - first:
+      4: 400156
+    second: RingToe2_L
+  - first:
+      4: 400158
+    second: RingToe2_R
+  - first:
+      4: 400160
+    second: RingToe3_L
+  - first:
+      4: 400162
+    second: RingToe3_R
+  - first:
+      4: 400164
+    second: Root_M
+  - first:
+      4: 400166
+    second: Scapula_L
+  - first:
+      4: 400168
+    second: Scapula_R
+  - first:
+      4: 400170
+    second: Shoulder_L
+  - first:
+      4: 400172
+    second: Shoulder_R
+  - first:
+      4: 400174
+    second: Spine_M
+  - first:
+      4: 400176
+    second: Tail0_M
+  - first:
+      4: 400178
+    second: Tail1_M
+  - first:
+      4: 400180
+    second: Tail2_M
+  - first:
+      4: 400182
+    second: Tail3_M
+  - first:
+      4: 400184
+    second: Tail4_M
+  - first:
+      4: 400186
+    second: Tail5_M
+  - first:
+      4: 400188
+    second: Toes1_L
+  - first:
+      4: 400190
+    second: Toes1_R
+  - first:
+      4: 400192
+    second: Toes2_L
+  - first:
+      4: 400194
+    second: Toes2_R
+  - first:
+      4: 400196
+    second: Tounge1_M
+  - first:
+      4: 400198
+    second: Tounge2_M
+  - first:
+      4: 400200
+    second: Tounge3_M
+  - first:
+      4: 400202
+    second: Tounge4_M
+  - first:
+      4: 400204
+    second: Tounge5_M
+  - first:
+      4: 400206
+    second: Tounge6_M
+  - first:
+      4: 400208
+    second: Tounge7_M
+  - first:
+      4: 400210
+    second: Wrist_L
+  - first:
+      4: 400212
+    second: Wrist_R
+  - first:
+      21: 2100000
+    second: Anteater
+  - first:
+      43: 4300000
+    second: Anteater
+  - first:
+      74: 7400000
+    second: Anteater_Idle
+  - first:
+      74: 7400002
+    second: Anteater_Idle2
+  - first:
+      74: 7400004
+    second: Anteater_Idle to Walk
+  - first:
+      74: 7400006
+    second: Anteater_Walk
+  - first:
+      74: 7400008
+    second: Anteater_Walk to Idle
+  - first:
+      74: 7400010
+    second: Anteater_Idle to Run
+  - first:
+      74: 7400012
+    second: Anteater_Run
+  - first:
+      74: 7400014
+    second: Anteater_Run to Idle
+  - first:
+      74: 7400016
+    second: Anteater_Attack
+  - first:
+      74: 7400018
+    second: Anteater_Death
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Anteater
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -242,6 +698,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -262,6 +719,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Idle
       takeName: Anteater_Idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 50
       wrapMode: 0
@@ -290,6 +748,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Idle2
       takeName: Anteater_Idle2
+      internalID: 0
       firstFrame: 100
       lastFrame: 250
       wrapMode: 0
@@ -318,6 +777,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Idle to Walk
       takeName: Anteater_Idle to Walk
+      internalID: 0
       firstFrame: 300
       lastFrame: 320
       wrapMode: 0
@@ -346,6 +806,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Walk
       takeName: Anteater_Walk
+      internalID: 0
       firstFrame: 350
       lastFrame: 390
       wrapMode: 0
@@ -374,6 +835,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Walk to Idle
       takeName: Anteater_Walk to Idle
+      internalID: 0
       firstFrame: 420
       lastFrame: 440
       wrapMode: 0
@@ -402,6 +864,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Idle to Run
       takeName: Anteater_Idle to Run
+      internalID: 0
       firstFrame: 470
       lastFrame: 478
       wrapMode: 0
@@ -430,6 +893,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Run
       takeName: Anteater_Run
+      internalID: 0
       firstFrame: 500
       lastFrame: 515
       wrapMode: 0
@@ -458,6 +922,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Run to Idle
       takeName: Anteater_Run to Idle
+      internalID: 0
       firstFrame: 530
       lastFrame: 539
       wrapMode: 0
@@ -486,6 +951,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Attack
       takeName: Anteater_Attack
+      internalID: 0
       firstFrame: 560
       lastFrame: 603
       wrapMode: 0
@@ -494,8 +960,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -514,6 +980,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Anteater_Death
       takeName: Anteater_Death
+      internalID: 0
       firstFrame: 630
       lastFrame: 658
       wrapMode: 0
@@ -546,25 +1013,34 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -573,10 +1049,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -586,13 +1062,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
