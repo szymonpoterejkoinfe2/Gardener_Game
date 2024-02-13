@@ -74,7 +74,7 @@ public class DecorationFlyingConstructor : MonoBehaviour
         {
             for (int cycles = 0; cycles < amount[creatureID]; cycles++)
             {
-                soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(creatureID);
+              //  soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(creatureID);
             }
 
         }

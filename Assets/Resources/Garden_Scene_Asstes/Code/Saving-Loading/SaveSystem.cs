@@ -153,8 +153,8 @@ public class SaveSystem : MonoBehaviour
 
         foreach (GameObject tile in tiles)
         {
-            tileDecoration = new DecorationFlyingConstructor.TileDecoration(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<CreateFlyDecoration>().creaturesQuantity);
-            decorationFlyingConstructor.myCreatures.AddToList(tileDecoration);
+            //tileDecoration = new DecorationFlyingConstructor.TileDecoration(tile.GetComponent<ObjectCharacteristics>().uniqueId, tile.GetComponent<CreateFlyDecoration>().creaturesQuantity);
+            //decorationFlyingConstructor.myCreatures.AddToList(tileDecoration);
         }
     }
 

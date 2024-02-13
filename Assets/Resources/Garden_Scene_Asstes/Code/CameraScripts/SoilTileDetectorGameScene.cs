@@ -87,14 +87,6 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         saveManager.SaveMoneyBalance();
     }
 
-    // function to generate flying decoration object
-    public void BuyFlyingDecoration(int decoration)
-    {
-        soilTile.GetComponent<CreateFlyDecoration>().CreateFlyingCreature(decoration);
-        saveManager.SaveFlyingDecoration();
-        saveManager.SaveMoneyBalance();
-    }
-
     //Function to return from single tile view to whole garden view
     public void GoBackToGarden()
     {

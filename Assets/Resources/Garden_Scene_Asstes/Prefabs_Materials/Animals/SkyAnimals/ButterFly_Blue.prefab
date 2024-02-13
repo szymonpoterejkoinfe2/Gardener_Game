@@ -137,9 +137,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7572878935751409604}
   - component: {fileID: 7512694958359131036}
-  - component: {fileID: 7572406155166181723}
+  - component: {fileID: 3161495736933661960}
   m_Layer: 0
-  m_Name: ButterFly_Red
+  m_Name: ButterFly_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7572406155166181723
+--- !u!114 &3161495736933661960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,10 +191,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7571413959726296038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f06689192bfd1a45b7e7479415d9c23, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a3b8073b02124d4c980e94e84dab86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  animalAnimationClip: {fileID: 7400000, guid: b136ce2419f4a234fb6e66c7028d8df6, type: 2}
+  preferredAltitude: 2
+  rotationSpeed: 4
+  moveSpeed: 0.7
   point: {fileID: 4846082244642737667, guid: 01522155a3d75814fa31fa042266fd8f, type: 3}
 --- !u!1 &7571414084647583808
 GameObject:
@@ -311,7 +314,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ec77a07b22ad4cf4b867f62c121e0d75, type: 2}
+  - {fileID: 2100000, guid: 79c2511799a05394eacdeda576d89295, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
