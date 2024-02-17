@@ -187,6 +187,7 @@ public class SpawnAnimals : MonoBehaviour
     private void PlaceAnimal(string animalId, int pointIndex)
     {
         newAnimal = Instantiate(animals[animalId], avaliablePoints[pointIndex].GetTransform().position, Quaternion.identity, avaliablePoints[pointIndex].GetTransform());
+        newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
         oldAnimal = newAnimal.gameObject;
     }
 

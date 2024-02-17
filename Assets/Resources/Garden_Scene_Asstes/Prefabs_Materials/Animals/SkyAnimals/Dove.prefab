@@ -1162,6 +1162,7 @@ GameObject:
   - component: {fileID: 4570686693976835817}
   - component: {fileID: 4570686693976835814}
   - component: {fileID: 4570686693976835812}
+  - component: {fileID: 5319685078169448255}
   m_Layer: 0
   m_Name: Dove
   m_TagString: Untagged
@@ -1176,8 +1177,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4570686693977332425}
-  m_LocalRotation: {x: -0, y: -0.0888073, z: -0, w: 0.99604887}
-  m_LocalPosition: {x: -32.968, y: 9.645, z: 32}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8000002, y: 0.75, z: 0.8000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1223,6 +1224,19 @@ MonoBehaviour:
   rotationSpeed: 6
   moveSpeed: 1.5
   point: {fileID: 4846082244642737667, guid: 01522155a3d75814fa31fa042266fd8f, type: 3}
+--- !u!114 &5319685078169448255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570686693977332425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.065, y: 0.13, z: 0.065}
 --- !u!1 &4570686693977332427
 GameObject:
   m_ObjectHideFlags: 0

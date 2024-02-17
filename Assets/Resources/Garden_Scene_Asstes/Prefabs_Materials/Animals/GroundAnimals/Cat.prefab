@@ -1316,6 +1316,7 @@ GameObject:
   - component: {fileID: 6218837054906033081}
   - component: {fileID: 48857412299930051}
   - component: {fileID: 4286927154719789763}
+  - component: {fileID: 6568274164091960432}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -1374,6 +1375,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalAnimationClips:
   - {fileID: 7091235293715596357, guid: be0b130f077976f4bae38e76403b1ddb, type: 3}
+--- !u!114 &6568274164091960432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703168201481894147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &6738259040644176482
 GameObject:
   m_ObjectHideFlags: 0

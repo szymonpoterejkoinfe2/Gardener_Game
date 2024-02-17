@@ -135,7 +135,7 @@ public class SaveSystem : MonoBehaviour
         decorationFlyingConstructor = soilTIleObject.GetComponent<DecorationFlyingConstructor>();
 
         GameObject[] tiles;
-        DecorationFlyingConstructor.TileDecoration tileDecoration;
+       // DecorationFlyingConstructor.TileDecoration tileDecoration;
 
         tileDecorationList = decorationFlyingConstructor.myCreatures;
 
@@ -217,8 +217,8 @@ public class SaveSystem : MonoBehaviour
             ObjectHolder holder = occtile.GetComponent<ObjectHolder>();
             if (holder.haveObject == true)
             {
-                holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId,occtile.transform.GetChild(1).transform.rotation);
-                objectHolderConstructorList.AddToOccupied(holderTile);
+               // holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId,occtile.transform.GetChild(1).transform.rotation);
+               // objectHolderConstructorList.AddToOccupied(holderTile);
             }
 
         }

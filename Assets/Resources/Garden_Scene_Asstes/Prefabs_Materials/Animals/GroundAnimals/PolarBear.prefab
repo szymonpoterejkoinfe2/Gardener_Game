@@ -1157,6 +1157,7 @@ GameObject:
   - component: {fileID: 274848152605193935}
   - component: {fileID: 274848152612411773}
   - component: {fileID: 274848152605158124}
+  - component: {fileID: 7924752706434072926}
   m_Layer: 0
   m_Name: PolarBear
   m_TagString: Untagged
@@ -1217,6 +1218,19 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 6d2de01505f779645b3b222d02893238, type: 2}
   - {fileID: 7400000, guid: 5cea0265d45b7534ca6eae8e6413128d, type: 2}
   - {fileID: 7400000, guid: 6d2de01505f779645b3b222d02893238, type: 2}
+--- !u!114 &7924752706434072926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274848152605158127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &274848152605158129
 GameObject:
   m_ObjectHideFlags: 0

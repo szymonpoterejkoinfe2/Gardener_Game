@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 8806660604462799220}
   - component: {fileID: 8806660604471834292}
   - component: {fileID: 8806660604471834295}
+  - component: {fileID: -2032979593496880283}
   m_Layer: 0
   m_Name: DogGreatDaneBlack
   m_TagString: Untagged
@@ -782,6 +783,19 @@ MonoBehaviour:
   - {fileID: 7400000, guid: ef518564e3bf98a44a2a9ae58c1288c7, type: 2}
   - {fileID: 7400000, guid: f2c9ce6a20d63b64f8980c960720c443, type: 2}
   - {fileID: 7400000, guid: ef518564e3bf98a44a2a9ae58c1288c7, type: 2}
+--- !u!114 &-2032979593496880283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806660604462433556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &8806660604462433558
 GameObject:
   m_ObjectHideFlags: 0

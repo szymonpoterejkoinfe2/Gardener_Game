@@ -2202,6 +2202,7 @@ GameObject:
   - component: {fileID: 3932111264970280926}
   - component: {fileID: 3932111264960700470}
   - component: {fileID: 3932111264960700473}
+  - component: {fileID: 415560963787231643}
   m_Layer: 0
   m_Name: CowBlack
   m_TagString: Untagged
@@ -2262,3 +2263,16 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 655bdc733f25f4b4590e38c199d00e76, type: 2}
   - {fileID: 7400000, guid: 617ebd6b6fd0f2d428500b6b9509c94f, type: 2}
   - {fileID: 7400000, guid: 655bdc733f25f4b4590e38c199d00e76, type: 2}
+--- !u!114 &415560963787231643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932111264970052606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}

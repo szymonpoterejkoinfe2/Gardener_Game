@@ -1589,6 +1589,7 @@ GameObject:
   - component: {fileID: 6844098168623923432}
   - component: {fileID: 6891841322420943666}
   - component: {fileID: 6841472515629036023}
+  - component: {fileID: -5043275257023444328}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Untagged
@@ -1648,6 +1649,19 @@ MonoBehaviour:
   animalAnimationClips:
   - {fileID: -3409701578799865313, guid: ab52385129f4ae34c897dccb136b8668, type: 3}
   - {fileID: 4056577625377351681, guid: ab52385129f4ae34c897dccb136b8668, type: 3}
+--- !u!114 &-5043275257023444328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841472515629036022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &6874987627140634930
 GameObject:
   m_ObjectHideFlags: 0

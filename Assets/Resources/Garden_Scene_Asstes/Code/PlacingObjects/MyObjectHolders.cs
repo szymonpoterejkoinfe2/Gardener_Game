@@ -12,21 +12,4 @@ public class MyObjectHolders : MonoBehaviour
         myPosition = gameObject.transform.localPosition;
     }
 
-    //Changing tag of object holders when moved to interaction with player
-    public void ChangeTagToMoved()
-    {
-        foreach (GameObject holder in myObjectHolders)
-        {
-            holder.tag = "MovedObjectHolder";
-        }
-
-    }
-    //Changing tag of object holders when moved back to Garden
-    public void UnchangeTag()
-    {
-        foreach (GameObject holder in myObjectHolders)
-        {
-            holder.tag = "ObjectHolder";
-        }
-    }
 }

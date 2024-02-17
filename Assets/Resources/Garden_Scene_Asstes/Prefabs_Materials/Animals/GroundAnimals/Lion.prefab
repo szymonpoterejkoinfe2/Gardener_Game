@@ -1675,6 +1675,7 @@ GameObject:
   - component: {fileID: 1737158689321978849}
   - component: {fileID: 1737158689314563149}
   - component: {fileID: 8011476098830127476}
+  - component: {fileID: -1683389010421455289}
   m_Layer: 0
   m_Name: Lion
   m_TagString: Untagged
@@ -1736,6 +1737,19 @@ MonoBehaviour:
   - {fileID: 7400008, guid: cc9303d72f132fa4192dd1a1b144384e, type: 3}
   - {fileID: 7400000, guid: cc9303d72f132fa4192dd1a1b144384e, type: 3}
   - {fileID: 7400000, guid: cc9303d72f132fa4192dd1a1b144384e, type: 3}
+--- !u!114 &-1683389010421455289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737158689321818049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &1737158689321818051
 GameObject:
   m_ObjectHideFlags: 0

@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 2877105756865008191}
   - component: {fileID: 8146348332752980037}
   - component: {fileID: 8813505802087164211}
+  - component: {fileID: -214666030667588958}
   m_Layer: 0
   m_Name: Giraffe
   m_TagString: Untagged
@@ -776,6 +777,19 @@ MonoBehaviour:
   animalAnimationClips:
   - {fileID: -611410992903583201, guid: 8d4b7d05e8519434083dbe09259183b4, type: 3}
   - {fileID: -6027013593588420686, guid: 8d4b7d05e8519434083dbe09259183b4, type: 3}
+--- !u!114 &-214666030667588958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217356692725155973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &3385307942863353844
 GameObject:
   m_ObjectHideFlags: 0

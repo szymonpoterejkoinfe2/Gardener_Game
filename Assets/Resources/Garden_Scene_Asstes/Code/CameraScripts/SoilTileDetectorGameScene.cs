@@ -59,25 +59,6 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId,false);
 
     }
-    // Function to set Holder id
-    public void SetHolderId(int id)
-    {
-        soilTile.GetComponent<PlaceObject>().SetHolderId(id);
-    }
-
-    // Function to set Object id
-    public void SetObjectId(int id)
-    {
-        soilTile.GetComponent<PlaceObject>().SetObjectId(id);
-    }
-    
-    //Function to generate object after clicking on button.
-    public void PlaceObject()
-    {
-        cameraTileManager.DeActivateShopMenu();
-        soilTile.GetComponent<PlaceObject>().CreateObject();
-       
-    }
 
     // function to start hydration process
     public void BuyHydration(float hydrationTime)

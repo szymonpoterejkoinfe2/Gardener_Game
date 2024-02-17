@@ -1912,6 +1912,7 @@ GameObject:
   - component: {fileID: 7149664304800805334}
   - component: {fileID: 7149664304791805494}
   - component: {fileID: 7149664304791805493}
+  - component: {fileID: -8398743427598330219}
   m_Layer: 0
   m_Name: DogGoldenRetriever
   m_TagString: Untagged
@@ -1976,6 +1977,19 @@ MonoBehaviour:
   - {fileID: 7400000, guid: a8346a99155c7fa479db208833df178f, type: 2}
   - {fileID: 7400000, guid: 0323490e2a217f94c8aea0a7a6db9304, type: 2}
   - {fileID: 7400000, guid: a8346a99155c7fa479db208833df178f, type: 2}
+--- !u!114 &-8398743427598330219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149664304801164790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &7149664304801164792
 GameObject:
   m_ObjectHideFlags: 0

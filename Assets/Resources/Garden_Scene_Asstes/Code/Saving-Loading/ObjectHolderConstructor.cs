@@ -61,10 +61,9 @@ public class ObjectHolderConstructor : MonoBehaviour
             {
 
                 ObjectHolder holder = occHolder.GetComponent<ObjectHolder>();
-                PlaceObject generator = occHolder.transform.GetComponentInParent<PlaceObject>();
                 if (holder.uniqueId == objHolder.uniqID)
                 {
-                  generator.CreateFromSave(objHolder.objectID, holder.gameObject, objHolder.objectRotation);
+                 // generator.CreateFromSave(objHolder.objectID, holder.gameObject, objHolder.objectRotation);
                   holder.haveObject = true;
                     break;
                 }

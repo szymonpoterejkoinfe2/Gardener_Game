@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class SpawnSkyAnimals : MonoBehaviour
 {
     private Dictionary<string, GameObject> animals;
     SaveSystem saveManager;
+
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class SpawnSkyAnimals : MonoBehaviour
         GameObject soilParent = GameObject.FindGameObjectWithTag("MovedSoil");
         GameObject newSkyAnimal = Instantiate(animals[animalID], new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, soilParent.transform);
 
-        newSkyAnimal.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+        newSkyAnimal.transform.localScale = animals[animalID].GetComponent<AnimalAttributes>().myLocalScale;
         newSkyAnimal.transform.localPosition = new Vector3(0, 2, 0);
 
         saveManager.SaveFlyingDecoration();
@@ -31,3 +33,4 @@ public class SpawnSkyAnimals : MonoBehaviour
     }
 
 }
+

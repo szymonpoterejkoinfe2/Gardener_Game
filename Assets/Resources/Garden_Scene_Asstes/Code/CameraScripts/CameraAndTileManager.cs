@@ -94,7 +94,6 @@ public class CameraAndTileManager : MonoBehaviour
         PositionMemory = Soil.transform.position;
         Soil.transform.position = new Vector3(-60, PositionMemory.y, 20);
         Soil.tag = "MovedSoil";
-        Soil.GetComponent<MyObjectHolders>().ChangeTagToMoved();
         StartRotationOfSoil(Soil);
     }
 
@@ -111,7 +110,6 @@ public class CameraAndTileManager : MonoBehaviour
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();
         Soil.tag = "SoilTile";
-        Soil.GetComponent<MyObjectHolders>().UnchangeTag();
     }
 
     //Function to activate ShoppingMenu

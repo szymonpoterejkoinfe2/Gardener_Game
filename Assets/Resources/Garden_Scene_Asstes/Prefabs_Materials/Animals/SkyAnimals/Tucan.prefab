@@ -1612,6 +1612,7 @@ GameObject:
   - component: {fileID: 5425334665297542231}
   - component: {fileID: 5425334665290109919}
   - component: {fileID: 8816189543114802024}
+  - component: {fileID: 5520816409747675866}
   m_Layer: 0
   m_Name: Tucan
   m_TagString: Untagged
@@ -1673,6 +1674,19 @@ MonoBehaviour:
   rotationSpeed: 2
   moveSpeed: 1
   point: {fileID: 4846082244642737667, guid: 01522155a3d75814fa31fa042266fd8f, type: 3}
+--- !u!114 &5520816409747675866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425334665297502647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.06, y: 0.25, z: 0.06}
 --- !u!1 &5425334665297502649
 GameObject:
   m_ObjectHideFlags: 0

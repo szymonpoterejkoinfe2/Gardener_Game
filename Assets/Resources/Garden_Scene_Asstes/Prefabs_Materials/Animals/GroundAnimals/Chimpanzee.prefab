@@ -1030,6 +1030,7 @@ GameObject:
   - component: {fileID: 7463074258913033952}
   - component: {fileID: 7463074258903208212}
   - component: {fileID: 7463074258903208213}
+  - component: {fileID: -2884509529257124643}
   m_Layer: 0
   m_Name: Chimpanzee
   m_TagString: Untagged
@@ -1090,6 +1091,19 @@ MonoBehaviour:
   - {fileID: 7400016, guid: e119d0129ad5ff544befab694214f3ae, type: 3}
   - {fileID: 7400012, guid: e119d0129ad5ff544befab694214f3ae, type: 3}
   - {fileID: 7400014, guid: e119d0129ad5ff544befab694214f3ae, type: 3}
+--- !u!114 &-2884509529257124643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463074258912600768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &7463074258912600770
 GameObject:
   m_ObjectHideFlags: 0
