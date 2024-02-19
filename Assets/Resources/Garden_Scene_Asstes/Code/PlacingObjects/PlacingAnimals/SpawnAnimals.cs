@@ -211,7 +211,7 @@ public class SpawnAnimals : MonoBehaviour
     //Instantiating new animal prefab object in in previous available point, destroying old animal object
     public void PlaceInPreviousPoint() 
     {
-        if ((pointIndex - 1) < (avaliablePoints.Count - 1))
+        if ((pointIndex - 1) < 0)
         {
             pointIndex = (avaliablePoints.Count - 1);
         }

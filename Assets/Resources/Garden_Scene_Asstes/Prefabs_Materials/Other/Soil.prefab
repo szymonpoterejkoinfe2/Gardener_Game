@@ -5480,17 +5480,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e2f33b975207348922d6105d0bddb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myObjectHolders:
-  - {fileID: 4570566986792094888}
-  - {fileID: 1289749695375641560}
-  - {fileID: 4082782318547987676}
-  - {fileID: 6373946436962892602}
-  - {fileID: 2046578980010545266}
-  - {fileID: 1248933460914295423}
-  - {fileID: 2878318207646110228}
-  - {fileID: 4083916462783344159}
   myPosition: {x: 0, y: 0, z: 0}
   haveScarecrow: 0
+  newDictionary:
+    dictionaryItems:
+    - key: 
+      element: {fileID: 4570566986792094888}
+    - key: 
+      element: {fileID: 1289749695375641560}
+    - key: 
+      element: {fileID: 4082782318547987676}
+    - key: 
+      element: {fileID: 6373946436962892602}
+    - key: 
+      element: {fileID: 2046578980010545266}
+    - key: 
+      element: {fileID: 1248933460914295423}
+    - key: 
+      element: {fileID: 2878318207646110228}
+    - key: 
+      element: {fileID: 4083916462783344159}
 --- !u!114 &3424918146326364524
 MonoBehaviour:
   m_ObjectHideFlags: 0

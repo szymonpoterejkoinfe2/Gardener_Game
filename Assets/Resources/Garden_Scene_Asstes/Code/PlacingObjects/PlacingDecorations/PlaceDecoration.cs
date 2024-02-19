@@ -7,25 +7,30 @@ public class PlaceDecoration : MonoBehaviour
 {
     [SerializeField]
     DecorationsHolder decorationsHolder;
-    Dictionary<string, GameObject> allDecorations;
+    Dictionary<string, GameObject> allDecorations, allSoilTiles, holderTiles;
     GameObject soilTile, newDecoration, oldDecoration;
     string soilTileID, decorationID;
-    GameObject[] holderTiles;
     List<GameObject> availableTiles = new List<GameObject>();
     int holderIndex = 0;
     SoilRotation soilRotation;
+    
 
     [SerializeField]
     SoilTileDecorations newDict;
+    [SerializeField]
+    SaveSystem saveSystem;
 
     [SerializeField]
     public Dictionary<string, List<Decoration>> placedDecorations;
     public GameObject moveButtons, shopMenu, returnButton;
 
+    [SerializeField]
+    NewDictionary soilTiles;
 
     void Awake()
     {
         placedDecorations = newDict.ToDictionary();
+        allSoilTiles = soilTiles.ToDictionary();
     }
 
     void Start()
@@ -56,7 +61,7 @@ public class PlaceDecoration : MonoBehaviour
         soilTileID = soilTile.GetComponent<ObjectCharacteristics>().uniqueId;
         holderTiles = soilTile.GetComponent<MyObjectHolders>().myObjectHolders;
 
-        foreach (GameObject holderTile in holderTiles)
+        foreach (GameObject holderTile in holderTiles.Values)
         {
             ObjectHolder objectHolder = holderTile.GetComponent<ObjectHolder>();
 
@@ -82,7 +87,7 @@ public class PlaceDecoration : MonoBehaviour
         returnButton.SetActive(true);
         soilRotation.Should_Rotate = true;
 
-        foreach (GameObject holderTile in holderTiles)
+        foreach (GameObject holderTile in holderTiles.Values)
         {
             ObjectHolder objectHolder = holderTile.GetComponent<ObjectHolder>();
             objectHolder.HideAvailability();
@@ -97,6 +102,17 @@ public class PlaceDecoration : MonoBehaviour
         newDecoration.transform.localPosition = newDecoration.GetComponent<ObjectCharacteristics>().positionTarget;
         oldDecoration = newDecoration.gameObject;
     }
+
+    //Function to Load decoration object from save
+    private void PlaceDecorationObject(string decorationID, GameObject holderTile, Quaternion rotation)
+    {
+        newDecoration = Instantiate(allDecorations[decorationID], holderTile.transform.position, Quaternion.identity, holderTile.transform);
+        newDecoration.transform.localScale = newDecoration.GetComponent<ObjectCharacteristics>().valueTarget;
+        newDecoration.transform.localPosition = newDecoration.GetComponent<ObjectCharacteristics>().positionTarget;
+        newDecoration.transform.rotation = rotation;
+        holderTile.GetComponent<ObjectHolder>().haveObject = true;
+    }
+
 
     //Instantiating new decoration prefab object in in next available point, destroying old decoration object
     public void PlaceInNextPoint()
@@ -145,10 +161,12 @@ public class PlaceDecoration : MonoBehaviour
         ObjectHolder objectHolder = availableTiles[holderIndex].GetComponent<ObjectHolder>();
         string objectHolderID = objectHolder.uniqueId;
         objectHolder.haveObject = true;
-        placedDecorations[soilTileID].Add(new Decoration(decorationID, objectHolderID));
+        placedDecorations[soilTileID].Add(new Decoration(decorationID, objectHolderID, oldDecoration.transform.rotation));
         oldDecoration = null;
         holderIndex = 0;
         HideAvailability();
+
+        saveSystem.SaveGardenDecorations();
     }
 
     //Rejecting animal object
@@ -160,6 +178,31 @@ public class PlaceDecoration : MonoBehaviour
         HideAvailability();
     }
 
+    // Function to load saved decorations from save file
+    public void LoadDecorations(Dictionary<string, List<Decoration>> allSavedDecorations)
+    {
+        GameObject soilTile;
+        Dictionary<string, GameObject> holderTiles;
+
+        placedDecorations = allSavedDecorations;
+        
+        foreach (var savedDecoration in allSavedDecorations)
+        {
+            if (savedDecoration.Value.Count > 0)
+            {
+
+                soilTile = allSoilTiles[savedDecoration.Key];
+                holderTiles = soilTile.GetComponent<MyObjectHolders>().myObjectHolders;
+
+                foreach (Decoration decoration in savedDecoration.Value)
+                {
+                    PlaceDecorationObject(decoration.decorationID, holderTiles[decoration.holderTileID],decoration.rotation);
+                }
+
+            }
+           
+        }
+    }
 
 }
 
@@ -198,10 +241,12 @@ public class Decoration
 {
     public string decorationID;
     public string holderTileID;
+    public Quaternion rotation;
 
-    public Decoration(string decorationID, string holderTileID)
+    public Decoration(string decorationID, string holderTileID, Quaternion rotation)
     {
         this.decorationID = decorationID;
         this.holderTileID = holderTileID;
+        this.rotation = rotation;
     }
 }

@@ -5,6 +5,12 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     private IDataService DataService = new JasonDataService();
+
+    //New Save System
+    [SerializeField]
+    PlaceDecoration decorationSpawner;
+
+    //Old Save System
     private BadRockCoverPriceing.CoverPrices pricing;
     private CoverDestroyer.DestroyedCovers destroyed;
     private MoneyManager.MoneyBalance moneyBalance;
@@ -28,6 +34,7 @@ public class SaveSystem : MonoBehaviour
     void Start()
     {
         soilTIleObject = GameObject.FindGameObjectWithTag("SoilTileConstructor");
+
         StartCoroutine(WaitToLoad());
         StartCoroutine(SaveHydrationTimer());
 
@@ -37,6 +44,24 @@ public class SaveSystem : MonoBehaviour
         }
 
     }
+
+
+    //New Save System
+
+
+    //Function to save all Garden decoration tiles
+    public void SaveGardenDecorations()
+    {
+        Dictionary<string, List<Decoration>> decorationsDictionary = decorationSpawner.placedDecorations;
+
+        if (DataService.SaveData("/Decorations.json", decorationsDictionary, EncryptionEnabled))
+        {
+            Debug.Log("Decorations Saved");
+        }
+        //objectHolderConstructor.myOccupiedObjectHolders.occupiedHolders.Clear();
+    }
+
+
 
     //Function to save MoneyBalance
     public void SaveMoneyBalance()
@@ -85,17 +110,12 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //Function to save all ObjectHolders
-    public void SaveObjectHolderTiles()
-    {
-        SaveObjectHolders();
 
-        if (DataService.SaveData("/myHolders.json", objectHolderConstructorList, EncryptionEnabled))
-        {
-            Debug.Log("Holder Tiles Saved");
-        }
-        objectHolderConstructor.myOccupiedObjectHolders.occupiedHolders.Clear();
-    }
+
+
+
+
+
 
     //Function to save all FlyingDecorations
     public void SaveFlyingDecoration()
@@ -191,39 +211,6 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //Function to find all ObjectHolders to save
-    void SaveObjectHolders()
-    {
-        objectHolderConstructor = soilTIleObject.GetComponent<ObjectHolderConstructor>();
-        GameObject[] allHolderTiles;
-        ObjectHolderConstructor.ObjectHolderObj holderTile;
-        objectHolderConstructorList = objectHolderConstructor.myOccupiedObjectHolders;
-
-        if (GameObject.FindGameObjectsWithTag("MovedObjectHolder") == null)
-        {
-            allHolderTiles = GameObject.FindGameObjectsWithTag("ObjectHolder");
-        }
-        else
-        {
-            List<GameObject> tempTile = new List<GameObject>();
-            tempTile.AddRange(GameObject.FindGameObjectsWithTag("ObjectHolder"));
-            tempTile.AddRange(GameObject.FindGameObjectsWithTag("MovedObjectHolder"));
-            allHolderTiles = tempTile.ToArray();
-        }
-
-        foreach (GameObject occtile in allHolderTiles)
-        {
-
-            ObjectHolder holder = occtile.GetComponent<ObjectHolder>();
-            if (holder.haveObject == true)
-            {
-               // holderTile = new ObjectHolderConstructor.ObjectHolderObj(holder.uniqueId,holder.myObjectId,occtile.transform.GetChild(1).transform.rotation);
-               // objectHolderConstructorList.AddToOccupied(holderTile);
-            }
-
-        }
-
-    }
 
     // Function to collect all data about hydration status required to save
     void SaveHydration()
@@ -281,6 +268,24 @@ public class SaveSystem : MonoBehaviour
     //Function to load all saved data
     public void Load()
     {
+        Rotation rot = FindObjectOfType<Rotation>();
+        rot.speed = 0;
+        rot.ResetState();
+
+        //New Load System 
+        try
+        {
+            Dictionary<string, List<Decoration>> loadedDecorations = DataService.LoadData<Dictionary<string, List<Decoration>>>("/Decorations.json", EncryptionEnabled);
+            decorationSpawner.LoadDecorations(loadedDecorations);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Could not read file! Error: {e.Message}");
+        }
+
+
+
+
         GameObject[] soilTiles = GameObject.FindGameObjectsWithTag("SoilTile");
 
         try
@@ -369,7 +374,8 @@ public class SaveSystem : MonoBehaviour
             Debug.LogError($"Could not read file! Error: {e.Message}");
         }
         Debug.Log("Data Loaded");
-        
+
+        rot.speed = 2;
     }
 
     //Waiting to load SavedData
