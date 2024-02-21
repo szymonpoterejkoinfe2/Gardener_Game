@@ -9,6 +9,10 @@ public class SaveSystem : MonoBehaviour
     //New Save System
     [SerializeField]
     PlaceDecoration decorationSpawner;
+    [SerializeField]
+    PlacePlant plantSpawner;
+
+
 
     //Old Save System
     private BadRockCoverPriceing.CoverPrices pricing;
@@ -47,8 +51,6 @@ public class SaveSystem : MonoBehaviour
 
 
     //New Save System
-
-
     //Function to save all Garden decoration tiles
     public void SaveGardenDecorations()
     {
@@ -60,6 +62,22 @@ public class SaveSystem : MonoBehaviour
         }
         //objectHolderConstructor.myOccupiedObjectHolders.occupiedHolders.Clear();
     }
+
+    public void SavePlants()
+    {
+        Dictionary<string, string> plantsDictionary = plantSpawner.placedPlants;
+
+        if (DataService.SaveData("/Plants.json", plantsDictionary, EncryptionEnabled))
+        {
+            Debug.Log("Plants Saved");
+        }
+
+    }
+
+
+
+
+
 
 
 

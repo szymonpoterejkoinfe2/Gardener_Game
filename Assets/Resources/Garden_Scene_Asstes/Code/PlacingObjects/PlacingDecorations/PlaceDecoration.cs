@@ -7,7 +7,7 @@ public class PlaceDecoration : MonoBehaviour
 {
     [SerializeField]
     DecorationsHolder decorationsHolder;
-    Dictionary<string, GameObject> allDecorations, allSoilTiles, holderTiles;
+    Dictionary<string, GameObject> allDecorations, holderTiles, allSoilTiles;
     GameObject soilTile, newDecoration, oldDecoration;
     string soilTileID, decorationID;
     List<GameObject> availableTiles = new List<GameObject>();
@@ -25,18 +25,18 @@ public class PlaceDecoration : MonoBehaviour
     public GameObject moveButtons, shopMenu, returnButton;
 
     [SerializeField]
-    NewDictionary soilTiles;
+    SoilTiles soilTiles;
 
     void Awake()
     {
         placedDecorations = newDict.ToDictionary();
-        allSoilTiles = soilTiles.ToDictionary();
     }
 
     void Start()
     {
         moveButtons.SetActive(false);
         allDecorations = decorationsHolder.allDecorations;
+        allSoilTiles = soilTiles.allSoilTiles;
     }
 
     //Geting decoration id from button

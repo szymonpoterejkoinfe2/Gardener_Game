@@ -25,7 +25,7 @@ public class BadRockCoverPriceing : MonoBehaviour
     }
 
     // Creating new CoverPrices Object
-    BigInteger[] priceArr = { 50, 100, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 1450, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    BigInteger[] priceArr = { 50, 100, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 1450, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0,0,0,0,0,0,0,0,0,0,0,0,0};
     public CoverPrices myCoverPrices;
     // Constructor
     public BadRockCoverPriceing()
