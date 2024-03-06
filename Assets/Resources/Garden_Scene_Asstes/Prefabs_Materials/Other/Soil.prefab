@@ -5284,11 +5284,11 @@ GameObject:
   - component: {fileID: 3180292859779062366}
   - component: {fileID: 488442251655892451}
   - component: {fileID: 7960686453385558237}
-  - component: {fileID: 6286988900524184300}
   - component: {fileID: 907295047202248852}
   - component: {fileID: 5094104541053521129}
   - component: {fileID: 3424918146326364524}
   - component: {fileID: 1208913271034071110}
+  - component: {fileID: 4812814108006909417}
   m_Layer: 0
   m_Name: Soil
   m_TagString: SoilTile
@@ -5377,81 +5377,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0344688, y: 1.5141792, z: 1.0399214}
   m_Center: {x: -0.00059895514, y: 0.2570896, z: -0.0044034007}
---- !u!114 &6286988900524184300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8392215872484979002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b531c174676672a47a2a34279787209a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plants:
-  - {fileID: 5814696307910362390, guid: eafd37d51e55beb4ca5d822f1e58ec0a, type: 3}
-  - {fileID: 7398389488784057284, guid: 30ac22bbd59715149a8eb3e571550cae, type: 3}
-  - {fileID: 1830319465243612, guid: b36985c0ac26e6d43a7660ddc72f3574, type: 3}
-  - {fileID: 1459141857591278, guid: b4cf9e237bee5ff47a4339c70dbbde07, type: 3}
-  - {fileID: 1323086023813434, guid: 4d2e17c753dea1d4f81d19d6c49b0d44, type: 3}
-  - {fileID: 1864106858175348, guid: 3c8e8418c7f9c4f47be56bda822a61d8, type: 3}
-  - {fileID: 1367424853843588, guid: 8298d1cfc1d870841a055c16224edf3b, type: 3}
-  - {fileID: 1033492179934308, guid: 35cbf4845c2cc71408951fec1c6a3466, type: 3}
-  - {fileID: 1790664632603676, guid: ee4e8998ac04d6b479d46f099f425abe, type: 3}
-  - {fileID: 1336317565840620, guid: eaabbf31b3a6aa944a979d4a035c074d, type: 3}
-  - {fileID: 1097937957918722, guid: 8e2df2b00a6a78a4aa6cf7127577f20f, type: 3}
-  - {fileID: 1520557343468966, guid: db7e270e84714bb44bcb93f376492b14, type: 3}
-  - {fileID: 1073234032877142, guid: fa68217db2644294789177e4d7362004, type: 3}
-  - {fileID: 1905238117284224, guid: ed47fdd054c51474eae67bd628317710, type: 3}
-  - {fileID: 1036808603828732, guid: 8baf1eca99bf9314e915bd170ccc2245, type: 3}
-  - {fileID: 1580296162661654, guid: cbd7726dbca9fc743a06cd478f5cf530, type: 3}
-  - {fileID: 1747315629311860, guid: c0446c789bbdc7f46ab771e9b76c15f9, type: 3}
-  - {fileID: 1601527734484308, guid: 7111e3c5049b6d145b8381e7c878a142, type: 3}
-  - {fileID: 1262933537257692, guid: 5f2b9549f2b12274a8710eb2b356b860, type: 3}
-  - {fileID: 1459487072626396, guid: 36636b38cd4d057419e73a8f597fcabe, type: 3}
-  - {fileID: 1255627075872460, guid: 9c9b9f4f98882b34f8a08fd92eba4cbe, type: 3}
-  - {fileID: 1450862495693152, guid: d77ea591b892b9b4aadb8272f6a39ad8, type: 3}
-  - {fileID: 1378529160660996, guid: 45d5ba07ea4074f46acb94f2defb1220, type: 3}
-  - {fileID: 1754620491680184, guid: 948e12bf785ae5041a524eab3a8f979b, type: 3}
-  - {fileID: 1809129951669404, guid: bbdca77e4918fe4458605b250046e536, type: 3}
-  - {fileID: 1357904972373422, guid: ce5c297161ac63046a0cedde0626f9c5, type: 3}
-  - {fileID: 1839106151495100, guid: c59d96e2b347a1d46b41e2242607e0f7, type: 3}
-  - {fileID: 1057200072630376, guid: 8c36cc0efb7f180468c6af0e8e7a9461, type: 3}
-  - {fileID: 1751678457733528, guid: 6b67558d05aa4754c9c8cddcc600368d, type: 3}
-  - {fileID: 1424625931532886, guid: 3d2c7f58f4aff404ea3bdbe07c06a968, type: 3}
-  - {fileID: 1730855513831710, guid: 92afc10f2ef90cc43b59366337fb665b, type: 3}
-  - {fileID: 1696340402751794, guid: 5687a27107a8afd4882d1da4c37dbff0, type: 3}
-  - {fileID: 1338082143570848, guid: aeaae935db89c69478c9193e451653b7, type: 3}
-  - {fileID: 1706907295229794, guid: 99f5b83dd79ad3f449e6392d2d802286, type: 3}
-  - {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07, type: 3}
-  - {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca, type: 3}
-  - {fileID: 4241147409563934762, guid: 4b4ea87231b37c148abee861d3c0001e, type: 3}
-  - {fileID: 138344, guid: 8a7cf5ac7b4145441a3dca86f869b09e, type: 3}
-  - {fileID: 117604, guid: 9469bb1d3aa88ca40aa4079e96a27f8e, type: 3}
-  - {fileID: 151190, guid: a9cc5585b9634a9449920c03ec6bc243, type: 3}
-  - {fileID: 111494, guid: 62724a8cd2495b14f930b7129c3bc47b, type: 3}
-  - {fileID: 188972, guid: 7641c7e8354e2c44cab6432d9d2c6d1b, type: 3}
-  - {fileID: 182406, guid: a1d34f7914a1d8148a0ce7262f7ba394, type: 3}
-  - {fileID: 115084, guid: 7c5aafe3fe2c6ef4a9150f7f44653760, type: 3}
-  - {fileID: 127550, guid: 87a6cef862ce2cb4a88c5ca5d5af5d2b, type: 3}
-  - {fileID: 168064, guid: fb8ae0828a555f74996970b8d0495f15, type: 3}
-  - {fileID: 116970, guid: 38ade0ba7c293f14a9b1b610879e9390, type: 3}
-  - {fileID: 159322, guid: b1b1573cfe717c04caad3e631288f7e9, type: 3}
-  - {fileID: 136328, guid: 613b4cc8c589ad8458e792ae21891bef, type: 3}
-  - {fileID: 188992, guid: 11d469914a0208343b39f04223416f9c, type: 3}
-  - {fileID: 147220, guid: 446fc4730aadcd04985c8dafaaf0c501, type: 3}
-  - {fileID: 112728, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
-  - {fileID: 151792, guid: 1e4e7284c1efd5f4eb702c799353072c, type: 3}
-  - {fileID: 176282, guid: ac00d368a6864c04791bc85c5567bd51, type: 3}
-  - {fileID: 114672, guid: 98653de49a7044442972e6997c40db16, type: 3}
-  - {fileID: 127928, guid: eed418c5a3c80d448b4cdbe594ebe3c5, type: 3}
-  - {fileID: 118422, guid: 107cc8771223daf48be99527559937ff, type: 3}
-  - {fileID: 176278, guid: 3c74caa0496b18d4ba0a1009ebb4c992, type: 3}
-  havePlant: 0
-  fixedScale: 0
-  plantSlider: {fileID: 0}
-  plantId: 0
 --- !u!114 &907295047202248852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5534,6 +5459,19 @@ MonoBehaviour:
   myName: Soli
   uniqueId: 
   growMultiplyer: 0
+--- !u!114 &4812814108006909417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ec2530c49449c4fb6564406b302ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  havePlant: 0
 --- !u!1 &8976106382474153562
 GameObject:
   m_ObjectHideFlags: 0

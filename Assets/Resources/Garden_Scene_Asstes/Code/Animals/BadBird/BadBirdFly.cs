@@ -36,12 +36,17 @@ public class BadBirdFly : MonoBehaviour
                 {
                     GameObject movedSoil = GameObject.FindGameObjectWithTag("MovedSoil");
                     GameObject plantToDestroy = movedSoil.transform.Find("Plant").gameObject;
-                    movedSoil.GetComponent<PlantCreator>().havePlant = false;
+
+                    FindObjectOfType<PlacePlant>().RemoveFromDictionary(movedSoil.GetComponent<ObjectCharacteristics>().uniqueId);
+
+                    movedSoil.GetComponent<SoilTileInformation>().havePlant = false;
                     cameraTileManager.plantSlider.SetActive(false);
 
                     Destroy(plantToDestroy);
-                    saveSystem.SaveSoil();
-                    saveSystem.SavePlantManagers();
+
+                    saveSystem.SavePlants();
+
+                    saveSystem.SaveManagers();
 
                 }
 

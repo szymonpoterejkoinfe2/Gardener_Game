@@ -1687,6 +1687,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.06, y: 0.25, z: 0.06}
+  myIncomeValue: 25
+  animalSize: 0
+  animalEnvironment: 4
 --- !u!1 &5425334665297502649
 GameObject:
   m_ObjectHideFlags: 0

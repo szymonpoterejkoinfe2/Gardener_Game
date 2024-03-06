@@ -7,10 +7,12 @@ using System.Numerics;
 public class ShopMenu : MonoBehaviour
 {
     private GameObject soilTile, plant, bank;
-    private GameObject[] allPlants;
+    private Dictionary<string, GameObject> allPlants;
     private BigInteger balance;
     private ulong time, multi;
     private SaveSystem saveManager;
+    [SerializeField]
+    private ManagerHolder managerHolder;
 
     public GameObject PlantCategory, MenagerCategory, AnimalsCategory,GardenDecorationCategory,ToolCategory, managerUI;
     public TextMeshProUGUI[] BuyPlantPriceTxt;
@@ -31,6 +33,7 @@ public class ShopMenu : MonoBehaviour
         ToolCategory.SetActive(false);
         saveManager = GameObject.FindObjectOfType<SaveSystem>();
     }
+
 
     //Activating Menager Shop Menu
     public void MenagerCategoryActivate()
@@ -88,23 +91,23 @@ public class ShopMenu : MonoBehaviour
     void Update()
     {
         soilTile = GameObject.FindGameObjectWithTag("MovedSoil");
-        allPlants = soilTile.GetComponent<PlantCreator>().plants;
+        allPlants = FindObjectOfType<PlantsHolder>().allPlants;
 
         bank = GameObject.FindGameObjectWithTag("Bank");
         balance = bank.GetComponent<MoneyManager>().myBalance.moneyBalance;
 
-        if (soilTile.GetComponent<PlantCreator>().havePlant == true)
+        if (soilTile.GetComponent<SoilTileInformation>().havePlant == true)
         {
             plant = soilTile.transform.Find("Plant").gameObject;
         }
 
             // Taking Price Of Prefab Objects
-            for (int PlantId = 0; PlantId < allPlants.Length; PlantId++)
+            foreach(var plant in allPlants)
             {
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyPlantPriceTxt[PlantId], buyPlantPricePrefix[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradePlantPriceTxt[PlantId], upgradePlantPricePrefix[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[PlantId], buyManagerPricePrefix[PlantId]);
-                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[PlantId].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[PlantId], upgradeManagerPricePrefix[PlantId]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjPrice(allPlants[plant.Key].GetComponent<ObjectCharacteristics>().myId), BuyPlantPriceTxt[0], buyPlantPricePrefix[0]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjUpgradeCost(allPlants[plant.Key].GetComponent<ObjectCharacteristics>().myId), UpgradePlantPriceTxt[0], upgradePlantPricePrefix[0]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(allPlants[plant.Key].GetComponent<ObjectCharacteristics>().myId), BuyManagerPriceTxt[0], buyManagerPricePrefix[0]);
+                bank.GetComponent<MoneyManager>().DisplayMoneyValue(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(allPlants[plant.Key].GetComponent<ObjectCharacteristics>().myId), UpgradeManagerPriceTxt[0], upgradeManagerPricePrefix[0]);
                
             }
 
@@ -125,7 +128,7 @@ public class ShopMenu : MonoBehaviour
     // Function to buy Fertilizer To increase profit
     public void BuyFertilizer()
     {
-        if (soilTile.GetComponent<PlantCreator>().havePlant == true)
+        if (soilTile.GetComponent<SoilTileInformation>().havePlant == true)
         {
 
             plant.GetComponent<Fertilizer>().Fertilise(time,multi);
@@ -139,15 +142,20 @@ public class ShopMenu : MonoBehaviour
     public void GrowWithPlantManager(float time)
     {
 
-        if (soilTile.GetComponent<PlantCreator>().havePlant == true &&  bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(plant.GetComponent<ObjectCharacteristics>().myId) <= balance && plant.GetComponent<ManagerLogic>().haveManager == false)
+        if (soilTile.GetComponent<SoilTileInformation>().havePlant == true &&  bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(plant.GetComponent<ObjectCharacteristics>().myId) <= balance && plant.GetComponent<ManagerLogic>().haveManager == false)
         {
+
            bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerCost(plant.GetComponent<ObjectCharacteristics>().myId));
            plant.GetComponent<ManagerLogic>().StartGrowing(time);
 
+            managerHolder.allManagers[soilTile.GetComponent<ObjectCharacteristics>().uniqueId].haveManager = true;
+            managerHolder.allManagers[soilTile.GetComponent<ObjectCharacteristics>().uniqueId].managerLevel = 1;
+            managerHolder.allManagers[soilTile.GetComponent<ObjectCharacteristics>().uniqueId].managerTime = time;
+
             managerUI.SetActive(true);
 
-            saveManager.SaveSoil();
-            saveManager.SavePlantManagers();
+            saveManager.SaveManagers();
+
             saveManager.SavePlantPricing();
             saveManager.SaveMoneyBalance();
         }
@@ -157,13 +165,18 @@ public class ShopMenu : MonoBehaviour
     //Buying Upgrade Plant Growing  Manager
     public void UpgradeGrowWithPlantManager()
     {
-        if(soilTile.GetComponent<PlantCreator>().havePlant == true && bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(plant.GetComponent<ObjectCharacteristics>().myId) <= balance && plant.GetComponent<ManagerLogic>().haveManager == true)
+        if(soilTile.GetComponent<SoilTileInformation>().havePlant == true && bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(plant.GetComponent<ObjectCharacteristics>().myId) <= balance && plant.GetComponent<ManagerLogic>().haveManager == true)
         {
+            managerHolder.allManagers[soilTile.GetComponent<ObjectCharacteristics>().uniqueId].managerLevel++;
+
             bank.GetComponent<MoneyManager>().myBalance.DecrementBalance(bank.GetComponent<PricingSystemPlants>().plantPrices.GetObjMenagerUpgradeCost(plant.GetComponent<ObjectCharacteristics>().myId));
             bank.GetComponent<PricingSystemPlants>().plantPrices.UpdateManagerCost(plant.GetComponent<ObjectCharacteristics>().myId);
             plant.GetComponent<ManagerLogic>().UpgradeManager();
+
+            managerHolder.allManagers[soilTile.GetComponent<ObjectCharacteristics>().uniqueId].managerTime = plant.GetComponent<ManagerLogic>().growTime;
+
             saveManager.SavePlantPricing();
-            saveManager.SavePlantManagers();
+            saveManager.SaveManagers();
         }
         
     }

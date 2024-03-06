@@ -9,14 +9,20 @@ public class Point : MonoBehaviour
     public Transform myTransform;
     public GameObject pointObject;
     public string soilID;
+    public int pointID;
 
+    [SerializeField]
+    public environment pointEnvironment;
+
+    [SerializeField]
+    public animalSize pointAnimalSize;
 
     void Awake()
     {
         myTransform = gameObject.transform;
         pointObject = gameObject;
-        GameObject soil = GetComponentInParent<PlantCreator>().gameObject;
-        soilID = soil.GetComponent<ObjectCharacteristics>().uniqueId;
+        GameObject soil = GetComponentInParent<ObjectHolder>().gameObject;
+        soilID = soil.GetComponent<ObjectHolder>().uniqueId;
     }
 
 }

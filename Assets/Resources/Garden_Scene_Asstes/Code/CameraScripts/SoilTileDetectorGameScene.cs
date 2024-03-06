@@ -13,7 +13,7 @@ public class SoilTileDetectorGameScene : MonoBehaviour
 
     private void Awake()
     {
-        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+        saveManager = FindObjectOfType<SaveSystem>();
     }
 
     // Update is called once per frame
@@ -53,18 +53,12 @@ public class SoilTileDetectorGameScene : MonoBehaviour
         cameraTileManager.ActivateShopMenu();
     }
 
-    //Function to generate plant after clicking on button.
-    public void PlacePlant(int PlantId)
-    {
-        soilTile.GetComponent<PlantCreator>().Generate_Plant(PlantId,false);
-
-    }
 
     // function to start hydration process
     public void BuyHydration(float hydrationTime)
     {
         soilTile.GetComponent<HydrationLogic>().StartHydration((ulong)hydrationTime);
-        saveManager.SaveSoil();
+        //saveManager.SaveSoil();
         saveManager.SaveMoneyBalance();
     }
 

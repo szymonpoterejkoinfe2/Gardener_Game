@@ -52,7 +52,7 @@ public class CameraAndTileManager : MonoBehaviour
 
         GameObject movedSoil = GameObject.FindGameObjectWithTag("MovedSoil");
 
-        if (movedSoil.GetComponent<PlantCreator>().havePlant)
+        if (movedSoil.GetComponent<SoilTileInformation>().havePlant)
         {
             plantSlider.SetActive(true);
             if (movedSoil.transform.Find("Plant").GetComponent<ManagerLogic>().haveManager)
@@ -91,6 +91,7 @@ public class CameraAndTileManager : MonoBehaviour
     // fuinction to Change Soil Tile position to scene of clickig gameplay
     public void RepositionTile(GameObject Soil)
     {
+        Soil.GetComponent<Collider>().enabled = false;
         PositionMemory = Soil.transform.position;
         Soil.transform.position = new Vector3(-60, PositionMemory.y, 20);
         Soil.tag = "MovedSoil";
@@ -106,6 +107,7 @@ public class CameraAndTileManager : MonoBehaviour
     // stop of soil tile rotation and returning it to it's previous position
     public void ResetSoilTile(GameObject Soil)
     {
+        Soil.GetComponent<Collider>().enabled = true;
         Soil.transform.position = new Vector3(PositionMemory.x, PositionMemory.y, PositionMemory.z);
         Soil.GetComponent<SoilRotation>().Should_Rotate = false;
         Soil.GetComponent<SoilRotation>().ResetState();

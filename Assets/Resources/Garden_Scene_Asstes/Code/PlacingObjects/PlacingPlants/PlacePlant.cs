@@ -19,7 +19,8 @@ public class PlacePlant : MonoBehaviour
     [SerializeField]
     SoilTiles soilTiles;
 
-
+    [SerializeField]
+    GameObject plantSlider;
 
     private void Awake()
     {
@@ -37,41 +38,72 @@ public class PlacePlant : MonoBehaviour
     public void PlacePlantObject(string plantID)
     {
         GameObject soil = GameObject.FindGameObjectWithTag("MovedSoil");
+        SoilTileInformation soilTileInformation = soil.GetComponent<SoilTileInformation>();
 
-        GameObject new_plant = Instantiate(plants[plantID], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, soil.transform);
-        new_plant.name = "Plant";
-        new_plant.tag = "Plant";
-        new_plant.transform.localPosition = new UnityEngine.Vector3(0, 0.5f, 0);
-        new_plant.transform.localScale = new UnityEngine.Vector3(0f, 0f, 0f);
+        if (!soilTileInformation.havePlant)
+        {
+            GameObject new_plant = Instantiate(plants[plantID], new Vector3(0, 0, 0), Quaternion.identity, soil.transform);
+            new_plant.name = "Plant";
+            new_plant.tag = "Plant";
+            new_plant.transform.localPosition = new Vector3(0, 0.5f, 0);
+            new_plant.transform.localScale = new Vector3(0f, 0f, 0f);
 
-        placedPlants[soil.GetComponent<ObjectCharacteristics>().uniqueId] = plantID;
+            soilTileInformation.havePlant = true;
+            plantSlider.SetActive(true);
 
-        saveSystem.SavePlants();
+            HydrationLogic hydration = soil.GetComponent<HydrationLogic>();
+
+            if (!hydration.haveWell)
+            {
+                hydration.StartHydration(120);
+            }
+
+            placedPlants[soil.GetComponent<ObjectCharacteristics>().uniqueId] = plantID;
+            saveSystem.SavePlants();
+
+        }
+
     }
 
-
+    //Function to Instantiate plant objects from save file
     public void LoadPlants(Dictionary<string,string> savedPlants)
     {
         placedPlants = savedPlants;
 
         foreach (var plant in savedPlants)
         {
-            GameObject soil = allSoilTiles[plant.Key];
+            try
+            {
+                GameObject soil = allSoilTiles[plant.Key];
+                SoilTileInformation soilTileInformation = soil.GetComponent<SoilTileInformation>();
 
-            GameObject new_plant = Instantiate(plants[plant.Value], new UnityEngine.Vector3(0, 0, 0), UnityEngine.Quaternion.identity, soil.transform);
-            new_plant.name = "Plant";
-            new_plant.tag = "Plant";
-            new_plant.transform.localPosition = new UnityEngine.Vector3(0, 0.5f, 0);
-            new_plant.transform.localScale = new UnityEngine.Vector3(0f, 0f, 0f);
+                GameObject new_plant = Instantiate(plants[plant.Value], new Vector3(0, 0, 0), Quaternion.identity, soil.transform);
+                new_plant.name = "Plant";
+                new_plant.tag = "Plant";
+                new_plant.transform.localPosition = new Vector3(0, 0.5f, 0);
+                new_plant.transform.localScale = new Vector3(0f, 0f, 0f);
 
+                soilTileInformation.havePlant = true;
+            }
+            catch
+            {
+               // Console.WriteLine("Something went wrong.");
+            }
         }
 
     }
 
+    //Function to remove plant from saved;
+    public void RemoveFromDictionary(string soilID)
+    {
+        placedPlants[soilID] = "";
+    }
+
+
 }
 
 [Serializable]
-public class PlacedPlantHolder
+class PlacedPlantHolder
 {
     [SerializeField]
     PlacedPlant[] dictionaryItems;

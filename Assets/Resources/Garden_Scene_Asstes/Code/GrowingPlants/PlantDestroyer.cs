@@ -55,10 +55,13 @@ public class PlantDestroyer : MonoBehaviour
     public void DestroyPlant()
     {
         Destroy(plant);
-        tile.GetComponent<PlantCreator>().havePlant = false;
+        tile.GetComponent<SoilTileInformation>().havePlant = false;
         HideButtons();
         bank.GetComponent<MoneyManager>().myBalance.IncrementBalance(refund);
-        saveManager.SaveSoil();
+
+        FindObjectOfType<PlacePlant>().RemoveFromDictionary(tile.GetComponent<ObjectCharacteristics>().uniqueId);
+
+        saveManager.SavePlants();
         saveManager.SaveMoneyBalance();
 
     }

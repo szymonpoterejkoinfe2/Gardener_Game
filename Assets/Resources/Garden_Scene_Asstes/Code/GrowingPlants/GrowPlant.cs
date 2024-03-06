@@ -5,38 +5,31 @@ using System.Numerics;
 
 public class GrowPlant : MonoBehaviour
 {
-    GameObject plant, soil, bank;
-    ParticleSystem leafs;
-    UnityEngine.Vector3 scaleValue, targetScale;
-    private float multiplyer = 1;
-    MoneyManager moneyManager;
+    GameObject bank;
+    UnityEngine.Vector3 scaleValue;
+    float multiplyer;
     private SaveSystem saveManager;
     PricingSystemPlants pricingSystem;
 
     // Start is called before the first frame update
     void Start()
     {
-        scaleValue = new UnityEngine.Vector3(0.0002f, 0.001f, 0.0002f);
+        scaleValue = new UnityEngine.Vector3(0.00002f, 0.0001f, 0.00002f);
         bank = GameObject.FindGameObjectWithTag("Bank"); 
-        moneyManager = bank.GetComponent<MoneyManager>();
-        saveManager = GameObject.FindObjectOfType<SaveSystem>();
-    }
-    void Update()
-    {
-        soil = GameObject.FindGameObjectWithTag("MovedSoil");
-        pricingSystem = bank.GetComponent<PricingSystemPlants>();
+        saveManager = FindObjectOfType<SaveSystem>();
     }
 
     // Function Scale Plant GameObject to imitate Growth;
     public void Grow(int TouchCount)
     {
-        if (soil.GetComponent<PlantCreator>().havePlant == true && soil.GetComponent<HydrationLogic>().hydrated == true)
+        GameObject soil = GameObject.FindGameObjectWithTag("MovedSoil");
+
+        if (soil.GetComponent<SoilTileInformation>().havePlant == true && soil.GetComponent<HydrationLogic>().hydrated == true)
         {
-            plant = soil.transform.Find("Plant").gameObject;
+            GameObject plant = soil.transform.Find("Plant").gameObject;
+            ObjectCharacteristics plantCharacteristics = plant.GetComponent<ObjectCharacteristics>();
+            multiplyer = plantCharacteristics.growMultiplyer;
 
-            multiplyer = plant.GetComponent<ObjectCharacteristics>().growMultiplyer;
-
-            targetScale = new UnityEngine.Vector3(plant.GetComponent<ObjectCharacteristics>().valueTarget.x, plant.GetComponent<ObjectCharacteristics>().valueTarget.y, plant.GetComponent<ObjectCharacteristics>().valueTarget.z);
             if (plant.GetComponent<ManagerLogic>().haveManager == false)
             {
                 plant.transform.localScale += TouchCount * (scaleValue * multiplyer);
@@ -47,12 +40,13 @@ public class GrowPlant : MonoBehaviour
     // Upgrading Plant to earn more on every sold flower.
     public void UpgradePlant()
     {
-  
-  
+        pricingSystem = bank.GetComponent<PricingSystemPlants>();
 
-        if (soil.GetComponent<PlantCreator>().havePlant == true)
+        GameObject soil = GameObject.FindGameObjectWithTag("MovedSoil");
+
+        if (soil.GetComponent<SoilTileInformation>().havePlant == true)
         {
-            plant = soil.transform.Find("Plant").gameObject;
+            GameObject plant = soil.transform.Find("Plant").gameObject;
             ObjectCharacteristics objectCharacteristics = plant.GetComponent<ObjectCharacteristics>();
             pricingSystem.plantPrices.UpdateIncomeValue(objectCharacteristics.myId);
             saveManager.SaveMoneyBalance();

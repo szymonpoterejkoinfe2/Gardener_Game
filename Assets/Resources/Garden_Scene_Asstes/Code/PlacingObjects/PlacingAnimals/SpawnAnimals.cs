@@ -22,7 +22,7 @@ public class SpawnAnimals : MonoBehaviour
             {
                 foreach (Point point in points)
                 {
-                    mySpawnPoints.Add(new SpawnPoint(point.haveAnimal, point.myTransform, point.pointObject, point.soilID));
+                    mySpawnPoints.Add(new SpawnPoint(point.haveAnimal, point.myTransform, point.pointObject, point.soilID, point.pointID, point.pointEnvironment, point.pointAnimalSize));
                 }
 
             }
@@ -36,29 +36,39 @@ public class SpawnAnimals : MonoBehaviour
         }
 
         //Generating Cubes: Red - Point occupied | Green - Point available
-        public void ShowAvailability()
+        public void ShowAvailability(AnimalAttributes animal)
         {
+            List<SpawnPoint> sameTypePoints = new List<SpawnPoint>();
+
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             foreach (SpawnPoint point in mySpawnPoints)
             {
-                if (!point.GetHaveAnimal())
+                if (point.GetEnvironment() == animal.animalEnvironment && point.GetAnimalSize() == animal.animalSize)
                 {
-                    GameObject pointStatus = Instantiate(cube, point.GetTransform());
-                    pointStatus.transform.localScale = new Vector3(0.1f, 0.2f, 0.1f);
-                    pointStatus.GetComponent<Renderer>().material.color = Color.green;
-                    pointStatus.tag = "Avaliability";
-                    pointStatus.name = "SpawnPoint";
-                }
-                else
-                {
-                    GameObject pointStatus = Instantiate(cube, point.GetTransform());
-                    pointStatus.transform.localScale = new Vector3(0.1f, 0.2f, 0.1f);
-                    pointStatus.GetComponent<Renderer>().material.color = Color.red;
-                    pointStatus.tag = "Avaliability";
-                    pointStatus.name = "SpawnPoint";
+                    if (!point.GetHaveAnimal())
+                    {
+                        GameObject pointStatus = Instantiate(cube, point.GetTransform());
+                        pointStatus.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
+                        pointStatus.GetComponent<Renderer>().material.color = Color.green;
+                        pointStatus.tag = "Avaliability";
+                        pointStatus.name = "SpawnPoint";
+                    }
+                    else
+                    {
+                        GameObject pointStatus = Instantiate(cube, point.GetTransform());
+                        pointStatus.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
+                        pointStatus.GetComponent<Renderer>().material.color = Color.red;
+                        pointStatus.tag = "Avaliability";
+                        pointStatus.name = "SpawnPoint";
 
+                    }
+
+                    sameTypePoints.Add(point);
                 }
+
             }
+
+            mySpawnPoints = sameTypePoints;
             Destroy(cube);
 
         }
@@ -98,15 +108,21 @@ public class SpawnAnimals : MonoBehaviour
         Transform myTransform;
         GameObject pointObject;
         string soilID;
+        environment pointEnvironment;
+        animalSize pointAnimalSize;
+        int pointID;
 
         //Object constructors
         public SpawnPoint() { }
-        public SpawnPoint(bool haveAnimal, Transform transform, GameObject pointObject, string soilID)
+        public SpawnPoint(bool haveAnimal, Transform transform, GameObject pointObject, string soilID, int pointID, environment environment, animalSize animalSize)
         {
             this.haveAnimal = haveAnimal;
             myTransform = transform;
             this.pointObject = pointObject;
             this.soilID = soilID;
+            pointEnvironment = environment;
+            pointAnimalSize = animalSize;
+            this.pointID = pointID;
         }
 
         //Getters
@@ -122,6 +138,22 @@ public class SpawnAnimals : MonoBehaviour
         {
             return pointObject;
         }
+        public environment GetEnvironment()
+        {
+            return pointEnvironment;
+        }
+        public animalSize GetAnimalSize()
+        {
+            return pointAnimalSize;
+        }
+        public string GetDecorationID()
+        {
+            return soilID;
+        }
+        public int GetPointID()
+        {
+            return pointID;
+        }
 
         //Updating availability atatus of a point
         public void PointAvailable(bool availabilityStatus)
@@ -129,16 +161,25 @@ public class SpawnAnimals : MonoBehaviour
             haveAnimal = !availabilityStatus;
             pointObject.GetComponent<Point>().haveAnimal = !availabilityStatus;
         }
-        
+
     }
 
-    public GameObject shopMenu, controlButtons;
+    public GameObject shopMenu, controlButtons, returnButton;
     private Dictionary<string, GameObject> animals; //Dictionary with all animal prefabs
     private List<SpawnPoint> avaliablePoints;
     private string animalID;
-    private GameObject newAnimal, oldAnimal;
+    private GameObject newAnimal, oldAnimal, soilObject;
     private AnimalCreator animalCreator;
     private int pointIndex = 0;
+
+    [SerializeField]
+    public List<AnimalInfo> placedAnimals;
+
+    [SerializeField]
+    SoilTiles soilTiles;
+
+    [SerializeField]
+    SaveSystem saveSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -158,11 +199,11 @@ public class SpawnAnimals : MonoBehaviour
     {
         //To do: check if animal price <= money balance
         
-        GameObject soilObject = GameObject.FindGameObjectWithTag("MovedSoil");
+        soilObject = GameObject.FindGameObjectWithTag("MovedSoil");
 
         animalCreator = new AnimalCreator(soilObject.GetComponent<ObjectCharacteristics>().uniqueId, soilObject);
 
-        animalCreator.ShowAvailability();
+        animalCreator.ShowAvailability(animals[animalID].GetComponent<AnimalAttributes>());
 
         if (animalCreator.GetNumberOfPoints() > 0)
         {
@@ -189,6 +230,23 @@ public class SpawnAnimals : MonoBehaviour
         newAnimal = Instantiate(animals[animalId], avaliablePoints[pointIndex].GetTransform().position, Quaternion.identity, avaliablePoints[pointIndex].GetTransform());
         newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
         oldAnimal = newAnimal.gameObject;
+    }
+
+    //Instantiating new animal prefab object in world space from Save
+    private void PlaceAnimal(string animalId, int pointIndex, Point[] decorationPoints)
+    {
+        foreach (Point point in decorationPoints)
+        {
+            if (point.pointID == pointIndex)
+            {
+                newAnimal = Instantiate(animals[animalId], point.transform.position, Quaternion.identity, point.transform);
+                newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
+
+                point.haveAnimal = true;
+            }
+        }
+
+
     }
 
     //Instantiating new animal prefab object in in next available point, destroying old animal object
@@ -233,6 +291,14 @@ public class SpawnAnimals : MonoBehaviour
         animalCreator.HideAvaliability();
         pointIndex = 0;
         controlButtons.SetActive(false);
+
+        AnimalInfo placedAnimal = new AnimalInfo(soilObject.GetComponent<ObjectCharacteristics>().uniqueId, avaliablePoints[pointIndex].GetDecorationID(), animalID, avaliablePoints[pointIndex].GetPointID());
+
+        placedAnimals.Add(placedAnimal);
+
+        returnButton.SetActive(true);
+
+        saveSystem.SaveGroundAnimals();
     }
 
     //Rejecting animal object
@@ -243,6 +309,50 @@ public class SpawnAnimals : MonoBehaviour
         pointIndex = 0;
         animalCreator.HideAvaliability();
         controlButtons.SetActive(false);
+        returnButton.SetActive(true);
     }
 
+    //Loading Animals From Save
+    public void LoadAnimals(List<AnimalInfo> animalsToLoad)
+    {
+
+        if(animalsToLoad.Count > 0)
+        {
+            foreach (AnimalInfo animalInfo in animalsToLoad)
+            {
+                Point[] points =  soilTiles.allSoilTiles[animalInfo.soiTileID].GetComponent<MyObjectHolders>().myObjectHolders[animalInfo.decorationHolderID].GetComponentsInChildren<Point>();
+
+                PlaceAnimal(animalInfo.animalID, animalInfo.pointID, points);
+            }
+        }
+
+        placedAnimals = animalsToLoad;
+    }
+
+}
+
+[System.Serializable]
+public class AnimalInfo
+{
+    [SerializeField]
+    public string soiTileID;
+    [SerializeField]
+    public string decorationHolderID; 
+    [SerializeField]
+    public string animalID; 
+    [SerializeField]
+    public int pointID; 
+
+    public AnimalInfo(string soiTileID, string decorationHolderID, string animalID, int pointID)
+    {
+        this.soiTileID = soiTileID;
+
+        this.decorationHolderID = decorationHolderID;
+
+        this.animalID = animalID;
+
+        this.pointID = pointID;
+    }
+    
+    
 }

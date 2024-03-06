@@ -7,21 +7,28 @@ using TMPro;
 public class HydrationLogic : MonoBehaviour
 {
     public bool hydrated, haveWell = false;
-    //private Slider slider;
     [SerializeField] private float hydratedTime;
     private bool timerStart;
     public ulong timeLeft = 0;
+    Dictionary<string, HydrationInfo> plantsHydration;
 
+    private void Start()
+    {
+        plantsHydration = FindObjectOfType<PlantsHydration>().plantsHydration;
+    }
 
     //Function to start Timer of fertilization
     public void StartHydration(ulong SecondsToWait)
     {
-        //slider = GameObject.FindGameObjectWithTag("Hydration").GetComponent<Slider>();
-        hydratedTime = (float)SecondsToWait;
-        //slider.maxValue = hydratedTime;
-        //slider.value = hydratedTime;
+        hydratedTime = SecondsToWait;
         timerStart = true;
         hydrated = true;
+    }
+
+    public void HydrationWell()
+    {
+        hydrated = true;
+        haveWell = true;
     }
 
     // Couting down time
@@ -31,35 +38,32 @@ public class HydrationLogic : MonoBehaviour
 
         if (timerStart && !haveWell)
         {
-
             float time = (hydratedTime -= Time.deltaTime);
             timeLeft = (ulong)time;
 
             if (gameObject.tag == "MovedSoil")
-            {
+            { 
                 timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
                 int minutes = Mathf.FloorToInt(time / 60);
                 int secounds = Mathf.FloorToInt(time - minutes * 60f);
 
                 string textTime = string.Format("{0:0}:{1:00}", minutes, secounds);
                 timeLeftText.text = textTime;
+
+                plantsHydration[GetComponent<ObjectCharacteristics>().uniqueId].timeLeft = timeLeft;
             }
 
             if (time < 0)
             {
-                //slider = GameObject.FindGameObjectWithTag("Hydration").GetComponent<Slider>();
-                //slider.value = time;
                 timerStart = false;
                 hydrated = false;
                 timeLeft = 0;
-
+                plantsHydration[GetComponent<ObjectCharacteristics>().uniqueId].timeLeft = timeLeft;
             }
-
-
 
         }
         else if (haveWell)
-        {
+        {  
             if (gameObject.tag == "MovedSoil")
             {
                 timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();

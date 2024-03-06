@@ -17,6 +17,7 @@ public class SkyAnimalController : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float moveSpeed = 1f;
     public GameObject point;
+    
 
     // Start is called before the first frame update
     void Start()

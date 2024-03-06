@@ -100,7 +100,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.27575868, y: 0.50682193, z: 0.21548975}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0.01774681, y: 0.2476205, z: -0.039199512}
 --- !u!114 &6687036894910959657
 MonoBehaviour:
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTime: 10
   haveManager: 0
+  managerLevel: 1
 --- !u!114 &7247192437765279684
 MonoBehaviour:
   m_ObjectHideFlags: 0
