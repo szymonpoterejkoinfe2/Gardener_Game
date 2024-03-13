@@ -229,6 +229,7 @@ public class SpawnAnimals : MonoBehaviour
     {
         newAnimal = Instantiate(animals[animalId], avaliablePoints[pointIndex].GetTransform().position, Quaternion.identity, avaliablePoints[pointIndex].GetTransform());
         newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
+        newAnimal.transform.localPosition = animals[animalId].GetComponent<AnimalAttributes>().myLocalPosition;
         oldAnimal = newAnimal.gameObject;
     }
 
@@ -241,6 +242,7 @@ public class SpawnAnimals : MonoBehaviour
             {
                 newAnimal = Instantiate(animals[animalId], point.transform.position, Quaternion.identity, point.transform);
                 newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
+                newAnimal.transform.localPosition = animals[animalId].GetComponent<AnimalAttributes>().myLocalPosition;
 
                 point.haveAnimal = true;
             }

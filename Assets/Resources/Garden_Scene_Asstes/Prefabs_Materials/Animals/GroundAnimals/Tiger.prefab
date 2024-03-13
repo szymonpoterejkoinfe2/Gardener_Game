@@ -1045,7 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f228534ac98eb5e44a1bbf1aaca15038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  myLocalScale: {x: 0.2, y: 1, z: 0.2}
+  myLocalPosition: {x: 0, y: -0.7, z: 0}
   myIncomeValue: 1
   animalSize: 1
   animalEnvironment: 2

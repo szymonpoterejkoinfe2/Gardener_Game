@@ -242,8 +242,8 @@ public class SaveSystem : MonoBehaviour
 
         try
         {
-            TimeSave.ExitTime exitTime = DataService.LoadData<TimeSave.ExitTime>("/ExitTime.json", true);
-            gameObject.GetComponent<TimeSave>().LoadTime(exitTime);
+           // TimeSave.ExitTime exitTime = DataService.LoadData<TimeSave.ExitTime>("/ExitTime.json", true);
+           // gameObject.GetComponent<TimeSave>().LoadTime(exitTime);
         }
         catch (System.Exception e)
         {

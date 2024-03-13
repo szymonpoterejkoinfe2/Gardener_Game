@@ -15,14 +15,25 @@ public class ButtonActivator : MonoBehaviour
     int id;
 
     [SerializeField]
+    string plantId;
+
+    [SerializeField]
     PricingSystemPlants pricingSystemPlants;
 
     [SerializeField]
     MoneyManager moneyManager;
 
+    [SerializeField]
+    Category category;
+
+    GameObject soilTile;
+     string plantName;
+     bool haveManager;
 
     PricingSystemPlants.PlantPrices plantPrices;
     MoneyManager.MoneyBalance moneyBalance;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,26 +48,88 @@ public class ButtonActivator : MonoBehaviour
         plantPrices = pricingSystemPlants.plantPrices;
         moneyBalance = moneyManager.myBalance;
 
-
-        if (plantPrices.objectMenagerCost[id] > moneyBalance.moneyBalance)
+        if (category == Category.Manager)
         {
-            buyButton.interactable = false;
+            
+            if (plantPrices.objectMenagerCost[id] > moneyBalance.moneyBalance || soilTile.GetComponent<SoilTileInformation>().havePlant == false || plantName != plantId || haveManager == true)
+            {
+                Disable(buyButton);
+            }
+            else
+            {
+                Enable(buyButton);
+            }
+
+            if (plantPrices.objectMenagerUpgradeCost[id] > moneyBalance.moneyBalance || soilTile.GetComponent<SoilTileInformation>().havePlant == false || plantName != plantId)
+            {
+                Disable(upgradeButton);
+            }
+            else
+            {
+                Enable(upgradeButton);
+            }
+        }
+        if (category == Category.Plant)
+        {
+           
+
+            Enable(buyButton);
+
+            if (plantPrices.objectPrice[id] > moneyBalance.moneyBalance || soilTile.GetComponent<SoilTileInformation>().havePlant == true)
+            {
+                Disable(buyButton);
+            }
+            else
+            {
+                Enable(buyButton);
+            }
+
+            if (plantPrices.objectUpgradeCost[id] > moneyBalance.moneyBalance || soilTile.GetComponent<SoilTileInformation>().havePlant == false || plantName != plantId)
+            {
+                Disable(upgradeButton);
+            }
+            else {
+                Enable(upgradeButton);
+            }
+        }
+
+    }
+
+    private void Disable(Button button)
+    {
+        button.interactable = false;
+    }
+
+    private void Enable(Button button)
+    {
+        button.interactable = true;
+    }
+
+    private void OnEnable()
+    {
+       
+
+        soilTile = GameObject.FindGameObjectWithTag("MovedSoil");
+
+        if (soilTile.GetComponent<SoilTileInformation>().havePlant == true)
+        {
+            GameObject plant = soilTile.transform.Find("Plant").gameObject;
+            plantName = plant.GetComponent<ObjectCharacteristics>().myName;
+            haveManager = plant.GetComponent<ManagerLogic>().haveManager;
         }
         else {
-            buyButton.interactable = true;
-        }
-
-        if (plantPrices.objectMenagerUpgradeCost[id] > moneyBalance.moneyBalance)
-        {
-            upgradeButton.interactable = false;
-        }
-        else
-        {
-            upgradeButton.interactable = true;
+            plantName = "None";
+            haveManager = false;
         }
 
     }
 
 
 
+}
+
+enum Category
+{
+Manager,
+Plant
 }

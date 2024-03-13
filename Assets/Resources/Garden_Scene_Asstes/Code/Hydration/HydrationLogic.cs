@@ -12,11 +12,6 @@ public class HydrationLogic : MonoBehaviour
     public ulong timeLeft = 0;
     Dictionary<string, HydrationInfo> plantsHydration;
 
-    private void Start()
-    {
-        plantsHydration = FindObjectOfType<PlantsHydration>().plantsHydration;
-    }
-
     //Function to start Timer of fertilization
     public void StartHydration(ulong SecondsToWait)
     {
@@ -35,6 +30,7 @@ public class HydrationLogic : MonoBehaviour
     void Update()
     {
         TextMeshProUGUI timeLeftText;
+        plantsHydration = FindObjectOfType<PlantsHydration>().plantsHydration;
 
         if (timerStart && !haveWell)
         {
@@ -42,7 +38,8 @@ public class HydrationLogic : MonoBehaviour
             timeLeft = (ulong)time;
 
             if (gameObject.tag == "MovedSoil")
-            { 
+            {
+              
                 timeLeftText = GameObject.FindGameObjectWithTag("HydrationText").GetComponent<TextMeshProUGUI>();
                 int minutes = Mathf.FloorToInt(time / 60);
                 int secounds = Mathf.FloorToInt(time - minutes * 60f);

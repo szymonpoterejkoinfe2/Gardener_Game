@@ -14,7 +14,7 @@ public class ManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        saveManager = GameObject.FindObjectOfType<SaveSystem>();
+        saveManager = FindObjectOfType<SaveSystem>();
     }
 
     // Beginning of Scailing Coroutine

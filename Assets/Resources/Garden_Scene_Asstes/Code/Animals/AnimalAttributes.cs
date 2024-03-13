@@ -6,6 +6,7 @@ using UnityEngine;
 public class AnimalAttributes : MonoBehaviour
 {
     public UnityEngine.Vector3 myLocalScale;
+    public UnityEngine.Vector3 myLocalPosition;
     [SerializeField]
     string myIncomeValue = "1";
     public BigInteger myIncome;
