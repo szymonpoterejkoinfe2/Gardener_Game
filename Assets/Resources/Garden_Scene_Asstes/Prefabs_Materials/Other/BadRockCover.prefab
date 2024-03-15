@@ -113,8 +113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myId: 0
   valueTarget: {x: 0, y: 0, z: 0}
+  positionTarget: {x: 0, y: 0, z: 0}
   myName: SoilCover
   uniqueId: 
+  growMultiplyer: 0
 --- !u!114 &411334868268205280
 MonoBehaviour:
   m_ObjectHideFlags: 0
