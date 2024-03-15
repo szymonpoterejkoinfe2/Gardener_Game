@@ -124,12 +124,11 @@ public class ButtonActivator : MonoBehaviour
 
     }
 
-
+    enum Category
+    {
+        Manager,
+        Plant
+    }
 
 }
 
-enum Category
-{
-Manager,
-Plant
-}

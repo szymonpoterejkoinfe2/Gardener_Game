@@ -24,13 +24,11 @@ public class visibilityCheck : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        Debug.Log("Animal Visible");
         skyAnimalController.StartMovement();
     }
 
     private void OnBecameInvisible()
     {
-        Debug.Log("Animal Invisible");
         skyAnimalController.StopMovement();
     }
 }
