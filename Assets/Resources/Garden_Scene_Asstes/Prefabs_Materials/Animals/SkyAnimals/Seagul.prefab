@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1760721384919996658}
   - component: {fileID: 1760721384914291190}
+  - component: {fileID: 6586852625397496370}
   m_Layer: 0
   m_Name: seagull
   m_TagString: Untagged
@@ -102,6 +103,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.01958774, y: -0.048251458, z: 0.000024311244}
     m_Extent: {x: 0.22628365, y: 0.19567552, z: 0.17953524}
   m_DirtyAABB: 0
+--- !u!114 &6586852625397496370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760721384919565458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1bea693a63b343bd2ecbc9e4d9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyAnimalController: {fileID: 7267265062758206239}
+  renderer: {fileID: 1760721384914291190}
 --- !u!1 &1760721384919565460
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.06, y: 0.25, z: 0.06}
+  myLocalPosition: {x: 0, y: 0, z: 0}
   myIncomeValue: 20
   animalSize: 0
   animalEnvironment: 4

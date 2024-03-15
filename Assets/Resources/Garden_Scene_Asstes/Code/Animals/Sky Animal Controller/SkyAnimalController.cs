@@ -13,11 +13,14 @@ public class SkyAnimalController : MonoBehaviour
     private LimitPoints limitPoints;
     private Transform targetPosition;
     private float distance;
+    private bool shouldMove;
 
     public float rotationSpeed = 1.0f;
     public float moveSpeed = 1f;
     public GameObject point;
     
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,35 +36,38 @@ public class SkyAnimalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Determine direction towards the target only considering the y-axis.
-        Vector3 targetDirection = targetPosition.position - transform.position;
-        targetDirection.y = 0; // Set y-component to 0
-
-        // The step size is equal to speed times frame time.
-        float singleStep = rotationSpeed * Time.deltaTime;
-
-        // Rotate the forward vector towards the target direction by one step
-        Quaternion newRotation = Quaternion.LookRotation(targetDirection);
-
-        // Apply rotation only around the y-axis
-        newRotation.x = 0;
-        newRotation.z = 0;
-
-        // Calculate a rotation a step closer to the target and applies rotation to this object
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, singleStep);
-
-
-        distance = Vector3.Distance(transform.position, targetPosition.position);
-        if (distance < 0.5f || distance > 60f)
+        if (shouldMove == true)
         {
-            Destroy(targetPosition.transform.gameObject);
-            targetPosition = GenerateTargetPosition();
+            // Determine direction towards the target only considering the y-axis.
+            Vector3 targetDirection = targetPosition.position - transform.position;
+            targetDirection.y = 0; // Set y-component to 0
+
+            // The step size is equal to speed times frame time.
+            float singleStep = rotationSpeed * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Quaternion newRotation = Quaternion.LookRotation(targetDirection);
+
+            // Apply rotation only around the y-axis
+            newRotation.x = 0;
+            newRotation.z = 0;
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, singleStep);
+
+
+            distance = Vector3.Distance(transform.position, targetPosition.position);
+            if (distance < 0.5f || distance > 60f)
+            {
+                Destroy(targetPosition.transform.gameObject);
+                targetPosition = GenerateTargetPosition();
+            }
+            else
+            {
+                Move();
+            }
         }
-        else
-        {
-           Move();
-        }
+
     }
 
     //Function to play animal animation
@@ -96,6 +102,16 @@ public class SkyAnimalController : MonoBehaviour
 
         newPoint.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
         return newPoint.transform;
+    }
+
+    public void StartMovement()
+    {
+        shouldMove = true;
+    }
+
+    public void StopMovement()
+    {
+        shouldMove = false;
     }
 
     enum altitude 

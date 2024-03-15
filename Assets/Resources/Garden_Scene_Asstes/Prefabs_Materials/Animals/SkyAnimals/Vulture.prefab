@@ -2957,6 +2957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6664070898028567932}
   - component: {fileID: 6664070898042392004}
+  - component: {fileID: 6829012989924379643}
   m_Layer: 0
   m_Name: Vulture
   m_TagString: Untagged
@@ -3138,6 +3139,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.053315282, y: 0.04645601, z: -0.0078086257}
     m_Extent: {x: 0.4227842, y: 0.3389768, z: 0.3077715}
   m_DirtyAABB: 0
+--- !u!114 &6829012989924379643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664070898028724572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1bea693a63b343bd2ecbc9e4d9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyAnimalController: {fileID: 5453012367648136192}
+  renderer: {fileID: 6664070898042392004}
 --- !u!1 &6664070898028724574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,6 +3239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.06, y: 0.25, z: 0.06}
+  myLocalPosition: {x: 0, y: 0, z: 0}
   myIncomeValue: 30
   animalSize: 0
   animalEnvironment: 4

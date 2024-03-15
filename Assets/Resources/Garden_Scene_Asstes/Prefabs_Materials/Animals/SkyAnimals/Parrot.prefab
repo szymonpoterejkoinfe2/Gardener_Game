@@ -586,6 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8089952400003650768}
   - component: {fileID: 6717436879559159096}
+  - component: {fileID: 5681138867025094091}
   m_Layer: 0
   m_Name: Parrot
   m_TagString: Untagged
@@ -746,6 +747,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000029802322, y: 0.1792961, z: -0.12772663}
     m_Extent: {x: 0.56080985, y: 0.34262177, z: 0.33314067}
   m_DirtyAABB: 0
+--- !u!114 &5681138867025094091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607718905263705563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1bea693a63b343bd2ecbc9e4d9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyAnimalController: {fileID: 5626759119696822224}
+  renderer: {fileID: 6717436879559159096}
 --- !u!1 &1842266122208034469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.06, y: 0.25, z: 0.06}
+  myLocalPosition: {x: 0, y: 0, z: 0}
   myIncomeValue: 15
   animalSize: 0
   animalEnvironment: 4

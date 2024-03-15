@@ -1237,6 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.065, y: 0.13, z: 0.065}
+  myLocalPosition: {x: 0, y: 0, z: 0}
   myIncomeValue: 5
   animalSize: 0
   animalEnvironment: 4
@@ -1250,6 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4570686693976835819}
   - component: {fileID: 4570686693988833217}
+  - component: {fileID: 7835002188108401703}
   m_Layer: 0
   m_Name: Dove-rock
   m_TagString: Untagged
@@ -1357,6 +1359,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.005026497, y: 0.022371888, z: -0.0000025629997}
     m_Extent: {x: 0.17830971, y: 0.12262346, z: 0.12843561}
   m_DirtyAABB: 0
+--- !u!114 &7835002188108401703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570686693977332427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1bea693a63b343bd2ecbc9e4d9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyAnimalController: {fileID: 4570686693976835812}
+  renderer: {fileID: 4570686693988833217}
 --- !u!1 &4570686693977332429
 GameObject:
   m_ObjectHideFlags: 0

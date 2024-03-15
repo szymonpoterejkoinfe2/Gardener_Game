@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLocalScale: {x: 0.008, y: 0, z: 0.008}
+  myLocalPosition: {x: 0, y: 0, z: 0}
   myIncomeValue: 1
   animalSize: 0
   animalEnvironment: 4
@@ -289,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7567788897461337818}
   - component: {fileID: 7562006743923507256}
+  - component: {fileID: 1291585094830231085}
   m_Layer: 0
   m_Name: Butterfly_Model
   m_TagString: Untagged
@@ -370,6 +372,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0918808, y: 0.00096556544, z: 0}
     m_Extent: {x: 0.48654664, y: 0.07905274, z: 0.67339957}
   m_DirtyAABB: 0
+--- !u!114 &1291585094830231085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571574428337917030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1bea693a63b343bd2ecbc9e4d9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyAnimalController: {fileID: 8961013781368812748}
+  renderer: {fileID: 7562006743923507256}
 --- !u!1 &7571587876462986258
 GameObject:
   m_ObjectHideFlags: 0
