@@ -16,8 +16,21 @@ public class AnimalAttributes : MonoBehaviour
     [SerializeField]
     public environment animalEnvironment;
 
+    public bool nourished;
+
     void Awake()
     {
         myIncome = BigInteger.Parse(myIncomeValue);
+    }
+
+    private void Update()
+    {
+        if (nourished)
+        {
+            myIncome = BigInteger.Parse(myIncomeValue);
+        }
+        else {
+            myIncome = 0;
+        }
     }
 }
