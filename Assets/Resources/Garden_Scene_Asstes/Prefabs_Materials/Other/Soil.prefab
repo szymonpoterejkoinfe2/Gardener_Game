@@ -5289,6 +5289,11 @@ GameObject:
   - component: {fileID: 3424918146326364524}
   - component: {fileID: 1208913271034071110}
   - component: {fileID: 4812814108006909417}
+  - component: {fileID: 565209597602074630}
+  - component: {fileID: 3266975060826755944}
+  - component: {fileID: 5173363937866941574}
+  - component: {fileID: 429562536988758550}
+  - component: {fileID: 1540535011047698586}
   m_Layer: 0
   m_Name: Soil
   m_TagString: SoilTile
@@ -5472,6 +5477,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   havePlant: 0
+--- !u!114 &565209597602074630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c217e88bcf1a44a9c0296d6d0e09b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveFood: 0
+  foodTime: 0
+  timeLeft: 0
+--- !u!114 &3266975060826755944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9dd14f165f5d64a8e3be71e52e190b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveFood: 0
+  foodTime: 0
+  timeLeft: 0
+--- !u!114 &5173363937866941574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5687a6e47417d9419cfe804a04d3484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveFood: 0
+  foodTime: 0
+  timeLeft: 0
+--- !u!114 &429562536988758550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd91f5684cb919847878932d944c2f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveFood: 0
+  foodTime: 0
+  timeLeft: 0
+--- !u!114 &1540535011047698586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392215872484979002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d40cbc9e9beb34409cba4135d9bc808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveFood: 0
+  foodTime: 0
+  timeLeft: 0
 --- !u!1 &8976106382474153562
 GameObject:
   m_ObjectHideFlags: 0
