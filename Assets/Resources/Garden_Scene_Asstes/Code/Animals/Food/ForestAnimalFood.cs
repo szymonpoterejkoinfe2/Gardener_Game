@@ -8,11 +8,11 @@ public class ForestAnimalFood : MonoBehaviour
     public bool haveFood;
     [SerializeField] private float foodTime;
     private bool timerStart;
-    public ulong timeLeft = 0;
+    public float timeLeft = 0;
 
 
     //Function to start Timer of fertilization
-    public void StartFood(ulong SecondsToWait)
+    public void StartFood(float SecondsToWait)
     {
         foodTime = SecondsToWait;
         timerStart = true;
@@ -26,7 +26,7 @@ public class ForestAnimalFood : MonoBehaviour
         if (timerStart)
         {
             float time = (foodTime -= Time.deltaTime);
-            timeLeft = (ulong)time;
+            timeLeft = time;
 
             if (gameObject.tag == "MovedSoil")
             {
