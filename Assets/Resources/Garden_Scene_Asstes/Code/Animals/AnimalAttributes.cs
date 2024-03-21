@@ -2,6 +2,7 @@ using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AnimalAttributes : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class AnimalAttributes : MonoBehaviour
         myIncome = BigInteger.Parse(myIncomeValue);
     }
 
+    void Start()
+    { 
+    
+    }
+
     private void Update()
     {
         if (nourished)
@@ -31,6 +37,27 @@ public class AnimalAttributes : MonoBehaviour
         }
         else {
             myIncome = 0;
+        }
+
+        switch (animalEnvironment)
+        {
+            case environment.Farm:
+                // To do: take haveFarmFood bool
+                break;
+            case environment.Forest:
+                //To do: take haveForestFood bool
+                break;
+            case environment.Jungle:
+                //To do: take haveJungleFood bool
+                break;
+            case environment.Arctic:
+                //To do: take haveArcticFood bool
+                break;
+            case environment.Sky:
+                //To do: take haveSkyFood bool
+                break;
+
+
         }
     }
 }
