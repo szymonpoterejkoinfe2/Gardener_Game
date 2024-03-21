@@ -29,6 +29,7 @@ TagManager:
   - ManagerText
   - SpawnPoint
   - Avaliability
+  - Cloud
   layers:
   - Default
   - TransparentFX

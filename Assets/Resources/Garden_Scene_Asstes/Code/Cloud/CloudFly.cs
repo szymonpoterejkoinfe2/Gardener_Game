@@ -8,22 +8,29 @@ public class CloudFly : MonoBehaviour
     Transform targetPosition;
     float distance;
     bool canMove = false;
+    bool visible;
+
+    private CloudEmitter cloudEmitter;
 
     void Start()
-    { 
-    speed = Random.Range(1, 6);
+    {
+        cloudEmitter = FindObjectOfType<CloudEmitter>();
+        speed = Random.Range(1, 6);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        
+        if (canMove && Camera.main.name == "MainCamera")
         {
             transform.LookAt(targetPosition);
 
             distance = Vector3.Distance(transform.position, targetPosition.transform.position);
             if (distance < 1f)
             {
+                cloudEmitter.CloudDestroyed();
+
                 Destroy(gameObject);
 
             }

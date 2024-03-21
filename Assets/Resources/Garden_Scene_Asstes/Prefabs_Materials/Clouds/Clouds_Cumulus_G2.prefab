@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 9191864314585976820}
   m_Layer: 0
   m_Name: Clouds_Cumulus_G2
-  m_TagString: Untagged
+  m_TagString: Cloud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
