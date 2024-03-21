@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CloudFly : MonoBehaviour
 {
-    public float speed = 1; 
+    float speed = 1;
     Transform targetPosition;
     float distance;
     bool canMove = false;
     bool visible;
+
+    [SerializeField]
+    MeshRenderer[] renderers;
 
     private CloudEmitter cloudEmitter;
 
@@ -21,9 +24,11 @@ public class CloudFly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (canMove && Camera.main.name == "MainCamera")
         {
+            ActivateRenderers(renderers);
+
             transform.LookAt(targetPosition);
 
             distance = Vector3.Distance(transform.position, targetPosition.transform.position);
@@ -39,6 +44,9 @@ public class CloudFly : MonoBehaviour
                 Move();
             }
         }
+        else {
+            DeactivateRenderers(renderers);
+        }
     }
 
     //Function to move object to target point
@@ -52,6 +60,22 @@ public class CloudFly : MonoBehaviour
     {
         targetPosition = target;
         canMove = true;
+    }
+
+    private void DeactivateRenderers(MeshRenderer[] renderers)
+    {
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
+    }
+
+    private void ActivateRenderers(MeshRenderer[] renderers)
+    {
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.enabled = true;
+        }
     }
 
 }

@@ -50,6 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  renderers:
+  - {fileID: 2374992}
+  - {fileID: 2322010}
+  - {fileID: 2325108}
+  - {fileID: 2320908}
+  - {fileID: 2336148}
 --- !u!1 &113402
 GameObject:
   m_ObjectHideFlags: 0

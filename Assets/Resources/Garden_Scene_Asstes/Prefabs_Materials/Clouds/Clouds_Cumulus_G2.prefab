@@ -444,6 +444,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  renderers:
+  - {fileID: 2395620}
+  - {fileID: 2315338}
+  - {fileID: 2301352}
+  - {fileID: 2338204}
+  - {fileID: 2344174}
+  - {fileID: 2376458}
+  - {fileID: 2361190}
 --- !u!1 &182212
 GameObject:
   m_ObjectHideFlags: 0
