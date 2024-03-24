@@ -2957,7 +2957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6664070898028567932}
   - component: {fileID: 6664070898042392004}
-  - component: {fileID: 6829012989924379643}
+  - component: {fileID: 8102301385226028070}
   m_Layer: 0
   m_Name: Vulture
   m_TagString: Untagged
@@ -2988,8 +2988,8 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6664070898028724572}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -3139,7 +3139,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.053315282, y: 0.04645601, z: -0.0078086257}
     m_Extent: {x: 0.4227842, y: 0.3389768, z: 0.3077715}
   m_DirtyAABB: 0
---- !u!114 &6829012989924379643
+--- !u!114 &8102301385226028070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3243,6 +3243,7 @@ MonoBehaviour:
   myIncomeValue: 30
   animalSize: 0
   animalEnvironment: 4
+  nourished: 0
 --- !u!1 &6664070898028724576
 GameObject:
   m_ObjectHideFlags: 0

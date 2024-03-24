@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1760721384919996658}
   - component: {fileID: 1760721384914291190}
-  - component: {fileID: 6586852625397496370}
+  - component: {fileID: 7911676064703930286}
   m_Layer: 0
   m_Name: seagull
   m_TagString: Untagged
@@ -41,8 +41,8 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760721384919565458}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -103,7 +103,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.01958774, y: -0.048251458, z: 0.000024311244}
     m_Extent: {x: 0.22628365, y: 0.19567552, z: 0.17953524}
   m_DirtyAABB: 0
---- !u!114 &6586852625397496370
+--- !u!114 &7911676064703930286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,6 +207,7 @@ MonoBehaviour:
   myIncomeValue: 20
   animalSize: 0
   animalEnvironment: 4
+  nourished: 0
 --- !u!1 &1760721384919565462
 GameObject:
   m_ObjectHideFlags: 0

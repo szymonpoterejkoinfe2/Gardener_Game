@@ -14,6 +14,12 @@ public class CameraAndTileManager : MonoBehaviour
     public Vector3 PositionMemory;
     public Animator CameraOneAnimator, CameraTwoAnimator;
 
+    [SerializeField]
+    DeactivateNotUsedTiles deactivateNotUsedTiles;
+
+    [SerializeField]
+    SoilRotation soilRotation;
+
     //Deactivating object on awake
     private void Awake()
     {
@@ -60,6 +66,7 @@ public class CameraAndTileManager : MonoBehaviour
                 managerPanel.SetActive(true);
             }
         }
+        deactivateNotUsedTiles.DeactivateNotUsed();
 
         // GameObject.FindGameObjectWithTag("Hydration").GetComponnt<HydrationSliderStatus>().ShowSlider();
     }
@@ -85,6 +92,8 @@ public class CameraAndTileManager : MonoBehaviour
         moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
         rotation.speed = 2;
         ResetSoilTile(Soil);
+
+        deactivateNotUsedTiles.ActivateAll();
         //GameObject.FindGameObjectWithTag("Hydration").GetComponent<HydrationSliderStatus>().HideSlider();
     }
 
@@ -95,13 +104,8 @@ public class CameraAndTileManager : MonoBehaviour
         PositionMemory = Soil.transform.position;
         Soil.transform.position = new Vector3(-60, PositionMemory.y, 20);
         Soil.tag = "MovedSoil";
-        StartRotationOfSoil(Soil);
-    }
 
-    // Begining rotation of secound tile
-    public void StartRotationOfSoil(GameObject Soil)
-    {
-        Soil.GetComponent<SoilRotation>().Should_Rotate = true;
+        soilRotation.StartRotation(Soil);
     }
 
     // stop of soil tile rotation and returning it to it's previous position
@@ -109,8 +113,7 @@ public class CameraAndTileManager : MonoBehaviour
     {
         Soil.GetComponent<Collider>().enabled = true;
         Soil.transform.position = new Vector3(PositionMemory.x, PositionMemory.y, PositionMemory.z);
-        Soil.GetComponent<SoilRotation>().Should_Rotate = false;
-        Soil.GetComponent<SoilRotation>().ResetState();
+        soilRotation.StopRotation();
         Soil.tag = "SoilTile";
     }
 

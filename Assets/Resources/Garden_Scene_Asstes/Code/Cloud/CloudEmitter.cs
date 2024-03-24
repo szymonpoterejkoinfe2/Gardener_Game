@@ -20,8 +20,6 @@ public class CloudEmitter : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("currentCloudQuantity:" + currentCloudQuantity.ToString());
-
             yield return new WaitForSeconds(10);
             if (Camera.main.name == "MainCamera" && currentCloudQuantity <= maxCloudQuantity)
             {

@@ -12,8 +12,10 @@ public class PlaceDecoration : MonoBehaviour
     string soilTileID, decorationID;
     List<GameObject> availableTiles = new List<GameObject>();
     int holderIndex = 0;
+
+    [SerializeField]
     SoilRotation soilRotation;
-    
+
 
     [SerializeField]
     SoilTileDecorations newDict;
@@ -54,9 +56,8 @@ public class PlaceDecoration : MonoBehaviour
         shopMenu.SetActive(false);
 
         soilTile = GameObject.FindGameObjectWithTag("MovedSoil");
-        soilRotation = soilTile.GetComponent<SoilRotation>(); 
-        soilRotation.Should_Rotate = false;
-        soilRotation.ResetState();
+
+        soilRotation.StopRotation();
 
         soilTileID = soilTile.GetComponent<ObjectCharacteristics>().uniqueId;
         holderTiles = soilTile.GetComponent<MyObjectHolders>().myObjectHolders;
@@ -85,7 +86,8 @@ public class PlaceDecoration : MonoBehaviour
     {
         moveButtons.SetActive(false);
         returnButton.SetActive(true);
-        soilRotation.Should_Rotate = true;
+
+        soilRotation.StartRotationKnownSoilTile();
 
         foreach (GameObject holderTile in holderTiles.Values)
         {

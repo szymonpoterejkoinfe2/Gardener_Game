@@ -1691,6 +1691,7 @@ MonoBehaviour:
   myIncomeValue: 25
   animalSize: 0
   animalEnvironment: 4
+  nourished: 0
 --- !u!1 &5425334665297502649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,7 +1702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5425334665297542233}
   - component: {fileID: 5425334665294327071}
-  - component: {fileID: 8000504905132560262}
+  - component: {fileID: 1549957014714979068}
   m_Layer: 0
   m_Name: tucan
   m_TagString: Untagged
@@ -1733,7 +1734,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 5425334665297502649}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -1814,7 +1815,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.05453381, y: 0.09340975, z: 0.0019412637}
     m_Extent: {x: 0.26107436, y: 0.21141776, z: 0.18481451}
   m_DirtyAABB: 0
---- !u!114 &8000504905132560262
+--- !u!114 &1549957014714979068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

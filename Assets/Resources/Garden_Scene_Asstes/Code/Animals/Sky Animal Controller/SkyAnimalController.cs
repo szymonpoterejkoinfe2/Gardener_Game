@@ -13,7 +13,6 @@ public class SkyAnimalController : MonoBehaviour
     private LimitPoints limitPoints;
     private Transform targetPosition;
     private float distance;
-    private bool shouldMove;
 
     public float rotationSpeed = 1.0f;
     public float moveSpeed = 1f;
@@ -36,8 +35,7 @@ public class SkyAnimalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shouldMove == true)
-        {
+
             // Determine direction towards the target only considering the y-axis.
             Vector3 targetDirection = targetPosition.position - transform.position;
             targetDirection.y = 0; // Set y-component to 0
@@ -66,7 +64,7 @@ public class SkyAnimalController : MonoBehaviour
             {
                 Move();
             }
-        }
+
 
     }
 
@@ -102,16 +100,6 @@ public class SkyAnimalController : MonoBehaviour
 
         newPoint.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
         return newPoint.transform;
-    }
-
-    public void StartMovement()
-    {
-        shouldMove = true;
-    }
-
-    public void StopMovement()
-    {
-        shouldMove = false;
     }
 
     enum altitude 

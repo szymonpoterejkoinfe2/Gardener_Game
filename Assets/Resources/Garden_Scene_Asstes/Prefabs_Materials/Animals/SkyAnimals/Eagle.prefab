@@ -2454,6 +2454,7 @@ MonoBehaviour:
   myIncomeValue: 10
   animalSize: 0
   animalEnvironment: 4
+  nourished: 0
 --- !u!1 &1751631718520616335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,7 +2465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751631718520842671}
   - component: {fileID: 1751631718515407003}
-  - component: {fileID: 7182598558175122261}
+  - component: {fileID: 5472930632143781098}
   m_Layer: 0
   m_Name: Eagle
   m_TagString: Untagged
@@ -2653,7 +2654,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: 0.21911126, z: -0.18898639}
     m_Extent: {x: 0.6655615, y: 0.5101189, z: 0.57584214}
   m_DirtyAABB: 0
---- !u!114 &7182598558175122261
+--- !u!114 &5472930632143781098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
