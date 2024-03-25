@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SoilRotation : MonoBehaviour
 {
-    public Vector3 rotation, ResetPos;
-    public float speed;
+    [SerializeField]
+    private Vector3 rotation, ResetPos;
+    private float speed = 2f;
     private bool should_Rotate = false;
-    public GameObject soil;
+    private GameObject soil;
 
     // Update is called once per frame
     void Update()

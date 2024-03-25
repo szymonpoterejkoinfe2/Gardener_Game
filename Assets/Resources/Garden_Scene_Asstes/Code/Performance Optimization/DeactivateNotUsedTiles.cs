@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeactivateNotUsedTiles : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] allSoilTiles;
+    GameObject[] allSoilTiles, allCoverTiles;
 
     [SerializeField]
     SoilRotation soilRotation;
@@ -19,19 +19,31 @@ public class DeactivateNotUsedTiles : MonoBehaviour
             {
                 soil.SetActive(false);
             }
-            if(soil.tag == "MovedSoil")
+            if (soil.tag == "MovedSoil")
             {
                 soilRotation.StartRotation(soil);
             }
         }
+        TilesSetActive(allCoverTiles,false);
     }
 
     public void ActivateAll()
     {
         soilRotation.StopRotation();
-        foreach (GameObject soil in allSoilTiles)
+
+        TilesSetActive(allSoilTiles,true);
+        TilesSetActive(allCoverTiles,true);
+    }
+
+
+    private void TilesSetActive(GameObject[] tiles, bool action)
+    {
+        foreach (GameObject tile in tiles)
         {
-            soil.SetActive(true);
+            if (tile != null)
+            {
+                tile.SetActive(action);
+            }
         }
     }
 
