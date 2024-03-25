@@ -17,47 +17,32 @@ public class AnimalAttributes : MonoBehaviour
     [SerializeField]
     public environment animalEnvironment;
 
-    public bool nourished;
+    public string soilTileID;
+        
+    private bool nourished;
+    private FoodManager foodManager;
 
     void Awake()
     {
         myIncome = BigInteger.Parse(myIncomeValue);
+        foodManager = FindObjectOfType<FoodManager>();
     }
 
     void Start()
-    { 
-    
+    {
+        
     }
 
     private void Update()
     {
-        if (nourished)
+        if (foodManager.GetFoodStatus(soilTileID, animalEnvironment))
         {
             myIncome = BigInteger.Parse(myIncomeValue);
         }
-        else {
+        else
+        {
             myIncome = 0;
         }
 
-        switch (animalEnvironment)
-        {
-            case environment.Farm:
-                // To do: take haveFarmFood bool
-                break;
-            case environment.Forest:
-                //To do: take haveForestFood bool
-                break;
-            case environment.Jungle:
-                //To do: take haveJungleFood bool
-                break;
-            case environment.Arctic:
-                //To do: take haveArcticFood bool
-                break;
-            case environment.Sky:
-                //To do: take haveSkyFood bool
-                break;
-
-
-        }
     }
 }

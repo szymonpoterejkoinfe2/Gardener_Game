@@ -171,6 +171,7 @@ public class SpawnAnimals : MonoBehaviour
     private GameObject newAnimal, oldAnimal, soilObject;
     private AnimalCreator animalCreator;
     private int pointIndex = 0;
+    private string soilUniqueID;
 
     [SerializeField]
     public List<AnimalInfo> placedAnimals;
@@ -201,7 +202,9 @@ public class SpawnAnimals : MonoBehaviour
         
         soilObject = GameObject.FindGameObjectWithTag("MovedSoil");
 
-        animalCreator = new AnimalCreator(soilObject.GetComponent<ObjectCharacteristics>().uniqueId, soilObject);
+        soilUniqueID = soilObject.GetComponent<ObjectCharacteristics>().uniqueId;
+
+        animalCreator = new AnimalCreator(soilUniqueID, soilObject);
 
         animalCreator.ShowAvailability(animals[animalID].GetComponent<AnimalAttributes>());
 
@@ -230,6 +233,9 @@ public class SpawnAnimals : MonoBehaviour
         newAnimal = Instantiate(animals[animalId], avaliablePoints[pointIndex].GetTransform().position, Quaternion.identity, avaliablePoints[pointIndex].GetTransform());
         newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
         newAnimal.transform.localPosition = animals[animalId].GetComponent<AnimalAttributes>().myLocalPosition;
+
+        newAnimal.GetComponent<AnimalAttributes>().soilTileID = soilUniqueID;
+
         oldAnimal = newAnimal.gameObject;
     }
 

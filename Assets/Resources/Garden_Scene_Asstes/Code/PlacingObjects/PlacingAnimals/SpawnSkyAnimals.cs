@@ -37,10 +37,15 @@ public class SpawnSkyAnimals : MonoBehaviour
         GameObject soilParent = GameObject.FindGameObjectWithTag("MovedSoil");
         GameObject newSkyAnimal = Instantiate(animals[animalID], new Vector3(0, 0, 0), UnityEngine.Quaternion.identity, soilParent.transform);
 
-        newSkyAnimal.transform.localScale = animals[animalID].GetComponent<AnimalAttributes>().myLocalScale;
+        AnimalAttributes animalAttributes = newSkyAnimal.GetComponent<AnimalAttributes>();
+        ObjectCharacteristics objectCharacteristics = soilParent.GetComponent<ObjectCharacteristics>();
+
+        newSkyAnimal.transform.localScale = animalAttributes.myLocalScale;
         newSkyAnimal.transform.localPosition = new Vector3(0, 2, 0);
 
-        instantiatedSkyAnimals[soilParent.GetComponent<ObjectCharacteristics>().uniqueId][animalID] += 1;
+        animalAttributes.soilTileID = objectCharacteristics.uniqueId;
+
+        instantiatedSkyAnimals[objectCharacteristics.uniqueId][animalID] += 1;
 
         saveManager.SaveSkyAnimals();
         saveManager.SaveMoneyBalance();
@@ -62,6 +67,8 @@ public class SpawnSkyAnimals : MonoBehaviour
 
                         newSkyAnimal.transform.localScale = animals[skyAnimal.Key].GetComponent<AnimalAttributes>().myLocalScale;
                         newSkyAnimal.transform.localPosition = new Vector3(0, 2, 0);
+                    
+                        newSkyAnimal.GetComponent<AnimalAttributes>().soilTileID = soilTile.Key;
                     }
 
                 }
