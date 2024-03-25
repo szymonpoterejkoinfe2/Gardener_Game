@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class FoodManager : MonoBehaviour
 {
@@ -47,13 +48,18 @@ public class FoodManager : MonoBehaviour
     };
 
     private environment Environment;
-   
-    public bool haveFood;
-    [SerializeField] private float foodTime;
-    private bool timerStart;
-    public float timeLeft = 0;
 
-    // Couting down time
+    private Timer farmFoodTimer;
+    private Timer forestFoodTimer;
+    private Timer jungleFoodTimer;
+    private Timer arcticFoodTimer;
+    private Timer skyFoodTimer;
+
+    [SerializeField]
+    TextMeshProUGUI farmFoodText, forestFoodText, jungleFoodText, arcticFoodText, skyFoodText;
+
+
+    // Counting down time
     void Update()
     {
 
@@ -86,6 +92,66 @@ public class FoodManager : MonoBehaviour
 
     }
 
+    #region TimersActivator 
+
+    public void StartNeededTimers(string soilTileID)
+    {
+        if (allTilesFoodInfo[soilTileID].farmFood.haveFood)
+        {
+            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].farmFood.foodUntil;
+
+            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
+
+            farmFoodTimer = new Timer();
+            farmFoodTimer.StartTimer(timeFocCounterAsDouble, farmFoodText);
+        }
+
+        if (allTilesFoodInfo[soilTileID].forestFood.haveFood)
+        {
+            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].forestFood.foodUntil;
+
+            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
+
+            forestFoodTimer = new Timer();
+            forestFoodTimer.StartTimer(timeFocCounterAsDouble, forestFoodText);
+        }
+
+        if (allTilesFoodInfo[soilTileID].jungleFood.haveFood)
+        {
+            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].jungleFood.foodUntil;
+
+            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
+
+            jungleFoodTimer = new Timer();
+            jungleFoodTimer.StartTimer(timeFocCounterAsDouble, jungleFoodText);
+        }
+
+        if (allTilesFoodInfo[soilTileID].arcticFood.haveFood)
+        {
+            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].arcticFood.foodUntil;
+
+            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
+
+            arcticFoodTimer = new Timer();
+            arcticFoodTimer.StartTimer(timeFocCounterAsDouble, arcticFoodText);
+        }
+
+        if (allTilesFoodInfo[soilTileID].skyFood.haveFood)
+        {
+            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].skyFood.foodUntil;
+
+            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
+
+            skyFoodTimer = new Timer();
+            skyFoodTimer.StartTimer(timeFocCounterAsDouble, skyFoodText);
+        }
+
+    }
+
+    #endregion
+
+    #region AnimalAttributesFunctions
+
     public bool GetFoodStatus(string tileID, environment animalEnvironment)
     {
 
@@ -111,6 +177,9 @@ public class FoodManager : MonoBehaviour
         }
         return false;
     }
+
+    #endregion
+
 
     #region ShopFunctions
     public void StartFarmFood(float minutes)
@@ -158,4 +227,38 @@ public class FoodManager : MonoBehaviour
         allTilesFoodInfo[tileID].skyFood.SetFoodBool(true);
     }
     #endregion
+
+    class Timer : MonoBehaviour
+    {
+        readonly int oneSecond = 1;
+
+        public void StartTimer(double timerTime, TextMeshProUGUI timerText)
+        {
+            StartCoroutine(timerCounter(timerTime, timerText));
+        }
+
+        private IEnumerator timerCounter(double timerTime, TextMeshProUGUI timerText)
+        {
+            for (int seconds = 0; seconds < timerTime; seconds++)
+            {
+                yield return new WaitForSeconds(oneSecond);
+
+                if (Camera.main.name == "MainCamera")
+                {
+                    break;
+                }
+
+                int minutes = (int)(timerTime / 60);
+                int secounds = (int)(timerTime - minutes * 60f);
+
+                timerText.text = string.Format("{0:0}:{1:00}", minutes, secounds);
+
+                Debug.Log("timer");
+
+            }
+        }
+
+    }
+
 }
+

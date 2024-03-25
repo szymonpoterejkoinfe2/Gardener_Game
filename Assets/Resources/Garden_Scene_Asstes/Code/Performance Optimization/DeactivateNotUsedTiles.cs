@@ -10,6 +10,9 @@ public class DeactivateNotUsedTiles : MonoBehaviour
     [SerializeField]
     SoilRotation soilRotation;
 
+    [SerializeField]
+    FoodManager foodManager;
+
     //deactivating not vilible soil tiles
     public void DeactivateNotUsed()
     {
@@ -22,6 +25,9 @@ public class DeactivateNotUsedTiles : MonoBehaviour
             if (soil.tag == "MovedSoil")
             {
                 soilRotation.StartRotation(soil);
+                string soilID = soil.GetComponent<ObjectCharacteristics>().uniqueId;
+
+                foodManager.StartNeededTimers(soilID);
             }
         }
         TilesSetActive(allCoverTiles,false);

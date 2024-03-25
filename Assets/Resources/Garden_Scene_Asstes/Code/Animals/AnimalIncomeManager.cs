@@ -12,7 +12,7 @@ public class AnimalIncomeManager : MonoBehaviour
     {
         moneyManager = GetComponent<MoneyManager>();
 
-        StartCoroutine(collectIncome(6f));
+        StartCoroutine(collectIncome(60f));
     }
 
     private AnimalAttributes[] FindAnimals()
@@ -33,7 +33,7 @@ public class AnimalIncomeManager : MonoBehaviour
                 {
                     incomeFromAnimals += animal.myIncome;
                 }
-                Debug.Log("Animal income added: " + incomeFromAnimals.ToString());
+                //Debug.Log("Animal income added: " + incomeFromAnimals.ToString());
                 moneyManager.myBalance.IncrementBalance(incomeFromAnimals);
             }
         }

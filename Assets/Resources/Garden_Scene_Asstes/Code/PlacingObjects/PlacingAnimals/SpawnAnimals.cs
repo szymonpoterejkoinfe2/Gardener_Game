@@ -240,7 +240,7 @@ public class SpawnAnimals : MonoBehaviour
     }
 
     //Instantiating new animal prefab object in world space from Save
-    private void PlaceAnimal(string animalId, int pointIndex, Point[] decorationPoints)
+    private void PlaceAnimal(string animalId, int pointIndex, Point[] decorationPoints, string soilTileID)
     {
         foreach (Point point in decorationPoints)
         {
@@ -249,6 +249,8 @@ public class SpawnAnimals : MonoBehaviour
                 newAnimal = Instantiate(animals[animalId], point.transform.position, Quaternion.identity, point.transform);
                 newAnimal.transform.localScale = animals[animalId].GetComponent<AnimalAttributes>().myLocalScale;
                 newAnimal.transform.localPosition = animals[animalId].GetComponent<AnimalAttributes>().myLocalPosition;
+
+                newAnimal.GetComponent<AnimalAttributes>().soilTileID = soilTileID;
 
                 point.haveAnimal = true;
             }
@@ -330,7 +332,7 @@ public class SpawnAnimals : MonoBehaviour
             {
                 Point[] points =  soilTiles.allSoilTiles[animalInfo.soiTileID].GetComponent<MyObjectHolders>().myObjectHolders[animalInfo.decorationHolderID].GetComponentsInChildren<Point>();
 
-                PlaceAnimal(animalInfo.animalID, animalInfo.pointID, points);
+                PlaceAnimal(animalInfo.animalID, animalInfo.pointID, points,animalInfo.soiTileID);
             }
         }
 
