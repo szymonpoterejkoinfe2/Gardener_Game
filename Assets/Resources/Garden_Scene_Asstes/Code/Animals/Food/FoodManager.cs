@@ -47,13 +47,7 @@ public class FoodManager : MonoBehaviour
         {"f2012218-9483-4eec-b615-4b8c5debf581", new TileFood()}
     };
 
-    private environment Environment;
-
-    private Timer farmFoodTimer;
-    private Timer forestFoodTimer;
-    private Timer jungleFoodTimer;
-    private Timer arcticFoodTimer;
-    private Timer skyFoodTimer;
+    bool showTimers = false;
 
     [SerializeField]
     TextMeshProUGUI farmFoodText, forestFoodText, jungleFoodText, arcticFoodText, skyFoodText;
@@ -65,87 +59,84 @@ public class FoodManager : MonoBehaviour
 
         currentDateTime = DateTime.Now;
 
-        foreach (var tileFoodInfo in allTilesFoodInfo)
+        if (Camera.main.name == "Camera" &&  showTimers)
         {
-            if (currentDateTime >= tileFoodInfo.Value.farmFood.foodUntil && !tileFoodInfo.Value.farmFood.haveFood)
+
+            foreach (var tileFoodInfo in allTilesFoodInfo)
             {
-                tileFoodInfo.Value.farmFood.SetFoodBool(false);
-            }
-            if (currentDateTime >= tileFoodInfo.Value.forestFood.foodUntil && !tileFoodInfo.Value.forestFood.haveFood)
-            {
-                tileFoodInfo.Value.forestFood.SetFoodBool(false);
-            }
-            if (currentDateTime >= tileFoodInfo.Value.jungleFood.foodUntil && !tileFoodInfo.Value.jungleFood.haveFood)
-            {
-                tileFoodInfo.Value.jungleFood.SetFoodBool(false);
-            }
-            if (currentDateTime >= tileFoodInfo.Value.arcticFood.foodUntil && !tileFoodInfo.Value.arcticFood.haveFood)
-            {
-                tileFoodInfo.Value.arcticFood.SetFoodBool(false);
-            }
-            if (currentDateTime >= tileFoodInfo.Value.skyFood.foodUntil && !tileFoodInfo.Value.skyFood.haveFood)
-            {
-                tileFoodInfo.Value.skyFood.SetFoodBool(false);
+                if (currentDateTime >= tileFoodInfo.Value.farmFood.foodUntil || !tileFoodInfo.Value.farmFood.haveFood)
+                {
+                    tileFoodInfo.Value.farmFood.SetFoodBool(false);
+                }
+                else
+                {
+                    farmFoodText.text = GetTimerText(currentDateTime, tileFoodInfo.Value.farmFood.foodUntil);
+                }
+
+
+                if (currentDateTime >= tileFoodInfo.Value.forestFood.foodUntil || !tileFoodInfo.Value.forestFood.haveFood)
+                {
+                    tileFoodInfo.Value.forestFood.SetFoodBool(false);
+                }
+                else
+                {
+                    forestFoodText.text = GetTimerText(currentDateTime, tileFoodInfo.Value.forestFood.foodUntil);
+                }
+
+                if (currentDateTime >= tileFoodInfo.Value.jungleFood.foodUntil || !tileFoodInfo.Value.jungleFood.haveFood)
+                {
+                    tileFoodInfo.Value.jungleFood.SetFoodBool(false);
+                }
+                else
+                {
+                    jungleFoodText.text = GetTimerText(currentDateTime, tileFoodInfo.Value.jungleFood.foodUntil);
+                }
+
+                if (currentDateTime >= tileFoodInfo.Value.arcticFood.foodUntil || !tileFoodInfo.Value.arcticFood.haveFood)
+                {
+                    tileFoodInfo.Value.arcticFood.SetFoodBool(false);
+                }
+                else
+                {
+                    arcticFoodText.text = GetTimerText(currentDateTime, tileFoodInfo.Value.arcticFood.foodUntil);
+                }
+
+                if (currentDateTime >= tileFoodInfo.Value.skyFood.foodUntil || !tileFoodInfo.Value.skyFood.haveFood)
+                {
+                    tileFoodInfo.Value.skyFood.SetFoodBool(false);
+                }
+                else
+                {
+                    skyFoodText.text = GetTimerText(currentDateTime, tileFoodInfo.Value.skyFood.foodUntil);
+                }
+
             }
 
         }
+        
 
     }
 
+    private string GetTimerText(DateTime currentTime, DateTime foodEndTime)
+    {
+        TimeSpan foodTimeSpan = foodEndTime - currentDateTime;
+        int minutes = foodTimeSpan.Minutes;
+        int seconds = foodTimeSpan.Seconds;
+
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+
     #region TimersActivator 
 
-    public void StartNeededTimers(string soilTileID)
+    public void ShowTimers()
     {
-        if (allTilesFoodInfo[soilTileID].farmFood.haveFood)
-        {
-            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].farmFood.foodUntil;
+        showTimers = true;
+    }
 
-            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
-
-            farmFoodTimer = new Timer();
-            farmFoodTimer.StartTimer(timeFocCounterAsDouble, farmFoodText);
-        }
-
-        if (allTilesFoodInfo[soilTileID].forestFood.haveFood)
-        {
-            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].forestFood.foodUntil;
-
-            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
-
-            forestFoodTimer = new Timer();
-            forestFoodTimer.StartTimer(timeFocCounterAsDouble, forestFoodText);
-        }
-
-        if (allTilesFoodInfo[soilTileID].jungleFood.haveFood)
-        {
-            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].jungleFood.foodUntil;
-
-            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
-
-            jungleFoodTimer = new Timer();
-            jungleFoodTimer.StartTimer(timeFocCounterAsDouble, jungleFoodText);
-        }
-
-        if (allTilesFoodInfo[soilTileID].arcticFood.haveFood)
-        {
-            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].arcticFood.foodUntil;
-
-            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
-
-            arcticFoodTimer = new Timer();
-            arcticFoodTimer.StartTimer(timeFocCounterAsDouble, arcticFoodText);
-        }
-
-        if (allTilesFoodInfo[soilTileID].skyFood.haveFood)
-        {
-            TimeSpan timeForCounter = currentDateTime - allTilesFoodInfo[soilTileID].skyFood.foodUntil;
-
-            double timeFocCounterAsDouble = timeForCounter.TotalSeconds;
-
-            skyFoodTimer = new Timer();
-            skyFoodTimer.StartTimer(timeFocCounterAsDouble, skyFoodText);
-        }
-
+    public void HideTimers()
+    {
+        showTimers = false;
     }
 
     #endregion
@@ -180,85 +171,66 @@ public class FoodManager : MonoBehaviour
 
     #endregion
 
-
     #region ShopFunctions
     public void StartFarmFood(float minutes)
     {
         double foodTime = (double)minutes;
-        string tileID = GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId;
+        string tileID = GetSoilID();
 
         allTilesFoodInfo[tileID].farmFood.SetFoodUntil(foodTime, 0);
         allTilesFoodInfo[tileID].farmFood.SetFoodBool(true);
+
+        ShowTimers();
     }
 
     public void StartForestFood(float minutes)
     {
         double foodTime = (double)minutes;
-        string tileID = GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId;
+        string tileID = GetSoilID();
 
         allTilesFoodInfo[tileID].forestFood.SetFoodUntil(foodTime, 0);
         allTilesFoodInfo[tileID].forestFood.SetFoodBool(true);
+
+        ShowTimers();
     }
 
     public void StartJungleFood(float minutes)
     {
         double foodTime = (double)minutes;
-        string tileID = GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId;
+        string tileID = GetSoilID();
 
         allTilesFoodInfo[tileID].jungleFood.SetFoodUntil(foodTime, 0);
         allTilesFoodInfo[tileID].jungleFood.SetFoodBool(true);
+
+        ShowTimers();
     }
 
     public void StartArcticFood(float minutes)
     {
         double foodTime = (double)minutes;
-        string tileID = GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId;
+        string tileID = GetSoilID();
 
         allTilesFoodInfo[tileID].arcticFood.SetFoodUntil(foodTime, 0);
         allTilesFoodInfo[tileID].arcticFood.SetFoodBool(true);
+
+        ShowTimers();
     }
 
     public void StartSkyFood(float minutes)
     {
         double foodTime = (double)minutes;
-        string tileID = GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId;
+        string tileID = GetSoilID();
 
         allTilesFoodInfo[tileID].skyFood.SetFoodUntil(foodTime, 0);
         allTilesFoodInfo[tileID].skyFood.SetFoodBool(true);
+
+        ShowTimers();
+    }
+
+    private string GetSoilID()
+    {
+        return GameObject.FindGameObjectWithTag("MovedSoil").GetComponent<ObjectCharacteristics>().uniqueId; ;
     }
     #endregion
 
-    class Timer : MonoBehaviour
-    {
-        readonly int oneSecond = 1;
-
-        public void StartTimer(double timerTime, TextMeshProUGUI timerText)
-        {
-            StartCoroutine(timerCounter(timerTime, timerText));
-        }
-
-        private IEnumerator timerCounter(double timerTime, TextMeshProUGUI timerText)
-        {
-            for (int seconds = 0; seconds < timerTime; seconds++)
-            {
-                yield return new WaitForSeconds(oneSecond);
-
-                if (Camera.main.name == "MainCamera")
-                {
-                    break;
-                }
-
-                int minutes = (int)(timerTime / 60);
-                int secounds = (int)(timerTime - minutes * 60f);
-
-                timerText.text = string.Format("{0:0}:{1:00}", minutes, secounds);
-
-                Debug.Log("timer");
-
-            }
-        }
-
-    }
-
 }
-

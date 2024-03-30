@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6987293480689897005}
   - component: {fileID: -7606704038804321856}
   - component: {fileID: -5860028810277677669}
+  - component: {fileID: 1872446386887680253}
   m_Layer: 0
   m_Name: Grass_0001
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTime: 10
   haveManager: 0
+  managerLevel: 1
 --- !u!114 &-6987293480689897005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +182,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340372075f192aa49a0bb1a92987d42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!205 &1872446386887680253
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830319465243612}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.9303514
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.6099914
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.2622721
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
