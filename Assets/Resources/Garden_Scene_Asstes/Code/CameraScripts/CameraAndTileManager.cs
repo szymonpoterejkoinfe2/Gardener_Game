@@ -8,7 +8,7 @@ public class CameraAndTileManager : MonoBehaviour
     public GameObject CameraOne;
     public GameObject CameraTwo;
     public GameObject ShopMenu;
-    public GameObject NavigationButtons, shopButton, moveButton, leaderButton, exitButton, moneyBalance, hydrationTimer, fertilizerTimer, plantSlider, managerPanel;
+    public GameObject NavigationButtons, shopButton, moveButton, leaderButton, exitButton, moneyBalance, hydrationTimer, fertilizerTimer, plantSlider, managerPanel, timersButton;
     public GameObject[] Faders;
     public Rotation rotation;
     public Vector3 PositionMemory;
@@ -36,6 +36,7 @@ public class CameraAndTileManager : MonoBehaviour
         managerPanel.SetActive(false);
         moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
+        timersButton.SetActive(false);
     }
 
 
@@ -53,6 +54,8 @@ public class CameraAndTileManager : MonoBehaviour
         fertilizerTimer.SetActive(true);
         leaderButton.SetActive(false);
         exitButton.SetActive(false);
+        timersButton.SetActive(true);
+
         moneyBalance.transform.localScale = new Vector3(1f, 1f, 1f);
         moneyBalance.transform.localPosition = new Vector3(0, -45, 0);
 
@@ -88,6 +91,8 @@ public class CameraAndTileManager : MonoBehaviour
         leaderButton.SetActive(true);
         exitButton.SetActive(true);
         managerPanel.SetActive(false);
+        timersButton.SetActive(false);
+
         moneyBalance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         moneyBalance.transform.localPosition = new Vector3(0, -65, 0);
         rotation.speed = 2;

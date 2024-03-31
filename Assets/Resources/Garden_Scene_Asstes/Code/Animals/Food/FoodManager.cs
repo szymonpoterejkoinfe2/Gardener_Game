@@ -67,6 +67,7 @@ public class FoodManager : MonoBehaviour
                 if (currentDateTime >= tileFoodInfo.Value.farmFood.foodUntil || !tileFoodInfo.Value.farmFood.haveFood)
                 {
                     tileFoodInfo.Value.farmFood.SetFoodBool(false);
+
                 }
                 else
                 {
