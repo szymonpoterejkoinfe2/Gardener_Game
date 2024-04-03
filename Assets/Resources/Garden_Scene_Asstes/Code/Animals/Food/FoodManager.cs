@@ -118,6 +118,8 @@ public class FoodManager : MonoBehaviour
 
     }
 
+    #region TimerFunctions
+
     private string GetTimerText(DateTime currentTime, DateTime foodEndTime)
     {
         TimeSpan foodTimeSpan = foodEndTime - currentDateTime;
@@ -126,9 +128,6 @@ public class FoodManager : MonoBehaviour
 
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-
-
-    #region TimersActivator 
 
     public void ShowTimers()
     {
@@ -142,7 +141,7 @@ public class FoodManager : MonoBehaviour
 
     #endregion
 
-    #region AnimalAttributesFunctions
+    #region FoodStatusFunctions
 
     public bool GetFoodStatus(string tileID, environment animalEnvironment)
     {

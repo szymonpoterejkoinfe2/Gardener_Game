@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TileFood : MonoBehaviour
+public class TileFood
 {
     public FoodInfo farmFood = new FoodInfo();
     public FoodInfo forestFood = new FoodInfo();
